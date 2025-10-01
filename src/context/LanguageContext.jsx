@@ -1,22 +1,24 @@
-import React, { createContext, useState, useContext } from "react";
-import { locales } from "../locales/locales.js";
+import { createContext, useState, useContext, useEffect } from 'react';
+import { locales } from '../locales/locales.js';
 
 const LanguageContext = createContext();
 
 export const LanguageProvider = ({ children }) => {
-    const [language, setLanguage] = useState('es');
+  const [language, setLanguage] = useState('es');
 
-    const changeLanguage = (lng) => {
-        setLanguage(lng);
-    };
+  useEffect(() => {
+    document.documentElement.lang = language;
+  }, [language]);
 
-    console.log(language);
+  const changeLanguage = (lng) => {
+    setLanguage(lng);
+  };
 
-    return (
-        <LanguageContext.Provider value={{ language, changeLanguage, locales }}>
-            {children}
-        </LanguageContext.Provider>
-    );
+  return (
+    <LanguageContext.Provider value={{ language, changeLanguage, locales }}>
+      {children}
+    </LanguageContext.Provider>
+  );
 };
 
 export const useLanguage = () => useContext(LanguageContext);

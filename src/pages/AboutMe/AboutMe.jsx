@@ -1,102 +1,86 @@
-import { useInView } from "react-intersection-observer";
-import { motion } from "framer-motion";
-import { useLanguage } from "../../context/LanguageContext";
-import AnimatedContent from "../Homepage/components/AnimatedContent";
+import { motion } from 'framer-motion';
+import { useLanguage } from '../../context/LanguageContext';
+import AnimatedContent from '../Homepage/components/AnimatedContent';
 
 const AboutMe = () => {
-    const { language, locales } = useLanguage();
+  const { language, locales } = useLanguage();
 
-    const items = [
-        {
-            title: locales[language].cardOneTitle,
-            date: locales[language].cardOneDate,
-            description: locales[language].cardOneDescription,
-        },
-        {
-            title: locales[language].cardTwoTitle,
-            date: locales[language].cardTwoDate,
-            description: locales[language].cardTwoDescription,
-        },
-        {
-            title: locales[language].cardThreeTitle,
-            date: locales[language].cardThreeDate,
-            description: locales[language].cardThreeDescription,
-        },
-        {
-            title: locales[language].cardFourTitle,
-            date: locales[language].cardFourDate,
-            description: locales[language].cardFourDescription,
-        },
-        {
-            title: locales[language].cardFiveTitle,
-            date: locales[language].cardFiveDate,
-            description: locales[language].cardFiveDescription,
-        },
-    ];
+  const timeline = [
+    {
+      title: locales[language].cardOneTitle,
+      date: locales[language].cardOneDate,
+      description: locales[language].cardOneDescription,
+    },
+    {
+      title: locales[language].cardTwoTitle,
+      date: locales[language].cardTwoDate,
+      description: locales[language].cardTwoDescription,
+    },
+    {
+      title: locales[language].cardThreeTitle,
+      date: locales[language].cardThreeDate,
+      description: locales[language].cardThreeDescription,
+    },
+    {
+      title: locales[language].cardFourTitle,
+      date: locales[language].cardFourDate,
+      description: locales[language].cardFourDescription,
+    },
+    {
+      title: locales[language].cardFiveTitle,
+      date: locales[language].cardFiveDate,
+      description: locales[language].cardFiveDescription,
+    },
+  ];
 
-    return (
-        <section id="AboutMe" className="py-12">
-
-            <h2 className="text-3xl font-bold text-center text-gray-800 dark:text-gray-100 mb-8">
-                <AnimatedContent keyProp={language}>
-                    {locales[language].aboutMeTitle}
-                </AnimatedContent>
-            </h2>
-            <div className="relative w-full max-w-4xl mx-auto">
-                {/* LÃ­nea central */}
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gray-300 dark:bg-gray-600 h-full"></div>
-
-                {/* Elementos del timeline */}
-                {items.map((item, index) => (
-                    <AnimatedContent key={`animated-${index}`} keyProp={language}>
-                        <TimelineItem
-                            key={`timeline-${index}`}
-                            title={item.title}
-                            description={item.description}
-                            align={index % 2 === 0 ? "left" : "right"}
-                        />
-                    </AnimatedContent>
-                ))}
-            </div>
-        </section>
-    );
-};
-
-const TimelineItem = ({ title, date, description, align }) => {
-    const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.1 });
-
-    return (
-        <div
-            ref={ref}
-            className={`flex w-full transition duration-1000 ease ${align === "left"
-                ? "justify-start sm:justify-center md:justify-start"
-                : "justify-end sm:justify-center md:justify-end"
-                } hover:scale-125`}
-        >
-            <motion.div
-                initial={{ opacity: 0, x: align === "left" ? -50 : 50 }}
-                animate={{
-                    opacity: inView ? 1 : 0,
-                    x: inView ? 0 : align === "left" ? -50 : 50,
-                }}
-                transition={{ duration: 1, ease: "easeOut" }}
-                className={`relative hover:shadow-2xl hover:shadow-gray-500 dark:hover:shadow-gray-300 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg shadow-lg p-6 max-w-sm mx-auto ${align === "left" ? "md:mr-8" : "md:ml-8"
-                    }`}
-            >
-                <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100">
-                    {title}
-                </h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400">{date}</p>
-                <p className="mt-2 text-gray-700 dark:text-gray-300">{description}</p>
-                {/* Conector a la lÃ­nea central */}
-                <div
-                    className={`absolute top-1/2 transform -translate-y-1/2 w-4 h-4 bg-gray-300 dark:bg-gray-600 rounded-full ${align === "left" ? "-left-2" : "-right-2"
-                        }`}
-                ></div>
-            </motion.div>
+  return (
+    <section id="AboutMe" className="px-4 pb-24 pt-20">
+      <div className="mx-auto w-full max-w-5xl">
+        <div className="mx-auto max-w-2xl text-center">
+          <span className="inline-flex items-center justify-center rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand-700 dark:bg-brand-500/10 dark:text-brand-200">
+            {language === 'es' ? 'Experiencia' : 'Experience'}
+          </span>
+          <h2 className="mt-4 text-3xl font-semibold text-neutral-900 dark:text-white md:text-4xl">
+            <AnimatedContent keyProp={`about-title-${language}`}>
+              {locales[language].aboutMeTitle}
+            </AnimatedContent>
+          </h2>
+          <p className="mt-4 text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">
+            {language === 'es'
+              ? 'Una línea de tiempo que combina formación, liderazgo técnico y proyectos reales entregados con foco en negocio y personas.'
+              : 'A timeline blending education, technical leadership and shipped products with a consistent focus on business outcomes and people.'}
+          </p>
         </div>
-    );
 
+        <div className="relative mt-14">
+          <div className="absolute left-6 top-0 h-full w-px bg-gradient-to-b from-brand-300 via-brand-200 to-transparent md:left-1/2" />
+
+          <div className="space-y-10">
+            {timeline.map((item, index) => {
+              const isRight = index % 2 === 1;
+              return (
+                <motion.article
+                  key={`${item.title}-${index}`}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.45, ease: 'easeOut', delay: index * 0.05 }}
+                  className={`relative flex flex-col gap-4 rounded-3xl border border-neutral-200 bg-white/90 p-6 shadow-lg backdrop-blur dark:border-slate-700 dark:bg-slate-900/80 md:w-[calc(50%-2rem)] ${isRight ? 'md:ml-auto md:pl-10' : 'md:pr-10'}`}
+                >
+                  <span className="absolute left-4 top-6 h-3 w-3 rounded-full bg-brand-500 shadow-lg shadow-brand-500/40 md:left-[-30px]" />
+                  <div className="space-y-2">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-brand-600 dark:text-brand-200">{item.date}</p>
+                    <h3 className="text-lg font-semibold text-neutral-900 dark:text-white">{item.title}</h3>
+                    <p className="text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">{item.description}</p>
+                  </div>
+                </motion.article>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default AboutMe;

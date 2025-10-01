@@ -1,116 +1,135 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { useNavigate } from "react-router-dom";
-import { useLanguage } from "../context/LanguageContext";
-import AnimatedContent from "../pages/Homepage/components/AnimatedContent";
+import { useState, useMemo } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext';
+import AnimatedContent from '../pages/Homepage/components/AnimatedContent';
 
-export default function NavBar({ darkMode, setDarkMode }) {
-    const { language, changeLanguage, locales } = useLanguage();
-    const navigate = useNavigate();
+const NavBar = ({ darkMode, onToggleTheme }) => {
+  const navigate = useNavigate();
+  const { language, changeLanguage, locales } = useLanguage();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    const languageSelector = () => {
-        const newLanguage = language === "es" ? "en" : "es";
-        changeLanguage(newLanguage);
-        document.documentElement.lang = newLanguage;
-    };
+  const navigation = useMemo(
+    () => [
+      { label: locales[language].home, to: '/portfolio-v.2/Home' },
+      { label: locales[language].projects, to: '/portfolio-v.2/Projects' },
+      { label: locales[language].aboutMe, to: '/portfolio-v.2/AboutMe' },
+    ],
+    [language, locales]
+  );
 
-    return (
-        <motion.nav
-            initial={{ opacity: 0, y: -100 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ type: "spring", stiffness: 100, damping: 20 }}
-            className="fixed top-0 w-full justify-items-center justify-center z-30 bg-gray-800 bg-opacity-50 backdrop-blur-lg shadow-lg"
-        >
-            <div className="flex mb-1">
-                <ul className="flex space-x-3 md:space-x-6 lg:space-x-9 xl:space-x-12 py-1 text-sm md:text-lg lg:text-2xl xl:text-4xl">
-                    <li>
-                        <motion.button
-                            whileHover={{ scale: 1.2 }}
-                            whileTap={{ scale: 0.9 }}
-                            onClick={() => setDarkMode(!darkMode)}
-                            className="rounded-full cursor-pointer hover:shadow-md hover:shadow-yellow-300"
-                        >
-                            {darkMode ? "🌞 " : "🌙 "}
-                        </motion.button>
-                    </li>
+  const handleNavigate = (to) => {
+    navigate(to);
+    setIsMenuOpen(false);
+  };
 
-                    <li>
-                        <motion.div whileHover={{ scale: 1.2 }} transition={{ duration: 0.3 }}>
-                            <button
-                                onClick={() => navigate("/portfolio-v.2/Home")}
-                                className="text-white hover:text-indigo-500 cursor-pointer select-none"
-                            >
-                                <AnimatedContent keyProp={language}>
-                                    {locales[language].home}
-                                </AnimatedContent>
-                            </button>
-                        </motion.div>
-                    </li>
+  const toggleLanguage = () => {
+    const nextLanguage = language === 'es' ? 'en' : 'es';
+    changeLanguage(nextLanguage);
+    document.documentElement.lang = nextLanguage;
+  };
 
-                    <li>
-                        <motion.div whileHover={{ scale: 1.2 }} transition={{ duration: 0.3 }}>
-                            <button
-                                onClick={() => navigate("/portfolio-v.2/Projects")}
-                                className="text-white hover:text-indigo-500 cursor-pointer select-none"
-                            >
-                                <AnimatedContent keyProp={language}>
-                                    {locales[language].projects}
-                                </AnimatedContent>
-                            </button>
-                        </motion.div>
-                    </li>
+  return (
+    <motion.header
+      initial={{ opacity: 0, y: -24 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+      className="fixed inset-x-0 top-4 z-40 flex justify-center px-4"
+    >
+      <div className="w-full max-w-6xl">
+        <div className="relative">
+          <div className="absolute inset-0 rounded-3xl bg-white/60 blur-sm dark:bg-slate-900/60" />
+          <nav className="relative flex items-center justify-between gap-4 rounded-3xl border border-white/50 bg-white/80 px-5 py-3 shadow-brand backdrop-blur-md dark:border-white/10 dark:bg-slate-900/80">
+            <button
+              type="button"
+              onClick={() => handleNavigate('/portfolio-v.2/Home')}
+              className="flex items-center gap-2 text-left"
+            >
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-brand-600 text-lg font-semibold text-white shadow-brand">
+                F
+              </span>
+              <div className="hidden flex-col leading-tight sm:flex">
+                <span className="text-sm font-semibold text-neutral-700 dark:text-neutral-200">Fernando Alfaro</span>
+                <span className="text-xs text-neutral-500 dark:text-neutral-400">Full-stack Developer</span>
+              </div>
+            </button>
 
-                    <li>
-                        <motion.div whileHover={{ scale: 1.2 }} transition={{ duration: 0.3 }}>
-                            <button
-                                onClick={() => navigate("/portfolio-v.2/AboutMe")}
-                                className="text-white hover:text-indigo-500 cursor-pointer select-none"
-                            >
-                                <AnimatedContent keyProp={language}>
-                                    {locales[language].aboutMe}
-                                </AnimatedContent>
-                            </button>
-                        </motion.div>
-                    </li>
-
-                    <li>
-                        <motion.button
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.9 }}
-                            onClick={languageSelector}
-                            className={`rounded-full cursor-pointer px-1 md:px-2 lg:px-3 xl:px-4 text-white font-bold shadow-md transition duration-300 
-                                ${language === 'es' ? 'hover:bg-yellow-600 shadow-red-500' : 'hover:bg-blue-600 shadow-red-500'}`}
-                        >
-                            <AnimatePresence mode="wait">
-                                {language === 'es' ? (
-                                    <motion.div
-                                        key="es"
-                                        initial={{ opacity: 0, y: -10 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        exit={{ opacity: 0, y: 10 }}
-                                        transition={{ duration: 0.3 }}
-                                        className="flex items-center space-x-1"
-                                    >
-                                        <span className="text-red-500">E</span>
-                                        <span className="text-yellow-500">S</span>
-                                    </motion.div>
-                                ) : (
-                                    <motion.div
-                                        key="en"
-                                        initial={{ opacity: 0, y: -10 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        exit={{ opacity: 0, y: 10 }}
-                                        transition={{ duration: 0.3 }}
-                                        className="flex items-center space-x-1"
-                                    >
-                                        <span className="text-blue-300">E</span>
-                                        <span className="text-red-500">N</span>
-                                    </motion.div>
-                                )}
-                            </AnimatePresence>
-                        </motion.button>
-                    </li>
-                </ul>
+            <div className="hidden items-center gap-1 rounded-full bg-white/60 p-1 dark:bg-slate-800/80 md:flex">
+              {navigation.map((item) => (
+                <button
+                  key={item.to}
+                  type="button"
+                  onClick={() => handleNavigate(item.to)}
+                  className="group relative inline-flex items-center rounded-full px-4 py-2 text-sm font-medium text-neutral-600 transition hover:text-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-200 dark:text-neutral-200"
+                >
+                  <span className="absolute inset-0 rounded-full bg-brand-50 opacity-0 transition-opacity group-hover:opacity-100 dark:bg-brand-500/20" />
+                  <span className="relative z-10">
+                    <AnimatedContent keyProp={`${language}-${item.to}`}>
+                      {item.label}
+                    </AnimatedContent>
+                  </span>
+                </button>
+              ))}
             </div>
-        </motion.nav>
-    );
-}
+
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={toggleLanguage}
+                className="inline-flex items-center gap-1 rounded-full border border-brand-200 px-3 py-1 text-xs font-semibold text-brand-700 transition hover:bg-brand-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-200 dark:border-brand-400/40 dark:text-brand-200"
+              >
+                {language === 'es' ? 'ES' : 'EN'}
+              </button>
+
+              <button
+                type="button"
+                onClick={onToggleTheme}
+                className="inline-flex items-center gap-2 rounded-full bg-brand-600 px-3 py-1 text-xs font-semibold text-white shadow-brand transition hover:bg-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-200"
+                aria-label="Toggle color mode"
+              >
+                <span className="hidden sm:inline">{darkMode ? 'Dark' : 'Light'}</span>
+                <span className="font-mono text-xs">{darkMode ? 'ON' : 'OFF'}</span>
+              </button>
+
+              <button
+                type="button"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-neutral-200 text-neutral-700 transition hover:border-brand-200 hover:text-brand-700 dark:border-neutral-700 dark:text-neutral-200 md:hidden"
+                onClick={() => setIsMenuOpen((prev) => !prev)}
+                aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+              >
+                <span className="text-xs font-semibold uppercase" aria-hidden="true">{isMenuOpen ? 'Close' : 'Menu'}</span>
+              </button>
+            </div>
+          </nav>
+        </div>
+
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.2 }}
+              className="mt-3 rounded-3xl border border-white/40 bg-white/90 p-4 shadow-lg backdrop-blur dark:border-white/10 dark:bg-slate-900/90 md:hidden"
+            >
+              <div className="flex flex-col gap-2">
+                {navigation.map((item) => (
+                  <button
+                    key={item.to}
+                    type="button"
+                    onClick={() => handleNavigate(item.to)}
+                    className="rounded-2xl px-4 py-3 text-left text-sm font-semibold text-neutral-700 transition hover:bg-brand-50 hover:text-brand-700 dark:text-neutral-200 dark:hover:bg-brand-500/20"
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </motion.header>
+  );
+};
+
+export default NavBar;

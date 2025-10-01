@@ -1,82 +1,44 @@
-import { useEffect, useState, lazy, Suspense } from "react";
-import { motion } from "framer-motion";
-import darkBg from './assets/dark-bg.jpg';
-import lightBg from './assets/light-bg.jpg';
-import Router from "./router/Router.jsx";
-import SubFooter from "./components/SubFooter.jsx";
+import { useEffect, useState, lazy, Suspense } from 'react';
+import Router from './router/Router.jsx';
+import SubFooter from './components/SubFooter.jsx';
 
 const NavBar = lazy(() => import('./components/Navbar'));
 const Footer = lazy(() => import('./components/Footer'));
 
-function App() {
-  const [darkMode, setDarkMode] = useState(true);
-  const [imagesLoaded, setImagesLoaded] = useState(false);
-
-  const handleDarkModeToggle = () => {
-    setDarkMode(prevDarkMode => !prevDarkMode);
-  };
+const App = () => {
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
+    document.documentElement.classList.toggle('dark', darkMode);
   }, [darkMode]);
 
-  useEffect(() => {
-    const preloadImages = [darkBg, lightBg];
-    const imagePromises = preloadImages.map((src) => {
-      return new Promise((resolve) => {
-        const img = new Image();
-        img.src = src;
-        img.onload = resolve;
-      });
-    });
-
-    Promise.all(imagePromises).then(() => {
-      setImagesLoaded(true);
-    });
-  }, []);
-
-  if (!imagesLoaded) {
-    return (
-      <div className="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-gray-900">
-        <div className="flex flex-col items-center space-y-4">
-          {/* Spinner */}
-          <div className="w-12 h-12 border-4 border-blue-500 border-dashed rounded-full animate-spin"></div>
-          {/* Texto de carga */}
-          <p className="text-lg text-gray-700 dark:text-gray-300">Cargando...</p>
-        </div>
-      </div>
-    );
-  }
-
+  const toggleTheme = () => setDarkMode((prev) => !prev);
 
   return (
-    <motion.div
-      className={`relative w-full min-h-screen bg-cover bg-center transition-all duration-500`}
+    <div className={`${darkMode ? 'dark bg-neutral-950' : 'bg-transparent'} text-neutral-900 dark:text-neutral-100`}>
+      <div className="relative flex min-h-screen flex-col overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 -z-10">
+          <div className="absolute left-1/2 top-0 h-72 w-72 -translate-x-1/2 rounded-full bg-brand-400/25 blur-[130px]" />
+          <div className="absolute right-[-6rem] top-1/3 h-80 w-80 rounded-full bg-accent-300/30 blur-[150px]" />
+          <div className="absolute bottom-[-12rem] left-[-6rem] h-96 w-96 rounded-full bg-brand-700/20 blur-[160px]" />
+        </div>
 
-      style={{
-        backgroundImage: `url(${darkMode ? darkBg : lightBg})`
-      }}
+        <Suspense fallback={<div className="flex h-20 items-center justify-center text-sm text-neutral-500">Cargando...</div>}>
+          <NavBar darkMode={darkMode} onToggleTheme={toggleTheme} />
+        </Suspense>
 
-      initial={{ opacity: 0, scale: 1.10 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 1.10 }}
-      transition={{
-        opacity: { duration: 1, ease: "easeInOut" },
-        scale: { duration: 1, ease: "easeInOut" },
-      }}
-    >
-      {/* Contenido principal */}
-      <div className="relative z-0 w-full min-h-screen overflow-hidden">
-        <NavBar darkMode={darkMode} setDarkMode={handleDarkModeToggle} />
-        <Router />
-        <Footer />
+        <main className="flex-1 pt-28 md:pt-32">
+          <Router />
+        </main>
+
+        <SubFooter />
+
+        <Suspense fallback={null}>
+          <Footer />
+        </Suspense>
       </div>
-    </motion.div>
+    </div>
   );
-}
+};
 
 export default App;
