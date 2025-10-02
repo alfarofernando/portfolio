@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../../context/LanguageContext.jsx';
 
 import HtmlIcon from '../../../assets/icons/html-5.svg';
 import CssIcon from '../../../assets/icons/css.svg';
@@ -16,25 +17,33 @@ import GitIcon from '../../../assets/icons/git.svg';
 import GithubIcon from '../../../assets/icons/github.svg';
 import ViteIcon from '../../../assets/icons/vite.svg';
 
-const techStack = [
-  { name: 'HTML', icon: HtmlIcon },
-  { name: 'CSS', icon: CssIcon },
-  { name: 'Bootstrap', icon: BootstrapIcon },
-  { name: 'JavaScript', icon: JsIcon },
-  { name: 'React', icon: ReactIcon },
-  { name: 'Tailwind', icon: TailwindIcon },
-  { name: 'PHP', icon: PhpIcon },
-  { name: 'Node.js', icon: NodeIcon },
-  { name: 'Express', icon: ExpressIcon },
-  { name: 'MongoDB', icon: MongoIcon },
-  { name: 'MySQL', icon: MySqlIcon },
-  { name: 'Git', icon: GitIcon },
-  { name: 'GitHub', icon: GithubIcon },
-  { name: 'Vite', icon: ViteIcon },
+const stackConfig = [
+  { key: 'html', icon: HtmlIcon },
+  { key: 'css', icon: CssIcon },
+  { key: 'bootstrap', icon: BootstrapIcon },
+  { key: 'javascript', icon: JsIcon },
+  { key: 'react', icon: ReactIcon },
+  { key: 'tailwind', icon: TailwindIcon },
+  { key: 'php', icon: PhpIcon },
+  { key: 'node', icon: NodeIcon },
+  { key: 'express', icon: ExpressIcon },
+  { key: 'mongodb', icon: MongoIcon },
+  { key: 'mysql', icon: MySqlIcon },
+  { key: 'git', icon: GitIcon },
+  { key: 'github', icon: GithubIcon },
+  { key: 'vite', icon: ViteIcon },
 ];
 
 const TechCarousel = () => {
-  const items = useMemo(() => [...techStack, ...techStack], []);
+  const { language, locales } = useLanguage();
+  const labels = locales[language].techStack;
+
+  const items = useMemo(
+    () => stackConfig.map((item) => ({ ...item, name: labels[item.key] })),
+    [labels]
+  );
+
+  const duplicatedItems = useMemo(() => [...items, ...items], [items]);
 
   return (
     <div className="overflow-hidden">
@@ -43,7 +52,7 @@ const TechCarousel = () => {
         animate={{ x: ['0%', '-50%'] }}
         transition={{ repeat: Infinity, repeatType: 'loop', duration: 18, ease: 'linear' }}
       >
-        {items.map(({ name, icon }, index) => (
+        {duplicatedItems.map(({ name, icon }, index) => (
           <div
             key={`${name}-${index}`}
             className="flex min-w-[120px] flex-col items-center gap-2 rounded-3xl border border-brand-100 bg-white/80 px-4 py-3 text-center shadow-sm transition hover:-translate-y-1 hover:border-brand-200 hover:shadow-md dark:border-brand-500/20 dark:bg-slate-900/60"

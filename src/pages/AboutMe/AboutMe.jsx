@@ -4,51 +4,23 @@ import AnimatedContent from '../Homepage/components/AnimatedContent';
 
 const AboutMe = () => {
   const { language, locales } = useLanguage();
-
-  const timeline = [
-    {
-      title: locales[language].cardOneTitle,
-      date: locales[language].cardOneDate,
-      description: locales[language].cardOneDescription,
-    },
-    {
-      title: locales[language].cardTwoTitle,
-      date: locales[language].cardTwoDate,
-      description: locales[language].cardTwoDescription,
-    },
-    {
-      title: locales[language].cardThreeTitle,
-      date: locales[language].cardThreeDate,
-      description: locales[language].cardThreeDescription,
-    },
-    {
-      title: locales[language].cardFourTitle,
-      date: locales[language].cardFourDate,
-      description: locales[language].cardFourDescription,
-    },
-    {
-      title: locales[language].cardFiveTitle,
-      date: locales[language].cardFiveDate,
-      description: locales[language].cardFiveDescription,
-    },
-  ];
+  const timeline = locales[language].timeline;
+  const aboutCopy = locales[language].about;
 
   return (
-    <section id="AboutMe" className="px-4 pb-24 pt-20">
+    <section id="AboutMe" className="px-4 pb-24 pt-16 sm:pt-20">
       <div className="mx-auto w-full max-w-5xl">
         <div className="mx-auto max-w-2xl text-center">
           <span className="inline-flex items-center justify-center rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand-700 dark:bg-brand-500/10 dark:text-brand-200">
-            {language === 'es' ? 'Experiencia' : 'Experience'}
+            {aboutCopy.badge}
           </span>
-          <h2 className="mt-4 text-3xl font-semibold text-neutral-900 dark:text-white md:text-4xl">
+          <h2 className="mt-4 text-3xl font-semibold text-neutral-900 dark:text-white sm:text-4xl">
             <AnimatedContent keyProp={`about-title-${language}`}>
-              {locales[language].aboutMeTitle}
+              {locales[language].sections.aboutMeTitle}
             </AnimatedContent>
           </h2>
-          <p className="mt-4 text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">
-            {language === 'es'
-              ? 'Una línea de tiempo que combina formación, liderazgo técnico y proyectos reales entregados con foco en negocio y personas.'
-              : 'A timeline blending education, technical leadership and shipped products with a consistent focus on business outcomes and people.'}
+          <p className="mt-4 text-sm leading-relaxed text-neutral-600 dark:text-neutral-300 sm:text-base">
+            {aboutCopy.description}
           </p>
         </div>
 
