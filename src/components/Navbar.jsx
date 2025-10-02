@@ -7,15 +7,16 @@ import AnimatedContent from '../pages/Homepage/components/AnimatedContent';
 const NavBar = ({ darkMode, onToggleTheme }) => {
   const navigate = useNavigate();
   const { language, changeLanguage, locales } = useLanguage();
+  const { nav, brand, theme, menu } = locales[language];
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navigation = useMemo(
     () => [
-      { label: locales[language].home, to: '/portfolio-v.2/Home' },
-      { label: locales[language].projects, to: '/portfolio-v.2/Projects' },
-      { label: locales[language].aboutMe, to: '/portfolio-v.2/AboutMe' },
+      { label: nav.home, to: '/portfolio/Home' },
+      { label: nav.projects, to: '/portfolio/Projects' },
+      { label: nav.aboutMe, to: '/portfolio/AboutMe' },
     ],
-    [language, locales]
+    [nav]
   );
 
   const handleNavigate = (to) => {
@@ -42,15 +43,17 @@ const NavBar = ({ darkMode, onToggleTheme }) => {
           <nav className="relative flex items-center justify-between gap-4 rounded-3xl border border-white/50 bg-white/80 px-5 py-3 shadow-brand backdrop-blur-md dark:border-white/10 dark:bg-slate-900/80">
             <button
               type="button"
-              onClick={() => handleNavigate('/portfolio-v.2/Home')}
+              onClick={() => handleNavigate('/portfolio/Home')}
               className="flex items-center gap-2 text-left"
             >
               <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-brand-600 text-lg font-semibold text-white shadow-brand">
-                F
+                {brand.initials}
               </span>
               <div className="hidden flex-col leading-tight sm:flex">
-                <span className="text-sm font-semibold text-neutral-700 dark:text-neutral-200">Fernando Alfaro</span>
-                <span className="text-xs text-neutral-500 dark:text-neutral-400">Full-stack Developer</span>
+                <span className="text-sm font-semibold text-neutral-700 dark:text-neutral-200">
+                  {brand.name}
+                </span>
+                <span className="text-xs text-neutral-500 dark:text-neutral-400">{brand.role}</span>
               </div>
             </button>
 
@@ -85,19 +88,21 @@ const NavBar = ({ darkMode, onToggleTheme }) => {
                 type="button"
                 onClick={onToggleTheme}
                 className="inline-flex items-center gap-2 rounded-full bg-brand-600 px-3 py-1 text-xs font-semibold text-white shadow-brand transition hover:bg-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-200"
-                aria-label="Toggle color mode"
+                aria-label={theme.ariaLabel}
               >
-                <span className="hidden sm:inline">{darkMode ? 'Dark' : 'Light'}</span>
-                <span className="font-mono text-xs">{darkMode ? 'ON' : 'OFF'}</span>
+                <span className="hidden sm:inline">{darkMode ? theme.dark : theme.light}</span>
+                <span className="font-mono text-xs">{darkMode ? theme.on : theme.off}</span>
               </button>
 
               <button
                 type="button"
                 className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-neutral-200 text-neutral-700 transition hover:border-brand-200 hover:text-brand-700 dark:border-neutral-700 dark:text-neutral-200 md:hidden"
                 onClick={() => setIsMenuOpen((prev) => !prev)}
-                aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+                aria-label={isMenuOpen ? menu.closeLabel : menu.openLabel}
               >
-                <span className="text-xs font-semibold uppercase" aria-hidden="true">{isMenuOpen ? 'Close' : 'Menu'}</span>
+                <span className="text-xs font-semibold uppercase" aria-hidden="true">
+                  {isMenuOpen ? menu.close : menu.open}
+                </span>
               </button>
             </div>
           </nav>
