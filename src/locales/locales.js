@@ -1,84 +1,400 @@
 export const locales = {
   es: {
-    //navbar
-    home: "Inicio",
-    projects: "Proyectos",
-    aboutMe: "Sobre Mi",
-    //welcome
-    home1: "Hola, Soy",
-    home2: "Desarrollador Web FullStack",
-    home3: "Tecnico Universitario en Programacion",
-    whatsapp: "Contactar por WhatsApp",
-    cv: "Ver Curriculum",
-    //projects
-    projectTitle: "Mis Proyectos",
-    viewDetails: "Info del Proyecto",
-    projectScreenshot: "Ver Imagenes",
-    projectRepository: "Ver Repositorio",
-    closeModal: "Cerrar",
-    project1Description:
-      "Participé como desarrollador web full-stack en la creación de un sitio web para la venta y visualización asincrónica de cursos de programación. En este proyecto, implementé el stack React, PHP y MySQL, desarrollando una arquitectura que facilitó la interacción entre el frontend y el backend. Diseñé y optimicé el flujo de compra de cursos, mejorando la experiencia del usuario con funcionalidades dinámicas y tiempos de respuesta reducidos. Además, implementé un sistema de autenticación y gestión de usuarios para garantizar la seguridad de la información. Este proyecto me permitió profundizar en el desarrollo de aplicaciones interactivas y la integración de bases de datos relacionales.",
-
-    project2Description:
-      "Asumí el rol de líder de proyecto, coordinando un equipo de tres desarrolladores y supervisando tanto las tareas técnicas como las entregas del equipo. Diseñé la arquitectura del sistema y me encargué de las implementaciones más complejas, como el desarrollo completo del backend, y la lógica avanzada del frontend para el consumo de APIs RESTful. Este proyecto utilizó el stack MERN (MongoDB Atlas, Express, React, Node.js), lo que permitió un enfoque moderno, escalable y eficiente. También implementé estrategias de control de versiones con Git y GitHub, garantizando una colaboración efectiva entre los miembros del equipo. Como líder, adquirí experiencia en la gestión de tiempos y resolución de conflictos técnicos, logrando entregar un producto final que superó las expectativas iniciales.",
-
-    project3Description:
-      "Desarrollé mi primer portafolio personal utilizando HTML, CSS, Bootstrap y JavaScript, destacando mis habilidades iniciales en diseño web y programación. Este proyecto sirvió como base para exponer mis primeros trabajos y mejorar mis competencias técnicas. Incluí un diseño responsivo para garantizar la compatibilidad con dispositivos móviles y utilicé componentes de Bootstrap para optimizar el desarrollo visual. Además, integré scripts personalizados en JavaScript para añadir interactividad, como animaciones y formularios dinámicos. Este portafolio marcó el inicio de mi camino en el desarrollo web, sirviendo como una herramienta clave para conectar con futuros proyectos y colaboraciones.",
-    project4Description:
-      "NoteIt es una aplicación web full-stack diseñada para la gestión eficiente de notas. Refleja mi capacidad para conceptualizar, desarrollar y desplegar una solución completa. Permite crear, editar, eliminar, archivar y restaurar notas, así como filtrarlas por categorías. Su interfaz moderna, construida con React y estilizada con Tailwind CSS, ofrece una experiencia fluida y atractiva. El frontend incorpora Redux Toolkit para el manejo de estado, Axios para la comunicación con la API y Framer Motion para animaciones. El backend, desarrollado con Node.js, TypeScript y Express, utiliza MySQL como base de datos, gestionada con Prisma ORM, y bcrypt para la encriptación de contraseñas. Todo el proyecto fue desplegado en Railway (base de datos), Heroku (backend) y Netlify (frontend), demostrando mi capacidad para entregar soluciones completas con eficiencia y enfoque en la calidad del producto.",
-project5Description: "Portal SGU es una plataforma innovadora que fortalece la seguridad en La Matanza mediante el control en tiempo real de las unidades de la Guardia Urbana. Su objetivo es optimizar la comunicación entre choferes, inspectores, bases y autoridades, garantizando rapidez en la atención de emergencias, asignación eficiente de recursos y total transparencia en la gestión. Con un stack moderno —React 19, Next.js 15, TypeScript, Prisma ORM, Drizzle ORM y MySQL2— el sistema combina rendimiento y seguridad. Implementa Next-Auth con JWT, cifrado con Bcrypt y control de accesos por roles, respaldados por herramientas de monitoreo y documentación como Sentry y Swagger. Desplegado en Netlify y con pruebas automatizadas en Cypress y Jest, Portal SGU asegura disponibilidad 24/7, confiabilidad de datos y confianza comunitaria, consolidándose como un aliado estratégico para un entorno más seguro.",
-    //aboutMe
-    aboutMeTitle: "Sobre mí",
-cardOneTitle: "Sólida Formación Académica en Programación",
-cardOneDescription:"Graduado como Técnico Universitario en Programación en la UTN, construí una base técnica fuerte en estructuras de datos, algoritmos, diseño de sistemas, desarrollo web y bases de datos: habilidades que respaldan cada línea de código que escribo hoy.",
-cardTwoTitle: "Desarrollador Fullstack MERN, Probado en Batalla",
-cardTwoDescription:"Especializado en el stack MERN (MongoDB, Express, React, Node.js), desarrollé aplicaciones web completas desde cero. No solo conozco el stack: lo usé para entregar soluciones reales, escalables y mantenibles.",
-cardThreeTitle: "Liderazgo Técnico con Impacto Real",
-cardThreeDescription:"Lideré equipos interdisciplinarios a lo largo de ciclos completos de desarrollo, diseñando arquitecturas robustas y entregando aplicaciones de alto rendimiento. Mi liderazgo se basa en la calidad del código, la visión clara y el trabajo colaborativo.",
-cardFourTitle: "Colaboración Global y Comunicación Clara",
-cardFourDescription:"Con dominio del inglés y experiencia en entornos remotos, me adapto con soltura a equipos internacionales. Aporto claridad en discusiones técnicas, facilito la colaboración fluida y navego con facilidad por documentación y estándares globales.",
-cardFiveTitle: "Dominio de un Stack Moderno y Versátil",
-cardFiveDescription:"Desde crear interfaces fluidas y responsivas con React, TypeScript y Tailwind, hasta construir backends seguros con Node.js, Express y bases de datos SQL/NoSQL—mi stack está probado en producción y en constante evolución. ¿DevOps? ¿Git? ¿CI/CD? Todo incluido.", },
+    nav: {
+      home: 'Inicio',
+      projects: 'Proyectos',
+      aboutMe: 'Sobre mí',
+    },
+    brand: {
+      initials: 'F',
+      name: 'Fernando Alfaro',
+      role: 'Desarrollador Full Stack',
+      profileSubtitle: 'Ingeniero Full Stack · Buenos Aires',
+    },
+    theme: {
+      dark: 'Oscuro',
+      light: 'Claro',
+      on: 'ON',
+      off: 'OFF',
+      ariaLabel: 'Cambiar modo de color',
+    },
+    menu: {
+      open: 'Menú',
+      close: 'Cerrar',
+      openLabel: 'Abrir menú',
+      closeLabel: 'Cerrar menú',
+    },
+    hero: {
+      badge: 'Producto digital end-to-end',
+      heading: 'Hola, soy Fernando Alfaro',
+      subheading: 'Desarrollador full stack orientado a producto',
+      description:
+        'Impulso productos digitales centrados en negocio, accesibilidad y rendimiento. Disfruto liderar iteraciones breves, validar con usuarios reales y convertir ideas en experiencias listas para producción.',
+      highlights: [
+        'Experiencia full stack de punta a punta',
+        'Mentoría y liderazgo técnico',
+        'Iteraciones ágiles guiadas por datos',
+      ],
+      stats: [
+        {
+          value: '7+',
+          label: 'Proyectos en producción',
+          detail: 'React, Next.js, Node y Prisma',
+        },
+        {
+          value: '3',
+          label: 'Equipos liderados',
+          detail: 'Coordinación técnica y mentoring',
+        },
+        {
+          value: '100%',
+          label: 'Foco UX',
+          detail: 'Investigación, prototipos y validación',
+        },
+      ],
+      actions: {
+        primary: 'Ver currículum',
+        secondary: 'Contactar por WhatsApp',
+      },
+      profileAlt: 'Retrato de Fernando Alfaro',
+    },
+    documents: {
+      cv: '/portfolio/cv-AlfaroFernando-Esp.pdf',
+    },
+    links: {
+      github: 'https://github.com/alfarofernando',
+      linkedin: 'https://www.linkedin.com/in/fernando-alfaro-132973246/',
+      whatsapp: 'https://wa.me/5491152606455?text=Hola%21%20Quisiera%20conectar.',
+    },
+    sections: {
+      projectsTitle: 'Mis proyectos',
+      aboutMeTitle: 'Sobre mí',
+    },
+    projectsSection: {
+      badge: 'Portafolio',
+      title: 'Proyectos destacados',
+      description:
+        'Selección de soluciones que construí para empresas y proyectos personales, priorizando métricas claras, escalabilidad y experiencias memorables.',
+      previewLabel: 'Detalle',
+      viewDetails: 'Ver detalles',
+      repositoryLink: 'Repositorio',
+    },
+    projectPage: {
+      back: 'Volver',
+      repositoryButton: 'Abrir repositorio',
+      repositoryDescription:
+        'Explora el repositorio para revisar el código, las decisiones técnicas y el roadmap.',
+      notFoundTitle: 'Proyecto no encontrado',
+      notFoundAction: 'Volver a proyectos',
+    },
+    about: {
+      description:
+        'Una línea de tiempo que combina formación, liderazgo técnico y productos entregados con foco en negocio y personas.',
+      badge: 'Experiencia',
+    },
+    timeline: [
+      {
+        date: '2019 - 2021 · UTN',
+        title: 'Formación técnica en programación',
+        description:
+          'Me gradué como Técnico Universitario en Programación, consolidando bases sólidas en algoritmos, estructuras de datos y diseño de sistemas.',
+      },
+      {
+        date: '2021 - 2022',
+        title: 'Primeros productos digitales',
+        description:
+          'Construí mi primer portafolio y proyectos freelance aplicando HTML, CSS, JavaScript y Bootstrap con foco en accesibilidad y responsive design.',
+      },
+      {
+        date: '2022 - 2023',
+        title: 'Especialización full stack MERN',
+        description:
+          'Desarrollé soluciones completas con React, Node y MongoDB, integrando autenticación, dashboards y despliegues continuos.',
+      },
+      {
+        date: '2023 - 2024',
+        title: 'Liderazgo técnico y mentoría',
+        description:
+          'Coordiné equipos multidisciplinarios, definí arquitecturas escalables y acompañé a otros devs en buenas prácticas y revisiones de código.',
+      },
+      {
+        date: '2024 - Actualidad',
+        title: 'Entrega de plataformas escalables',
+        description:
+          'Diseñé y lancé aplicaciones con stack moderno (React 19, Next.js 15, Prisma, Drizzle y MySQL) asegurando seguridad, observabilidad y pruebas automatizadas.',
+      },
+    ],
+    cta: {
+      badge: 'Colaboración guiada por datos',
+      title: '¿Planificamos tu próximo proyecto?',
+      description:
+        'Trabajo cada iteración con foco en UX, performance y resultados medibles. Revisá mis proyectos o escribime para llevar tu idea a producción.',
+      primary: 'Ver proyectos',
+      secondary: 'Contactar ahora',
+    },
+    footer: {
+      availability: 'Disponible para proyectos',
+      summary:
+        'Hola, soy Fernando. Creo experiencias full stack con foco en métricas de negocio y personas usuarias.',
+      highlights: [
+        'React · Next.js · TypeScript',
+        'Back-end con Node.js y Prisma',
+        'Investigación y métricas UX',
+      ],
+      contactTitle: 'Contacto directo',
+      links: {
+        cv: 'Currículum',
+        github: 'GitHub',
+        linkedin: 'LinkedIn',
+        whatsapp: 'WhatsApp',
+      },
+      legal: 'Copyright (c) {year} Fernando Alfaro. Todos los derechos reservados.',
+      tagline: 'Creado con pasión y obsesión por los detalles.',
+    },
+    common: {
+      loading: 'Cargando…',
+    },
+    techStack: {
+      html: 'HTML',
+      css: 'CSS',
+      bootstrap: 'Bootstrap',
+      javascript: 'JavaScript',
+      react: 'React',
+      tailwind: 'Tailwind',
+      php: 'PHP',
+      node: 'Node.js',
+      express: 'Express',
+      mongodb: 'MongoDB',
+      mysql: 'MySQL',
+      git: 'Git',
+      github: 'GitHub',
+      vite: 'Vite',
+    },
+    projectsData: {
+      portfolioV1: {
+        title: 'Portafolio V1',
+        description:
+          'Mi primer portafolio personal construido con HTML, CSS, Bootstrap y JavaScript, optimizado para dispositivos móviles y con componentes reutilizables.',
+      },
+      alfateam: {
+        title: 'AlfaTeam',
+        description:
+          'Plataforma full stack para gestionar cursos asincrónicos. Implementé React, PHP y MySQL para orquestar flujos de compra y autenticación segura.',
+      },
+      storepc: {
+        title: 'StorePC',
+        description:
+          'E-commerce desarrollado con el stack MERN. Lideré la arquitectura, construí el backend completo y la lógica avanzada de consumo de APIs.',
+      },
+      noteit: {
+        title: 'NoteIt',
+        description:
+          'Aplicación de notas full stack con React, Tailwind, Redux Toolkit y un backend en Node, TypeScript y Express desplegado en producción.',
+      },
+      portalSgu: {
+        title: 'Portal SGU',
+        description:
+          'Plataforma para monitoreo en tiempo real de la Guardia Urbana de La Matanza. Utiliza React 19, Next.js 15 y Prisma con control de accesos y observabilidad.',
+      },
+    },
+  },
   en: {
-    //navbar
-    home: "Home",
-    projects: "Projects",
-    aboutMe: "About Me",
-    //welcome
-    home1: "Hello, I'm",
-    home2: "FullStack Web Developer",
-    home3: "University Technician in Programming",
-    whatsapp: "Contact on WhatsApp",
-    cv: "See Curriculum",
-    //projects
-    projectTitle: "My Projects",
-    viewDetails: "Project Info",
-    projectScreenshot: "To Images",
-    projectRepository: "To Repository",
-    closeModal: "Close",
-    project1Description:
-      "I worked as a full-stack web developer on the creation of a website for the sale and asynchronous viewing of programming courses. In this project, I implemented the React, PHP, and MySQL stack, developing an architecture that facilitated seamless interaction between the frontend and backend. I designed and optimized the course purchasing flow, improving the user experience with dynamic features and reduced response times. Additionally, I implemented a user authentication and management system to ensure information security. This project allowed me to deepen my expertise in building interactive applications and integrating relational databases.",
-
-    project2Description:
-      "I took on the role of project leader, coordinating a team of three developers and overseeing both technical tasks and team deliverables. I designed the system architecture and handled the most complex implementations, including full backend development, which featured an authentication system using JWT and OAuth, as well as advanced frontend logic for consuming RESTful APIs. This project utilized the MERN stack (MongoDB Atlas, Express, React, Node.js), enabling a modern, scalable, and efficient approach. I also implemented version control strategies with Git and GitHub, ensuring effective collaboration among team members. As a leader, I gained valuable experience in time management and technical issue resolution, ultimately delivering a final product that exceeded initial expectations.",
-
-    project3Description:
-      "I developed my first personal portfolio using HTML, CSS, Bootstrap, and JavaScript, showcasing my initial skills in web design and programming. This project served as a foundation to display my early work and improve my technical abilities. I included a responsive design to ensure compatibility with mobile devices and used Bootstrap components to optimize the visual development process. Additionally, I integrated custom JavaScript scripts to add interactivity, such as animations and dynamic forms. This portfolio marked the beginning of my journey in web development, serving as a key tool to connect with future projects and collaborations.",
-    project4Description:
-      "NoteIt is a full-stack web application designed for efficient note management. It showcases my ability to conceptualize, develop, and deploy a complete solution. The app allows users to create, edit, delete, archive, and restore notes, as well as filter them by category. Its modern interface, built with React and styled using Tailwind CSS, provides a smooth and engaging user experience.The frontend leverages Redux Toolkit for state management, Axios for API communication, and Framer Motion for animations. The backend, developed with Node.js, TypeScript, and Express, uses MySQL as the database, managed with Prisma ORM, and bcrypt for password encryption. The entire project was deployed using Railway (database), Heroku (backend), and Netlify (frontend), demonstrating my ability to deliver complete solutions with efficiency and a strong focus on product quality.",
-    project5Description: "Portal SGU is an innovative platform designed to enhance security in La Matanza through real-time monitoring of Guardia Urbana units. Its goal is to optimize communication among drivers, inspectors, command centers, and authorities, ensuring faster emergency response, efficient resource allocation, and full transparency in operations. Built with a modern stack —React 19, Next.js 15, TypeScript, Prisma ORM, Drizzle ORM, and MySQL2— the system delivers top performance and security. It integrates Next-Auth with JWT, Bcrypt encryption, and role-based access control, supported by monitoring and documentation tools like Sentry and Swagger. Deployed on Netlify with automated testing via Cypress and Jest, Portal SGU guarantees 24/7 availability, data reliability, and community trust, establishing itself as a strategic ally for a safer environment.",
-
-    //aboutMe
-    aboutMeTitle: "About Me",
-cardOneTitle: "Solid Academic Foundation in Programming",
-cardOneDescription: "Graduated as a University Technician in Programming from UTN, I built a strong technical foundation in data structures, algorithms, systems design, web development, and databases—skills that support every line of code I write today.",
-cardTwoTitle: "Fullstack MERN Developer, Battle-Tested",
-cardTwoDescription: "Specialized in the MERN stack (MongoDB, Express, React, Node.js), I've developed full-fledged web apps from the ground up. I don't just know the stack—I’ve used it to ship scalable, maintainable, real-world solutions.",
-cardThreeTitle: "Tech Leadership with Real Impact",
-cardThreeDescription: "Led cross-functional teams through full development lifecycles, designing robust architectures and delivering performant applications. My leadership is grounded in code quality, clear vision, and a collaborative mindset.",
-cardFourTitle: "Global Collaboration & Clear Communication",
-cardFourDescription: "Fluent in English and confident in remote-first workflows, I thrive in international teams. I bring clarity to technical discussions, ensure seamless collaboration, and easily navigate documentation and global standards.",
-cardFiveTitle: "Modern, Versatile Tech Stack Mastery",
-cardFiveDescription: "From crafting smooth, responsive UIs with React, TypeScript, and Tailwind, to building secure backends with Node.js, Express, and SQL/NoSQL databases—my toolkit is production-proven and ever-evolving. DevOps? Git? CI/CD? All in the mix.",
+    nav: {
+      home: 'Home',
+      projects: 'Projects',
+      aboutMe: 'About me',
+    },
+    brand: {
+      initials: 'F',
+      name: 'Fernando Alfaro',
+      role: 'Full-stack Developer',
+      profileSubtitle: 'Full-stack Engineer · Buenos Aires',
+    },
+    theme: {
+      dark: 'Dark',
+      light: 'Light',
+      on: 'ON',
+      off: 'OFF',
+      ariaLabel: 'Toggle color mode',
+    },
+    menu: {
+      open: 'Menu',
+      close: 'Close',
+      openLabel: 'Open menu',
+      closeLabel: 'Close menu',
+    },
+    hero: {
+      badge: 'End-to-end digital products',
+      heading: "Hey, I'm Fernando Alfaro",
+      subheading: 'Product-oriented full-stack developer',
+      description:
+        'I build digital products with a business, accessibility, and performance mindset. I love leading tight iterations, validating with real users, and shipping production-ready experiences.',
+      highlights: [
+        'End-to-end full-stack delivery',
+        'Technical mentorship & leadership',
+        'Data-informed agile iterations',
+      ],
+      stats: [
+        {
+          value: '7+',
+          label: 'Launched projects',
+          detail: 'React, Next.js, Node & Prisma',
+        },
+        {
+          value: '3',
+          label: 'Teams led',
+          detail: 'Technical coaching & mentoring',
+        },
+        {
+          value: '100%',
+          label: 'UX focus',
+          detail: 'Research, prototypes & validation',
+        },
+      ],
+      actions: {
+        primary: 'View résumé',
+        secondary: 'Chat on WhatsApp',
+      },
+      profileAlt: 'Portrait of Fernando Alfaro',
+    },
+    documents: {
+      cv: '/portfolio/cv-AlfaroFernando-Eng.pdf',
+    },
+    links: {
+      github: 'https://github.com/alfarofernando',
+      linkedin: 'https://www.linkedin.com/in/fernando-alfaro-132973246/',
+      whatsapp: 'https://wa.me/5491152606455?text=Hi%21%20I%E2%80%99d%20love%20to%20connect.',
+    },
+    sections: {
+      projectsTitle: 'My projects',
+      aboutMeTitle: 'About me',
+    },
+    projectsSection: {
+      badge: 'Portfolio',
+      title: 'Featured projects',
+      description:
+        'A selection of products delivered for companies and personal initiatives, always optimising for measurable outcomes, scalability, and polished user experiences.',
+      previewLabel: 'Details',
+      viewDetails: 'Project info',
+      repositoryLink: 'Repository',
+    },
+    projectPage: {
+      back: 'Back',
+      repositoryButton: 'Open repository',
+      repositoryDescription:
+        'Browse the repository to review the source code, technical decisions, and roadmap.',
+      notFoundTitle: 'Project not found',
+      notFoundAction: 'Back to projects',
+    },
+    about: {
+      description:
+        'A timeline that blends education, technical leadership, and shipped products with a consistent focus on business outcomes and people.',
+      badge: 'Experience',
+    },
+    timeline: [
+      {
+        date: '2019 - 2021 · UTN',
+        title: 'Technical foundations in programming',
+        description:
+          'Graduated as a University Technician in Programming, building strong fundamentals in algorithms, data structures, and systems design.',
+      },
+      {
+        date: '2021 - 2022',
+        title: 'First digital products',
+        description:
+          'Crafted my first portfolio and freelance projects using HTML, CSS, JavaScript, and Bootstrap with an emphasis on accessibility and responsive design.',
+      },
+      {
+        date: '2022 - 2023',
+        title: 'Full-stack MERN specialisation',
+        description:
+          'Built end-to-end solutions with React, Node, and MongoDB, integrating authentication, dashboards, and continuous deployments.',
+      },
+      {
+        date: '2023 - 2024',
+        title: 'Technical leadership & mentoring',
+        description:
+          'Led cross-functional teams, defined scalable architectures, and coached developers on best practices and code reviews.',
+      },
+      {
+        date: '2024 - Present',
+        title: 'Shipping scalable platforms',
+        description:
+          'Designed and launched applications with a modern stack (React 19, Next.js 15, Prisma, Drizzle, MySQL) ensuring security, observability, and automated testing.',
+      },
+    ],
+    cta: {
+      badge: 'Data-informed collaboration',
+      title: 'Ready to launch your next project?',
+      description:
+        'Every iteration is crafted with UX, performance, and measurable outcomes in mind. Explore my work or reach out and let’s build together.',
+      primary: 'See projects',
+      secondary: 'Get in touch',
+    },
+    footer: {
+      availability: 'Open to new opportunities',
+      summary:
+        "Hi, I'm Fernando. I build full-stack experiences with a people-first and metrics-driven mindset.",
+      highlights: [
+        'React · Next.js · TypeScript',
+        'Back-end with Node.js & Prisma',
+        'UX research & product metrics',
+      ],
+      contactTitle: 'Direct contact',
+      links: {
+        cv: 'Résumé',
+        github: 'GitHub',
+        linkedin: 'LinkedIn',
+        whatsapp: 'WhatsApp',
+      },
+      legal: 'Copyright (c) {year} Fernando Alfaro. All rights reserved.',
+      tagline: 'Crafted with care and attention to detail.',
+    },
+    common: {
+      loading: 'Loading…',
+    },
+    techStack: {
+      html: 'HTML',
+      css: 'CSS',
+      bootstrap: 'Bootstrap',
+      javascript: 'JavaScript',
+      react: 'React',
+      tailwind: 'Tailwind',
+      php: 'PHP',
+      node: 'Node.js',
+      express: 'Express',
+      mongodb: 'MongoDB',
+      mysql: 'MySQL',
+      git: 'Git',
+      github: 'GitHub',
+      vite: 'Vite',
+    },
+    projectsData: {
+      portfolioV1: {
+        title: 'Portfolio V1',
+        description:
+          'My first personal portfolio built with HTML, CSS, Bootstrap, and JavaScript. Designed for mobile-first experiences with reusable components.',
+      },
+      alfateam: {
+        title: 'AlfaTeam',
+        description:
+          'Full-stack platform for asynchronous course management. Implemented React, PHP, and MySQL to orchestrate purchase flows and secure authentication.',
+      },
+      storepc: {
+        title: 'StorePC',
+        description:
+          'E-commerce built with the MERN stack. I led the architecture, delivered the complete backend, and implemented advanced API consumption on the frontend.',
+      },
+      noteit: {
+        title: 'NoteIt',
+        description:
+          'Full-stack notes application using React, Tailwind, Redux Toolkit, and a Node, TypeScript & Express backend deployed to production.',
+      },
+      portalSgu: {
+        title: 'Portal SGU',
+        description:
+          'Real-time monitoring platform for Guardia Urbana in La Matanza. Built with React 19, Next.js 15, and Prisma with secure access control and observability.',
+      },
+    },
   },
 };

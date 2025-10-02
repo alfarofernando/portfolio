@@ -1,18 +1,21 @@
 import { useEffect, useState, lazy, Suspense } from 'react';
 import Router from './router/Router.jsx';
 import SubFooter from './components/SubFooter.jsx';
+import { useLanguage } from './context/LanguageContext.jsx';
 
 const NavBar = lazy(() => import('./components/Navbar'));
 const Footer = lazy(() => import('./components/Footer'));
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(false);
+  const { language, locales } = useLanguage();
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', darkMode);
   }, [darkMode]);
 
   const toggleTheme = () => setDarkMode((prev) => !prev);
+  const loadingCopy = locales[language].common.loading;
 
   return (
     <div className={`${darkMode ? 'dark bg-neutral-950' : 'bg-transparent'} text-neutral-900 dark:text-neutral-100`}>
@@ -23,7 +26,7 @@ const App = () => {
           <div className="absolute bottom-[-12rem] left-[-6rem] h-96 w-96 rounded-full bg-brand-700/20 blur-[160px]" />
         </div>
 
-        <Suspense fallback={<div className="flex h-20 items-center justify-center text-sm text-neutral-500">Cargando...</div>}>
+        <Suspense fallback={<div className="flex h-20 items-center justify-center text-sm text-neutral-500 dark:text-neutral-300">{loadingCopy}</div>}>
           <NavBar darkMode={darkMode} onToggleTheme={toggleTheme} />
         </Suspense>
 

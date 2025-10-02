@@ -4,31 +4,18 @@ import { useLanguage } from '../context/LanguageContext';
 const Footer = () => {
   const { language, locales } = useLanguage();
   const year = new Date().getFullYear();
-
-  const cvUrl = language === 'es'
-    ? '/portfolio-v.2/cv-AlfaroFernando-Esp.pdf'
-    : '/portfolio-v.2/cv-AlfaroFernando-Eng.pdf';
+  const footerCopy = locales[language].footer;
+  const documents = locales[language].documents;
+  const links = locales[language].links;
 
   const contactLinks = [
-    { label: 'Curriculum', href: cvUrl },
-    { label: 'GitHub', href: 'https://github.com/alfarofernando' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/fernando-alfaro-132973246/' },
-    { label: 'WhatsApp', href: 'https://wa.me/5491152606455?text=Hola%21%20Quisiera%20conectar.' },
+    { label: footerCopy.links.cv, href: documents.cv },
+    { label: footerCopy.links.github, href: links.github },
+    { label: footerCopy.links.linkedin, href: links.linkedin },
+    { label: footerCopy.links.whatsapp, href: links.whatsapp },
   ];
 
-  const highlights = [
-    locales[language].home2,
-    'React | TypeScript | Next.js',
-    'UX-first mindset',
-  ];
-
-  const legalCopy = language === 'es'
-    ? `Copyright (c) ${year} Fernando Alfaro. Todos los derechos reservados.`
-    : `Copyright (c) ${year} Fernando Alfaro. All rights reserved.`;
-
-  const tagline = language === 'es'
-    ? 'Construido con pasion y atencion en cada detalle.'
-    : 'Crafted with care and attention to detail.';
+  const legalCopy = footerCopy.legal.replace('{year}', year);
 
   return (
     <footer className="relative mt-10 border-t border-brand-100/60 bg-white/90 text-neutral-600 shadow-lg backdrop-blur dark:border-slate-700 dark:bg-slate-900/90 dark:text-neutral-300">
@@ -43,16 +30,12 @@ const Footer = () => {
           className="max-w-md"
         >
           <div className="inline-flex items-center gap-2 rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700 dark:bg-brand-500/10 dark:text-brand-200">
-            {language === 'es' ? 'Disponible para proyectos' : 'Open to opportunities'}
+            {footerCopy.availability}
           </div>
-          <h2 className="mt-4 text-2xl font-semibold text-neutral-900 dark:text-white">
-            Fernando Alfaro
-          </h2>
-          <p className="mt-3 text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">
-            {locales[language].home1} Fernando. {locales[language].home2}. {locales[language].projectTitle}.
-          </p>
+          <h2 className="mt-4 text-2xl font-semibold text-neutral-900 dark:text-white">{locales[language].brand.name}</h2>
+          <p className="mt-3 text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">{footerCopy.summary}</p>
           <ul className="mt-6 flex flex-wrap gap-2">
-            {highlights.map((item) => (
+            {footerCopy.highlights.map((item) => (
               <li key={item} className="rounded-full border border-brand-100 px-3 py-1 text-xs font-semibold text-brand-700 dark:border-brand-500/30 dark:text-brand-200">
                 {item}
               </li>
@@ -67,9 +50,7 @@ const Footer = () => {
           transition={{ duration: 0.4, delay: 0.1 }}
           className="flex-1"
         >
-          <h3 className="text-sm font-semibold text-neutral-900 dark:text-white">
-            {language === 'es' ? 'Contacto directo' : 'Direct contact'}
-          </h3>
+          <h3 className="text-sm font-semibold text-neutral-900 dark:text-white">{footerCopy.contactTitle}</h3>
           <ul className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
             {contactLinks.map((link) => (
               <li key={link.label}>
@@ -91,7 +72,7 @@ const Footer = () => {
       <div className="border-t border-white/60 bg-white/70 px-6 py-4 text-xs text-neutral-500 backdrop-blur dark:border-slate-700 dark:bg-slate-900/80 dark:text-neutral-400">
         <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-2 text-center sm:flex-row sm:text-left">
           <span>{legalCopy}</span>
-          <span>{tagline}</span>
+          <span>{footerCopy.tagline}</span>
         </div>
       </div>
     </footer>
