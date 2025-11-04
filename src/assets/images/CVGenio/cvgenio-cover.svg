@@ -1,0 +1,52 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="200" y1="80" x2="1000" y2="820" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0F172A" />
+      <stop offset="0.5" stop-color="#111827" />
+      <stop offset="1" stop-color="#020617" />
+    </linearGradient>
+    <radialGradient id="halo" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(600 420) scale(420)">
+      <stop offset="0" stop-color="#FACC15" stop-opacity="0.7" />
+      <stop offset="1" stop-color="#FACC15" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="lamp" x1="540" y1="520" x2="660" y2="670" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FDE047" />
+      <stop offset="1" stop-color="#F97316" />
+    </linearGradient>
+    <linearGradient id="base" x1="520" y1="640" x2="680" y2="740" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FB923C" />
+      <stop offset="1" stop-color="#EA580C" />
+    </linearGradient>
+    <filter id="shadow" x="420" y="640" width="360" height="120" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="24" result="blur" />
+    </filter>
+  </defs>
+  <rect width="1200" height="900" rx="64" fill="url(#bgGradient)" />
+  <circle cx="600" cy="420" r="420" fill="url(#halo)" />
+  <g opacity="0.45">
+    <path d="M180 260C300 220 420 280 520 300C660 330 800 300 960 220" stroke="#2563EB" stroke-width="20" stroke-linecap="round" stroke-opacity="0.3" />
+    <path d="M220 460C340 420 460 460 580 480C720 500 840 460 980 380" stroke="#22D3EE" stroke-width="16" stroke-linecap="round" stroke-opacity="0.25" />
+    <path d="M260 640C360 600 480 620 600 640C760 664 880 624 960 560" stroke="#A855F7" stroke-width="14" stroke-linecap="round" stroke-opacity="0.22" />
+  </g>
+  <g transform="translate(0 -32)">
+    <circle cx="600" cy="360" r="120" fill="#1F2937" stroke="#38BDF8" stroke-width="10" />
+    <path d="M600 250C636 250 666 280 666 316V340C666 370 642 394 612 394H588C558 394 534 370 534 340V316C534 280 564 250 600 250Z" fill="#0EA5E9" />
+    <path d="M600 272C576 272 556 292 556 316V332C556 356 574 374 598 374H602C626 374 644 356 644 332V316C644 292 624 272 600 272Z" fill="#38BDF8" />
+    <path d="M560 350C560 350 574 404 600 404C626 404 640 350 640 350" stroke="#F8FAFC" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+  <g filter="url(#shadow)" opacity="0.35">
+    <ellipse cx="600" cy="700" rx="140" ry="32" fill="#000000" />
+  </g>
+  <g>
+    <path d="M468 560C452 560 440 572 440 588C440 604 452 616 468 616H540C570 616 594 640 594 670V684H606V670C606 640 630 616 660 616H732C748 616 760 604 760 588C760 572 748 560 732 560H468Z" fill="url(#lamp)" />
+    <path d="M540 628H660C672 628 682 638 682 650C682 662 672 672 660 672H540C528 672 518 662 518 650C518 638 528 628 540 628Z" fill="url(#base)" />
+    <path d="M512 692H688C700 692 710 700 712 712C716 732 700 748 680 748H520C500 748 484 732 488 712C490 700 500 692 512 692Z" fill="#F97316" />
+    <path d="M596 556L568 520C556 504 560 484 580 476C588 472 596 470 604 470C612 470 620 472 628 476C648 484 652 504 640 520L612 556H596Z" fill="#FACC15" />
+    <path d="M604 484C588 484 576 496 576 512C576 528 588 540 604 540C620 540 632 528 632 512C632 496 620 484 604 484Z" fill="#FEF3C7" />
+  </g>
+  <g transform="translate(0, 128)">
+    <rect x="360" y="540" width="480" height="120" rx="60" fill="#020617" stroke="#38BDF8" stroke-width="4" />
+    <text x="600" y="610" text-anchor="middle" font-family="'Inter', 'Segoe UI', sans-serif" font-size="72" font-weight="700" letter-spacing="2" fill="#F8FAFC">CVGenio</text>
+    <text x="600" y="650" text-anchor="middle" font-family="'Inter', 'Segoe UI', sans-serif" font-size="24" font-weight="500" letter-spacing="3" fill="#38BDF8">AI-POWERED RESUME LAB</text>
+  </g>
+</svg>

@@ -8,14 +8,14 @@ const Welcome = () => {
   const { hero, documents, links, brand } = locales[language];
 
   return (
-    <section className="relative isolate px-4 pb-24 pt-12 sm:pt-16">
+    <section className="relative isolate px-4 pb-24 pt-12 sm:px-6 sm:pt-16 lg:px-12">
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute left-1/4 top-0 h-64 w-64 rounded-full bg-brand-400/20 blur-[150px]" />
         <div className="absolute right-0 top-1/3 h-80 w-80 rounded-full bg-accent-300/20 blur-[170px]" />
         <div className="absolute bottom-0 left-1/4 h-72 w-72 rounded-full bg-brand-700/10 blur-[160px]" />
       </div>
 
-      <div className="mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-[minmax(0,1.1fr),minmax(0,0.9fr)]">
+      <div className="mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-[minmax(0,1.1fr),minmax(0,0.9fr)] xl:max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}

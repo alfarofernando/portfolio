@@ -1,5 +1,6 @@
 // src/data/projectData.jsx
 
+import cvgenioCover from '../../../assets/images/CVGenio/cvgenio-cover.svg';
 import alfateamLogo from '../../../assets/images/AlfaTeam/alfaTeamLogo.webp';
 import alfateam1 from '../../../assets/images/AlfaTeam/1.webp';
 import alfateam2 from '../../../assets/images/AlfaTeam/2.webp';
@@ -54,6 +55,29 @@ import sgu6 from '../../../assets/images/PortalSGU/sgu6.png';
 import sgu7 from '../../../assets/images/PortalSGU/sgu7.png';
 
 const projectAssets = [
+  {
+    key: 'cvgenio',
+    image: cvgenioCover,
+    link: null,
+    technologies: [
+      'React 19',
+      'TypeScript',
+      'Vite',
+      'React Router DOM v7',
+      'Tailwind CSS',
+      'Styled-components',
+      'Framer Motion',
+      'Context API',
+      'React Hook Form',
+      'Axios',
+      'Jest',
+      'Cypress',
+    ],
+    screenshots: [
+      { original: cvgenioCover, thumbnail: cvgenioCover },
+    ],
+    previewSlots: 5,
+  },
   {
     key: 'portfolioV1',
     image: portfolioOldLogo,
@@ -185,5 +209,7 @@ export const getProjects = (locales, language) =>
       ...project,
       title: copy.title,
       description: copy.description,
+      ...(copy.heroImageAlt ? { heroImageAlt: copy.heroImageAlt } : {}),
+      ...(copy.details ? { details: copy.details } : {}),
     };
   });

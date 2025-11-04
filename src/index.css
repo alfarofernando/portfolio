@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 a {
@@ -11,12 +11,14 @@ a {
 }
 
 body {
+  width: 100%;
   min-height: 100vh;
   margin: 0;
   background: linear-gradient(180deg, rgba(248,250,252,1) 0%, rgba(255,255,255,1) 40%, rgba(244,244,255,1) 100%);
   color: #0f172a;
   font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   letter-spacing: 0.01em;
+  overflow-x: hidden;
 }
 
 .dark body {
@@ -26,4 +28,45 @@ body {
 
 p {
   text-align: justify;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.image-gallery,
+.image-gallery-content,
+.image-gallery-slide-wrapper {
+  width: 100%;
+}
+
+.image-gallery-slide .image-gallery-image {
+  border-radius: 1.25rem;
+  background-color: rgba(15, 23, 42, 0.7);
+  padding: 1rem;
+}
+
+.image-gallery-thumbnail {
+  border-radius: 0.75rem;
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  background-color: rgba(15, 23, 42, 0.6);
+}
+
+.image-gallery-thumbnail.active,
+.image-gallery-thumbnail:hover {
+  border-color: rgba(56, 189, 248, 0.6);
+}
+
+.image-gallery-thumbnails-wrapper {
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .image-gallery-thumbnails-container {
+    gap: 0.5rem;
+  }
 }

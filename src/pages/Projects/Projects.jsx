@@ -12,7 +12,7 @@ const Projects = () => {
   const copy = locales[language].projectsSection;
 
   return (
-    <section id="Projects" className="px-4 pb-24 pt-12 sm:pt-16">
+    <section id="Projects" className="px-4 pb-24 pt-12 sm:px-6 sm:pt-16 lg:px-12">
       <div className="mx-auto w-full max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -33,7 +33,7 @@ const Projects = () => {
           </p>
         </motion.div>
 
-        <div className="mt-12 grid gap-8 lg:grid-cols-2">
+        <div className="mt-12 grid gap-8 lg:grid-cols-2 xl:grid-cols-3">
           {projects.map((project, index) => (
             <motion.article
               key={project.title}
@@ -46,8 +46,8 @@ const Projects = () => {
               <div className="relative overflow-hidden rounded-3xl">
                 <img
                   src={project.image}
-                  alt={project.title}
-                  className="h-48 w-full rounded-3xl object-cover transition duration-500 group-hover:scale-105"
+                  alt={project.heroImageAlt ?? project.title}
+                  className="h-48 w-full rounded-3xl object-cover transition duration-500 group-hover:scale-105 sm:h-56"
                 />
                 <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-tr from-brand-950/70 via-brand-700/0 to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
                 <div className="pointer-events-none absolute bottom-4 left-4 right-4 flex items-center justify-between text-white opacity-0 transition duration-500 group-hover:opacity-100">

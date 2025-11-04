@@ -35,9 +35,9 @@ const NavBar = ({ darkMode, onToggleTheme }) => {
       initial={{ opacity: 0, y: -24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
-      className="fixed inset-x-0 top-4 z-40 flex justify-center px-4"
+      className="fixed inset-x-0 top-4 z-40 flex justify-center px-3 sm:px-4"
     >
-      <div className="w-full max-w-6xl">
+      <div className="w-full max-w-6xl xl:max-w-7xl">
         <div className="relative">
           <div className="absolute inset-0 rounded-3xl bg-white/60 blur-sm dark:bg-slate-900/60" />
           <nav className="relative flex items-center justify-between gap-4 rounded-3xl border border-white/50 bg-white/80 px-5 py-3 shadow-brand backdrop-blur-md dark:border-white/10 dark:bg-slate-900/80">
