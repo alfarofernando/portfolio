@@ -35,8 +35,25 @@
   <!-- Title -->
   <title>AlfaroFernando Portfolio</title>
 
-  <script type="module" crossorigin src="/portfolio/assets/index-BUDkQU2_.js"></script>
-  <link rel="stylesheet" crossorigin href="/portfolio/assets/index-BGXYfkKE.css">
+  <script>
+    (function () {
+      const storageKey = 'portfolio-theme';
+      try {
+        const stored = window.localStorage.getItem(storageKey);
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = stored || (prefersDark ? 'dark' : 'light');
+        const root = document.documentElement;
+        root.classList.toggle('dark', theme === 'dark');
+        root.setAttribute('data-theme', theme);
+        root.style.colorScheme = theme === 'dark' ? 'dark' : 'light';
+      } catch (error) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+
+  <script type="module" crossorigin src="/portfolio/assets/index-CBBs8fmt.js"></script>
+  <link rel="stylesheet" crossorigin href="/portfolio/assets/index-UaSqL9Su.css">
 </head>
 
 <body>
