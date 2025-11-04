@@ -6,12 +6,32 @@ import { useLanguage } from './context/LanguageContext.jsx';
 const NavBar = lazy(() => import('./components/Navbar'));
 const Footer = lazy(() => import('./components/Footer'));
 
+const THEME_STORAGE_KEY = 'portfolio-theme';
+
 const App = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    if (typeof window === 'undefined') return true;
+    const storedPreference = window.localStorage.getItem(THEME_STORAGE_KEY);
+    if (storedPreference) {
+      return storedPreference === 'dark';
+    }
+
+    const prefersDark = window.matchMedia?.('(prefers-color-scheme: dark)').matches;
+    return prefersDark ?? true;
+  });
   const { language, locales } = useLanguage();
 
   useEffect(() => {
-    document.documentElement.classList.toggle('dark', darkMode);
+    if (typeof document === 'undefined') return;
+
+    const root = document.documentElement;
+    root.classList.toggle('dark', darkMode);
+    root.setAttribute('data-theme', darkMode ? 'dark' : 'light');
+    root.style.colorScheme = darkMode ? 'dark' : 'light';
+
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem(THEME_STORAGE_KEY, darkMode ? 'dark' : 'light');
+    }
   }, [darkMode]);
 
   const toggleTheme = () => setDarkMode((prev) => !prev);
@@ -30,7 +50,7 @@ const App = () => {
           <NavBar darkMode={darkMode} onToggleTheme={toggleTheme} />
         </Suspense>
 
-        <main className="flex-1 pt-28 md:pt-32">
+        <main className="w-full flex-1 pt-28 md:pt-32">
           <Router />
         </main>
 

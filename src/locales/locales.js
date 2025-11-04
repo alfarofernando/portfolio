@@ -86,6 +86,10 @@ export const locales = {
         'Explora el repositorio para revisar el código, las decisiones técnicas y el roadmap.',
       notFoundTitle: 'Proyecto no encontrado',
       notFoundAction: 'Volver a proyectos',
+      previewPlaceholderTitle: 'Preview pendiente',
+      previewPlaceholderDescription: 'Reservé este espacio para subir nuevas capturas en cuanto estén listas.',
+      previewPlaceholderShort: 'Próximamente',
+      previewAltLabel: 'Vista previa',
     },
     about: {
       description:
@@ -171,6 +175,46 @@ export const locales = {
       vite: 'Vite',
     },
     projectsData: {
+      cvgenio: {
+        title: 'CVGenio',
+        description:
+          'SPA en React 19 + TypeScript para crear, optimizar y administrar CVs con experiencias asistidas, sincronización multicanal y generación PDF profesional.',
+        heroImageAlt: 'Ilustración del laboratorio CVGenio con foco en currículums asistidos por IA',
+        details: [
+          {
+            title: 'Arquitectura frontend',
+            items: [
+              'Aplicación de una sola página montada con Vite y React Router 7, cargando módulos perezosos para wizard, dashboards y análisis.',
+              'Árbol de providers que inicializa autenticación JWT, asistentes del wizard, toasts y control de suscripción desde el arranque.',
+              'Shell persistente con Navbar, SubNavbar y Footer que asegura navegación consistente y accesible.',
+            ],
+          },
+          {
+            title: 'Experiencia del usuario',
+            items: [
+              'Interfaz responsiva construida con Tailwind, styled-components y framer-motion para animaciones suaves.',
+              'Wizard modular con vistas de edición, previsualización PDF y sugerencias IA en paralelo.',
+              'Persistencia local de borradores con sincronización debounced para evitar pérdida de datos entre pestañas.',
+            ],
+          },
+          {
+            title: 'Servicios y datos',
+            items: [
+              'Consumo de API Java Spring bajo ${API_BASE}/api con autenticación JWT y endpoints de CV, IA y suscripciones.',
+              'Hooks dedicados para normalizar payloads, validar créditos y orquestar flujos premium antes de llamar al backend.',
+              'Generación de documentos PDF con plantillas profesionales y compatibilidad con Google reCAPTCHA v3.',
+            ],
+          },
+          {
+            title: 'Calidad y despliegue',
+            items: [
+              'Suite de pruebas con Jest 30 y Testing Library para lógica crítica y componentes.',
+              'Cypress listo para flujos end-to-end y ESLint con TypeScript ESLint para asegurar estándares.',
+              'Builds específicas por entorno (dev/test/prod) mediante scripts de Vite y despliegue estático en CDN.',
+            ],
+          },
+        ],
+      },
       portfolioV1: {
         title: 'Portafolio V1',
         description:
@@ -285,6 +329,10 @@ export const locales = {
         'Browse the repository to review the source code, technical decisions, and roadmap.',
       notFoundTitle: 'Project not found',
       notFoundAction: 'Back to projects',
+      previewPlaceholderTitle: 'Preview coming soon',
+      previewPlaceholderDescription: 'This slot is ready to host the next set of screenshots as soon as they are available.',
+      previewPlaceholderShort: 'Coming soon',
+      previewAltLabel: 'Preview',
     },
     about: {
       description:
@@ -370,6 +418,46 @@ export const locales = {
       vite: 'Vite',
     },
     projectsData: {
+      cvgenio: {
+        title: 'CVGenio',
+        description:
+          'React 19 + TypeScript SPA that guides users through CV creation, optimisation and management with assisted flows, multi-tab sync and polished PDF exports.',
+        heroImageAlt: 'CVGenio lab illustration focused on AI-assisted résumé workflows',
+        details: [
+          {
+            title: 'Frontend architecture',
+            items: [
+              'Single-page application bootstrapped with Vite and React Router 7, lazy-loading wizard, dashboards and analytics modules.',
+              'Provider tree initialises JWT authentication, wizard assistants, toasts and subscription guards from the very first render.',
+              'Persistent application shell with Navbar, SubNavbar and Footer to ensure consistent and accessible navigation.',
+            ],
+          },
+          {
+            title: 'User experience',
+            items: [
+              'Responsive interface powered by Tailwind, styled-components and framer-motion for refined animations.',
+              'Modular wizard that combines editing panels, PDF previews and AI suggestions side-by-side.',
+              'Local draft persistence with debounced sync to protect user data across tabs and devices.',
+            ],
+          },
+          {
+            title: 'Services & data',
+            items: [
+              'Java Spring API consumption under ${API_BASE}/api with JWT auth plus CV, AI and subscription endpoints.',
+              'Dedicated hooks to normalise payloads, validate credits and orchestrate premium flows before reaching the backend.',
+              'Professional PDF generation plus Google reCAPTCHA v3 to secure recovery and registration forms.',
+            ],
+          },
+          {
+            title: 'Quality & delivery',
+            items: [
+              'Jest 30 + Testing Library suites covering critical logic and UI components.',
+              'Cypress ready for end-to-end coverage and ESLint with TypeScript ESLint enforcing code standards.',
+              'Environment-specific Vite builds (dev/test/prod) prepared for CDN-ready static deployments.',
+            ],
+          },
+        ],
+      },
       portfolioV1: {
         title: 'Portfolio V1',
         description:

@@ -9,7 +9,7 @@ const SubFooter = () => {
   const whatsappLink = locales[language].links.whatsapp;
 
   return (
-    <section className="px-4">
+    <section className="px-4 sm:px-6 lg:px-12">
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
