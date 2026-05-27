@@ -8,6 +8,8 @@ const NavBar = lazy(() => import('./components/Navbar'));
 const Footer = lazy(() => import('./components/Footer'));
 
 const THEME_STORAGE_KEY = 'portfolio-theme';
+const BOOT_EXTRA_DELAY_MS = 500;
+const BOOT_SAFETY_TIMEOUT_MS = 28000;
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(() => {
@@ -40,7 +42,12 @@ const App = () => {
     if (typeof window === 'undefined') return undefined;
 
     let cancelled = false;
-    let loadHandler;
+    let loadHandler = null;
+
+    const wait = (ms) =>
+      new Promise((resolve) => {
+        window.setTimeout(resolve, ms);
+      });
 
     const onWindowLoaded = new Promise((resolve) => {
       if (document.readyState === 'complete') {
@@ -52,14 +59,50 @@ const App = () => {
       window.addEventListener('load', loadHandler, { once: true });
     });
 
-    const minDisplay = new Promise((resolve) => window.setTimeout(resolve, 350));
+    const onFontsReady = document.fonts?.ready
+      ? document.fonts.ready.catch(() => undefined)
+      : Promise.resolve();
+
+    const waitForImage = (img) =>
+      new Promise((resolve) => {
+        const done = () => resolve(true);
+
+        if (img.complete) {
+          if (typeof img.decode === 'function') {
+            img.decode().catch(() => undefined).finally(done);
+            return;
+          }
+          done();
+          return;
+        }
+
+        const onDone = () => {
+          img.removeEventListener('load', onDone);
+          img.removeEventListener('error', onDone);
+          done();
+        };
+
+        img.addEventListener('load', onDone, { once: true });
+        img.addEventListener('error', onDone, { once: true });
+
+        window.setTimeout(onDone, 7000);
+      });
+
+    const onVisibleImagesReady = Promise.all(
+      Array.from(document.images)
+        .filter((img) => img.loading !== 'lazy')
+        .map((img) => waitForImage(img)),
+    );
+
     const safetyTimeout = window.setTimeout(() => {
       if (!cancelled) setIsBootLoading(false);
-    }, 18000);
+    }, BOOT_SAFETY_TIMEOUT_MS);
 
-    Promise.all([onWindowLoaded, minDisplay]).then(() => {
-      if (!cancelled) setIsBootLoading(false);
-    });
+    Promise.all([onWindowLoaded, onFontsReady, onVisibleImagesReady])
+      .then(() => wait(BOOT_EXTRA_DELAY_MS))
+      .then(() => {
+        if (!cancelled) setIsBootLoading(false);
+      });
 
     return () => {
       cancelled = true;
