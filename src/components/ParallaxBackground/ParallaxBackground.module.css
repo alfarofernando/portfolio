@@ -122,16 +122,12 @@
 
 .farLightWrapper {
   position: absolute;
-  left: var(--fl-left);
-  top: var(--fl-top);
+  left: 0;
+  top: 0;
   width: var(--fl-size);
   height: var(--fl-size);
   will-change: transform;
-  transform: translate3d(
-      calc(-50% + (var(--pb-shift-x) * var(--fl-depth) * 0.55 + var(--pb-drift-x) * var(--fl-depth) * 0.72 + var(--pb-flow-dir) * 5px) * var(--pb-motion-scale) * 1px),
-      calc(-50% + (var(--pb-shift-y) * var(--fl-depth) * 0.6 + var(--pb-drift-y) * var(--fl-depth) * 0.7 + var(--pb-flow-dir) * -4px) * var(--pb-motion-scale) * 1px),
-      0
-    );
+  animation: farLightWander var(--fl-duration) linear infinite var(--fl-delay);
 }
 
 .farLight {
@@ -140,7 +136,8 @@
   height: 100%;
   border-radius: 999px;
   background: radial-gradient(circle at 35% 35%, rgba(219, 233, 255, 0.92), rgba(126, 161, 255, 0.62) 58%, rgba(110, 92, 255, 0.16));
-  animation: farLightPulse var(--fl-duration) ease-in-out infinite var(--fl-delay);
+  box-shadow: 0 0 var(--fl-glow) rgba(132, 171, 255, 0.5), 0 0 calc(var(--fl-glow) * 1.8) rgba(121, 98, 255, 0.22);
+  animation: farLightFlicker calc(var(--fl-duration) * 0.62) steps(9, end) infinite var(--fl-delay);
 }
 
 .rainScene {
@@ -153,16 +150,12 @@
 
 .rainDropWrapper {
   position: absolute;
-  left: var(--rd-left);
-  top: -20%;
-  width: 1px;
+  left: 0;
+  top: 0;
+  width: var(--rd-thickness);
   height: var(--rd-length);
   will-change: transform;
-  transform: translate3d(
-      calc((var(--pb-shift-x) * var(--rd-depth) * 0.4 + var(--pb-drift-x) * var(--rd-depth) * 0.48) * var(--pb-motion-scale) * 1px),
-      calc((var(--pb-shift-y) * var(--rd-depth) * 0.38 + var(--pb-drift-y) * var(--rd-depth) * 0.45) * var(--pb-motion-scale) * 1px),
-      0
-    );
+  animation: rainTraverse var(--rd-duration) linear infinite var(--rd-delay);
 }
 
 .rainDrop {
@@ -170,7 +163,9 @@
   width: 100%;
   height: 100%;
   background: linear-gradient(180deg, rgba(184, 211, 255, 0), rgba(166, 198, 255, 0.72), rgba(121, 156, 255, 0.16));
-  animation: rainMove var(--rd-duration) linear infinite var(--rd-delay);
+  opacity: var(--rd-opacity);
+  transform: rotate(var(--rd-angle));
+  filter: saturate(1.1);
 }
 
 .electricScene {
@@ -183,17 +178,12 @@
 
 .electricRayWrapper {
   position: absolute;
-  left: var(--er-left);
-  top: var(--er-top);
+  left: 0;
+  top: 0;
   width: var(--er-width);
   height: 3px;
   will-change: transform;
-  transform: translate3d(
-      calc(-50% + (var(--pb-shift-x) * var(--er-depth) * 0.5 + var(--pb-drift-x) * var(--er-depth) * 0.7) * var(--pb-motion-scale) * 1px),
-      calc(-50% + (var(--pb-shift-y) * var(--er-depth) * 0.52 + var(--pb-drift-y) * var(--er-depth) * 0.66) * var(--pb-motion-scale) * 1px),
-      0
-    )
-    rotate(var(--er-angle));
+  animation: electricTraverse var(--er-duration) linear infinite var(--er-delay);
 }
 
 .electricRay {
@@ -203,7 +193,7 @@
   border-radius: 999px;
   background: linear-gradient(90deg, rgba(129, 175, 255, 0), rgba(190, 214, 255, 0.86), rgba(148, 112, 255, 0.8), rgba(129, 175, 255, 0));
   box-shadow: 0 0 10px rgba(145, 180, 255, 0.5), 0 0 24px rgba(132, 111, 255, 0.35);
-  animation: electricPulse var(--er-duration) linear infinite var(--er-delay);
+  animation: electricFlicker calc(var(--er-duration) * 0.55) steps(10, end) infinite var(--er-delay);
 }
 
 .objectScene {
@@ -216,22 +206,19 @@
 
 .objectWrapper {
   position: absolute;
-  left: var(--fo-left);
-  top: var(--fo-top);
+  left: 0;
+  top: 0;
   width: var(--fo-width);
   height: var(--fo-height);
-  transform: translate3d(
-      calc(-50% + (var(--pb-shift-x) * var(--fo-depth) * 0.48 + var(--pb-drift-x) * var(--fo-depth) * 0.65 + var(--pb-flow-dir) * 4px) * var(--pb-motion-scale) * 1px),
-      calc(-50% + (var(--pb-shift-y) * var(--fo-depth) * 0.56 + var(--pb-drift-y) * var(--fo-depth) * 0.6 + var(--pb-flow-dir) * -3px) * var(--pb-motion-scale) * 1px),
-      0
-    );
+  will-change: transform;
+  animation: objectTraverse var(--fo-duration) linear infinite var(--fo-delay);
 }
 
 .object {
   display: block;
   width: 100%;
   height: 100%;
-  animation: objectFloat var(--fo-duration) ease-in-out infinite var(--fo-delay);
+  animation: objectErratic calc(var(--fo-duration) * 0.7) ease-in-out infinite var(--fo-delay);
 }
 
 .panel {
@@ -257,67 +244,171 @@
   box-shadow: 0 0 14px rgba(114, 149, 255, 0.28);
 }
 
-@keyframes objectFloat {
+@keyframes objectTraverse {
   0% {
-    transform: translate3d(0, 0, 0) rotate(0deg);
-  }
-  25% {
-    transform: translate3d(calc(var(--fo-float-x) * 0.35), calc(var(--fo-float-y) * -0.35), 0) rotate(calc(var(--fo-rotate) * 0.45));
-  }
-  50% {
-    transform: translate3d(var(--fo-float-x), var(--fo-float-y), 0) rotate(var(--fo-rotate));
-  }
-  75% {
-    transform: translate3d(calc(var(--fo-float-x) * -0.35), calc(var(--fo-float-y) * 0.4), 0) rotate(calc(var(--fo-rotate) * -0.45));
+    transform: translate3d(
+        calc(var(--fo-origin-x) * 1vw + var(--pb-flow-dir) * -28vw + var(--pb-shift-x) * var(--fo-depth) * 0.8px),
+        calc(var(--fo-origin-y) * 1vh + var(--pb-flow-dir) * 18vh + var(--pb-shift-y) * var(--fo-depth) * 0.7px),
+        0
+      );
   }
   100% {
-    transform: translate3d(0, 0, 0) rotate(0deg);
+    transform: translate3d(
+        calc(var(--fo-origin-x) * 1vw + var(--fo-travel-x) + var(--pb-flow-dir) * 26vw + var(--pb-drift-x) * var(--fo-depth) * 0.7px),
+        calc(var(--fo-origin-y) * 1vh + var(--fo-travel-y) + var(--pb-flow-dir) * -20vh + var(--pb-drift-y) * var(--fo-depth) * 0.72px),
+        0
+      );
   }
 }
 
-@keyframes electricPulse {
+@keyframes objectErratic {
   0% {
-    opacity: 0;
-    transform: translate3d(calc(var(--pb-flow-dir) * -26px), 0, 0) scaleX(0.24);
+    transform: translate3d(0, 0, 0) rotate(var(--fo-rotate-from));
   }
-  22% {
-    opacity: 0.86;
+  21% {
+    transform: translate3d(calc(var(--fo-swing-x) * 0.6), calc(var(--fo-swing-y) * -0.45), 0) rotate(calc((var(--fo-rotate-from) + var(--fo-rotate-to)) / 2));
   }
-  58% {
-    opacity: 0.62;
+  39% {
+    transform: translate3d(calc(var(--fo-swing-x) * -0.34), calc(var(--fo-swing-y) * 0.62), 0) rotate(var(--fo-rotate-to));
+  }
+  66% {
+    transform: translate3d(calc(var(--fo-swing-x) * 0.22), calc(var(--fo-swing-y) * -0.58), 0) rotate(calc(var(--fo-rotate-to) * -0.4));
   }
   100% {
-    opacity: 0;
-    transform: translate3d(calc(var(--pb-flow-dir) * 36px), 0, 0) scaleX(1.18);
+    transform: translate3d(0, 0, 0) rotate(var(--fo-rotate-from));
   }
 }
 
-@keyframes rainMove {
+@keyframes electricTraverse {
   0% {
-    transform: translate3d(calc(var(--pb-flow-dir) * -84px), -130vh, 0);
-    opacity: 0;
+    transform: translate3d(
+        calc(var(--er-origin-x) * 1vw + var(--pb-flow-dir) * -46vw + var(--pb-shift-x) * var(--er-depth) * 0.7px),
+        calc(var(--er-origin-y) * 1vh + var(--pb-flow-dir) * 20vh + var(--pb-shift-y) * var(--er-depth) * 0.62px),
+        0
+      )
+      rotate(var(--er-angle-from));
   }
-  10% {
-    opacity: 1;
+  24% {
+    transform: translate3d(
+        calc(var(--er-origin-x) * 1vw + var(--er-travel-x) * 0.35 + var(--pb-drift-x) * var(--er-depth) * 0.7px),
+        calc(var(--er-origin-y) * 1vh + var(--er-travel-y) * -0.15 + var(--pb-drift-y) * var(--er-depth) * 0.64px),
+        0
+      )
+      rotate(calc((var(--er-angle-from) + var(--er-angle-to)) / 2));
   }
   100% {
-    transform: translate3d(calc(var(--pb-flow-dir) * 126px), 132vh, 0);
+    transform: translate3d(
+        calc(var(--er-origin-x) * 1vw + var(--er-travel-x) + var(--pb-flow-dir) * 42vw + var(--pb-drift-x) * var(--er-depth) * 0.72px),
+        calc(var(--er-origin-y) * 1vh + var(--er-travel-y) + var(--pb-flow-dir) * -22vh + var(--pb-drift-y) * var(--er-depth) * 0.68px),
+        0
+      )
+      rotate(var(--er-angle-to));
+  }
+}
+
+@keyframes electricFlicker {
+  0% {
+    opacity: 0;
+    transform: scaleX(0.24);
+  }
+  16% {
+    opacity: 0.82;
+    transform: scaleX(1.12);
+  }
+  37% {
+    opacity: 0.34;
+    transform: scaleX(0.74);
+  }
+  61% {
+    opacity: 0.9;
+    transform: scaleX(1.18);
+  }
+  100% {
+    opacity: 0;
+    transform: scaleX(0.18);
+  }
+}
+
+@keyframes rainTraverse {
+  0% {
+    transform: translate3d(
+        calc(var(--rd-origin-x) * 1vw + var(--pb-flow-dir) * -24vw + var(--pb-shift-x) * var(--rd-depth) * 0.65px),
+        -136vh,
+        0
+      )
+      rotate(var(--rd-angle));
+    opacity: 0;
+  }
+  16% {
+    opacity: var(--rd-opacity);
+  }
+  42% {
+    transform: translate3d(
+        calc(var(--rd-origin-x) * 1vw + var(--rd-sway-x) + var(--pb-flow-dir) * -8vw + var(--pb-drift-x) * var(--rd-depth) * 0.66px),
+        -22vh,
+        0
+      )
+      rotate(calc(var(--rd-angle) + 6deg));
+  }
+  100% {
+    transform: translate3d(
+        calc(var(--rd-origin-x) * 1vw + var(--rd-travel-x) + var(--pb-flow-dir) * 38vw + var(--pb-drift-x) * var(--rd-depth) * 0.7px),
+        136vh,
+        0
+      )
+      rotate(calc(var(--rd-angle) - 5deg));
     opacity: 0;
   }
 }
 
-@keyframes farLightPulse {
+@keyframes farLightWander {
   0% {
-    opacity: 0.12;
+    transform: translate3d(
+        calc(var(--fl-origin-x) * 1vw + var(--pb-flow-dir) * -12vw + var(--pb-shift-x) * var(--fl-depth) * 0.7px),
+        calc(var(--fl-origin-y) * 1vh + var(--pb-flow-dir) * 8vh + var(--pb-shift-y) * var(--fl-depth) * 0.64px),
+        0
+      );
+  }
+  34% {
+    transform: translate3d(
+        calc(var(--fl-origin-x) * 1vw + var(--fl-travel-x) * 0.42 + var(--pb-drift-x) * var(--fl-depth) * 0.62px),
+        calc(var(--fl-origin-y) * 1vh + var(--fl-travel-y) * -0.35 + var(--pb-drift-y) * var(--fl-depth) * 0.64px),
+        0
+      );
+  }
+  100% {
+    transform: translate3d(
+        calc(var(--fl-origin-x) * 1vw + var(--fl-travel-x) + var(--pb-flow-dir) * 16vw + var(--pb-drift-x) * var(--fl-depth) * 0.72px),
+        calc(var(--fl-origin-y) * 1vh + var(--fl-travel-y) + var(--pb-flow-dir) * -10vh + var(--pb-drift-y) * var(--fl-depth) * 0.68px),
+        0
+      );
+  }
+}
+
+@keyframes farLightFlicker {
+  0% {
+    opacity: 0.08;
+    transform: scale(0.62);
+  }
+  19% {
+    opacity: 0.95;
+    transform: scale(1.2);
+  }
+  33% {
+    opacity: 0.28;
+    transform: scale(0.84);
+  }
+  57% {
+    opacity: 0.9;
+    transform: scale(1.24);
+  }
+  73% {
+    opacity: 0.2;
     transform: scale(0.72);
   }
-  48% {
-    opacity: 0.96;
-    transform: scale(1.26);
-  }
   100% {
-    opacity: 0.14;
-    transform: scale(0.78);
+    opacity: 0.88;
+    transform: scale(1.06);
   }
 }
 

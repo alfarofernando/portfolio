@@ -26,41 +26,55 @@ type MutationSection = {
 type FloatingObjectKind = 'panel' | 'pill' | 'dot' | 'node';
 
 type FloatingObject = {
-  left: string;
-  top: string;
+  originX: string;
+  originY: string;
   width: string;
   height?: string;
   depth: number;
   kind: FloatingObjectKind;
   duration: string;
   delay: string;
-  floatX: string;
-  floatY: string;
-  rotate: string;
+  travelX: string;
+  travelY: string;
+  swingX: string;
+  swingY: string;
+  rotateFrom: string;
+  rotateTo: string;
 };
 
 type ElectricRay = {
-  left: string;
-  top: string;
+  originX: string;
+  originY: string;
   width: string;
-  angle: string;
+  angleFrom: string;
+  angleTo: string;
   depth: number;
   duration: string;
   delay: string;
+  travelX: string;
+  travelY: string;
 };
 
 type RainDrop = {
-  left: string;
+  originX: string;
   length: string;
+  thickness: string;
+  angle: string;
+  opacity: number;
   depth: number;
   duration: string;
   delay: string;
+  travelX: string;
+  swayX: string;
 };
 
 type DistantLight = {
-  left: string;
-  top: string;
+  originX: string;
+  originY: string;
   size: string;
+  glow: string;
+  travelX: string;
+  travelY: string;
   depth: number;
   duration: string;
   delay: string;
@@ -153,45 +167,56 @@ const BASE_TRANSLATE_BY_VARIANT: Record<ParallaxVariant, number> = {
 };
 
 const FLOATING_OBJECTS: FloatingObject[] = [
-  { left: '9%', top: '12%', width: '220px', height: '150px', depth: 0.18, kind: 'panel', duration: '19s', delay: '-3s', floatX: '12px', floatY: '10px', rotate: '3deg' },
-  { left: '86%', top: '16%', width: '180px', height: '124px', depth: 0.22, kind: 'panel', duration: '21s', delay: '-9s', floatX: '-14px', floatY: '12px', rotate: '-4deg' },
-  { left: '18%', top: '28%', width: '128px', height: '48px', depth: 0.26, kind: 'pill', duration: '16s', delay: '-2s', floatX: '16px', floatY: '-10px', rotate: '8deg' },
-  { left: '79%', top: '32%', width: '144px', height: '52px', depth: 0.3, kind: 'pill', duration: '17s', delay: '-6s', floatX: '-18px', floatY: '9px', rotate: '-9deg' },
-  { left: '29%', top: '55%', width: '16px', height: '16px', depth: 0.38, kind: 'dot', duration: '12s', delay: '-4s', floatX: '22px', floatY: '-12px', rotate: '0deg' },
-  { left: '72%', top: '61%', width: '12px', height: '12px', depth: 0.42, kind: 'dot', duration: '11s', delay: '-1s', floatX: '-18px', floatY: '16px', rotate: '0deg' },
-  { left: '11%', top: '72%', width: '188px', height: '126px', depth: 0.2, kind: 'panel', duration: '20s', delay: '-8s', floatX: '13px', floatY: '-11px', rotate: '-3deg' },
-  { left: '84%', top: '76%', width: '232px', height: '160px', depth: 0.24, kind: 'panel', duration: '22s', delay: '-5s', floatX: '-12px', floatY: '13px', rotate: '4deg' },
-  { left: '45%', top: '83%', width: '240px', height: '56px', depth: 0.32, kind: 'pill', duration: '18s', delay: '-7s', floatX: '20px', floatY: '-8px', rotate: '5deg' },
-  { left: '56%', top: '20%', width: '10px', height: '10px', depth: 0.45, kind: 'node', duration: '13s', delay: '-3s', floatX: '-20px', floatY: '14px', rotate: '0deg' },
-  { left: '35%', top: '18%', width: '8px', height: '8px', depth: 0.5, kind: 'node', duration: '9s', delay: '-2s', floatX: '18px', floatY: '-10px', rotate: '0deg' },
-  { left: '66%', top: '44%', width: '140px', height: '46px', depth: 0.26, kind: 'pill', duration: '17s', delay: '-12s', floatX: '-14px', floatY: '8px', rotate: '7deg' },
-  { left: '24%', top: '41%', width: '150px', height: '44px', depth: 0.28, kind: 'pill', duration: '15s', delay: '-11s', floatX: '15px', floatY: '-9px', rotate: '-6deg' },
-  { left: '92%', top: '54%', width: '14px', height: '14px', depth: 0.44, kind: 'dot', duration: '10s', delay: '-5s', floatX: '-16px', floatY: '-14px', rotate: '0deg' },
-  { left: '7%', top: '48%', width: '11px', height: '11px', depth: 0.41, kind: 'dot', duration: '11s', delay: '-7s', floatX: '17px', floatY: '15px', rotate: '0deg' },
+  { originX: '8', originY: '6', width: '220px', height: '150px', depth: 0.18, kind: 'panel', duration: '25s', delay: '-3s', travelX: '132vw', travelY: '84vh', swingX: '18vw', swingY: '14vh', rotateFrom: '-8deg', rotateTo: '6deg' },
+  { originX: '84', originY: '10', width: '180px', height: '124px', depth: 0.22, kind: 'panel', duration: '23s', delay: '-9s', travelX: '-126vw', travelY: '76vh', swingX: '20vw', swingY: '16vh', rotateFrom: '7deg', rotateTo: '-7deg' },
+  { originX: '14', originY: '24', width: '128px', height: '48px', depth: 0.26, kind: 'pill', duration: '19s', delay: '-2s', travelX: '120vw', travelY: '52vh', swingX: '15vw', swingY: '12vh', rotateFrom: '-10deg', rotateTo: '9deg' },
+  { originX: '78', originY: '30', width: '144px', height: '52px', depth: 0.3, kind: 'pill', duration: '21s', delay: '-6s', travelX: '-118vw', travelY: '46vh', swingX: '16vw', swingY: '10vh', rotateFrom: '11deg', rotateTo: '-10deg' },
+  { originX: '22', originY: '56', width: '16px', height: '16px', depth: 0.38, kind: 'dot', duration: '15s', delay: '-4s', travelX: '112vw', travelY: '-68vh', swingX: '14vw', swingY: '10vh', rotateFrom: '0deg', rotateTo: '0deg' },
+  { originX: '72', originY: '62', width: '12px', height: '12px', depth: 0.42, kind: 'dot', duration: '14s', delay: '-1s', travelX: '-108vw', travelY: '-64vh', swingX: '13vw', swingY: '9vh', rotateFrom: '0deg', rotateTo: '0deg' },
+  { originX: '10', originY: '70', width: '188px', height: '126px', depth: 0.2, kind: 'panel', duration: '24s', delay: '-8s', travelX: '128vw', travelY: '-42vh', swingX: '20vw', swingY: '14vh', rotateFrom: '6deg', rotateTo: '-6deg' },
+  { originX: '82', originY: '76', width: '232px', height: '160px', depth: 0.24, kind: 'panel', duration: '26s', delay: '-5s', travelX: '-130vw', travelY: '-48vh', swingX: '21vw', swingY: '15vh', rotateFrom: '-7deg', rotateTo: '8deg' },
+  { originX: '42', originY: '82', width: '240px', height: '56px', depth: 0.32, kind: 'pill', duration: '22s', delay: '-7s', travelX: '124vw', travelY: '-70vh', swingX: '18vw', swingY: '12vh', rotateFrom: '-9deg', rotateTo: '9deg' },
+  { originX: '56', originY: '20', width: '10px', height: '10px', depth: 0.45, kind: 'node', duration: '13s', delay: '-3s', travelX: '-116vw', travelY: '74vh', swingX: '14vw', swingY: '10vh', rotateFrom: '0deg', rotateTo: '0deg' },
+  { originX: '35', originY: '18', width: '8px', height: '8px', depth: 0.5, kind: 'node', duration: '12s', delay: '-2s', travelX: '118vw', travelY: '68vh', swingX: '12vw', swingY: '9vh', rotateFrom: '0deg', rotateTo: '0deg' },
+  { originX: '64', originY: '42', width: '140px', height: '46px', depth: 0.26, kind: 'pill', duration: '20s', delay: '-12s', travelX: '-122vw', travelY: '58vh', swingX: '17vw', swingY: '11vh', rotateFrom: '8deg', rotateTo: '-8deg' },
+  { originX: '22', originY: '40', width: '150px', height: '44px', depth: 0.28, kind: 'pill', duration: '18s', delay: '-11s', travelX: '114vw', travelY: '62vh', swingX: '15vw', swingY: '11vh', rotateFrom: '-8deg', rotateTo: '8deg' },
+  { originX: '92', originY: '54', width: '14px', height: '14px', depth: 0.44, kind: 'dot', duration: '14s', delay: '-5s', travelX: '-120vw', travelY: '-72vh', swingX: '13vw', swingY: '10vh', rotateFrom: '0deg', rotateTo: '0deg' },
+  { originX: '6', originY: '48', width: '11px', height: '11px', depth: 0.41, kind: 'dot', duration: '13s', delay: '-7s', travelX: '118vw', travelY: '-66vh', swingX: '12vw', swingY: '9vh', rotateFrom: '0deg', rotateTo: '0deg' },
 ];
 
 const ELECTRIC_RAYS: ElectricRay[] = Array.from({ length: 22 }, (_, index) => ({
-  left: `${6 + (index * 6.1) % 92}%`,
-  top: `${10 + (index * 11.5) % 82}%`,
+  originX: `${(index * 4.7) % 100}`,
+  originY: `${(index * 9.4) % 100}`,
   width: `${110 + (index % 6) * 36}px`,
-  angle: `${-24 + (index % 5) * 9}deg`,
+  angleFrom: `${-38 + (index % 7) * 11}deg`,
+  angleTo: `${-12 + (index % 6) * 12}deg`,
   depth: 0.2 + (index % 7) * 0.045,
   duration: `${7.4 + (index % 4) * 1.4}s`,
   delay: `${-index * 0.82}s`,
+  travelX: `${76 + (index % 5) * 26}vw`,
+  travelY: `${28 + (index % 4) * 18}vh`,
 }));
 
 const RAIN_DROPS: RainDrop[] = Array.from({ length: 86 }, (_, index) => ({
-  left: `${(index * 1.93) % 100}%`,
+  originX: `${(index * 1.73) % 100}`,
   length: `${24 + (index % 7) * 12}px`,
+  thickness: `${1 + (index % 3) * 0.65}px`,
+  angle: `${66 + (index % 6) * 8}deg`,
+  opacity: 0.4 + (index % 5) * 0.1,
   depth: 0.18 + (index % 9) * 0.05,
-  duration: `${3.2 + (index % 6) * 0.46}s`,
+  duration: `${2.6 + (index % 6) * 0.42}s`,
   delay: `${-index * 0.28}s`,
+  travelX: `${48 + (index % 7) * 24}vw`,
+  swayX: `${8 + (index % 5) * 7}vw`,
 }));
 
 const DISTANT_LIGHTS: DistantLight[] = Array.from({ length: 112 }, (_, index) => ({
-  left: `${(index * 7.7) % 100}%`,
-  top: `${(index * 13.4) % 100}%`,
+  originX: `${(index * 7.7) % 100}`,
+  originY: `${(index * 13.4) % 100}`,
   size: `${2 + (index % 5) * 1.6}px`,
+  glow: `${8 + (index % 6) * 5}px`,
+  travelX: `${26 + (index % 7) * 14}vw`,
+  travelY: `${22 + (index % 5) * 16}vh`,
   depth: 0.1 + (index % 10) * 0.035,
   duration: `${4.5 + (index % 8) * 1.1}s`,
   delay: `${-index * 0.37}s`,
@@ -530,9 +555,12 @@ const ParallaxBackground = ({
               className={styles.farLightWrapper}
               style={
                 {
-                  '--fl-left': light.left,
-                  '--fl-top': light.top,
+                  '--fl-origin-x': light.originX,
+                  '--fl-origin-y': light.originY,
                   '--fl-size': light.size,
+                  '--fl-glow': light.glow,
+                  '--fl-travel-x': light.travelX,
+                  '--fl-travel-y': light.travelY,
                   '--fl-depth': light.depth,
                   '--fl-duration': light.duration,
                   '--fl-delay': light.delay,
@@ -551,11 +579,16 @@ const ParallaxBackground = ({
               className={styles.rainDropWrapper}
               style={
                 {
-                  '--rd-left': drop.left,
+                  '--rd-origin-x': drop.originX,
                   '--rd-length': drop.length,
+                  '--rd-thickness': drop.thickness,
+                  '--rd-angle': drop.angle,
+                  '--rd-opacity': drop.opacity,
                   '--rd-depth': drop.depth,
                   '--rd-duration': drop.duration,
                   '--rd-delay': drop.delay,
+                  '--rd-travel-x': drop.travelX,
+                  '--rd-sway-x': drop.swayX,
                 } as CSSProperties
               }
             >
@@ -571,13 +604,16 @@ const ParallaxBackground = ({
               className={styles.electricRayWrapper}
               style={
                 {
-                  '--er-left': ray.left,
-                  '--er-top': ray.top,
+                  '--er-origin-x': ray.originX,
+                  '--er-origin-y': ray.originY,
                   '--er-width': ray.width,
-                  '--er-angle': ray.angle,
+                  '--er-angle-from': ray.angleFrom,
+                  '--er-angle-to': ray.angleTo,
                   '--er-depth': ray.depth,
                   '--er-duration': ray.duration,
                   '--er-delay': ray.delay,
+                  '--er-travel-x': ray.travelX,
+                  '--er-travel-y': ray.travelY,
                 } as CSSProperties
               }
             >
@@ -593,8 +629,8 @@ const ParallaxBackground = ({
               className={styles.objectWrapper}
               style={
                 {
-                  '--fo-left': object.left,
-                  '--fo-top': object.top,
+                  '--fo-origin-x': object.originX,
+                  '--fo-origin-y': object.originY,
                   '--fo-width': object.width,
                   '--fo-height': object.height ?? object.width,
                   '--fo-depth': object.depth,
@@ -607,9 +643,12 @@ const ParallaxBackground = ({
                   {
                     '--fo-duration': object.duration,
                     '--fo-delay': object.delay,
-                    '--fo-float-x': object.floatX,
-                    '--fo-float-y': object.floatY,
-                    '--fo-rotate': object.rotate,
+                    '--fo-travel-x': object.travelX,
+                    '--fo-travel-y': object.travelY,
+                    '--fo-swing-x': object.swingX,
+                    '--fo-swing-y': object.swingY,
+                    '--fo-rotate-from': object.rotateFrom,
+                    '--fo-rotate-to': object.rotateTo,
                   } as CSSProperties
                 }
               />
