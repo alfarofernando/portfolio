@@ -5,6 +5,7 @@
   --pb-shift-y: 0;
   --pb-drift-x: 0;
   --pb-drift-y: 0;
+  --pb-flow-dir: 1;
   --pb-opacity-scale: 1;
   --pb-motion-scale: 1;
 }
@@ -111,6 +112,100 @@
     scale(1.08);
 }
 
+.farLightsScene {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  opacity: calc(var(--pb-farLights-opacity, 0) * var(--pb-opacity-scale));
+}
+
+.farLightWrapper {
+  position: absolute;
+  left: var(--fl-left);
+  top: var(--fl-top);
+  width: var(--fl-size);
+  height: var(--fl-size);
+  will-change: transform;
+  transform: translate3d(
+      calc(-50% + (var(--pb-shift-x) * var(--fl-depth) * 0.55 + var(--pb-drift-x) * var(--fl-depth) * 0.72 + var(--pb-flow-dir) * 5px) * var(--pb-motion-scale) * 1px),
+      calc(-50% + (var(--pb-shift-y) * var(--fl-depth) * 0.6 + var(--pb-drift-y) * var(--fl-depth) * 0.7 + var(--pb-flow-dir) * -4px) * var(--pb-motion-scale) * 1px),
+      0
+    );
+}
+
+.farLight {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  background: radial-gradient(circle at 35% 35%, rgba(219, 233, 255, 0.92), rgba(126, 161, 255, 0.62) 58%, rgba(110, 92, 255, 0.16));
+  animation: farLightPulse var(--fl-duration) ease-in-out infinite var(--fl-delay);
+}
+
+.rainScene {
+  pointer-events: none;
+  position: absolute;
+  inset: -8%;
+  z-index: 2;
+  opacity: calc(var(--pb-rain-opacity, 0) * var(--pb-opacity-scale));
+}
+
+.rainDropWrapper {
+  position: absolute;
+  left: var(--rd-left);
+  top: -20%;
+  width: 1px;
+  height: var(--rd-length);
+  will-change: transform;
+  transform: translate3d(
+      calc((var(--pb-shift-x) * var(--rd-depth) * 0.4 + var(--pb-drift-x) * var(--rd-depth) * 0.48) * var(--pb-motion-scale) * 1px),
+      calc((var(--pb-shift-y) * var(--rd-depth) * 0.38 + var(--pb-drift-y) * var(--rd-depth) * 0.45) * var(--pb-motion-scale) * 1px),
+      0
+    );
+}
+
+.rainDrop {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(184, 211, 255, 0), rgba(166, 198, 255, 0.72), rgba(121, 156, 255, 0.16));
+  animation: rainMove var(--rd-duration) linear infinite var(--rd-delay);
+}
+
+.electricScene {
+  pointer-events: none;
+  position: absolute;
+  inset: -6%;
+  z-index: 2;
+  opacity: calc(var(--pb-electric-opacity, 0) * var(--pb-opacity-scale));
+}
+
+.electricRayWrapper {
+  position: absolute;
+  left: var(--er-left);
+  top: var(--er-top);
+  width: var(--er-width);
+  height: 3px;
+  will-change: transform;
+  transform: translate3d(
+      calc(-50% + (var(--pb-shift-x) * var(--er-depth) * 0.5 + var(--pb-drift-x) * var(--er-depth) * 0.7) * var(--pb-motion-scale) * 1px),
+      calc(-50% + (var(--pb-shift-y) * var(--er-depth) * 0.52 + var(--pb-drift-y) * var(--er-depth) * 0.66) * var(--pb-motion-scale) * 1px),
+      0
+    )
+    rotate(var(--er-angle));
+}
+
+.electricRay {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(129, 175, 255, 0), rgba(190, 214, 255, 0.86), rgba(148, 112, 255, 0.8), rgba(129, 175, 255, 0));
+  box-shadow: 0 0 10px rgba(145, 180, 255, 0.5), 0 0 24px rgba(132, 111, 255, 0.35);
+  animation: electricPulse var(--er-duration) linear infinite var(--er-delay);
+}
+
 .objectScene {
   pointer-events: none;
   position: absolute;
@@ -126,8 +221,8 @@
   width: var(--fo-width);
   height: var(--fo-height);
   transform: translate3d(
-      calc(-50% + (var(--pb-shift-x) * var(--fo-depth) * 0.48 + var(--pb-drift-x) * var(--fo-depth) * 0.65) * var(--pb-motion-scale) * 1px),
-      calc(-50% + (var(--pb-shift-y) * var(--fo-depth) * 0.56 + var(--pb-drift-y) * var(--fo-depth) * 0.6) * var(--pb-motion-scale) * 1px),
+      calc(-50% + (var(--pb-shift-x) * var(--fo-depth) * 0.48 + var(--pb-drift-x) * var(--fo-depth) * 0.65 + var(--pb-flow-dir) * 4px) * var(--pb-motion-scale) * 1px),
+      calc(-50% + (var(--pb-shift-y) * var(--fo-depth) * 0.56 + var(--pb-drift-y) * var(--fo-depth) * 0.6 + var(--pb-flow-dir) * -3px) * var(--pb-motion-scale) * 1px),
       0
     );
 }
@@ -180,6 +275,52 @@
   }
 }
 
+@keyframes electricPulse {
+  0% {
+    opacity: 0;
+    transform: translate3d(calc(var(--pb-flow-dir) * -26px), 0, 0) scaleX(0.24);
+  }
+  22% {
+    opacity: 0.86;
+  }
+  58% {
+    opacity: 0.62;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(calc(var(--pb-flow-dir) * 36px), 0, 0) scaleX(1.18);
+  }
+}
+
+@keyframes rainMove {
+  0% {
+    transform: translate3d(calc(var(--pb-flow-dir) * -84px), -130vh, 0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(calc(var(--pb-flow-dir) * 126px), 132vh, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes farLightPulse {
+  0% {
+    opacity: 0.12;
+    transform: scale(0.72);
+  }
+  48% {
+    opacity: 0.96;
+    transform: scale(1.26);
+  }
+  100% {
+    opacity: 0.14;
+    transform: scale(0.78);
+  }
+}
+
 .content {
   position: relative;
   z-index: 3;
@@ -195,6 +336,19 @@
     inset: -2%;
   }
 
+  .rainScene,
+  .rainScene {
+    opacity: calc(var(--pb-opacity-scale) * 0.82 * var(--pb-rain-opacity));
+  }
+
+  .electricScene {
+    opacity: calc(var(--pb-opacity-scale) * 0.8 * var(--pb-electric-opacity));
+  }
+
+  .farLightsScene {
+    opacity: calc(var(--pb-opacity-scale) * 0.9 * var(--pb-farLights-opacity));
+  }
+
   .objectWrapper {
     opacity: 0.82;
   }
@@ -206,12 +360,18 @@
   }
 
   .layer,
-  .objectWrapper {
+  .objectWrapper,
+  .farLightWrapper,
+  .rainDropWrapper,
+  .electricRayWrapper {
     transform: translate3d(0, 0, 0);
     transition-duration: 0ms;
   }
 
-  .object {
+  .object,
+  .farLight,
+  .rainDrop,
+  .electricRay {
     animation: none;
   }
 }

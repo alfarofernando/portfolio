@@ -13,6 +13,9 @@ type VariantConfig = {
   wave: number;
   glow: number;
   objects: number;
+  rain: number;
+  electric: number;
+  farLights: number;
 };
 
 type MutationSection = {
@@ -36,6 +39,33 @@ type FloatingObject = {
   rotate: string;
 };
 
+type ElectricRay = {
+  left: string;
+  top: string;
+  width: string;
+  angle: string;
+  depth: number;
+  duration: string;
+  delay: string;
+};
+
+type RainDrop = {
+  left: string;
+  length: string;
+  depth: number;
+  duration: string;
+  delay: string;
+};
+
+type DistantLight = {
+  left: string;
+  top: string;
+  size: string;
+  depth: number;
+  duration: string;
+  delay: string;
+};
+
 type ParallaxBackgroundProps = {
   variant?: ParallaxVariant;
   intensity?: ParallaxIntensity;
@@ -54,6 +84,9 @@ const PARALLAX_VARIANTS: Record<ParallaxVariant, VariantConfig> = {
     wave: 0.22,
     glow: 0.38,
     objects: 0.68,
+    rain: 0.3,
+    electric: 0.34,
+    farLights: 0.44,
   },
   projects: {
     base: 0.94,
@@ -63,6 +96,9 @@ const PARALLAX_VARIANTS: Record<ParallaxVariant, VariantConfig> = {
     wave: 0.16,
     glow: 0.26,
     objects: 0.58,
+    rain: 0.34,
+    electric: 0.28,
+    farLights: 0.36,
   },
   about: {
     base: 0.95,
@@ -72,6 +108,9 @@ const PARALLAX_VARIANTS: Record<ParallaxVariant, VariantConfig> = {
     wave: 0.32,
     glow: 0.2,
     objects: 0.62,
+    rain: 0.22,
+    electric: 0.2,
+    farLights: 0.34,
   },
   cta: {
     base: 0.92,
@@ -81,6 +120,9 @@ const PARALLAX_VARIANTS: Record<ParallaxVariant, VariantConfig> = {
     wave: 0.12,
     glow: 0.46,
     objects: 0.52,
+    rain: 0.1,
+    electric: 0.14,
+    farLights: 0.26,
   },
   default: {
     base: 0.94,
@@ -90,6 +132,9 @@ const PARALLAX_VARIANTS: Record<ParallaxVariant, VariantConfig> = {
     wave: 0.2,
     glow: 0.24,
     objects: 0.56,
+    rain: 0.2,
+    electric: 0.2,
+    farLights: 0.3,
   },
 };
 
@@ -125,7 +170,34 @@ const FLOATING_OBJECTS: FloatingObject[] = [
   { left: '7%', top: '48%', width: '11px', height: '11px', depth: 0.41, kind: 'dot', duration: '11s', delay: '-7s', floatX: '17px', floatY: '15px', rotate: '0deg' },
 ];
 
-const LAYER_KEYS: Array<keyof VariantConfig> = ['base', 'stars', 'grid', 'lines', 'wave', 'glow', 'objects'];
+const ELECTRIC_RAYS: ElectricRay[] = Array.from({ length: 22 }, (_, index) => ({
+  left: `${6 + (index * 6.1) % 92}%`,
+  top: `${10 + (index * 11.5) % 82}%`,
+  width: `${110 + (index % 6) * 36}px`,
+  angle: `${-24 + (index % 5) * 9}deg`,
+  depth: 0.2 + (index % 7) * 0.045,
+  duration: `${7.4 + (index % 4) * 1.4}s`,
+  delay: `${-index * 0.82}s`,
+}));
+
+const RAIN_DROPS: RainDrop[] = Array.from({ length: 86 }, (_, index) => ({
+  left: `${(index * 1.93) % 100}%`,
+  length: `${24 + (index % 7) * 12}px`,
+  depth: 0.18 + (index % 9) * 0.05,
+  duration: `${3.2 + (index % 6) * 0.46}s`,
+  delay: `${-index * 0.28}s`,
+}));
+
+const DISTANT_LIGHTS: DistantLight[] = Array.from({ length: 112 }, (_, index) => ({
+  left: `${(index * 7.7) % 100}%`,
+  top: `${(index * 13.4) % 100}%`,
+  size: `${2 + (index % 5) * 1.6}px`,
+  depth: 0.1 + (index % 10) * 0.035,
+  duration: `${4.5 + (index % 8) * 1.1}s`,
+  delay: `${-index * 0.37}s`,
+}));
+
+const LAYER_KEYS: Array<keyof VariantConfig> = ['base', 'stars', 'grid', 'lines', 'wave', 'glow', 'objects', 'rain', 'electric', 'farLights'];
 
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
 
@@ -160,12 +232,15 @@ const ParallaxBackground = ({
 
     let sectionTargets: Array<MutationSection & { element: HTMLElement }> = [];
     let mediaTargets: HTMLElement[] = [];
+    let lastScrollY = window.scrollY || 0;
+    let lastScrollAt = performance.now();
 
     const current = {
       x: 0,
       y: 0,
       driftX: 0,
       driftY: 0,
+      flowDir: 1,
       scrollY: window.scrollY || 0,
       layers: cloneConfig(variantConfig),
     };
@@ -175,6 +250,7 @@ const ParallaxBackground = ({
       y: 0,
       driftX: 0,
       driftY: 0,
+      flowDir: 1,
       scrollY: window.scrollY || 0,
       layers: cloneConfig(variantConfig),
     };
@@ -186,6 +262,7 @@ const ParallaxBackground = ({
       container.style.setProperty('--pb-shift-y', current.y.toFixed(3));
       container.style.setProperty('--pb-drift-x', current.driftX.toFixed(3));
       container.style.setProperty('--pb-drift-y', current.driftY.toFixed(3));
+      container.style.setProperty('--pb-flow-dir', current.flowDir.toFixed(3));
       LAYER_KEYS.forEach((key) => {
         container.style.setProperty(`--pb-${key}-opacity`, String(current.layers[key]));
       });
@@ -222,6 +299,9 @@ const ParallaxBackground = ({
         wave: 0,
         glow: 0,
         objects: 0,
+        rain: 0,
+        electric: 0,
+        farLights: 0,
       };
 
       let totalWeight = 0;
@@ -263,22 +343,34 @@ const ParallaxBackground = ({
       }
 
       const scrollY = window.scrollY || window.pageYOffset || 0;
+      const deltaY = scrollY - lastScrollY;
+      lastScrollY = scrollY;
+
+      if (Math.abs(deltaY) > 0.2) {
+        lastScrollAt = nowMs;
+      }
+
+      const reversing = nowMs - lastScrollAt < 280;
+      target.flowDir = reversing ? -1 : 1;
+
       const doc = document.documentElement;
       const maxScroll = Math.max((doc.scrollHeight || 0) - (window.innerHeight || 1), 1);
       const progress = clamp(scrollY / maxScroll, 0, 1);
       const normalized = progress * 2 - 1;
       const drift = baseTranslate * intensityFactor;
+      const flow = target.flowDir;
 
       if (reduceMotion()) {
         target.x = 0;
         target.y = 0;
         target.driftX = 0;
         target.driftY = 0;
+        target.flowDir = 1;
       } else {
-        target.x = normalized * drift * 0.38 + Math.sin(time * 0.72) * drift * 0.28;
-        target.y = normalized * drift * 0.46 + Math.cos(time * 0.58 + normalized) * drift * 0.34;
-        target.driftX = Math.sin(time * 1.4) * 18 * intensityFactor;
-        target.driftY = Math.cos(time * 1.1) * 16 * intensityFactor;
+        target.x = flow * (drift * 0.48 + Math.sin(time * 0.9) * drift * 0.22) + normalized * drift * 0.14;
+        target.y = flow * (drift * 0.3 + Math.cos(time * 0.74 + 0.4) * drift * 0.18) + normalized * drift * 0.36;
+        target.driftX = flow * (16 * intensityFactor + Math.sin(time * 1.42) * 8 * intensityFactor);
+        target.driftY = flow * (11 * intensityFactor + Math.cos(time * 1.24) * 7 * intensityFactor);
       }
 
       target.scrollY = scrollY;
@@ -288,6 +380,9 @@ const ParallaxBackground = ({
         target.layers.stars = clamp(target.layers.stars + Math.sin(time * 0.8) * 0.03, 0, 0.95);
         target.layers.glow = clamp(target.layers.glow + Math.sin(time * 0.5 + 1.2) * 0.04, 0, 0.95);
         target.layers.objects = clamp(target.layers.objects + Math.cos(time * 0.62) * 0.03, 0, 0.95);
+        target.layers.electric = clamp(target.layers.electric + Math.cos(time * 1.4) * 0.05, 0, 0.95);
+        target.layers.rain = clamp(target.layers.rain + Math.sin(time * 1.05) * 0.03, 0, 0.95);
+        target.layers.farLights = clamp(target.layers.farLights + Math.cos(time * 0.7 + 0.9) * 0.03, 0, 0.95);
       }
     };
 
@@ -312,7 +407,9 @@ const ParallaxBackground = ({
         const normalized = clamp((viewportCenter - center) / viewportHeight, -1, 1);
 
         const y = normalized * 20 * depth * intensityFactor * mobileScale;
-        const x = Math.sin(current.scrollY * 0.001 + time * 0.75 + index * 0.44) * 9 * depth * mobileScale;
+        const x =
+          Math.sin(current.scrollY * 0.001 + time * 0.75 + index * 0.44) * 9 * depth * mobileScale
+          + current.flowDir * 6 * depth * intensityFactor * mobileScale;
         const rotate = normalized * 1.2 * depth * mobileScale;
         const scale = 1 + depth * 0.016;
 
@@ -324,12 +421,13 @@ const ParallaxBackground = ({
     const tick = (nowMs: number) => {
       computeTarget(nowMs);
 
-      const ease = reduceMotion() ? 1 : 0.075;
+      const ease = reduceMotion() ? 1 : 0.092;
 
       current.x += (target.x - current.x) * ease;
       current.y += (target.y - current.y) * ease;
       current.driftX += (target.driftX - current.driftX) * ease;
       current.driftY += (target.driftY - current.driftY) * ease;
+      current.flowDir += (target.flowDir - current.flowDir) * 0.22;
       current.scrollY += (target.scrollY - current.scrollY) * ease;
 
       LAYER_KEYS.forEach((key) => {
@@ -410,6 +508,9 @@ const ParallaxBackground = ({
     '--pb-wave-opacity': String(variantConfig.wave),
     '--pb-glow-opacity': String(variantConfig.glow),
     '--pb-objects-opacity': String(variantConfig.objects),
+    '--pb-rain-opacity': String(variantConfig.rain),
+    '--pb-electric-opacity': String(variantConfig.electric),
+    '--pb-farLights-opacity': String(variantConfig.farLights),
   } as CSSProperties;
 
   return (
@@ -421,6 +522,69 @@ const ParallaxBackground = ({
         <div className={`${styles.layer} ${styles.lineLayer} ${styles.motionMedium}`} />
         <div className={`${styles.layer} ${styles.waveLayer} ${styles.motionSlow}`} />
         <div className={`${styles.layer} ${styles.glowLayer} ${styles.motionNear}`} />
+
+        <div className={styles.farLightsScene}>
+          {DISTANT_LIGHTS.map((light, index) => (
+            <span
+              key={`far-light-${index}`}
+              className={styles.farLightWrapper}
+              style={
+                {
+                  '--fl-left': light.left,
+                  '--fl-top': light.top,
+                  '--fl-size': light.size,
+                  '--fl-depth': light.depth,
+                  '--fl-duration': light.duration,
+                  '--fl-delay': light.delay,
+                } as CSSProperties
+              }
+            >
+              <span className={styles.farLight} />
+            </span>
+          ))}
+        </div>
+
+        <div className={styles.rainScene}>
+          {RAIN_DROPS.map((drop, index) => (
+            <span
+              key={`rain-drop-${index}`}
+              className={styles.rainDropWrapper}
+              style={
+                {
+                  '--rd-left': drop.left,
+                  '--rd-length': drop.length,
+                  '--rd-depth': drop.depth,
+                  '--rd-duration': drop.duration,
+                  '--rd-delay': drop.delay,
+                } as CSSProperties
+              }
+            >
+              <span className={styles.rainDrop} />
+            </span>
+          ))}
+        </div>
+
+        <div className={styles.electricScene}>
+          {ELECTRIC_RAYS.map((ray, index) => (
+            <span
+              key={`electric-ray-${index}`}
+              className={styles.electricRayWrapper}
+              style={
+                {
+                  '--er-left': ray.left,
+                  '--er-top': ray.top,
+                  '--er-width': ray.width,
+                  '--er-angle': ray.angle,
+                  '--er-depth': ray.depth,
+                  '--er-duration': ray.duration,
+                  '--er-delay': ray.delay,
+                } as CSSProperties
+              }
+            >
+              <span className={styles.electricRay} />
+            </span>
+          ))}
+        </div>
 
         <div className={styles.objectScene}>
           {FLOATING_OBJECTS.map((object, index) => (
