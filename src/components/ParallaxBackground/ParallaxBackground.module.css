@@ -3,6 +3,8 @@
   overflow: hidden;
   --pb-shift-x: 0;
   --pb-shift-y: 0;
+  --pb-drift-x: 0;
+  --pb-drift-y: 0;
   --pb-opacity-scale: 1;
   --pb-motion-scale: 1;
 }
@@ -17,104 +19,66 @@
 .layer {
   pointer-events: none;
   position: absolute;
-  inset: 0;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  inset: -4%;
   opacity: calc(var(--pb-layer-opacity, 0) * var(--pb-opacity-scale));
-  transition: opacity 480ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
 }
 
 .baseLayer {
   --pb-layer-opacity: var(--pb-base-opacity, 0);
-  background-image: url('/assets/parallax/bg-base.png');
-  transform: translate3d(0, 0, 0) scale(1.01);
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(6, 14, 42, 0.98), rgba(4, 10, 34, 0.96)),
+    radial-gradient(circle at 12% 8%, rgba(85, 105, 250, 0.17), transparent 35%),
+    radial-gradient(circle at 88% 90%, rgba(168, 85, 247, 0.12), transparent 40%);
 }
 
-.hudLayer {
-  --pb-layer-opacity: var(--pb-hud-opacity, 0);
-  background-image: url('/assets/parallax/bg-hud.png');
+.starLayer {
+  --pb-layer-opacity: var(--pb-stars-opacity, 0);
+  background-image:
+    radial-gradient(circle at 12% 22%, rgba(173, 208, 255, 0.7) 0 2px, transparent 3px),
+    radial-gradient(circle at 34% 74%, rgba(170, 138, 255, 0.55) 0 1.5px, transparent 2.5px),
+    radial-gradient(circle at 72% 30%, rgba(133, 188, 255, 0.56) 0 1.8px, transparent 2.6px),
+    radial-gradient(circle at 86% 66%, rgba(188, 140, 255, 0.48) 0 1.6px, transparent 2.3px),
+    radial-gradient(circle at 50% 50%, rgba(124, 165, 255, 0.18), transparent 60%);
+  background-size: 390px 390px, 520px 520px, 430px 430px, 480px 480px, 100% 100%;
 }
 
-.glassLayer {
-  --pb-layer-opacity: var(--pb-glass-opacity, 0);
-  background-image: url('/assets/parallax/bg-glass-shapes.png');
+.gridLayer {
+  --pb-layer-opacity: var(--pb-grid-opacity, 0);
+  background-image:
+    linear-gradient(rgba(109, 125, 255, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(109, 125, 255, 0.12) 1px, transparent 1px);
+  background-size: 64px 64px;
 }
 
-.timelineLayer {
-  --pb-layer-opacity: var(--pb-timeline-opacity, 0);
-  background-image: url('/assets/parallax/bg-timeline-nodes.png');
-}
-
-.starfieldLayer {
-  --pb-layer-opacity: var(--pb-starfield-opacity, 0);
-  background-image: url('/assets/parallax/bg-starfield.png');
-}
-
-.nebulaLayer {
-  --pb-layer-opacity: var(--pb-nebula-opacity, 0);
-  background-image: url('/assets/parallax/bg-nebula-bokeh.png');
-}
-
-.streaksLayer {
-  --pb-layer-opacity: var(--pb-streaks-opacity, 0);
-  background-image: url('/assets/parallax/bg-data-streaks.png');
+.lineLayer {
+  --pb-layer-opacity: var(--pb-lines-opacity, 0);
+  background-image:
+    repeating-linear-gradient(130deg, rgba(149, 117, 255, 0.24) 0 2px, transparent 2px 76px),
+    repeating-linear-gradient(130deg, rgba(95, 150, 255, 0.14) 0 1px, transparent 1px 52px);
 }
 
 .waveLayer {
   --pb-layer-opacity: var(--pb-wave-opacity, 0);
-  background-image: url('/assets/parallax/bg-wave-mesh.png');
-  background-position: center bottom;
+  background:
+    radial-gradient(140% 64% at 12% 104%, rgba(138, 109, 255, 0.24), transparent 60%),
+    radial-gradient(145% 56% at 88% 106%, rgba(101, 146, 255, 0.2), transparent 64%);
 }
 
-.panelsLayer {
-  --pb-layer-opacity: var(--pb-panels-opacity, 0);
-  background-image: url('/assets/parallax/bg-glass-panels.png');
-}
-
-.starfieldSoftLayer {
-  --pb-layer-opacity: var(--pb-starfieldSoft-opacity, 0);
-  background-image: url('/assets/parallax/bg-starfield-soft.png');
-}
-
-.orbLayer {
-  --pb-layer-opacity: var(--pb-orb-opacity, 0);
-  background-image: url('/assets/parallax/bg-orb-gradients.png');
-}
-
-.circuitLayer {
-  --pb-layer-opacity: var(--pb-circuit-opacity, 0);
-  background-image: url('/assets/parallax/bg-circuit-lines.png');
-}
-
-.wireframeLayer {
-  --pb-layer-opacity: var(--pb-wireframe-opacity, 0);
-  background-image: url('/assets/parallax/bg-wireframe-horizon.png');
-  background-position: center bottom;
-}
-
-.glassSoftLayer {
-  --pb-layer-opacity: var(--pb-glassSoft-opacity, 0);
-  background-image: url('/assets/parallax/bg-glass-soft-panels.png');
-}
-
-.ctaLayer {
-  --pb-layer-opacity: var(--pb-cta-opacity, 0);
-  background-image: url('/assets/parallax/bg-cta-glow.png');
-}
-
-.motionFar,
-.motionSlow,
-.motionMedium,
-.motionNear {
-  inset: -4%;
-  will-change: transform;
+.glowLayer {
+  --pb-layer-opacity: var(--pb-glow-opacity, 0);
+  background:
+    radial-gradient(circle at 18% 18%, rgba(104, 118, 255, 0.28), transparent 35%),
+    radial-gradient(circle at 84% 22%, rgba(200, 106, 255, 0.26), transparent 34%),
+    radial-gradient(circle at 86% 82%, rgba(124, 146, 255, 0.22), transparent 38%);
 }
 
 .motionFar {
   transform: translate3d(
-      calc(var(--pb-shift-x) * 0.1 * var(--pb-motion-scale) * 1px),
-      calc(var(--pb-shift-y) * 0.14 * var(--pb-motion-scale) * 1px),
+      calc((var(--pb-shift-x) * 0.12 + var(--pb-drift-x) * 0.35) * var(--pb-motion-scale) * 1px),
+      calc((var(--pb-shift-y) * 0.14 + var(--pb-drift-y) * 0.32) * var(--pb-motion-scale) * 1px),
       0
     )
     scale(1.03);
@@ -122,8 +86,8 @@
 
 .motionSlow {
   transform: translate3d(
-      calc(var(--pb-shift-x) * 0.18 * var(--pb-motion-scale) * 1px),
-      calc(var(--pb-shift-y) * 0.24 * var(--pb-motion-scale) * 1px),
+      calc((var(--pb-shift-x) * 0.2 + var(--pb-drift-x) * 0.48) * var(--pb-motion-scale) * 1px),
+      calc((var(--pb-shift-y) * 0.24 + var(--pb-drift-y) * 0.44) * var(--pb-motion-scale) * 1px),
       0
     )
     scale(1.05);
@@ -131,8 +95,8 @@
 
 .motionMedium {
   transform: translate3d(
-      calc(var(--pb-shift-x) * 0.26 * var(--pb-motion-scale) * 1px),
-      calc(var(--pb-shift-y) * 0.34 * var(--pb-motion-scale) * 1px),
+      calc((var(--pb-shift-x) * 0.3 + var(--pb-drift-x) * 0.54) * var(--pb-motion-scale) * 1px),
+      calc((var(--pb-shift-y) * 0.36 + var(--pb-drift-y) * 0.52) * var(--pb-motion-scale) * 1px),
       0
     )
     scale(1.06);
@@ -140,39 +104,99 @@
 
 .motionNear {
   transform: translate3d(
-      calc(var(--pb-shift-x) * 0.34 * var(--pb-motion-scale) * 1px),
-      calc(var(--pb-shift-y) * 0.44 * var(--pb-motion-scale) * 1px),
+      calc((var(--pb-shift-x) * 0.38 + var(--pb-drift-x) * 0.62) * var(--pb-motion-scale) * 1px),
+      calc((var(--pb-shift-y) * 0.44 + var(--pb-drift-y) * 0.58) * var(--pb-motion-scale) * 1px),
       0
     )
-    scale(1.07);
+    scale(1.08);
 }
 
-.vignetteLayer {
+.objectScene {
   pointer-events: none;
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(circle at 50% 10%, rgba(90, 108, 255, 0.08), transparent 38%),
-    radial-gradient(circle at 50% 92%, rgba(6, 14, 35, 0.34), transparent 62%);
-  opacity: calc(0.9 * var(--pb-opacity-scale));
+  z-index: 2;
+  opacity: calc(var(--pb-objects-opacity, 0) * var(--pb-opacity-scale));
+}
+
+.objectWrapper {
+  position: absolute;
+  left: var(--fo-left);
+  top: var(--fo-top);
+  width: var(--fo-width);
+  height: var(--fo-height);
+  transform: translate3d(
+      calc(-50% + (var(--pb-shift-x) * var(--fo-depth) * 0.48 + var(--pb-drift-x) * var(--fo-depth) * 0.65) * var(--pb-motion-scale) * 1px),
+      calc(-50% + (var(--pb-shift-y) * var(--fo-depth) * 0.56 + var(--pb-drift-y) * var(--fo-depth) * 0.6) * var(--pb-motion-scale) * 1px),
+      0
+    );
+}
+
+.object {
+  display: block;
+  width: 100%;
+  height: 100%;
+  animation: objectFloat var(--fo-duration) ease-in-out infinite var(--fo-delay);
+}
+
+.panel {
+  border-radius: 26px;
+  border: 1px solid rgba(127, 151, 255, 0.32);
+  background: linear-gradient(145deg, rgba(84, 111, 255, 0.17), rgba(123, 108, 255, 0.07));
+}
+
+.pill {
+  border-radius: 999px;
+  border: 1px solid rgba(117, 141, 255, 0.4);
+  background: linear-gradient(145deg, rgba(88, 112, 255, 0.22), rgba(133, 92, 255, 0.13));
+}
+
+.dot {
+  border-radius: 999px;
+  background: radial-gradient(circle at 35% 35%, rgba(203, 222, 255, 0.95), rgba(120, 145, 255, 0.62) 60%, rgba(100, 89, 255, 0.35));
+}
+
+.node {
+  border-radius: 999px;
+  border: 1px solid rgba(160, 175, 255, 0.68);
+  box-shadow: 0 0 14px rgba(114, 149, 255, 0.28);
+}
+
+@keyframes objectFloat {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate3d(calc(var(--fo-float-x) * 0.35), calc(var(--fo-float-y) * -0.35), 0) rotate(calc(var(--fo-rotate) * 0.45));
+  }
+  50% {
+    transform: translate3d(var(--fo-float-x), var(--fo-float-y), 0) rotate(var(--fo-rotate));
+  }
+  75% {
+    transform: translate3d(calc(var(--fo-float-x) * -0.35), calc(var(--fo-float-y) * 0.4), 0) rotate(calc(var(--fo-rotate) * -0.45));
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
 }
 
 .content {
   position: relative;
-  z-index: 1;
+  z-index: 3;
 }
 
 @media (max-width: 768px) {
   .wrapper {
-    --pb-opacity-scale: 0.72;
-    --pb-motion-scale: 0.55;
+    --pb-opacity-scale: 0.74;
+    --pb-motion-scale: 0.56;
   }
 
-  .motionFar,
-  .motionSlow,
-  .motionMedium,
-  .motionNear {
+  .layer {
     inset: -2%;
+  }
+
+  .objectWrapper {
+    opacity: 0.82;
   }
 }
 
@@ -181,15 +205,13 @@
     --pb-motion-scale: 0;
   }
 
-  .motionFar,
-  .motionSlow,
-  .motionMedium,
-  .motionNear {
-    transform: translate3d(0, 0, 0) scale(1.01);
-    will-change: auto;
+  .layer,
+  .objectWrapper {
+    transform: translate3d(0, 0, 0);
+    transition-duration: 0ms;
   }
 
-  .layer {
-    transition-duration: 0ms;
+  .object {
+    animation: none;
   }
 }

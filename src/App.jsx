@@ -8,31 +8,6 @@ const NavBar = lazy(() => import('./components/Navbar'));
 const Footer = lazy(() => import('./components/Footer'));
 
 const THEME_STORAGE_KEY = 'portfolio-theme';
-const PARALLAX_ASSET_PATHS = [
-  '/assets/parallax/bg-base.png',
-  '/assets/parallax/bg-hud.png',
-  '/assets/parallax/bg-glass-shapes.png',
-  '/assets/parallax/bg-timeline-nodes.png',
-  '/assets/parallax/bg-cta-glow.png',
-  '/assets/parallax/bg-starfield.png',
-  '/assets/parallax/bg-nebula-bokeh.png',
-  '/assets/parallax/bg-data-streaks.png',
-  '/assets/parallax/bg-wave-mesh.png',
-  '/assets/parallax/bg-glass-panels.png',
-  '/assets/parallax/bg-starfield-soft.png',
-  '/assets/parallax/bg-orb-gradients.png',
-  '/assets/parallax/bg-circuit-lines.png',
-  '/assets/parallax/bg-wireframe-horizon.png',
-  '/assets/parallax/bg-glass-soft-panels.png',
-];
-
-const preloadImage = (src) =>
-  new Promise((resolve) => {
-    const image = new Image();
-    image.onload = () => resolve(src);
-    image.onerror = () => resolve(src);
-    image.src = src;
-  });
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(() => {
@@ -77,13 +52,12 @@ const App = () => {
       window.addEventListener('load', loadHandler, { once: true });
     });
 
-    const assetsLoaded = Promise.all(PARALLAX_ASSET_PATHS.map((asset) => preloadImage(asset)));
     const minDisplay = new Promise((resolve) => window.setTimeout(resolve, 350));
     const safetyTimeout = window.setTimeout(() => {
       if (!cancelled) setIsBootLoading(false);
     }, 18000);
 
-    Promise.all([onWindowLoaded, assetsLoaded, minDisplay]).then(() => {
+    Promise.all([onWindowLoaded, minDisplay]).then(() => {
       if (!cancelled) setIsBootLoading(false);
     });
 
