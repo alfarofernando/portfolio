@@ -1,0 +1,120 @@
+.wrapper {
+  position: relative;
+  overflow: hidden;
+  --pb-shift-x: 0;
+  --pb-shift-y: 0;
+  --pb-opacity-scale: 1;
+  --pb-motion-scale: 1;
+}
+
+.layers {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.layer {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: calc(var(--pb-layer-opacity, 0) * var(--pb-opacity-scale));
+}
+
+.baseLayer {
+  --pb-layer-opacity: var(--pb-base-opacity, 0);
+  background-image: url('/assets/parallax/bg-base.png');
+  transform: translate3d(0, 0, 0) scale(1.02);
+}
+
+.hudLayer {
+  --pb-layer-opacity: var(--pb-hud-opacity, 0);
+  background-image: url('/assets/parallax/bg-hud.png');
+}
+
+.glassLayer {
+  --pb-layer-opacity: var(--pb-glass-opacity, 0);
+  background-image: url('/assets/parallax/bg-glass-shapes.png');
+}
+
+.timelineLayer {
+  --pb-layer-opacity: var(--pb-timeline-opacity, 0);
+  background-image: url('/assets/parallax/bg-timeline-nodes.png');
+}
+
+.ctaLayer {
+  --pb-layer-opacity: var(--pb-cta-opacity, 0);
+  background-image: url('/assets/parallax/bg-cta-glow.png');
+}
+
+.motionSlow,
+.motionMedium,
+.motionStrong {
+  inset: -8%;
+  will-change: transform;
+}
+
+.motionSlow {
+  transform: translate3d(
+      calc(var(--pb-shift-x) * 0.16 * var(--pb-motion-scale) * 1px),
+      calc(var(--pb-shift-y) * 0.28 * var(--pb-motion-scale) * 1px),
+      0
+    )
+    scale(1.08);
+}
+
+.motionMedium {
+  transform: translate3d(
+      calc(var(--pb-shift-x) * 0.24 * var(--pb-motion-scale) * 1px),
+      calc(var(--pb-shift-y) * 0.42 * var(--pb-motion-scale) * 1px),
+      0
+    )
+    scale(1.1);
+}
+
+.motionStrong {
+  transform: translate3d(
+      calc(var(--pb-shift-x) * 0.34 * var(--pb-motion-scale) * 1px),
+      calc(var(--pb-shift-y) * 0.6 * var(--pb-motion-scale) * 1px),
+      0
+    )
+    scale(1.12);
+}
+
+.vignetteLayer {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 15%, rgba(117, 105, 255, 0.12), transparent 45%),
+    radial-gradient(circle at 50% 85%, rgba(5, 10, 30, 0.5), transparent 58%);
+  opacity: calc(0.9 * var(--pb-opacity-scale));
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    --pb-opacity-scale: 0.75;
+    --pb-motion-scale: 0.7;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wrapper {
+    --pb-motion-scale: 0;
+  }
+
+  .motionSlow,
+  .motionMedium,
+  .motionStrong {
+    transform: translate3d(0, 0, 0) scale(1.02);
+    will-change: auto;
+  }
+}
