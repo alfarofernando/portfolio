@@ -159,14 +159,30 @@ const LAYER_KEYS: Array<keyof VariantConfig> = [
   'glassSoftOpacity',
 ];
 
+const LAYER_BREATH: Record<keyof VariantConfig, { amp: number; speed: number; phase: number }> = {
+  baseOpacity: { amp: 0.012, speed: 0.22, phase: 0.2 },
+  hudOpacity: { amp: 0.016, speed: 0.44, phase: 0.7 },
+  glassOpacity: { amp: 0.014, speed: 0.36, phase: 1.1 },
+  timelineOpacity: { amp: 0.015, speed: 0.52, phase: 1.6 },
+  ctaOpacity: { amp: 0.018, speed: 0.4, phase: 2.2 },
+  starfieldOpacity: { amp: 0.012, speed: 0.26, phase: 0.4 },
+  nebulaOpacity: { amp: 0.015, speed: 0.34, phase: 1.9 },
+  streaksOpacity: { amp: 0.016, speed: 0.56, phase: 0.9 },
+  waveOpacity: { amp: 0.014, speed: 0.28, phase: 2.7 },
+  panelsOpacity: { amp: 0.013, speed: 0.38, phase: 2.3 },
+  starfieldSoftOpacity: { amp: 0.016, speed: 0.24, phase: 1.4 },
+  orbOpacity: { amp: 0.017, speed: 0.3, phase: 0.6 },
+  circuitOpacity: { amp: 0.014, speed: 0.5, phase: 2.8 },
+  wireframeOpacity: { amp: 0.015, speed: 0.32, phase: 1.8 },
+  glassSoftOpacity: { amp: 0.014, speed: 0.42, phase: 2.4 },
+};
+
 const toCssVar = (key: keyof VariantConfig) => {
   const base = key.replace('Opacity', '');
   return `--pb-${base}-opacity`;
 };
 
 const cloneConfig = (config: VariantConfig): VariantConfig => ({ ...config });
-
-const isNear = (current: number, target: number, threshold: number) => Math.abs(current - target) <= threshold;
 
 const ParallaxBackground = ({
   variant = 'default',
@@ -213,7 +229,6 @@ const ParallaxBackground = ({
     };
 
     let frameId = 0;
-    let animating = false;
 
     const applyFrame = () => {
       container.style.setProperty('--pb-shift-x', current.x.toFixed(3));
@@ -293,12 +308,13 @@ const ParallaxBackground = ({
       return blended;
     };
 
-    const computeTarget = () => {
+    const computeTarget = (nowMs: number) => {
       if (mutationEnabled && sectionTargets.length === 0) {
         refreshTargets();
       }
 
       const scrollY = window.scrollY || window.pageYOffset || 0;
+      const time = nowMs * 0.001;
       const doc = document.documentElement;
       const maxScroll = Math.max((doc.scrollHeight || 0) - (window.innerHeight || 1), 1);
       const progress = clamp(scrollY / maxScroll, 0, 1);
@@ -309,20 +325,34 @@ const ParallaxBackground = ({
         target.y = 0;
       } else {
         const drift = baseTranslate * intensityFactor;
-        target.y = normalized * drift * 0.9 + Math.sin(scrollY * 0.0024) * drift * 0.16;
-        target.x = Math.sin(scrollY * 0.0017) * drift * 0.22 + Math.cos(scrollY * 0.0011) * drift * 0.1;
+        target.y =
+          normalized * drift * 0.58
+          + Math.sin(time * 0.92 + scrollY * 0.00095) * drift * 0.54
+          + Math.cos(time * 0.36) * drift * 0.22;
+        target.x =
+          Math.sin(time * 0.74 + scrollY * 0.00062) * drift * 0.34
+          + Math.cos(time * 0.28 + normalized) * drift * 0.14;
       }
 
       target.scrollY = scrollY;
       target.opacities = computeBlendedConfig();
+
+      if (!reduceMotion()) {
+        LAYER_KEYS.forEach((key) => {
+          const wave = LAYER_BREATH[key];
+          const withWave = target.opacities[key] + Math.sin(time * wave.speed + wave.phase) * wave.amp;
+          target.opacities[key] = clamp(withWave, 0, 0.95);
+        });
+      }
     };
 
-    const updateMediaTransforms = () => {
+    const updateMediaTransforms = (nowMs: number) => {
       if (!mediaParallax || mediaTargets.length === 0) return;
 
       const viewportHeight = window.innerHeight || 1;
       const viewportCenter = viewportHeight / 2;
       const mobileScale = window.innerWidth < 768 ? 0.62 : 1;
+      const time = nowMs * 0.001;
 
       mediaTargets.forEach((element, index) => {
         if (reduceMotion()) {
@@ -337,7 +367,7 @@ const ParallaxBackground = ({
         const normalized = clamp((viewportCenter - center) / viewportHeight, -1, 1);
 
         const y = normalized * 26 * depth * intensityFactor * mobileScale;
-        const x = Math.sin(current.scrollY * 0.0018 + index * 0.45) * 10 * depth * mobileScale;
+        const x = Math.sin(current.scrollY * 0.0012 + time * 0.9 + index * 0.45) * 10 * depth * mobileScale;
         const rotate = normalized * 1.8 * depth * mobileScale;
         const scale = 1 + depth * 0.018;
 
@@ -346,7 +376,8 @@ const ParallaxBackground = ({
       });
     };
 
-    const tick = () => {
+    const tick = (nowMs: number) => {
+      computeTarget(nowMs);
       const ease = reduceMotion() ? 1 : 0.085;
 
       current.x += (target.x - current.x) * ease;
@@ -358,53 +389,41 @@ const ParallaxBackground = ({
       });
 
       applyFrame();
-      updateMediaTransforms();
-
-      const motionDone = isNear(current.x, target.x, 0.04)
-        && isNear(current.y, target.y, 0.04)
-        && isNear(current.scrollY, target.scrollY, 0.5);
-
-      const opacityDone = LAYER_KEYS.every((key) => isNear(current.opacities[key], target.opacities[key], 0.0015));
-
-      if (motionDone && opacityDone) {
-        animating = false;
-        frameId = 0;
-        return;
-      }
-
+      updateMediaTransforms(nowMs);
       frameId = window.requestAnimationFrame(tick);
-    };
-
-    const startAnimation = () => {
-      if (animating) return;
-      animating = true;
-      frameId = window.requestAnimationFrame(tick);
-    };
-
-    const onScroll = () => {
-      computeTarget();
-      startAnimation();
     };
 
     const onResize = () => {
       refreshTargets();
-      computeTarget();
-      startAnimation();
+      computeTarget(performance.now());
     };
 
     const onMotionChange = () => {
-      computeTarget();
-      startAnimation();
+      computeTarget(performance.now());
+    };
+
+    const onVisibilityChange = () => {
+      if (document.hidden) {
+        if (frameId) {
+          window.cancelAnimationFrame(frameId);
+          frameId = 0;
+        }
+        return;
+      }
+
+      if (!frameId) {
+        frameId = window.requestAnimationFrame(tick);
+      }
     };
 
     refreshTargets();
-    computeTarget();
+    computeTarget(performance.now());
     applyFrame();
-    startAnimation();
+    frameId = window.requestAnimationFrame(tick);
 
-    window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onResize, { passive: true });
     window.addEventListener('orientationchange', onResize, { passive: true });
+    document.addEventListener('visibilitychange', onVisibilityChange);
 
     if (mediaQuery.addEventListener) {
       mediaQuery.addEventListener('change', onMotionChange);
@@ -413,9 +432,9 @@ const ParallaxBackground = ({
     }
 
     return () => {
-      window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onResize);
       window.removeEventListener('orientationchange', onResize);
+      document.removeEventListener('visibilitychange', onVisibilityChange);
 
       if (mediaQuery.addEventListener) {
         mediaQuery.removeEventListener('change', onMotionChange);
