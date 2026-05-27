@@ -2,15 +2,13 @@ import { motion } from 'framer-motion';
 import { useLanguage } from '../../context/LanguageContext.jsx';
 import AnimatedContent from './components/AnimatedContent.jsx';
 import TechCarousel from './components/TechCarousel.jsx';
-import ParallaxBackground from '../../components/ParallaxBackground/ParallaxBackground';
 
 const Welcome = () => {
   const { language, locales } = useLanguage();
   const { hero, documents, links, brand } = locales[language];
 
   return (
-    <ParallaxBackground variant="home" intensity="high">
-      <section className="relative isolate px-4 pb-20 pt-10 sm:px-6 sm:pt-14 md:pb-24 lg:px-12">
+    <section className="relative isolate px-4 pb-20 pt-10 sm:px-6 sm:pt-14 md:pb-24 lg:px-12">
         {/* Fondos decorativos */}
         <div className="pointer-events-none absolute inset-0 -z-10">
           <div className="absolute left-1/4 top-0 h-48 w-48 rounded-full bg-brand-400/20 blur-[100px] sm:h-64 sm:w-64 lg:blur-[150px]" />
@@ -93,11 +91,13 @@ const Welcome = () => {
               <div className="absolute -right-6 bottom-10 h-28 w-28 rounded-full bg-accent-300/20 blur-3xl" />
 
               <div className="relative flex flex-col items-center gap-4 sm:flex-col md:flex-row lg:flex-col">
-                <img
-                  src="./android-chrome-192x192.png"
-                  alt={hero.profileAlt}
-                  className="h-28 w-28 rounded-3xl border border-white/80 object-cover shadow-lg sm:h-32 sm:w-32 md:h-36 md:w-36"
-                />
+                <div data-parallax-media="0.85">
+                  <img
+                    src="./android-chrome-192x192.png"
+                    alt={hero.profileAlt}
+                    className="h-28 w-28 rounded-3xl border border-white/80 object-cover shadow-lg sm:h-32 sm:w-32 md:h-36 md:w-36"
+                  />
+                </div>
 
                 <div className="text-center sm:text-center md:text-left lg:text-center">
                   <p className="text-sm font-semibold text-neutral-900 dark:text-white">{brand.name}</p>
@@ -126,8 +126,7 @@ const Welcome = () => {
             </div>
           </motion.div>
         </div>
-      </section>
-    </ParallaxBackground>
+    </section>
   );
 };
 

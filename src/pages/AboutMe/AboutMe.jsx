@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { useLanguage } from '../../context/LanguageContext';
 import AnimatedContent from '../Homepage/components/AnimatedContent';
-import ParallaxBackground from '../../components/ParallaxBackground/ParallaxBackground';
 
 const AboutMe = () => {
   const { language, locales } = useLanguage();
@@ -9,8 +8,7 @@ const AboutMe = () => {
   const aboutCopy = locales[language].about;
 
   return (
-    <ParallaxBackground variant="about" intensity="high">
-      <section id="AboutMe" className="px-4 pb-24 pt-16 sm:px-6 sm:pt-20 lg:px-12">
+    <section id="AboutMe" className="px-4 pb-24 pt-16 sm:px-6 sm:pt-20 lg:px-12">
         <div className="mx-auto w-full max-w-5xl">
           <div className="mx-auto max-w-2xl text-center">
             <span className="inline-flex items-center justify-center rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand-700 dark:bg-brand-500/10 dark:text-brand-200">
@@ -53,8 +51,7 @@ const AboutMe = () => {
             </div>
           </div>
         </div>
-      </section>
-    </ParallaxBackground>
+    </section>
   );
 };
 

@@ -4,7 +4,6 @@ import AnimatedContent from '../Homepage/components/AnimatedContent';
 import { getProjects } from './components/Data';
 import { slugify } from '../../utils/slugify';
 import { useNavigate } from 'react-router-dom';
-import ParallaxBackground from '../../components/ParallaxBackground/ParallaxBackground';
 
 const Projects = () => {
   const { language, locales } = useLanguage();
@@ -13,8 +12,7 @@ const Projects = () => {
   const copy = locales[language].projectsSection;
 
   return (
-    <ParallaxBackground variant="projects" intensity="medium">
-      <section id="Projects" className="px-4 pb-24 pt-12 sm:px-6 sm:pt-16 lg:px-12">
+    <section id="Projects" className="px-4 pb-24 pt-12 sm:px-6 sm:pt-16 lg:px-12">
         <div className="mx-auto w-full max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -45,7 +43,7 @@ const Projects = () => {
                 transition={{ duration: 0.45, delay: index * 0.05 }}
                 className="group relative flex h-full flex-col overflow-hidden rounded-4xl border border-brand-100/70 bg-white/90 p-6 shadow-lg backdrop-blur dark:border-brand-500/20 dark:bg-slate-900/80"
               >
-                <div className="relative overflow-hidden rounded-3xl">
+                <div className="relative overflow-hidden rounded-3xl" data-parallax-media="1.15">
                   <img
                     src={project.image}
                     alt={project.heroImageAlt ?? project.title}
@@ -113,8 +111,7 @@ const Projects = () => {
             ))}
           </div>
         </div>
-      </section>
-    </ParallaxBackground>
+    </section>
   );
 };
 

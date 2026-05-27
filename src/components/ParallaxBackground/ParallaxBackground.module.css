@@ -86,47 +86,47 @@
 
 .motionFar {
   transform: translate3d(
-      calc(var(--pb-shift-x) * 0.15 * var(--pb-motion-scale) * 1px),
-      calc(var(--pb-shift-y) * 0.22 * var(--pb-motion-scale) * 1px),
+      calc(var(--pb-shift-x) * 0.28 * var(--pb-motion-scale) * 1px),
+      calc(var(--pb-shift-y) * 0.36 * var(--pb-motion-scale) * 1px),
       0
     )
-    scale(1.08);
+    scale(1.12);
 }
 
 .motionSlow {
   transform: translate3d(
-      calc(var(--pb-shift-x) * 0.24 * var(--pb-motion-scale) * 1px),
-      calc(var(--pb-shift-y) * 0.36 * var(--pb-motion-scale) * 1px),
-      0
-    )
-    scale(1.1);
-}
-
-.motionMedium {
-  transform: translate3d(
-      calc(var(--pb-shift-x) * 0.38 * var(--pb-motion-scale) * 1px),
-      calc(var(--pb-shift-y) * 0.56 * var(--pb-motion-scale) * 1px),
-      0
-    )
-    scale(1.14);
-}
-
-.motionStrong {
-  transform: translate3d(
-      calc(var(--pb-shift-x) * 0.54 * var(--pb-motion-scale) * 1px),
-      calc(var(--pb-shift-y) * 0.78 * var(--pb-motion-scale) * 1px),
+      calc(var(--pb-shift-x) * 0.42 * var(--pb-motion-scale) * 1px),
+      calc(var(--pb-shift-y) * 0.58 * var(--pb-motion-scale) * 1px),
       0
     )
     scale(1.18);
 }
 
-.motionNear {
+.motionMedium {
   transform: translate3d(
-      calc(var(--pb-shift-x) * 0.62 * var(--pb-motion-scale) * 1px),
-      calc(var(--pb-shift-y) * 0.9 * var(--pb-motion-scale) * 1px),
+      calc(var(--pb-shift-x) * 0.68 * var(--pb-motion-scale) * 1px),
+      calc(var(--pb-shift-y) * 0.94 * var(--pb-motion-scale) * 1px),
       0
     )
-    scale(1.2);
+    scale(1.26);
+}
+
+.motionStrong {
+  transform: translate3d(
+      calc(var(--pb-shift-x) * 0.92 * var(--pb-motion-scale) * 1px),
+      calc(var(--pb-shift-y) * 1.3 * var(--pb-motion-scale) * 1px),
+      0
+    )
+    scale(1.34);
+}
+
+.motionNear {
+  transform: translate3d(
+      calc(var(--pb-shift-x) * 1.14 * var(--pb-motion-scale) * 1px),
+      calc(var(--pb-shift-y) * 1.62 * var(--pb-motion-scale) * 1px),
+      0
+    )
+    scale(1.42);
 }
 
 .vignetteLayer {
@@ -147,7 +147,7 @@
 @media (max-width: 768px) {
   .wrapper {
     --pb-opacity-scale: 0.75;
-    --pb-motion-scale: 0.6;
+    --pb-motion-scale: 0.5;
   }
 }
 
