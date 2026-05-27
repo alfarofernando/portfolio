@@ -13,7 +13,7 @@ const Projects = () => {
   const copy = locales[language].projectsSection;
 
   return (
-    <ParallaxBackground variant="projects" intensity="low">
+    <ParallaxBackground variant="projects" intensity="medium">
       <section id="Projects" className="px-4 pb-24 pt-12 sm:px-6 sm:pt-16 lg:px-12">
         <div className="mx-auto w-full max-w-6xl">
           <motion.div

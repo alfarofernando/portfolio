@@ -9,7 +9,7 @@ const Welcome = () => {
   const { hero, documents, links, brand } = locales[language];
 
   return (
-    <ParallaxBackground variant="home" intensity="medium">
+    <ParallaxBackground variant="home" intensity="high">
       <section className="relative isolate px-4 pb-20 pt-10 sm:px-6 sm:pt-14 md:pb-24 lg:px-12">
         {/* Fondos decorativos */}
         <div className="pointer-events-none absolute inset-0 -z-10">

@@ -11,7 +11,7 @@ const SubFooter = () => {
 
   return (
     <section className="px-4 sm:px-6 lg:px-12">
-      <ParallaxBackground variant="cta" intensity="low" className="mx-auto mt-20 w-full max-w-6xl rounded-4xl">
+      <ParallaxBackground variant="cta" intensity="medium" className="mx-auto mt-20 w-full max-w-6xl rounded-4xl">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -34,7 +34,7 @@ const SubFooter = () => {
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
               <button
                 type="button"
-                onClick={() => navigate('/portfolio/Projects')}
+                onClick={() => navigate('/portfolio/#projects')}
                 className="inline-flex items-center justify-center rounded-2xl bg-white px-6 py-3 text-sm font-semibold text-brand-700 transition hover:-translate-y-0.5 hover:bg-brand-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
               >
                 {ctaCopy.primary}

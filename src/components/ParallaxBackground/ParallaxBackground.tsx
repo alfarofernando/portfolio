@@ -11,6 +11,11 @@ type VariantConfig = {
   glassOpacity: number;
   timelineOpacity: number;
   ctaOpacity: number;
+  starfieldOpacity: number;
+  nebulaOpacity: number;
+  streaksOpacity: number;
+  waveOpacity: number;
+  panelsOpacity: number;
 };
 
 type ParallaxBackgroundProps = {
@@ -27,6 +32,11 @@ const PARALLAX_VARIANTS: Record<ParallaxVariant, VariantConfig> = {
     glassOpacity: 0.26,
     timelineOpacity: 0.12,
     ctaOpacity: 0,
+    starfieldOpacity: 0.24,
+    nebulaOpacity: 0.2,
+    streaksOpacity: 0.16,
+    waveOpacity: 0.14,
+    panelsOpacity: 0.14,
   },
   projects: {
     baseOpacity: 0.44,
@@ -34,6 +44,11 @@ const PARALLAX_VARIANTS: Record<ParallaxVariant, VariantConfig> = {
     glassOpacity: 0.17,
     timelineOpacity: 0.08,
     ctaOpacity: 0,
+    starfieldOpacity: 0.16,
+    nebulaOpacity: 0.12,
+    streaksOpacity: 0.12,
+    waveOpacity: 0.08,
+    panelsOpacity: 0.08,
   },
   about: {
     baseOpacity: 0.5,
@@ -41,6 +56,11 @@ const PARALLAX_VARIANTS: Record<ParallaxVariant, VariantConfig> = {
     glassOpacity: 0.12,
     timelineOpacity: 0.34,
     ctaOpacity: 0,
+    starfieldOpacity: 0.18,
+    nebulaOpacity: 0.1,
+    streaksOpacity: 0.18,
+    waveOpacity: 0.24,
+    panelsOpacity: 0.1,
   },
   cta: {
     baseOpacity: 0,
@@ -48,6 +68,11 @@ const PARALLAX_VARIANTS: Record<ParallaxVariant, VariantConfig> = {
     glassOpacity: 0,
     timelineOpacity: 0,
     ctaOpacity: 0.82,
+    starfieldOpacity: 0.06,
+    nebulaOpacity: 0.28,
+    streaksOpacity: 0,
+    waveOpacity: 0.12,
+    panelsOpacity: 0.1,
   },
   default: {
     baseOpacity: 0.5,
@@ -55,21 +80,26 @@ const PARALLAX_VARIANTS: Record<ParallaxVariant, VariantConfig> = {
     glassOpacity: 0.2,
     timelineOpacity: 0.1,
     ctaOpacity: 0,
+    starfieldOpacity: 0.16,
+    nebulaOpacity: 0.14,
+    streaksOpacity: 0.12,
+    waveOpacity: 0.12,
+    panelsOpacity: 0.1,
   },
 };
 
 const INTENSITY_MULTIPLIER: Record<ParallaxIntensity, number> = {
-  low: 0.65,
-  medium: 1,
-  high: 1.25,
+  low: 1,
+  medium: 1.45,
+  high: 1.95,
 };
 
 const MAX_TRANSLATE_BY_VARIANT: Record<ParallaxVariant, number> = {
-  home: 38,
-  projects: 24,
-  about: 34,
-  cta: 20,
-  default: 30,
+  home: 56,
+  projects: 44,
+  about: 58,
+  cta: 30,
+  default: 48,
 };
 
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
@@ -173,6 +203,11 @@ const ParallaxBackground = ({
     '--pb-glass-opacity': String(variantConfig.glassOpacity),
     '--pb-timeline-opacity': String(variantConfig.timelineOpacity),
     '--pb-cta-opacity': String(variantConfig.ctaOpacity),
+    '--pb-starfield-opacity': String(variantConfig.starfieldOpacity),
+    '--pb-nebula-opacity': String(variantConfig.nebulaOpacity),
+    '--pb-streaks-opacity': String(variantConfig.streaksOpacity),
+    '--pb-wave-opacity': String(variantConfig.waveOpacity),
+    '--pb-panels-opacity': String(variantConfig.panelsOpacity),
   } as CSSProperties;
 
   return (
@@ -182,6 +217,11 @@ const ParallaxBackground = ({
         <div className={`${styles.layer} ${styles.hudLayer} ${styles.motionSlow}`} />
         <div className={`${styles.layer} ${styles.glassLayer} ${styles.motionMedium}`} />
         <div className={`${styles.layer} ${styles.timelineLayer} ${styles.motionStrong}`} />
+        <div className={`${styles.layer} ${styles.starfieldLayer} ${styles.motionFar}`} />
+        <div className={`${styles.layer} ${styles.nebulaLayer} ${styles.motionSlow}`} />
+        <div className={`${styles.layer} ${styles.streaksLayer} ${styles.motionStrong}`} />
+        <div className={`${styles.layer} ${styles.waveLayer} ${styles.motionMedium}`} />
+        <div className={`${styles.layer} ${styles.panelsLayer} ${styles.motionNear}`} />
         <div className={`${styles.layer} ${styles.ctaLayer} ${styles.motionMedium}`} />
         <div className={styles.vignetteLayer} />
       </div>

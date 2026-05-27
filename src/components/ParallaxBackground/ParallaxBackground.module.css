@@ -45,6 +45,31 @@
   background-image: url('/assets/parallax/bg-timeline-nodes.png');
 }
 
+.starfieldLayer {
+  --pb-layer-opacity: var(--pb-starfield-opacity, 0);
+  background-image: url('/assets/parallax/bg-starfield.png');
+}
+
+.nebulaLayer {
+  --pb-layer-opacity: var(--pb-nebula-opacity, 0);
+  background-image: url('/assets/parallax/bg-nebula-bokeh.png');
+}
+
+.streaksLayer {
+  --pb-layer-opacity: var(--pb-streaks-opacity, 0);
+  background-image: url('/assets/parallax/bg-data-streaks.png');
+}
+
+.waveLayer {
+  --pb-layer-opacity: var(--pb-wave-opacity, 0);
+  background-image: url('/assets/parallax/bg-wave-mesh.png');
+}
+
+.panelsLayer {
+  --pb-layer-opacity: var(--pb-panels-opacity, 0);
+  background-image: url('/assets/parallax/bg-glass-panels.png');
+}
+
 .ctaLayer {
   --pb-layer-opacity: var(--pb-cta-opacity, 0);
   background-image: url('/assets/parallax/bg-cta-glow.png');
@@ -52,36 +77,56 @@
 
 .motionSlow,
 .motionMedium,
-.motionStrong {
+.motionStrong,
+.motionFar,
+.motionNear {
   inset: -8%;
   will-change: transform;
 }
 
-.motionSlow {
+.motionFar {
   transform: translate3d(
-      calc(var(--pb-shift-x) * 0.16 * var(--pb-motion-scale) * 1px),
-      calc(var(--pb-shift-y) * 0.28 * var(--pb-motion-scale) * 1px),
+      calc(var(--pb-shift-x) * 0.15 * var(--pb-motion-scale) * 1px),
+      calc(var(--pb-shift-y) * 0.22 * var(--pb-motion-scale) * 1px),
       0
     )
     scale(1.08);
 }
 
-.motionMedium {
+.motionSlow {
   transform: translate3d(
       calc(var(--pb-shift-x) * 0.24 * var(--pb-motion-scale) * 1px),
-      calc(var(--pb-shift-y) * 0.42 * var(--pb-motion-scale) * 1px),
+      calc(var(--pb-shift-y) * 0.36 * var(--pb-motion-scale) * 1px),
       0
     )
     scale(1.1);
 }
 
-.motionStrong {
+.motionMedium {
   transform: translate3d(
-      calc(var(--pb-shift-x) * 0.34 * var(--pb-motion-scale) * 1px),
-      calc(var(--pb-shift-y) * 0.6 * var(--pb-motion-scale) * 1px),
+      calc(var(--pb-shift-x) * 0.38 * var(--pb-motion-scale) * 1px),
+      calc(var(--pb-shift-y) * 0.56 * var(--pb-motion-scale) * 1px),
       0
     )
-    scale(1.12);
+    scale(1.14);
+}
+
+.motionStrong {
+  transform: translate3d(
+      calc(var(--pb-shift-x) * 0.54 * var(--pb-motion-scale) * 1px),
+      calc(var(--pb-shift-y) * 0.78 * var(--pb-motion-scale) * 1px),
+      0
+    )
+    scale(1.18);
+}
+
+.motionNear {
+  transform: translate3d(
+      calc(var(--pb-shift-x) * 0.62 * var(--pb-motion-scale) * 1px),
+      calc(var(--pb-shift-y) * 0.9 * var(--pb-motion-scale) * 1px),
+      0
+    )
+    scale(1.2);
 }
 
 .vignetteLayer {
@@ -102,7 +147,7 @@
 @media (max-width: 768px) {
   .wrapper {
     --pb-opacity-scale: 0.75;
-    --pb-motion-scale: 0.7;
+    --pb-motion-scale: 0.6;
   }
 }
 
@@ -113,7 +158,9 @@
 
   .motionSlow,
   .motionMedium,
-  .motionStrong {
+  .motionStrong,
+  .motionFar,
+  .motionNear {
     transform: translate3d(0, 0, 0) scale(1.02);
     will-change: auto;
   }

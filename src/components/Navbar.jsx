@@ -1,27 +1,45 @@
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import AnimatedContent from '../pages/Homepage/components/AnimatedContent';
 
 const NavBar = ({ darkMode, onToggleTheme }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { language, changeLanguage, locales } = useLanguage();
   const { nav, brand, theme, menu } = locales[language];
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navigation = useMemo(
     () => [
-      { label: nav.home, to: '/portfolio/Home' },
-      { label: nav.projects, to: '/portfolio/Projects' },
-      { label: nav.aboutMe, to: '/portfolio/AboutMe' },
+      { label: nav.home, sectionId: 'home' },
+      { label: nav.projects, sectionId: 'projects' },
+      { label: nav.aboutMe, sectionId: 'about' },
     ],
     [nav]
   );
 
-  const handleNavigate = (to) => {
-    navigate(to);
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (!element) return false;
+
+    const top = element.getBoundingClientRect().top + window.scrollY - 120;
+    window.scrollTo({
+      top: Math.max(top, 0),
+      behavior: 'smooth',
+    });
+    window.history.replaceState(null, '', `/portfolio/#${sectionId}`);
+    return true;
+  };
+
+  const handleNavigate = (sectionId) => {
     setIsMenuOpen(false);
+
+    const isProjectDetailPage = location.pathname.startsWith('/portfolio/Projects/');
+    if (!isProjectDetailPage && scrollToSection(sectionId)) return;
+
+    navigate(`/portfolio/#${sectionId}`);
   };
 
   const toggleLanguage = () => {
@@ -43,7 +61,7 @@ const NavBar = ({ darkMode, onToggleTheme }) => {
           <nav className="relative flex items-center justify-between gap-4 rounded-3xl border border-white/50 bg-white/80 px-5 py-3 shadow-brand backdrop-blur-md dark:border-white/10 dark:bg-slate-900/80">
             <button
               type="button"
-              onClick={() => handleNavigate('/portfolio/Home')}
+              onClick={() => handleNavigate('home')}
               className="flex items-center gap-2 text-left"
             >
               <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-brand-600 text-lg font-semibold text-white shadow-brand">
@@ -60,14 +78,14 @@ const NavBar = ({ darkMode, onToggleTheme }) => {
             <div className="hidden items-center gap-1 rounded-full bg-white/60 p-1 dark:bg-slate-800/80 md:flex">
               {navigation.map((item) => (
                 <button
-                  key={item.to}
+                  key={item.sectionId}
                   type="button"
-                  onClick={() => handleNavigate(item.to)}
+                  onClick={() => handleNavigate(item.sectionId)}
                   className="group relative inline-flex items-center rounded-full px-4 py-2 text-sm font-medium text-neutral-600 transition hover:text-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-200 dark:text-neutral-200"
                 >
                   <span className="absolute inset-0 rounded-full bg-brand-50 opacity-0 transition-opacity group-hover:opacity-100 dark:bg-brand-500/20" />
                   <span className="relative z-10">
-                    <AnimatedContent keyProp={`${language}-${item.to}`}>
+                    <AnimatedContent keyProp={`${language}-${item.sectionId}`}>
                       {item.label}
                     </AnimatedContent>
                   </span>
@@ -120,9 +138,9 @@ const NavBar = ({ darkMode, onToggleTheme }) => {
               <div className="flex flex-col gap-2">
                 {navigation.map((item) => (
                   <button
-                    key={item.to}
+                    key={item.sectionId}
                     type="button"
-                    onClick={() => handleNavigate(item.to)}
+                    onClick={() => handleNavigate(item.sectionId)}
                     className="rounded-2xl px-4 py-3 text-left text-sm font-semibold text-neutral-700 transition hover:bg-brand-50 hover:text-brand-700 dark:text-neutral-200 dark:hover:bg-brand-500/20"
                   >
                     {item.label}
