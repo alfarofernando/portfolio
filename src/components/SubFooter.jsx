@@ -9,12 +9,13 @@ const SubFooter = () => {
   const whatsappLink = locales[language].links.whatsapp;
 
   return (
-    <section className="px-4 sm:px-6 lg:px-12">
+    <section id="global-cta" className="px-4 sm:px-6 lg:px-12">
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
+        data-parallax-media="0.22"
         className="relative mx-auto mt-20 w-full max-w-6xl overflow-hidden rounded-4xl bg-gradient-to-r from-brand-600 via-brand-600 to-brand-700 text-white shadow-brand"
       >
         <div className="pointer-events-none absolute -right-24 bottom-0 h-64 w-64 rounded-full bg-accent-400/50 blur-3xl" />

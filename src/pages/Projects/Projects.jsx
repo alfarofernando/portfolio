@@ -41,9 +41,10 @@ const Projects = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.45, delay: index * 0.05 }}
+                data-parallax-media="0.22"
                 className="group relative flex h-full flex-col overflow-hidden rounded-4xl border border-brand-100/70 bg-white/90 p-6 shadow-lg backdrop-blur dark:border-brand-500/20 dark:bg-slate-900/80"
               >
-                <div className="relative overflow-hidden rounded-3xl" data-parallax-media="1.15">
+                <div className="relative overflow-hidden rounded-3xl">
                   <img
                     src={project.image}
                     alt={project.heroImageAlt ?? project.title}

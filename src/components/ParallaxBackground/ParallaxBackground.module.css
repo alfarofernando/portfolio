@@ -22,12 +22,13 @@
   background-repeat: no-repeat;
   background-size: cover;
   opacity: calc(var(--pb-layer-opacity, 0) * var(--pb-opacity-scale));
+  transition: opacity 480ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .baseLayer {
   --pb-layer-opacity: var(--pb-base-opacity, 0);
   background-image: url('/assets/parallax/bg-base.png');
-  transform: translate3d(0, 0, 0) scale(1.02);
+  transform: translate3d(0, 0, 0) scale(1.01);
 }
 
 .hudLayer {
@@ -63,6 +64,7 @@
 .waveLayer {
   --pb-layer-opacity: var(--pb-wave-opacity, 0);
   background-image: url('/assets/parallax/bg-wave-mesh.png');
+  background-position: center bottom;
 }
 
 .panelsLayer {
@@ -70,63 +72,79 @@
   background-image: url('/assets/parallax/bg-glass-panels.png');
 }
 
+.starfieldSoftLayer {
+  --pb-layer-opacity: var(--pb-starfieldSoft-opacity, 0);
+  background-image: url('/assets/parallax/bg-starfield-soft.png');
+}
+
+.orbLayer {
+  --pb-layer-opacity: var(--pb-orb-opacity, 0);
+  background-image: url('/assets/parallax/bg-orb-gradients.png');
+}
+
+.circuitLayer {
+  --pb-layer-opacity: var(--pb-circuit-opacity, 0);
+  background-image: url('/assets/parallax/bg-circuit-lines.png');
+}
+
+.wireframeLayer {
+  --pb-layer-opacity: var(--pb-wireframe-opacity, 0);
+  background-image: url('/assets/parallax/bg-wireframe-horizon.png');
+  background-position: center bottom;
+}
+
+.glassSoftLayer {
+  --pb-layer-opacity: var(--pb-glassSoft-opacity, 0);
+  background-image: url('/assets/parallax/bg-glass-soft-panels.png');
+}
+
 .ctaLayer {
   --pb-layer-opacity: var(--pb-cta-opacity, 0);
   background-image: url('/assets/parallax/bg-cta-glow.png');
 }
 
+.motionFar,
 .motionSlow,
 .motionMedium,
-.motionStrong,
-.motionFar,
 .motionNear {
-  inset: -8%;
+  inset: -4%;
   will-change: transform;
 }
 
 .motionFar {
   transform: translate3d(
-      calc(var(--pb-shift-x) * 0.28 * var(--pb-motion-scale) * 1px),
-      calc(var(--pb-shift-y) * 0.36 * var(--pb-motion-scale) * 1px),
+      calc(var(--pb-shift-x) * 0.1 * var(--pb-motion-scale) * 1px),
+      calc(var(--pb-shift-y) * 0.14 * var(--pb-motion-scale) * 1px),
       0
     )
-    scale(1.12);
+    scale(1.03);
 }
 
 .motionSlow {
   transform: translate3d(
-      calc(var(--pb-shift-x) * 0.42 * var(--pb-motion-scale) * 1px),
-      calc(var(--pb-shift-y) * 0.58 * var(--pb-motion-scale) * 1px),
+      calc(var(--pb-shift-x) * 0.18 * var(--pb-motion-scale) * 1px),
+      calc(var(--pb-shift-y) * 0.24 * var(--pb-motion-scale) * 1px),
       0
     )
-    scale(1.18);
+    scale(1.05);
 }
 
 .motionMedium {
   transform: translate3d(
-      calc(var(--pb-shift-x) * 0.68 * var(--pb-motion-scale) * 1px),
-      calc(var(--pb-shift-y) * 0.94 * var(--pb-motion-scale) * 1px),
+      calc(var(--pb-shift-x) * 0.26 * var(--pb-motion-scale) * 1px),
+      calc(var(--pb-shift-y) * 0.34 * var(--pb-motion-scale) * 1px),
       0
     )
-    scale(1.26);
-}
-
-.motionStrong {
-  transform: translate3d(
-      calc(var(--pb-shift-x) * 0.92 * var(--pb-motion-scale) * 1px),
-      calc(var(--pb-shift-y) * 1.3 * var(--pb-motion-scale) * 1px),
-      0
-    )
-    scale(1.34);
+    scale(1.06);
 }
 
 .motionNear {
   transform: translate3d(
-      calc(var(--pb-shift-x) * 1.14 * var(--pb-motion-scale) * 1px),
-      calc(var(--pb-shift-y) * 1.62 * var(--pb-motion-scale) * 1px),
+      calc(var(--pb-shift-x) * 0.34 * var(--pb-motion-scale) * 1px),
+      calc(var(--pb-shift-y) * 0.44 * var(--pb-motion-scale) * 1px),
       0
     )
-    scale(1.42);
+    scale(1.07);
 }
 
 .vignetteLayer {
@@ -134,8 +152,8 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 50% 15%, rgba(117, 105, 255, 0.12), transparent 45%),
-    radial-gradient(circle at 50% 85%, rgba(5, 10, 30, 0.5), transparent 58%);
+    radial-gradient(circle at 50% 10%, rgba(90, 108, 255, 0.08), transparent 38%),
+    radial-gradient(circle at 50% 92%, rgba(6, 14, 35, 0.34), transparent 62%);
   opacity: calc(0.9 * var(--pb-opacity-scale));
 }
 
@@ -146,8 +164,15 @@
 
 @media (max-width: 768px) {
   .wrapper {
-    --pb-opacity-scale: 0.75;
-    --pb-motion-scale: 0.5;
+    --pb-opacity-scale: 0.72;
+    --pb-motion-scale: 0.55;
+  }
+
+  .motionFar,
+  .motionSlow,
+  .motionMedium,
+  .motionNear {
+    inset: -2%;
   }
 }
 
@@ -156,12 +181,15 @@
     --pb-motion-scale: 0;
   }
 
+  .motionFar,
   .motionSlow,
   .motionMedium,
-  .motionStrong,
-  .motionFar,
   .motionNear {
-    transform: translate3d(0, 0, 0) scale(1.02);
+    transform: translate3d(0, 0, 0) scale(1.01);
     will-change: auto;
+  }
+
+  .layer {
+    transition-duration: 0ms;
   }
 }

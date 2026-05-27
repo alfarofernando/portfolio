@@ -16,6 +16,11 @@ type VariantConfig = {
   streaksOpacity: number;
   waveOpacity: number;
   panelsOpacity: number;
+  starfieldSoftOpacity: number;
+  orbOpacity: number;
+  circuitOpacity: number;
+  wireframeOpacity: number;
+  glassSoftOpacity: number;
 };
 
 type MutationSection = {
@@ -34,95 +39,134 @@ type ParallaxBackgroundProps = {
 
 const PARALLAX_VARIANTS: Record<ParallaxVariant, VariantConfig> = {
   home: {
-    baseOpacity: 0.58,
-    hudOpacity: 0.42,
-    glassOpacity: 0.34,
-    timelineOpacity: 0.14,
+    baseOpacity: 0.42,
+    hudOpacity: 0.2,
+    glassOpacity: 0.18,
+    timelineOpacity: 0.08,
     ctaOpacity: 0,
-    starfieldOpacity: 0.3,
-    nebulaOpacity: 0.24,
-    streaksOpacity: 0.26,
-    waveOpacity: 0.2,
-    panelsOpacity: 0.18,
+    starfieldOpacity: 0.1,
+    nebulaOpacity: 0.08,
+    streaksOpacity: 0.08,
+    waveOpacity: 0.08,
+    panelsOpacity: 0.06,
+    starfieldSoftOpacity: 0.18,
+    orbOpacity: 0.16,
+    circuitOpacity: 0.08,
+    wireframeOpacity: 0.1,
+    glassSoftOpacity: 0.12,
   },
   projects: {
-    baseOpacity: 0.52,
-    hudOpacity: 0.3,
-    glassOpacity: 0.24,
-    timelineOpacity: 0.12,
+    baseOpacity: 0.4,
+    hudOpacity: 0.14,
+    glassOpacity: 0.14,
+    timelineOpacity: 0.06,
     ctaOpacity: 0,
-    starfieldOpacity: 0.2,
-    nebulaOpacity: 0.16,
-    streaksOpacity: 0.24,
-    waveOpacity: 0.12,
-    panelsOpacity: 0.12,
+    starfieldOpacity: 0.08,
+    nebulaOpacity: 0.06,
+    streaksOpacity: 0.1,
+    waveOpacity: 0.08,
+    panelsOpacity: 0.06,
+    starfieldSoftOpacity: 0.16,
+    orbOpacity: 0.1,
+    circuitOpacity: 0.12,
+    wireframeOpacity: 0.08,
+    glassSoftOpacity: 0.1,
   },
   about: {
-    baseOpacity: 0.56,
-    hudOpacity: 0.34,
-    glassOpacity: 0.18,
-    timelineOpacity: 0.42,
+    baseOpacity: 0.42,
+    hudOpacity: 0.16,
+    glassOpacity: 0.12,
+    timelineOpacity: 0.2,
     ctaOpacity: 0,
-    starfieldOpacity: 0.24,
-    nebulaOpacity: 0.16,
-    streaksOpacity: 0.28,
-    waveOpacity: 0.34,
-    panelsOpacity: 0.14,
+    starfieldOpacity: 0.08,
+    nebulaOpacity: 0.06,
+    streaksOpacity: 0.12,
+    waveOpacity: 0.14,
+    panelsOpacity: 0.06,
+    starfieldSoftOpacity: 0.14,
+    orbOpacity: 0.08,
+    circuitOpacity: 0.08,
+    wireframeOpacity: 0.16,
+    glassSoftOpacity: 0.1,
   },
   cta: {
-    baseOpacity: 0,
-    hudOpacity: 0,
-    glassOpacity: 0,
+    baseOpacity: 0.28,
+    hudOpacity: 0.08,
+    glassOpacity: 0.08,
     timelineOpacity: 0,
-    ctaOpacity: 0.82,
-    starfieldOpacity: 0.06,
-    nebulaOpacity: 0.28,
-    streaksOpacity: 0,
-    waveOpacity: 0.12,
-    panelsOpacity: 0.1,
+    ctaOpacity: 0.24,
+    starfieldOpacity: 0.02,
+    nebulaOpacity: 0.04,
+    streaksOpacity: 0.02,
+    waveOpacity: 0.04,
+    panelsOpacity: 0.06,
+    starfieldSoftOpacity: 0.08,
+    orbOpacity: 0.14,
+    circuitOpacity: 0.04,
+    wireframeOpacity: 0.06,
+    glassSoftOpacity: 0.14,
   },
   default: {
-    baseOpacity: 0.54,
-    hudOpacity: 0.32,
-    glassOpacity: 0.26,
-    timelineOpacity: 0.18,
+    baseOpacity: 0.4,
+    hudOpacity: 0.16,
+    glassOpacity: 0.14,
+    timelineOpacity: 0.08,
     ctaOpacity: 0,
-    starfieldOpacity: 0.2,
-    nebulaOpacity: 0.18,
-    streaksOpacity: 0.2,
-    waveOpacity: 0.18,
-    panelsOpacity: 0.16,
+    starfieldOpacity: 0.08,
+    nebulaOpacity: 0.08,
+    streaksOpacity: 0.08,
+    waveOpacity: 0.1,
+    panelsOpacity: 0.08,
+    starfieldSoftOpacity: 0.14,
+    orbOpacity: 0.1,
+    circuitOpacity: 0.08,
+    wireframeOpacity: 0.1,
+    glassSoftOpacity: 0.1,
   },
 };
 
 const INTENSITY_MULTIPLIER: Record<ParallaxIntensity, number> = {
-  low: 1.2,
-  medium: 2,
-  high: 2.8,
+  low: 0.5,
+  medium: 0.75,
+  high: 1,
 };
 
-const MAX_TRANSLATE_BY_VARIANT: Record<ParallaxVariant, number> = {
-  home: 82,
-  projects: 72,
-  about: 86,
-  cta: 40,
-  default: 78,
+const BASE_TRANSLATE_BY_VARIANT: Record<ParallaxVariant, number> = {
+  home: 26,
+  projects: 22,
+  about: 24,
+  cta: 16,
+  default: 24,
 };
 
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
 
-const EMPTY_CONFIG: VariantConfig = {
-  baseOpacity: 0,
-  hudOpacity: 0,
-  glassOpacity: 0,
-  timelineOpacity: 0,
-  ctaOpacity: 0,
-  starfieldOpacity: 0,
-  nebulaOpacity: 0,
-  streaksOpacity: 0,
-  waveOpacity: 0,
-  panelsOpacity: 0,
+const LAYER_KEYS: Array<keyof VariantConfig> = [
+  'baseOpacity',
+  'hudOpacity',
+  'glassOpacity',
+  'timelineOpacity',
+  'ctaOpacity',
+  'starfieldOpacity',
+  'nebulaOpacity',
+  'streaksOpacity',
+  'waveOpacity',
+  'panelsOpacity',
+  'starfieldSoftOpacity',
+  'orbOpacity',
+  'circuitOpacity',
+  'wireframeOpacity',
+  'glassSoftOpacity',
+];
+
+const toCssVar = (key: keyof VariantConfig) => {
+  const base = key.replace('Opacity', '');
+  return `--pb-${base}-opacity`;
 };
+
+const cloneConfig = (config: VariantConfig): VariantConfig => ({ ...config });
+
+const isNear = (current: number, target: number, threshold: number) => Math.abs(current - target) <= threshold;
 
 const ParallaxBackground = ({
   variant = 'default',
@@ -146,37 +190,36 @@ const ParallaxBackground = ({
     if (!container) return undefined;
 
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    let frameId = 0;
-    let ticking = false;
+    const reduceMotion = () => mediaQuery.matches;
+    const intensityFactor = INTENSITY_MULTIPLIER[intensity] ?? INTENSITY_MULTIPLIER.medium;
+    const baseTranslate = BASE_TRANSLATE_BY_VARIANT[variant] ?? BASE_TRANSLATE_BY_VARIANT.default;
+    const mutationEnabled = Array.isArray(mutationSections) && mutationSections.length > 0;
 
     let sectionTargets: Array<MutationSection & { element: HTMLElement }> = [];
     let mediaTargets: HTMLElement[] = [];
 
-    const mutationEnabled = Array.isArray(mutationSections) && mutationSections.length > 0;
-    const intensityValue = INTENSITY_MULTIPLIER[intensity] ?? INTENSITY_MULTIPLIER.medium;
-
-    const setTransforms = (x: number, y: number) => {
-      container.style.setProperty('--pb-shift-x', x.toFixed(3));
-      container.style.setProperty('--pb-shift-y', y.toFixed(3));
+    const current = {
+      x: 0,
+      y: 0,
+      scrollY: window.scrollY || 0,
+      opacities: cloneConfig(variantConfig),
     };
 
-    const setOpacityConfig = (config: VariantConfig) => {
-      container.style.setProperty('--pb-base-opacity', String(config.baseOpacity));
-      container.style.setProperty('--pb-hud-opacity', String(config.hudOpacity));
-      container.style.setProperty('--pb-glass-opacity', String(config.glassOpacity));
-      container.style.setProperty('--pb-timeline-opacity', String(config.timelineOpacity));
-      container.style.setProperty('--pb-cta-opacity', String(config.ctaOpacity));
-      container.style.setProperty('--pb-starfield-opacity', String(config.starfieldOpacity));
-      container.style.setProperty('--pb-nebula-opacity', String(config.nebulaOpacity));
-      container.style.setProperty('--pb-streaks-opacity', String(config.streaksOpacity));
-      container.style.setProperty('--pb-wave-opacity', String(config.waveOpacity));
-      container.style.setProperty('--pb-panels-opacity', String(config.panelsOpacity));
+    const target = {
+      x: 0,
+      y: 0,
+      scrollY: window.scrollY || 0,
+      opacities: cloneConfig(variantConfig),
     };
 
-    const resetMediaTransforms = () => {
-      mediaTargets.forEach((element) => {
-        element.style.transform = '';
-        element.style.willChange = '';
+    let frameId = 0;
+    let animating = false;
+
+    const applyFrame = () => {
+      container.style.setProperty('--pb-shift-x', current.x.toFixed(3));
+      container.style.setProperty('--pb-shift-y', current.y.toFixed(3));
+      LAYER_KEYS.forEach((key) => {
+        container.style.setProperty(toCssVar(key), String(current.opacities[key]));
       });
     };
 
@@ -195,173 +238,199 @@ const ParallaxBackground = ({
       }
     };
 
-    const getBlendedConfig = (viewportHeight: number) => {
+    const computeBlendedConfig = (): VariantConfig => {
       if (!mutationEnabled || sectionTargets.length === 0) {
-        return variantConfig;
+        return cloneConfig(variantConfig);
       }
 
+      const viewportHeight = window.innerHeight || 1;
       const viewportCenter = viewportHeight / 2;
-      const weighted = { ...EMPTY_CONFIG };
-      let weightTotal = 0;
-      let nearestSectionVariant: ParallaxVariant = variant;
-      let nearestDistance = Number.POSITIVE_INFINITY;
+      const blended: VariantConfig = {
+        baseOpacity: 0,
+        hudOpacity: 0,
+        glassOpacity: 0,
+        timelineOpacity: 0,
+        ctaOpacity: 0,
+        starfieldOpacity: 0,
+        nebulaOpacity: 0,
+        streaksOpacity: 0,
+        waveOpacity: 0,
+        panelsOpacity: 0,
+        starfieldSoftOpacity: 0,
+        orbOpacity: 0,
+        circuitOpacity: 0,
+        wireframeOpacity: 0,
+        glassSoftOpacity: 0,
+      };
+
+      let totalWeight = 0;
 
       sectionTargets.forEach((section) => {
         const rect = section.element.getBoundingClientRect();
         const center = rect.top + rect.height / 2;
         const distance = Math.abs(center - viewportCenter);
-        const influence = clamp(1 - distance / (viewportHeight * 1.05), 0, 1);
-        const weight = influence ** 2.8;
-
-        if (distance < nearestDistance) {
-          nearestDistance = distance;
-          nearestSectionVariant = section.variant;
-        }
+        const influence = clamp(1 - distance / (viewportHeight * 1.1), 0, 1);
+        const weight = influence ** 2;
 
         if (weight <= 0) return;
 
         const config = PARALLAX_VARIANTS[section.variant] ?? PARALLAX_VARIANTS.default;
+        LAYER_KEYS.forEach((key) => {
+          blended[key] += config[key] * weight;
+        });
 
-        weighted.baseOpacity += config.baseOpacity * weight;
-        weighted.hudOpacity += config.hudOpacity * weight;
-        weighted.glassOpacity += config.glassOpacity * weight;
-        weighted.timelineOpacity += config.timelineOpacity * weight;
-        weighted.ctaOpacity += config.ctaOpacity * weight;
-        weighted.starfieldOpacity += config.starfieldOpacity * weight;
-        weighted.nebulaOpacity += config.nebulaOpacity * weight;
-        weighted.streaksOpacity += config.streaksOpacity * weight;
-        weighted.waveOpacity += config.waveOpacity * weight;
-        weighted.panelsOpacity += config.panelsOpacity * weight;
-
-        weightTotal += weight;
+        totalWeight += weight;
       });
 
-      if (weightTotal <= 0.0001) {
-        return PARALLAX_VARIANTS[nearestSectionVariant] ?? variantConfig;
+      if (totalWeight <= 0.0001) {
+        return cloneConfig(variantConfig);
       }
 
-      return {
-        baseOpacity: weighted.baseOpacity / weightTotal,
-        hudOpacity: weighted.hudOpacity / weightTotal,
-        glassOpacity: weighted.glassOpacity / weightTotal,
-        timelineOpacity: weighted.timelineOpacity / weightTotal,
-        ctaOpacity: weighted.ctaOpacity / weightTotal,
-        starfieldOpacity: weighted.starfieldOpacity / weightTotal,
-        nebulaOpacity: weighted.nebulaOpacity / weightTotal,
-        streaksOpacity: weighted.streaksOpacity / weightTotal,
-        waveOpacity: weighted.waveOpacity / weightTotal,
-        panelsOpacity: weighted.panelsOpacity / weightTotal,
-      };
-    };
-
-    const updateMediaParallax = (viewportHeight: number, scrollY: number) => {
-      if (!mediaParallax || mediaTargets.length === 0) return;
-
-      const viewportCenter = viewportHeight / 2;
-      const mobileScale = window.innerWidth < 768 ? 0.58 : 1;
-
-      mediaTargets.forEach((element, index) => {
-        const depth = Number(element.dataset.parallaxMedia || '1');
-        const rect = element.getBoundingClientRect();
-        const center = rect.top + rect.height / 2;
-        const normalized = clamp((viewportCenter - center) / viewportHeight, -1, 1);
-
-        const shiftY = normalized * 120 * intensityValue * depth * mobileScale;
-        const shiftX = Math.sin(scrollY * 0.018 + index * 0.9) * 22 * depth * mobileScale;
-        const rotate = normalized * 5 * depth * mobileScale;
-        const scale = 1 + 0.035 * depth;
-
-        element.style.willChange = 'transform';
-        element.style.transform = `translate3d(${shiftX.toFixed(2)}px, ${shiftY.toFixed(2)}px, 0) rotate(${rotate.toFixed(2)}deg) scale(${scale.toFixed(3)})`;
+      LAYER_KEYS.forEach((key) => {
+        blended[key] /= totalWeight;
       });
+
+      return blended;
     };
 
-    const updateParallax = () => {
-      ticking = false;
-
-      if (mediaQuery.matches) {
-        setTransforms(0, 0);
-        setOpacityConfig(mutationEnabled ? getBlendedConfig(window.innerHeight || 1) : variantConfig);
-        resetMediaTransforms();
-        return;
-      }
-
+    const computeTarget = () => {
       if (mutationEnabled && sectionTargets.length === 0) {
         refreshTargets();
       }
 
-      const rect = container.getBoundingClientRect();
+      const scrollY = window.scrollY || window.pageYOffset || 0;
+      const doc = document.documentElement;
+      const maxScroll = Math.max((doc.scrollHeight || 0) - (window.innerHeight || 1), 1);
+      const progress = clamp(scrollY / maxScroll, 0, 1);
+      const normalized = progress * 2 - 1;
+
+      if (reduceMotion()) {
+        target.x = 0;
+        target.y = 0;
+      } else {
+        const drift = baseTranslate * intensityFactor;
+        target.y = normalized * drift * 0.9 + Math.sin(scrollY * 0.0024) * drift * 0.16;
+        target.x = Math.sin(scrollY * 0.0017) * drift * 0.22 + Math.cos(scrollY * 0.0011) * drift * 0.1;
+      }
+
+      target.scrollY = scrollY;
+      target.opacities = computeBlendedConfig();
+    };
+
+    const updateMediaTransforms = () => {
+      if (!mediaParallax || mediaTargets.length === 0) return;
+
       const viewportHeight = window.innerHeight || 1;
       const viewportCenter = viewportHeight / 2;
-      const elementCenter = rect.top + rect.height / 2;
-      const normalized = clamp((viewportCenter - elementCenter) / viewportHeight, -1, 1);
+      const mobileScale = window.innerWidth < 768 ? 0.62 : 1;
 
-      const activeConfig = getBlendedConfig(viewportHeight);
-      setOpacityConfig(activeConfig);
+      mediaTargets.forEach((element, index) => {
+        if (reduceMotion()) {
+          element.style.transform = '';
+          element.style.willChange = '';
+          return;
+        }
 
-      const scrollY = window.scrollY || window.pageYOffset || 0;
-      const variantRange = MAX_TRANSLATE_BY_VARIANT[variant] ?? MAX_TRANSLATE_BY_VARIANT.default;
-      const violentRange = variantRange * intensityValue * 2.2;
-      const waveX = Math.sin(scrollY * 0.014) * 28 * intensityValue;
-      const waveY = Math.cos(scrollY * 0.01) * 34 * intensityValue;
+        const depth = Number(element.dataset.parallaxMedia || '0.35');
+        const rect = element.getBoundingClientRect();
+        const center = rect.top + rect.height / 2;
+        const normalized = clamp((viewportCenter - center) / viewportHeight, -1, 1);
 
-      const shiftY = normalized * violentRange + waveY;
-      const shiftX = normalized * violentRange * 0.72 + waveX;
+        const y = normalized * 26 * depth * intensityFactor * mobileScale;
+        const x = Math.sin(current.scrollY * 0.0018 + index * 0.45) * 10 * depth * mobileScale;
+        const rotate = normalized * 1.8 * depth * mobileScale;
+        const scale = 1 + depth * 0.018;
 
-      setTransforms(shiftX, shiftY);
-      updateMediaParallax(viewportHeight, scrollY);
+        element.style.willChange = 'transform';
+        element.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0) rotate(${rotate.toFixed(2)}deg) scale(${scale.toFixed(3)})`;
+      });
     };
 
-    const requestTick = () => {
-      if (ticking) return;
-      ticking = true;
-      frameId = window.requestAnimationFrame(updateParallax);
-    };
+    const tick = () => {
+      const ease = reduceMotion() ? 1 : 0.085;
 
-    const handleMotionPreferenceChange = () => {
-      if (mediaQuery.matches) {
-        setTransforms(0, 0);
-        resetMediaTransforms();
-      } else {
-        requestTick();
+      current.x += (target.x - current.x) * ease;
+      current.y += (target.y - current.y) * ease;
+      current.scrollY += (target.scrollY - current.scrollY) * ease;
+
+      LAYER_KEYS.forEach((key) => {
+        current.opacities[key] += (target.opacities[key] - current.opacities[key]) * 0.11;
+      });
+
+      applyFrame();
+      updateMediaTransforms();
+
+      const motionDone = isNear(current.x, target.x, 0.04)
+        && isNear(current.y, target.y, 0.04)
+        && isNear(current.scrollY, target.scrollY, 0.5);
+
+      const opacityDone = LAYER_KEYS.every((key) => isNear(current.opacities[key], target.opacities[key], 0.0015));
+
+      if (motionDone && opacityDone) {
+        animating = false;
+        frameId = 0;
+        return;
       }
+
+      frameId = window.requestAnimationFrame(tick);
+    };
+
+    const startAnimation = () => {
+      if (animating) return;
+      animating = true;
+      frameId = window.requestAnimationFrame(tick);
+    };
+
+    const onScroll = () => {
+      computeTarget();
+      startAnimation();
+    };
+
+    const onResize = () => {
+      refreshTargets();
+      computeTarget();
+      startAnimation();
+    };
+
+    const onMotionChange = () => {
+      computeTarget();
+      startAnimation();
     };
 
     refreshTargets();
-    setOpacityConfig(variantConfig);
-    requestTick();
+    computeTarget();
+    applyFrame();
+    startAnimation();
 
-    const handleResize = () => {
-      refreshTargets();
-      requestTick();
-    };
-
-    window.addEventListener('scroll', requestTick, { passive: true });
-    window.addEventListener('resize', handleResize, { passive: true });
-    window.addEventListener('orientationchange', requestTick, { passive: true });
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onResize, { passive: true });
+    window.addEventListener('orientationchange', onResize, { passive: true });
 
     if (mediaQuery.addEventListener) {
-      mediaQuery.addEventListener('change', handleMotionPreferenceChange);
+      mediaQuery.addEventListener('change', onMotionChange);
     } else {
-      mediaQuery.addListener(handleMotionPreferenceChange);
+      mediaQuery.addListener(onMotionChange);
     }
 
     return () => {
-      window.removeEventListener('scroll', requestTick);
-      window.removeEventListener('orientationchange', requestTick);
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onResize);
+      window.removeEventListener('orientationchange', onResize);
 
       if (mediaQuery.addEventListener) {
-        mediaQuery.removeEventListener('change', handleMotionPreferenceChange);
+        mediaQuery.removeEventListener('change', onMotionChange);
       } else {
-        mediaQuery.removeListener(handleMotionPreferenceChange);
+        mediaQuery.removeListener(onMotionChange);
       }
-
-      resetMediaTransforms();
 
       if (frameId) {
         window.cancelAnimationFrame(frameId);
       }
+
+      mediaTargets.forEach((element) => {
+        element.style.transform = '';
+        element.style.willChange = '';
+      });
     };
   }, [intensity, mediaParallax, mutationSections, variant, variantConfig]);
 
@@ -376,21 +445,31 @@ const ParallaxBackground = ({
     '--pb-streaks-opacity': String(variantConfig.streaksOpacity),
     '--pb-wave-opacity': String(variantConfig.waveOpacity),
     '--pb-panels-opacity': String(variantConfig.panelsOpacity),
+    '--pb-starfieldSoft-opacity': String(variantConfig.starfieldSoftOpacity),
+    '--pb-orb-opacity': String(variantConfig.orbOpacity),
+    '--pb-circuit-opacity': String(variantConfig.circuitOpacity),
+    '--pb-wireframe-opacity': String(variantConfig.wireframeOpacity),
+    '--pb-glassSoft-opacity': String(variantConfig.glassSoftOpacity),
   } as CSSProperties;
 
   return (
     <div ref={containerRef} className={`${styles.wrapper} ${className}`} style={styleVars}>
       <div className={styles.layers} aria-hidden="true">
         <div className={`${styles.layer} ${styles.baseLayer}`} />
-        <div className={`${styles.layer} ${styles.starfieldLayer} ${styles.motionFar}`} />
-        <div className={`${styles.layer} ${styles.nebulaLayer} ${styles.motionSlow}`} />
+        <div className={`${styles.layer} ${styles.starfieldSoftLayer} ${styles.motionFar}`} />
+        <div className={`${styles.layer} ${styles.orbLayer} ${styles.motionFar}`} />
         <div className={`${styles.layer} ${styles.hudLayer} ${styles.motionSlow}`} />
-        <div className={`${styles.layer} ${styles.glassLayer} ${styles.motionMedium}`} />
-        <div className={`${styles.layer} ${styles.streaksLayer} ${styles.motionStrong}`} />
-        <div className={`${styles.layer} ${styles.waveLayer} ${styles.motionMedium}`} />
-        <div className={`${styles.layer} ${styles.timelineLayer} ${styles.motionStrong}`} />
-        <div className={`${styles.layer} ${styles.panelsLayer} ${styles.motionNear}`} />
-        <div className={`${styles.layer} ${styles.ctaLayer} ${styles.motionMedium}`} />
+        <div className={`${styles.layer} ${styles.glassLayer} ${styles.motionSlow}`} />
+        <div className={`${styles.layer} ${styles.circuitLayer} ${styles.motionMedium}`} />
+        <div className={`${styles.layer} ${styles.streaksLayer} ${styles.motionMedium}`} />
+        <div className={`${styles.layer} ${styles.waveLayer} ${styles.motionSlow}`} />
+        <div className={`${styles.layer} ${styles.wireframeLayer} ${styles.motionSlow}`} />
+        <div className={`${styles.layer} ${styles.timelineLayer} ${styles.motionSlow}`} />
+        <div className={`${styles.layer} ${styles.panelsLayer} ${styles.motionMedium}`} />
+        <div className={`${styles.layer} ${styles.glassSoftLayer} ${styles.motionNear}`} />
+        <div className={`${styles.layer} ${styles.starfieldLayer} ${styles.motionFar}`} />
+        <div className={`${styles.layer} ${styles.nebulaLayer} ${styles.motionFar}`} />
+        <div className={`${styles.layer} ${styles.ctaLayer} ${styles.motionNear}`} />
         <div className={styles.vignetteLayer} />
       </div>
       <div className={styles.content}>{children}</div>

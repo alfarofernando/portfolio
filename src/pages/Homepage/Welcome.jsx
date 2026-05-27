@@ -17,7 +17,7 @@ const Welcome = () => {
         </div>
 
         {/* Contenedor principal responsive */}
-        <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-12 lg:grid lg:grid-cols-[minmax(0,1.1fr),minmax(0,0.9fr)] xl:max-w-7xl">
+        <div data-parallax-media="0.12" className="mx-auto flex w-full max-w-6xl flex-col items-center gap-12 lg:grid lg:grid-cols-[minmax(0,1.1fr),minmax(0,0.9fr)] xl:max-w-7xl">
           {/* --- COLUMNA TEXTO --- */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -86,7 +86,7 @@ const Welcome = () => {
             className="relative w-full flex flex-col gap-6"
           >
             {/* Perfil */}
-            <div className="relative overflow-hidden rounded-3xl bg-white/80 p-6 shadow-2xl backdrop-blur dark:bg-slate-900/70">
+            <div data-parallax-media="0.22" className="relative overflow-hidden rounded-3xl bg-white/80 p-6 shadow-2xl backdrop-blur dark:bg-slate-900/70">
               <div className="absolute -left-10 top-10 h-32 w-32 rounded-full bg-brand-400/20 blur-3xl" />
               <div className="absolute -right-6 bottom-10 h-28 w-28 rounded-full bg-accent-300/20 blur-3xl" />
 
@@ -121,7 +121,7 @@ const Welcome = () => {
             </div>
 
             {/* Carrusel de tecnologias */}
-            <div className="rounded-3xl border border-brand-100/60 bg-white/85 p-4 shadow-lg backdrop-blur dark:border-brand-500/20 dark:bg-slate-900/70">
+            <div data-parallax-media="0.16" className="rounded-3xl border border-brand-100/60 bg-white/85 p-4 shadow-lg backdrop-blur dark:border-brand-500/20 dark:bg-slate-900/70">
               <TechCarousel />
             </div>
           </motion.div>

@@ -9,8 +9,8 @@ const AboutMe = () => {
 
   return (
     <section id="AboutMe" className="px-4 pb-24 pt-16 sm:px-6 sm:pt-20 lg:px-12">
-        <div className="mx-auto w-full max-w-5xl">
-          <div className="mx-auto max-w-2xl text-center">
+        <div data-parallax-media="0.1" className="mx-auto w-full max-w-5xl">
+          <div data-parallax-media="0.14" className="mx-auto max-w-2xl text-center">
             <span className="inline-flex items-center justify-center rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand-700 dark:bg-brand-500/10 dark:text-brand-200">
               {aboutCopy.badge}
             </span>
@@ -37,6 +37,7 @@ const AboutMe = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.45, ease: 'easeOut', delay: index * 0.05 }}
+                    data-parallax-media="0.18"
                     className={`relative flex flex-col gap-4 rounded-3xl border border-neutral-200 bg-white/90 p-6 shadow-lg backdrop-blur dark:border-slate-700 dark:bg-slate-900/80 md:w-[calc(50%-2rem)] ${isRight ? 'md:ml-auto md:pl-10' : 'md:pr-10'}`}
                   >
                     <span className="absolute left-4 top-6 h-3 w-3 rounded-full bg-brand-500 shadow-lg shadow-brand-500/40 md:left-[-30px]" />

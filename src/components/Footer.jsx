@@ -18,7 +18,7 @@ const Footer = () => {
   const legalCopy = footerCopy.legal.replace('{year}', year);
 
   return (
-    <footer className="relative mt-10 border-t border-brand-100/60 bg-white/90 text-neutral-600 shadow-lg backdrop-blur dark:border-slate-700 dark:bg-slate-900/90 dark:text-neutral-300">
+    <footer id="site-footer" data-parallax-media="0.14" className="relative mt-10 border-t border-brand-100/60 bg-white/90 text-neutral-600 shadow-lg backdrop-blur dark:border-slate-700 dark:bg-slate-900/90 dark:text-neutral-300">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-300/60 to-transparent" />
 
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 py-12 md:flex-row md:justify-between">
@@ -27,6 +27,7 @@ const Footer = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
+          data-parallax-media="0.18"
           className="max-w-md"
         >
           <div className="inline-flex items-center gap-2 rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700 dark:bg-brand-500/10 dark:text-brand-200">
@@ -48,6 +49,7 @@ const Footer = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.1 }}
+          data-parallax-media="0.16"
           className="flex-1"
         >
           <h3 className="text-sm font-semibold text-neutral-900 dark:text-white">{footerCopy.contactTitle}</h3>
