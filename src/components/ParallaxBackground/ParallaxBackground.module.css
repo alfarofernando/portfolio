@@ -1,6 +1,7 @@
 .wrapper {
   position: relative;
   overflow: hidden;
+  isolation: isolate;
   --pb-shift-x: 0;
   --pb-shift-y: 0;
   --pb-drift-x: 0;
@@ -8,11 +9,12 @@
   --pb-flow-dir: 1;
   --pb-opacity-scale: 1;
   --pb-motion-scale: 1;
+  --pb-pace: 2.4;
 }
 
 .layers {
   pointer-events: none;
-  position: absolute;
+  position: fixed;
   inset: 0;
   z-index: 0;
 }
@@ -127,7 +129,7 @@
   width: var(--fl-size);
   height: var(--fl-size);
   will-change: transform;
-  animation: farLightWander var(--fl-duration) linear infinite var(--fl-delay);
+  animation: farLightWander calc(var(--fl-duration) * var(--pb-pace)) linear infinite var(--fl-delay);
 }
 
 .farLight {
@@ -137,7 +139,7 @@
   border-radius: 999px;
   background: radial-gradient(circle at 35% 35%, rgba(219, 233, 255, 0.92), rgba(126, 161, 255, 0.62) 58%, rgba(110, 92, 255, 0.16));
   box-shadow: 0 0 var(--fl-glow) rgba(132, 171, 255, 0.5), 0 0 calc(var(--fl-glow) * 1.8) rgba(121, 98, 255, 0.22);
-  animation: farLightFlicker calc(var(--fl-duration) * 0.62) steps(9, end) infinite var(--fl-delay);
+  animation: farLightFlicker calc(var(--fl-duration) * 0.98 * var(--pb-pace)) steps(11, end) infinite var(--fl-delay);
 }
 
 .rainScene {
@@ -155,7 +157,7 @@
   width: var(--rd-thickness);
   height: var(--rd-length);
   will-change: transform;
-  animation: rainTraverse var(--rd-duration) linear infinite var(--rd-delay);
+  animation: rainTraverse calc(var(--rd-duration) * var(--pb-pace)) linear infinite var(--rd-delay);
 }
 
 .rainDrop {
@@ -183,7 +185,7 @@
   width: var(--er-width);
   height: 3px;
   will-change: transform;
-  animation: electricTraverse var(--er-duration) linear infinite var(--er-delay);
+  animation: electricTraverse calc(var(--er-duration) * var(--pb-pace)) linear infinite var(--er-delay);
 }
 
 .electricRay {
@@ -193,7 +195,7 @@
   border-radius: 999px;
   background: linear-gradient(90deg, rgba(129, 175, 255, 0), rgba(190, 214, 255, 0.86), rgba(148, 112, 255, 0.8), rgba(129, 175, 255, 0));
   box-shadow: 0 0 10px rgba(145, 180, 255, 0.5), 0 0 24px rgba(132, 111, 255, 0.35);
-  animation: electricFlicker calc(var(--er-duration) * 0.55) steps(10, end) infinite var(--er-delay);
+  animation: electricFlicker calc(var(--er-duration) * 0.86 * var(--pb-pace)) steps(12, end) infinite var(--er-delay);
 }
 
 .objectScene {
@@ -211,14 +213,14 @@
   width: var(--fo-width);
   height: var(--fo-height);
   will-change: transform;
-  animation: objectTraverse var(--fo-duration) linear infinite var(--fo-delay);
+  animation: objectTraverse calc(var(--fo-duration) * var(--pb-pace)) linear infinite var(--fo-delay);
 }
 
 .object {
   display: block;
   width: 100%;
   height: 100%;
-  animation: objectErratic calc(var(--fo-duration) * 0.7) ease-in-out infinite var(--fo-delay);
+  animation: objectErratic calc(var(--fo-duration) * 1.04 * var(--pb-pace)) ease-in-out infinite var(--fo-delay);
 }
 
 .panel {
@@ -420,7 +422,8 @@
 @media (max-width: 768px) {
   .wrapper {
     --pb-opacity-scale: 0.74;
-    --pb-motion-scale: 0.56;
+    --pb-motion-scale: 0.46;
+    --pb-pace: 2.75;
   }
 
   .layer {

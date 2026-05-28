@@ -159,11 +159,11 @@ const INTENSITY_MULTIPLIER: Record<ParallaxIntensity, number> = {
 };
 
 const BASE_TRANSLATE_BY_VARIANT: Record<ParallaxVariant, number> = {
-  home: 26,
-  projects: 22,
-  about: 24,
-  cta: 16,
-  default: 22,
+  home: 14,
+  projects: 12,
+  about: 13,
+  cta: 9,
+  default: 12,
 };
 
 const FLOATING_OBJECTS: FloatingObject[] = [
@@ -371,11 +371,11 @@ const ParallaxBackground = ({
       const deltaY = scrollY - lastScrollY;
       lastScrollY = scrollY;
 
-      if (Math.abs(deltaY) > 0.2) {
+      if (Math.abs(deltaY) > 2.4) {
         lastScrollAt = nowMs;
       }
 
-      const reversing = nowMs - lastScrollAt < 280;
+      const reversing = nowMs - lastScrollAt < 160;
       target.flowDir = reversing ? -1 : 1;
 
       const doc = document.documentElement;
@@ -392,22 +392,22 @@ const ParallaxBackground = ({
         target.driftY = 0;
         target.flowDir = 1;
       } else {
-        target.x = flow * (drift * 0.48 + Math.sin(time * 0.9) * drift * 0.22) + normalized * drift * 0.14;
-        target.y = flow * (drift * 0.3 + Math.cos(time * 0.74 + 0.4) * drift * 0.18) + normalized * drift * 0.36;
-        target.driftX = flow * (16 * intensityFactor + Math.sin(time * 1.42) * 8 * intensityFactor);
-        target.driftY = flow * (11 * intensityFactor + Math.cos(time * 1.24) * 7 * intensityFactor);
+        target.x = flow * (drift * 0.22 + Math.sin(time * 0.34) * drift * 0.12) + normalized * drift * 0.08;
+        target.y = flow * (drift * 0.12 + Math.cos(time * 0.28 + 0.4) * drift * 0.1) + normalized * drift * 0.18;
+        target.driftX = flow * (6.8 * intensityFactor + Math.sin(time * 0.44) * 3.2 * intensityFactor);
+        target.driftY = flow * (4.6 * intensityFactor + Math.cos(time * 0.38) * 2.7 * intensityFactor);
       }
 
       target.scrollY = scrollY;
       target.layers = computeBlendedConfig();
 
       if (!reduceMotion()) {
-        target.layers.stars = clamp(target.layers.stars + Math.sin(time * 0.8) * 0.03, 0, 0.95);
-        target.layers.glow = clamp(target.layers.glow + Math.sin(time * 0.5 + 1.2) * 0.04, 0, 0.95);
-        target.layers.objects = clamp(target.layers.objects + Math.cos(time * 0.62) * 0.03, 0, 0.95);
-        target.layers.electric = clamp(target.layers.electric + Math.cos(time * 1.4) * 0.05, 0, 0.95);
-        target.layers.rain = clamp(target.layers.rain + Math.sin(time * 1.05) * 0.03, 0, 0.95);
-        target.layers.farLights = clamp(target.layers.farLights + Math.cos(time * 0.7 + 0.9) * 0.03, 0, 0.95);
+        target.layers.stars = clamp(target.layers.stars + Math.sin(time * 0.38) * 0.018, 0, 0.95);
+        target.layers.glow = clamp(target.layers.glow + Math.sin(time * 0.28 + 1.2) * 0.02, 0, 0.95);
+        target.layers.objects = clamp(target.layers.objects + Math.cos(time * 0.32) * 0.016, 0, 0.95);
+        target.layers.electric = clamp(target.layers.electric + Math.cos(time * 0.7) * 0.02, 0, 0.95);
+        target.layers.rain = clamp(target.layers.rain + Math.sin(time * 0.58) * 0.016, 0, 0.95);
+        target.layers.farLights = clamp(target.layers.farLights + Math.cos(time * 0.36 + 0.9) * 0.018, 0, 0.95);
       }
     };
 
@@ -446,17 +446,17 @@ const ParallaxBackground = ({
     const tick = (nowMs: number) => {
       computeTarget(nowMs);
 
-      const ease = reduceMotion() ? 1 : 0.092;
+      const ease = reduceMotion() ? 1 : 0.042;
 
       current.x += (target.x - current.x) * ease;
       current.y += (target.y - current.y) * ease;
       current.driftX += (target.driftX - current.driftX) * ease;
       current.driftY += (target.driftY - current.driftY) * ease;
-      current.flowDir += (target.flowDir - current.flowDir) * 0.22;
+      current.flowDir += (target.flowDir - current.flowDir) * 0.06;
       current.scrollY += (target.scrollY - current.scrollY) * ease;
 
       LAYER_KEYS.forEach((key) => {
-        current.layers[key] += (target.layers[key] - current.layers[key]) * 0.09;
+        current.layers[key] += (target.layers[key] - current.layers[key]) * 0.05;
       });
 
       applyFrame();

@@ -129,15 +129,8 @@ const App = () => {
       <ParallaxBackground
         className="relative flex min-h-screen flex-col"
         variant="default"
-        intensity="medium"
+        intensity="low"
         mediaParallax
-        mutationSections={[
-          { id: 'home', variant: 'home' },
-          { id: 'projects', variant: 'projects' },
-          { id: 'about', variant: 'about' },
-          { id: 'global-cta', variant: 'cta' },
-          { id: 'site-footer', variant: 'default' },
-        ]}
       >
         <Suspense fallback={<div className="flex h-20 items-center justify-center text-sm text-neutral-500 dark:text-neutral-300">{loadingCopy}</div>}>
           <NavBar darkMode={darkMode} onToggleTheme={toggleTheme} />
