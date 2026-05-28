@@ -164,10 +164,14 @@
   display: block;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, rgba(184, 211, 255, 0), rgba(166, 198, 255, 0.72), rgba(121, 156, 255, 0.16));
+  border-radius: 60% 60% 64% 64% / 72% 72% 38% 38%;
+  background:
+    radial-gradient(circle at 36% 26%, rgba(229, 242, 255, 0.92), rgba(168, 204, 255, 0.74) 58%, rgba(122, 161, 255, 0.38));
+  box-shadow: 0 0 8px rgba(152, 194, 255, 0.32);
   opacity: var(--rd-opacity);
-  transform: rotate(var(--rd-angle));
+  transform-origin: center 70%;
   filter: saturate(1.1);
+  animation: rainDropPulse calc(var(--rd-duration) * 0.9 * var(--pb-pace)) ease-in-out infinite var(--rd-delay);
 }
 
 .electricScene {
@@ -343,11 +347,10 @@
 @keyframes rainTraverse {
   0% {
     transform: translate3d(
-        calc(var(--rd-origin-x) * 1vw + var(--pb-flow-dir) * -24vw + var(--pb-shift-x) * var(--rd-depth) * 0.65px),
-        -136vh,
+        calc(var(--rd-origin-x) * 1vw),
+        -12vh,
         0
-      )
-      rotate(var(--rd-angle));
+      );
     opacity: 0;
   }
   16% {
@@ -355,20 +358,33 @@
   }
   42% {
     transform: translate3d(
-        calc(var(--rd-origin-x) * 1vw + var(--rd-sway-x) + var(--pb-flow-dir) * -8vw + var(--pb-drift-x) * var(--rd-depth) * 0.66px),
-        -22vh,
+        calc(var(--rd-origin-x) * 1vw + var(--rd-sway-x) * 0.7),
+        26vh,
         0
-      )
-      rotate(calc(var(--rd-angle) + 6deg));
+      );
   }
   100% {
     transform: translate3d(
-        calc(var(--rd-origin-x) * 1vw + var(--rd-travel-x) + var(--pb-flow-dir) * 38vw + var(--pb-drift-x) * var(--rd-depth) * 0.7px),
-        136vh,
+        calc(var(--rd-origin-x) * 1vw + var(--rd-travel-x)),
+        112vh,
         0
-      )
-      rotate(calc(var(--rd-angle) - 5deg));
+      );
     opacity: 0;
+  }
+}
+
+@keyframes rainDropPulse {
+  0% {
+    transform: scale(0.92) rotate(0deg);
+  }
+  35% {
+    transform: scale(1) rotate(3deg);
+  }
+  68% {
+    transform: scale(0.96) rotate(-2deg);
+  }
+  100% {
+    transform: scale(0.92) rotate(0deg);
   }
 }
 

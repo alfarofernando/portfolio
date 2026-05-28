@@ -60,7 +60,6 @@ type RainDrop = {
   originX: string;
   length: string;
   thickness: string;
-  angle: string;
   opacity: number;
   depth: number;
   duration: string;
@@ -235,15 +234,14 @@ const createElectricRays = (count: number): ElectricRay[] => (
 const createRainDrops = (count: number): RainDrop[] => (
   Array.from({ length: count }, () => ({
     originX: randomBetween(0, 100).toFixed(2),
-    length: `${Math.round(randomBetween(20, 84))}px`,
-    thickness: `${randomBetween(1, 2.3).toFixed(2)}px`,
-    angle: `${randomBetween(54, 84).toFixed(2)}deg`,
-    opacity: Number(randomBetween(0.32, 0.9).toFixed(2)),
+    length: `${Math.round(randomBetween(8, 18))}px`,
+    thickness: `${randomBetween(4, 11).toFixed(2)}px`,
+    opacity: Number(randomBetween(0.4, 0.9).toFixed(2)),
     depth: Number(randomBetween(0.16, 0.56).toFixed(3)),
-    duration: `${randomBetween(2.2, 4.8).toFixed(2)}s`,
+    duration: `${randomBetween(1.8, 3.8).toFixed(2)}s`,
     delay: `${(-randomBetween(0, 14)).toFixed(2)}s`,
-    travelX: randomTravel(120, 40, 'vw'),
-    swayX: `${randomBetween(6, 30).toFixed(2)}vw`,
+    travelX: randomTravel(20, 4, 'vw'),
+    swayX: `${randomBetween(2, 8).toFixed(2)}vw`,
   }))
 );
 
@@ -341,7 +339,6 @@ const ParallaxBackground = ({
                   '--rd-origin-x': drop.originX,
                   '--rd-length': drop.length,
                   '--rd-thickness': drop.thickness,
-                  '--rd-angle': drop.angle,
                   '--rd-opacity': drop.opacity,
                   '--rd-depth': drop.depth,
                   '--rd-duration': drop.duration,
