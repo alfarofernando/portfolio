@@ -300,8 +300,6 @@ const ParallaxBackground = ({
       <div className={styles.layers} aria-hidden="true">
         <div className={`${styles.layer} ${styles.baseLayer}`} />
         <div className={`${styles.layer} ${styles.starLayer} ${styles.motionFar}`} />
-        <div className={`${styles.layer} ${styles.gridLayer} ${styles.motionSlow}`} />
-        <div className={`${styles.layer} ${styles.lineLayer} ${styles.motionMedium}`} />
         <div className={`${styles.layer} ${styles.waveLayer} ${styles.motionSlow}`} />
         <div className={`${styles.layer} ${styles.glowLayer} ${styles.motionNear}`} />
 
