@@ -9,7 +9,7 @@
   --pb-flow-dir: 1;
   --pb-opacity-scale: 1;
   --pb-motion-scale: 1;
-  --pb-pace: 2.4;
+  --pb-pace: 9.6;
 }
 
 .layers {
@@ -221,6 +221,8 @@
   width: 100%;
   height: 100%;
   animation: objectErratic calc(var(--fo-duration) * 1.04 * var(--pb-pace)) ease-in-out infinite var(--fo-delay);
+  opacity: clamp(0.24, calc(0.24 + var(--fo-weight) * 0.48), 0.96);
+  transform-origin: center center;
 }
 
 .panel {
@@ -249,15 +251,22 @@
 @keyframes objectTraverse {
   0% {
     transform: translate3d(
-        calc(var(--fo-origin-x) * 1vw + var(--pb-flow-dir) * -28vw + var(--pb-shift-x) * var(--fo-depth) * 0.8px),
-        calc(var(--fo-origin-y) * 1vh + var(--pb-flow-dir) * 18vh + var(--pb-shift-y) * var(--fo-depth) * 0.7px),
+        calc(var(--fo-origin-x) * 1vw),
+        calc(var(--fo-origin-y) * 1vh),
+        0
+      );
+  }
+  36% {
+    transform: translate3d(
+        calc(var(--fo-origin-x) * 1vw + var(--fo-travel-x) * 0.42),
+        calc(var(--fo-origin-y) * 1vh + var(--fo-travel-y) * -0.32),
         0
       );
   }
   100% {
     transform: translate3d(
-        calc(var(--fo-origin-x) * 1vw + var(--fo-travel-x) + var(--pb-flow-dir) * 26vw + var(--pb-drift-x) * var(--fo-depth) * 0.7px),
-        calc(var(--fo-origin-y) * 1vh + var(--fo-travel-y) + var(--pb-flow-dir) * -20vh + var(--pb-drift-y) * var(--fo-depth) * 0.72px),
+        calc(var(--fo-origin-x) * 1vw + var(--fo-travel-x)),
+        calc(var(--fo-origin-y) * 1vh + var(--fo-travel-y)),
         0
       );
   }

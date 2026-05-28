@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from 'react';
+import { useMemo } from 'react';
 import type { CSSProperties, ReactNode } from 'react';
 import styles from './ParallaxBackground.module.css';
 
@@ -40,6 +40,7 @@ type FloatingObject = {
   swingY: string;
   rotateFrom: string;
   rotateTo: string;
+  weight: number;
 };
 
 type ElectricRay = {
@@ -158,75 +159,107 @@ const INTENSITY_MULTIPLIER: Record<ParallaxIntensity, number> = {
   high: 1.12,
 };
 
-const BASE_TRANSLATE_BY_VARIANT: Record<ParallaxVariant, number> = {
-  home: 14,
-  projects: 12,
-  about: 13,
-  cta: 9,
-  default: 12,
+const randomBetween = (min: number, max: number) => min + Math.random() * (max - min);
+
+const randomTravel = (maxDistance: number, minAbs: number, unit: 'vw' | 'vh') => {
+  let value = 0;
+  while (Math.abs(value) < minAbs) {
+    value = randomBetween(-maxDistance, maxDistance);
+  }
+  return `${value.toFixed(2)}${unit}`;
 };
 
-const FLOATING_OBJECTS: FloatingObject[] = [
-  { originX: '8', originY: '6', width: '220px', height: '150px', depth: 0.18, kind: 'panel', duration: '25s', delay: '-3s', travelX: '132vw', travelY: '84vh', swingX: '18vw', swingY: '14vh', rotateFrom: '-8deg', rotateTo: '6deg' },
-  { originX: '84', originY: '10', width: '180px', height: '124px', depth: 0.22, kind: 'panel', duration: '23s', delay: '-9s', travelX: '-126vw', travelY: '76vh', swingX: '20vw', swingY: '16vh', rotateFrom: '7deg', rotateTo: '-7deg' },
-  { originX: '14', originY: '24', width: '128px', height: '48px', depth: 0.26, kind: 'pill', duration: '19s', delay: '-2s', travelX: '120vw', travelY: '52vh', swingX: '15vw', swingY: '12vh', rotateFrom: '-10deg', rotateTo: '9deg' },
-  { originX: '78', originY: '30', width: '144px', height: '52px', depth: 0.3, kind: 'pill', duration: '21s', delay: '-6s', travelX: '-118vw', travelY: '46vh', swingX: '16vw', swingY: '10vh', rotateFrom: '11deg', rotateTo: '-10deg' },
-  { originX: '22', originY: '56', width: '16px', height: '16px', depth: 0.38, kind: 'dot', duration: '15s', delay: '-4s', travelX: '112vw', travelY: '-68vh', swingX: '14vw', swingY: '10vh', rotateFrom: '0deg', rotateTo: '0deg' },
-  { originX: '72', originY: '62', width: '12px', height: '12px', depth: 0.42, kind: 'dot', duration: '14s', delay: '-1s', travelX: '-108vw', travelY: '-64vh', swingX: '13vw', swingY: '9vh', rotateFrom: '0deg', rotateTo: '0deg' },
-  { originX: '10', originY: '70', width: '188px', height: '126px', depth: 0.2, kind: 'panel', duration: '24s', delay: '-8s', travelX: '128vw', travelY: '-42vh', swingX: '20vw', swingY: '14vh', rotateFrom: '6deg', rotateTo: '-6deg' },
-  { originX: '82', originY: '76', width: '232px', height: '160px', depth: 0.24, kind: 'panel', duration: '26s', delay: '-5s', travelX: '-130vw', travelY: '-48vh', swingX: '21vw', swingY: '15vh', rotateFrom: '-7deg', rotateTo: '8deg' },
-  { originX: '42', originY: '82', width: '240px', height: '56px', depth: 0.32, kind: 'pill', duration: '22s', delay: '-7s', travelX: '124vw', travelY: '-70vh', swingX: '18vw', swingY: '12vh', rotateFrom: '-9deg', rotateTo: '9deg' },
-  { originX: '56', originY: '20', width: '10px', height: '10px', depth: 0.45, kind: 'node', duration: '13s', delay: '-3s', travelX: '-116vw', travelY: '74vh', swingX: '14vw', swingY: '10vh', rotateFrom: '0deg', rotateTo: '0deg' },
-  { originX: '35', originY: '18', width: '8px', height: '8px', depth: 0.5, kind: 'node', duration: '12s', delay: '-2s', travelX: '118vw', travelY: '68vh', swingX: '12vw', swingY: '9vh', rotateFrom: '0deg', rotateTo: '0deg' },
-  { originX: '64', originY: '42', width: '140px', height: '46px', depth: 0.26, kind: 'pill', duration: '20s', delay: '-12s', travelX: '-122vw', travelY: '58vh', swingX: '17vw', swingY: '11vh', rotateFrom: '8deg', rotateTo: '-8deg' },
-  { originX: '22', originY: '40', width: '150px', height: '44px', depth: 0.28, kind: 'pill', duration: '18s', delay: '-11s', travelX: '114vw', travelY: '62vh', swingX: '15vw', swingY: '11vh', rotateFrom: '-8deg', rotateTo: '8deg' },
-  { originX: '92', originY: '54', width: '14px', height: '14px', depth: 0.44, kind: 'dot', duration: '14s', delay: '-5s', travelX: '-120vw', travelY: '-72vh', swingX: '13vw', swingY: '10vh', rotateFrom: '0deg', rotateTo: '0deg' },
-  { originX: '6', originY: '48', width: '11px', height: '11px', depth: 0.41, kind: 'dot', duration: '13s', delay: '-7s', travelX: '118vw', travelY: '-66vh', swingX: '12vw', swingY: '9vh', rotateFrom: '0deg', rotateTo: '0deg' },
-];
+const pickKind = (index: number): FloatingObjectKind => {
+  const kinds: FloatingObjectKind[] = ['panel', 'pill', 'dot', 'node'];
+  return kinds[index % kinds.length];
+};
 
-const ELECTRIC_RAYS: ElectricRay[] = Array.from({ length: 22 }, (_, index) => ({
-  originX: `${(index * 4.7) % 100}`,
-  originY: `${(index * 9.4) % 100}`,
-  width: `${110 + (index % 6) * 36}px`,
-  angleFrom: `${-38 + (index % 7) * 11}deg`,
-  angleTo: `${-12 + (index % 6) * 12}deg`,
-  depth: 0.2 + (index % 7) * 0.045,
-  duration: `${7.4 + (index % 4) * 1.4}s`,
-  delay: `${-index * 0.82}s`,
-  travelX: `${76 + (index % 5) * 26}vw`,
-  travelY: `${28 + (index % 4) * 18}vh`,
-}));
+const createFloatingObjects = (count: number): FloatingObject[] => (
+  Array.from({ length: count }, (_, index) => {
+    const kind = pickKind(index);
+    const weight = randomBetween(0.62, 1.42);
 
-const RAIN_DROPS: RainDrop[] = Array.from({ length: 86 }, (_, index) => ({
-  originX: `${(index * 1.73) % 100}`,
-  length: `${24 + (index % 7) * 12}px`,
-  thickness: `${1 + (index % 3) * 0.65}px`,
-  angle: `${66 + (index % 6) * 8}deg`,
-  opacity: 0.4 + (index % 5) * 0.1,
-  depth: 0.18 + (index % 9) * 0.05,
-  duration: `${2.6 + (index % 6) * 0.42}s`,
-  delay: `${-index * 0.28}s`,
-  travelX: `${48 + (index % 7) * 24}vw`,
-  swayX: `${8 + (index % 5) * 7}vw`,
-}));
+    const widthBase = kind === 'panel'
+      ? randomBetween(120, 260)
+      : kind === 'pill'
+        ? randomBetween(110, 220)
+        : kind === 'dot'
+          ? randomBetween(10, 18)
+          : randomBetween(8, 16);
 
-const DISTANT_LIGHTS: DistantLight[] = Array.from({ length: 112 }, (_, index) => ({
-  originX: `${(index * 7.7) % 100}`,
-  originY: `${(index * 13.4) % 100}`,
-  size: `${2 + (index % 5) * 1.6}px`,
-  glow: `${8 + (index % 6) * 5}px`,
-  travelX: `${26 + (index % 7) * 14}vw`,
-  travelY: `${22 + (index % 5) * 16}vh`,
-  depth: 0.1 + (index % 10) * 0.035,
-  duration: `${4.5 + (index % 8) * 1.1}s`,
-  delay: `${-index * 0.37}s`,
-}));
+    const heightBase = kind === 'panel'
+      ? randomBetween(72, 168)
+      : kind === 'pill'
+        ? randomBetween(36, 70)
+        : widthBase;
 
-const LAYER_KEYS: Array<keyof VariantConfig> = ['base', 'stars', 'grid', 'lines', 'wave', 'glow', 'objects', 'rain', 'electric', 'farLights'];
+    const sizeWeight = kind === 'panel' || kind === 'pill' ? weight : 1;
+    const width = `${Math.round(widthBase * sizeWeight)}px`;
+    const height = `${Math.round(heightBase * sizeWeight)}px`;
 
-const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
+    return {
+      originX: randomBetween(0, 100).toFixed(2),
+      originY: randomBetween(0, 100).toFixed(2),
+      width,
+      height,
+      depth: Number(randomBetween(0.16, 0.52).toFixed(3)),
+      kind,
+      duration: `${(randomBetween(9.6, 15.2) * (0.95 + weight * 0.32)).toFixed(2)}s`,
+      delay: `${(-randomBetween(0, 22)).toFixed(2)}s`,
+      travelX: randomTravel(180, 70, 'vw'),
+      travelY: randomTravel(180, 70, 'vh'),
+      swingX: `${randomBetween(5, 16).toFixed(2)}vw`,
+      swingY: `${randomBetween(5, 16).toFixed(2)}vh`,
+      rotateFrom: `${randomBetween(-12, 12).toFixed(2)}deg`,
+      rotateTo: `${randomBetween(-12, 12).toFixed(2)}deg`,
+      weight: Number(weight.toFixed(3)),
+    };
+  })
+);
 
-const cloneConfig = (config: VariantConfig): VariantConfig => ({ ...config });
+const createElectricRays = (count: number): ElectricRay[] => (
+  Array.from({ length: count }, () => ({
+    originX: randomBetween(0, 100).toFixed(2),
+    originY: randomBetween(0, 100).toFixed(2),
+    width: `${Math.round(randomBetween(120, 300))}px`,
+    angleFrom: `${randomBetween(-46, 14).toFixed(2)}deg`,
+    angleTo: `${randomBetween(-22, 40).toFixed(2)}deg`,
+    depth: Number(randomBetween(0.2, 0.48).toFixed(3)),
+    duration: `${randomBetween(6.8, 10.4).toFixed(2)}s`,
+    delay: `${(-randomBetween(0, 16)).toFixed(2)}s`,
+    travelX: randomTravel(140, 45, 'vw'),
+    travelY: randomTravel(110, 35, 'vh'),
+  }))
+);
+
+const createRainDrops = (count: number): RainDrop[] => (
+  Array.from({ length: count }, () => ({
+    originX: randomBetween(0, 100).toFixed(2),
+    length: `${Math.round(randomBetween(20, 84))}px`,
+    thickness: `${randomBetween(1, 2.3).toFixed(2)}px`,
+    angle: `${randomBetween(54, 84).toFixed(2)}deg`,
+    opacity: Number(randomBetween(0.32, 0.9).toFixed(2)),
+    depth: Number(randomBetween(0.16, 0.56).toFixed(3)),
+    duration: `${randomBetween(2.2, 4.8).toFixed(2)}s`,
+    delay: `${(-randomBetween(0, 14)).toFixed(2)}s`,
+    travelX: randomTravel(120, 40, 'vw'),
+    swayX: `${randomBetween(6, 30).toFixed(2)}vw`,
+  }))
+);
+
+const createDistantLights = (count: number): DistantLight[] => (
+  Array.from({ length: count }, () => ({
+    originX: randomBetween(0, 100).toFixed(2),
+    originY: randomBetween(0, 100).toFixed(2),
+    size: `${randomBetween(2, 9).toFixed(2)}px`,
+    glow: `${randomBetween(8, 38).toFixed(2)}px`,
+    travelX: randomTravel(90, 24, 'vw'),
+    travelY: randomTravel(90, 24, 'vh'),
+    depth: Number(randomBetween(0.1, 0.44).toFixed(3)),
+    duration: `${randomBetween(4.2, 8.8).toFixed(2)}s`,
+    delay: `${(-randomBetween(0, 18)).toFixed(2)}s`,
+  }))
+);
 
 const ParallaxBackground = ({
   variant = 'default',
@@ -234,298 +267,24 @@ const ParallaxBackground = ({
   className = '',
   children,
   mutationSections,
-  mediaParallax = false,
+  mediaParallax,
 }: ParallaxBackgroundProps) => {
-  const containerRef = useRef<HTMLDivElement | null>(null);
+  void mutationSections;
+  void mediaParallax;
 
   const variantConfig = useMemo(
     () => PARALLAX_VARIANTS[variant] ?? PARALLAX_VARIANTS.default,
     [variant],
   );
+  const intensityFactor = INTENSITY_MULTIPLIER[intensity] ?? INTENSITY_MULTIPLIER.medium;
 
-  useEffect(() => {
-    if (typeof window === 'undefined') return undefined;
-
-    const container = containerRef.current;
-    if (!container) return undefined;
-
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const reduceMotion = () => mediaQuery.matches;
-    const intensityFactor = INTENSITY_MULTIPLIER[intensity] ?? INTENSITY_MULTIPLIER.medium;
-    const baseTranslate = BASE_TRANSLATE_BY_VARIANT[variant] ?? BASE_TRANSLATE_BY_VARIANT.default;
-    const mutationEnabled = Array.isArray(mutationSections) && mutationSections.length > 0;
-
-    let sectionTargets: Array<MutationSection & { element: HTMLElement }> = [];
-    let mediaTargets: HTMLElement[] = [];
-    let lastScrollY = window.scrollY || 0;
-    let lastScrollAt = performance.now();
-
-    const current = {
-      x: 0,
-      y: 0,
-      driftX: 0,
-      driftY: 0,
-      flowDir: 1,
-      scrollY: window.scrollY || 0,
-      layers: cloneConfig(variantConfig),
-    };
-
-    const target = {
-      x: 0,
-      y: 0,
-      driftX: 0,
-      driftY: 0,
-      flowDir: 1,
-      scrollY: window.scrollY || 0,
-      layers: cloneConfig(variantConfig),
-    };
-
-    let frameId = 0;
-
-    const applyFrame = () => {
-      container.style.setProperty('--pb-shift-x', current.x.toFixed(3));
-      container.style.setProperty('--pb-shift-y', current.y.toFixed(3));
-      container.style.setProperty('--pb-drift-x', current.driftX.toFixed(3));
-      container.style.setProperty('--pb-drift-y', current.driftY.toFixed(3));
-      container.style.setProperty('--pb-flow-dir', current.flowDir.toFixed(3));
-      LAYER_KEYS.forEach((key) => {
-        container.style.setProperty(`--pb-${key}-opacity`, String(current.layers[key]));
-      });
-    };
-
-    const refreshTargets = () => {
-      if (mutationEnabled) {
-        sectionTargets = mutationSections
-          .map((item) => {
-            const element = document.getElementById(item.id);
-            return element ? { ...item, element } : null;
-          })
-          .filter((item): item is MutationSection & { element: HTMLElement } => item !== null);
-      }
-
-      if (mediaParallax) {
-        mediaTargets = Array.from(container.querySelectorAll<HTMLElement>('[data-parallax-media]'));
-      }
-    };
-
-    const computeBlendedConfig = (): VariantConfig => {
-      if (!mutationEnabled || sectionTargets.length === 0) {
-        return cloneConfig(variantConfig);
-      }
-
-      const viewportHeight = window.innerHeight || 1;
-      const viewportCenter = viewportHeight / 2;
-
-      const blend: VariantConfig = {
-        base: 0,
-        stars: 0,
-        grid: 0,
-        lines: 0,
-        wave: 0,
-        glow: 0,
-        objects: 0,
-        rain: 0,
-        electric: 0,
-        farLights: 0,
-      };
-
-      let totalWeight = 0;
-
-      sectionTargets.forEach((section) => {
-        const rect = section.element.getBoundingClientRect();
-        const center = rect.top + rect.height / 2;
-        const distance = Math.abs(center - viewportCenter);
-        const influence = clamp(1 - distance / (viewportHeight * 1.08), 0, 1);
-        const weight = influence ** 2;
-
-        if (weight <= 0) return;
-
-        const config = PARALLAX_VARIANTS[section.variant] ?? PARALLAX_VARIANTS.default;
-
-        LAYER_KEYS.forEach((key) => {
-          blend[key] += config[key] * weight;
-        });
-
-        totalWeight += weight;
-      });
-
-      if (totalWeight <= 0.0001) {
-        return cloneConfig(variantConfig);
-      }
-
-      LAYER_KEYS.forEach((key) => {
-        blend[key] /= totalWeight;
-      });
-
-      return blend;
-    };
-
-    const computeTarget = (nowMs: number) => {
-      const time = nowMs * 0.001;
-
-      if (mutationEnabled && sectionTargets.length === 0) {
-        refreshTargets();
-      }
-
-      const scrollY = window.scrollY || window.pageYOffset || 0;
-      const deltaY = scrollY - lastScrollY;
-      lastScrollY = scrollY;
-
-      if (Math.abs(deltaY) > 2.4) {
-        lastScrollAt = nowMs;
-      }
-
-      const reversing = nowMs - lastScrollAt < 160;
-      target.flowDir = reversing ? -1 : 1;
-
-      const doc = document.documentElement;
-      const maxScroll = Math.max((doc.scrollHeight || 0) - (window.innerHeight || 1), 1);
-      const progress = clamp(scrollY / maxScroll, 0, 1);
-      const normalized = progress * 2 - 1;
-      const drift = baseTranslate * intensityFactor;
-      const flow = target.flowDir;
-
-      if (reduceMotion()) {
-        target.x = 0;
-        target.y = 0;
-        target.driftX = 0;
-        target.driftY = 0;
-        target.flowDir = 1;
-      } else {
-        target.x = flow * (drift * 0.22 + Math.sin(time * 0.34) * drift * 0.12) + normalized * drift * 0.08;
-        target.y = flow * (drift * 0.12 + Math.cos(time * 0.28 + 0.4) * drift * 0.1) + normalized * drift * 0.18;
-        target.driftX = flow * (6.8 * intensityFactor + Math.sin(time * 0.44) * 3.2 * intensityFactor);
-        target.driftY = flow * (4.6 * intensityFactor + Math.cos(time * 0.38) * 2.7 * intensityFactor);
-      }
-
-      target.scrollY = scrollY;
-      target.layers = computeBlendedConfig();
-
-      if (!reduceMotion()) {
-        target.layers.stars = clamp(target.layers.stars + Math.sin(time * 0.38) * 0.018, 0, 0.95);
-        target.layers.glow = clamp(target.layers.glow + Math.sin(time * 0.28 + 1.2) * 0.02, 0, 0.95);
-        target.layers.objects = clamp(target.layers.objects + Math.cos(time * 0.32) * 0.016, 0, 0.95);
-        target.layers.electric = clamp(target.layers.electric + Math.cos(time * 0.7) * 0.02, 0, 0.95);
-        target.layers.rain = clamp(target.layers.rain + Math.sin(time * 0.58) * 0.016, 0, 0.95);
-        target.layers.farLights = clamp(target.layers.farLights + Math.cos(time * 0.36 + 0.9) * 0.018, 0, 0.95);
-      }
-    };
-
-    const updateMediaTransforms = (nowMs: number) => {
-      if (!mediaParallax || mediaTargets.length === 0) return;
-
-      const time = nowMs * 0.001;
-      const viewportHeight = window.innerHeight || 1;
-      const viewportCenter = viewportHeight / 2;
-      const mobileScale = window.innerWidth < 768 ? 0.62 : 1;
-
-      mediaTargets.forEach((element, index) => {
-        if (reduceMotion()) {
-          element.style.transform = '';
-          element.style.willChange = '';
-          return;
-        }
-
-        const depth = Number(element.dataset.parallaxMedia || '0.3');
-        const rect = element.getBoundingClientRect();
-        const center = rect.top + rect.height / 2;
-        const normalized = clamp((viewportCenter - center) / viewportHeight, -1, 1);
-
-        const y = normalized * 20 * depth * intensityFactor * mobileScale;
-        const x =
-          Math.sin(current.scrollY * 0.001 + time * 0.75 + index * 0.44) * 9 * depth * mobileScale
-          + current.flowDir * 6 * depth * intensityFactor * mobileScale;
-        const rotate = normalized * 1.2 * depth * mobileScale;
-        const scale = 1 + depth * 0.016;
-
-        element.style.willChange = 'transform';
-        element.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0) rotate(${rotate.toFixed(2)}deg) scale(${scale.toFixed(3)})`;
-      });
-    };
-
-    const tick = (nowMs: number) => {
-      computeTarget(nowMs);
-
-      const ease = reduceMotion() ? 1 : 0.042;
-
-      current.x += (target.x - current.x) * ease;
-      current.y += (target.y - current.y) * ease;
-      current.driftX += (target.driftX - current.driftX) * ease;
-      current.driftY += (target.driftY - current.driftY) * ease;
-      current.flowDir += (target.flowDir - current.flowDir) * 0.06;
-      current.scrollY += (target.scrollY - current.scrollY) * ease;
-
-      LAYER_KEYS.forEach((key) => {
-        current.layers[key] += (target.layers[key] - current.layers[key]) * 0.05;
-      });
-
-      applyFrame();
-      updateMediaTransforms(nowMs);
-
-      frameId = window.requestAnimationFrame(tick);
-    };
-
-    const onResize = () => {
-      refreshTargets();
-      computeTarget(performance.now());
-    };
-
-    const onMotionChange = () => {
-      computeTarget(performance.now());
-    };
-
-    const onVisibilityChange = () => {
-      if (document.hidden) {
-        if (frameId) {
-          window.cancelAnimationFrame(frameId);
-          frameId = 0;
-        }
-        return;
-      }
-
-      if (!frameId) {
-        frameId = window.requestAnimationFrame(tick);
-      }
-    };
-
-    refreshTargets();
-    computeTarget(performance.now());
-    applyFrame();
-    frameId = window.requestAnimationFrame(tick);
-
-    window.addEventListener('resize', onResize, { passive: true });
-    window.addEventListener('orientationchange', onResize, { passive: true });
-    document.addEventListener('visibilitychange', onVisibilityChange);
-
-    if (mediaQuery.addEventListener) {
-      mediaQuery.addEventListener('change', onMotionChange);
-    } else {
-      mediaQuery.addListener(onMotionChange);
-    }
-
-    return () => {
-      window.removeEventListener('resize', onResize);
-      window.removeEventListener('orientationchange', onResize);
-      document.removeEventListener('visibilitychange', onVisibilityChange);
-
-      if (mediaQuery.addEventListener) {
-        mediaQuery.removeEventListener('change', onMotionChange);
-      } else {
-        mediaQuery.removeListener(onMotionChange);
-      }
-
-      if (frameId) {
-        window.cancelAnimationFrame(frameId);
-      }
-
-      mediaTargets.forEach((element) => {
-        element.style.transform = '';
-        element.style.willChange = '';
-      });
-    };
-  }, [intensity, mediaParallax, mutationSections, variant, variantConfig]);
+  const floatingObjects = useMemo(() => createFloatingObjects(8), []);
+  const electricRays = useMemo(() => createElectricRays(11), []);
+  const rainDrops = useMemo(() => createRainDrops(43), []);
+  const distantLights = useMemo(() => createDistantLights(56), []);
 
   const styleVars = {
+    '--pb-opacity-scale': String(0.74 + intensityFactor * 0.22),
     '--pb-base-opacity': String(variantConfig.base),
     '--pb-stars-opacity': String(variantConfig.stars),
     '--pb-grid-opacity': String(variantConfig.grid),
@@ -539,7 +298,7 @@ const ParallaxBackground = ({
   } as CSSProperties;
 
   return (
-    <div ref={containerRef} className={`${styles.wrapper} ${className}`} style={styleVars}>
+    <div className={`${styles.wrapper} ${className}`} style={styleVars}>
       <div className={styles.layers} aria-hidden="true">
         <div className={`${styles.layer} ${styles.baseLayer}`} />
         <div className={`${styles.layer} ${styles.starLayer} ${styles.motionFar}`} />
@@ -549,7 +308,7 @@ const ParallaxBackground = ({
         <div className={`${styles.layer} ${styles.glowLayer} ${styles.motionNear}`} />
 
         <div className={styles.farLightsScene}>
-          {DISTANT_LIGHTS.map((light, index) => (
+          {distantLights.map((light, index) => (
             <span
               key={`far-light-${index}`}
               className={styles.farLightWrapper}
@@ -573,7 +332,7 @@ const ParallaxBackground = ({
         </div>
 
         <div className={styles.rainScene}>
-          {RAIN_DROPS.map((drop, index) => (
+          {rainDrops.map((drop, index) => (
             <span
               key={`rain-drop-${index}`}
               className={styles.rainDropWrapper}
@@ -598,7 +357,7 @@ const ParallaxBackground = ({
         </div>
 
         <div className={styles.electricScene}>
-          {ELECTRIC_RAYS.map((ray, index) => (
+          {electricRays.map((ray, index) => (
             <span
               key={`electric-ray-${index}`}
               className={styles.electricRayWrapper}
@@ -623,7 +382,7 @@ const ParallaxBackground = ({
         </div>
 
         <div className={styles.objectScene}>
-          {FLOATING_OBJECTS.map((object, index) => (
+          {floatingObjects.map((object, index) => (
             <span
               key={`${object.kind}-${index}`}
               className={styles.objectWrapper}
@@ -634,6 +393,7 @@ const ParallaxBackground = ({
                   '--fo-width': object.width,
                   '--fo-height': object.height ?? object.width,
                   '--fo-depth': object.depth,
+                  '--fo-weight': object.weight,
                 } as CSSProperties
               }
             >
