@@ -1,25 +1,21 @@
-import { useLocation, useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useLanguage } from '../../../context/LanguageContext';
 import { getProjects } from './Data';
 import { slugify } from '../../../utils/slugify';
 import { motion } from 'framer-motion';
-import ImageGallery from 'react-image-gallery';
-import 'react-image-gallery/styles/css/image-gallery.css';
-import previewSlot from '../../../assets/images/placeholders/preview-slot.svg';
+import ProjectGallery from './ProjectGallery';
 
 const ProjectPage = () => {
   const { language, locales } = useLanguage();
   const navigate = useNavigate();
   const { slug } = useParams();
-  const location = useLocation();
   const projectCopy = locales[language].projectPage;
-
-  let project = location.state?.project;
-
-  if (!project) {
-    const all = getProjects(locales, language);
-    project = all.find((item) => slugify(item.title) === slug);
-  }
+  const localizedProjects = getProjects(locales, language);
+  const projectKeyFromSlug = Object.keys(locales)
+    .map((localeLanguage) => getProjects(locales, localeLanguage)
+      .find((item) => slugify(item.title) === slug)?.key)
+    .find(Boolean);
+  const project = localizedProjects.find((item) => item.key === projectKeyFromSlug);
 
   if (!project) {
     return (
@@ -37,66 +33,6 @@ const ProjectPage = () => {
       </div>
     );
   }
-
-  const previewAltPrefix = projectCopy.previewAltLabel ?? 'Preview';
-
-  const normalizedScreenshots = (project.screenshots ?? []).map((item, index) => ({
-    ...item,
-    originalAlt: `${project.title} ${previewAltPrefix} ${index + 1}`,
-    key: `screenshot-${index}`,
-  }));
-  const totalSlots = Math.max(project.previewSlots ?? normalizedScreenshots.length, normalizedScreenshots.length);
-  const placeholderCount = Math.max(totalSlots - normalizedScreenshots.length, 0);
-  const placeholderItems = Array.from({ length: placeholderCount }, (_, index) => ({
-    original: previewSlot,
-    thumbnail: previewSlot,
-    isPlaceholder: true,
-    key: `placeholder-${index}`,
-  }));
-  const galleryItems = [...normalizedScreenshots, ...placeholderItems];
-
-  const renderGalleryItem = (item) => {
-    if (item.isPlaceholder) {
-      return (
-        <div className="flex min-h-[260px] items-center justify-center rounded-3xl bg-slate-900/60 p-6 text-center dark:bg-slate-950/70">
-          <div className="space-y-2">
-            <p className="text-lg font-semibold text-brand-200">{projectCopy.previewPlaceholderTitle}</p>
-            <p className="text-sm text-neutral-300">{projectCopy.previewPlaceholderDescription}</p>
-          </div>
-        </div>
-      );
-    }
-
-    return (
-      <figure className="flex min-h-[260px] w-full items-center justify-center overflow-hidden rounded-3xl bg-slate-900/50 p-3">
-        <img
-          src={item.original}
-          alt={item.originalAlt ?? project.heroImageAlt ?? project.title}
-          loading="lazy"
-          className="h-full w-full max-w-full rounded-2xl object-contain"
-        />
-      </figure>
-    );
-  };
-
-  const renderThumbnail = (item) => {
-    if (item.isPlaceholder) {
-      return (
-        <div className="flex h-full w-full items-center justify-center rounded-xl bg-slate-900/70 text-[10px] font-semibold uppercase tracking-wide text-brand-200">
-          {projectCopy.previewPlaceholderShort}
-        </div>
-      );
-    }
-
-    return (
-      <img
-        src={item.thumbnail}
-        alt={item.originalAlt ?? project.heroImageAlt ?? project.title}
-        loading="lazy"
-        className="h-full w-full rounded-xl object-cover"
-      />
-    );
-  };
 
   return (
     <section className="px-4 pb-24 pt-24 sm:px-6 sm:pt-28 lg:px-12">
@@ -158,13 +94,11 @@ const ProjectPage = () => {
           transition={{ duration: 0.55, ease: 'easeOut', delay: 0.1 }}
           className="overflow-hidden rounded-4xl border border-neutral-200/80 bg-white/90 p-4 shadow-lg dark:border-slate-700 dark:bg-slate-900/80 sm:p-6"
         >
-          <ImageGallery
-            items={galleryItems}
-            showPlayButton={false}
-            showFullscreenButton={false}
-            thumbnailPosition="bottom"
-            renderItem={renderGalleryItem}
-            renderThumbInner={renderThumbnail}
+          <ProjectGallery
+            key={project.key}
+            items={project.screenshots ?? []}
+            projectTitle={project.title}
+            copy={projectCopy}
           />
         </motion.div>
 

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useLanguage } from '../../context/LanguageContext.jsx';
+import profileImage from '../../assets/profile.webp';
 import AnimatedContent from './components/AnimatedContent.jsx';
 import TechCarousel from './components/TechCarousel.jsx';
 
@@ -93,7 +94,7 @@ const Welcome = () => {
               <div className="relative flex flex-col items-center gap-4 sm:flex-col md:flex-row lg:flex-col">
                 <div data-parallax-media="0.85">
                   <img
-                    src="./android-chrome-192x192.png"
+                    src={profileImage}
                     alt={hero.profileAlt}
                     className="h-28 w-28 rounded-3xl border border-white/80 object-cover shadow-lg sm:h-32 sm:w-32 md:h-36 md:w-36"
                   />

@@ -36,7 +36,7 @@ const Projects = () => {
           <div className="mt-12 grid gap-8 lg:grid-cols-2 xl:grid-cols-3">
             {projects.map((project, index) => (
               <motion.article
-                key={project.title}
+                key={project.key}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
@@ -48,7 +48,7 @@ const Projects = () => {
                   <img
                     src={project.image}
                     alt={project.heroImageAlt ?? project.title}
-                    className="h-48 w-full rounded-3xl object-cover transition duration-500 group-hover:scale-105 sm:h-56"
+                    className="h-48 w-full rounded-3xl bg-neutral-100/80 object-contain p-4 transition duration-500 group-hover:scale-105 dark:bg-slate-950/40 sm:h-56"
                   />
                   <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-tr from-brand-950/70 via-brand-700/0 to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
                   <div className="pointer-events-none absolute bottom-4 left-4 right-4 flex items-center justify-between text-white opacity-0 transition duration-500 group-hover:opacity-100">
@@ -86,9 +86,7 @@ const Projects = () => {
                   <button
                     type="button"
                     onClick={() => {
-                      navigate(`/portfolio/Projects/${slugify(project.title)}`, {
-                        state: { project },
-                      });
+                      navigate(`/portfolio/Projects/${slugify(project.title)}`);
                       window.scrollTo({ top: 0, behavior: 'smooth' });
                     }}
                     className="inline-flex items-center gap-2 rounded-2xl bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white shadow-brand transition hover:-translate-y-0.5 hover:bg-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-200"

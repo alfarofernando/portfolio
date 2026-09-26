@@ -38,9 +38,12 @@ const AboutMe = () => {
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.45, ease: 'easeOut', delay: index * 0.05 }}
                     data-parallax-media="0.18"
-                    className={`relative flex flex-col gap-4 rounded-3xl border border-neutral-200 bg-white/90 p-6 shadow-lg backdrop-blur dark:border-slate-700 dark:bg-slate-900/80 md:w-[calc(50%-2rem)] ${isRight ? 'md:ml-auto md:pl-10' : 'md:pr-10'}`}
+                    className={`relative flex flex-col gap-4 rounded-3xl border border-neutral-200 bg-white/90 p-6 pl-12 shadow-lg backdrop-blur dark:border-slate-700 dark:bg-slate-900/80 md:w-[calc(50%-2rem)] ${isRight ? 'md:ml-auto md:pl-10' : 'md:pl-6 md:pr-10'}`}
                   >
-                    <span className="absolute left-4 top-6 h-3 w-3 rounded-full bg-brand-500 shadow-lg shadow-brand-500/40 md:left-[-30px]" />
+                    <span
+                      aria-hidden="true"
+                      className={`absolute left-[18px] top-6 h-3 w-3 rounded-full bg-brand-500 shadow-lg shadow-brand-500/40 ${isRight ? 'md:left-[-38px]' : 'md:left-auto md:right-[-38px]'}`}
+                    />
                     <div className="space-y-2">
                       <p className="text-xs font-semibold uppercase tracking-wide text-brand-600 dark:text-brand-200">{item.date}</p>
                       <h3 className="text-lg font-semibold text-neutral-900 dark:text-white">{item.title}</h3>

@@ -76,7 +76,6 @@ const projectAssets = [
     screenshots: [
       { original: cvgenioCover, thumbnail: cvgenioCover },
     ],
-    previewSlots: 5,
   },
   {
     key: 'portfolioV1',

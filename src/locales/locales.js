@@ -86,10 +86,14 @@ export const locales = {
         'Explora el repositorio para revisar el código, las decisiones técnicas y el roadmap.',
       notFoundTitle: 'Proyecto no encontrado',
       notFoundAction: 'Volver a proyectos',
-      previewPlaceholderTitle: 'Preview pendiente',
-      previewPlaceholderDescription: 'Reservé este espacio para subir nuevas capturas en cuanto estén listas.',
-      previewPlaceholderShort: 'Próximamente',
       previewAltLabel: 'Vista previa',
+      galleryLabel: 'Galería del proyecto',
+      gallerySlideRoleDescription: 'diapositiva',
+      galleryPrevious: 'Diapositiva anterior',
+      galleryNext: 'Diapositiva siguiente',
+      galleryThumbnailNavigation: 'Navegación de diapositivas',
+      galleryGoToSlide: 'Ir a la diapositiva {current} de {total}',
+      gallerySlideAnnouncement: 'Diapositiva {current} de {total}',
     },
     about: {
       description:
@@ -200,7 +204,7 @@ export const locales = {
           {
             title: 'Servicios y datos',
             items: [
-              'Consumo de API Java Spring bajo ${API_BASE}/api con autenticación JWT y endpoints de CV, IA y suscripciones.',
+              'Consumo de API Java Spring para gestionar CV, IA y suscripciones con autenticación JWT.',
               'Hooks dedicados para normalizar payloads, validar créditos y orquestar flujos premium antes de llamar al backend.',
               'Generación de documentos PDF con plantillas profesionales y compatibilidad con Google reCAPTCHA v3.',
             ],
@@ -329,10 +333,14 @@ export const locales = {
         'Browse the repository to review the source code, technical decisions, and roadmap.',
       notFoundTitle: 'Project not found',
       notFoundAction: 'Back to projects',
-      previewPlaceholderTitle: 'Preview coming soon',
-      previewPlaceholderDescription: 'This slot is ready to host the next set of screenshots as soon as they are available.',
-      previewPlaceholderShort: 'Coming soon',
       previewAltLabel: 'Preview',
+      galleryLabel: 'Project gallery',
+      gallerySlideRoleDescription: 'slide',
+      galleryPrevious: 'Previous slide',
+      galleryNext: 'Next slide',
+      galleryThumbnailNavigation: 'Slide navigation',
+      galleryGoToSlide: 'Go to slide {current} of {total}',
+      gallerySlideAnnouncement: 'Slide {current} of {total}',
     },
     about: {
       description:
@@ -443,7 +451,7 @@ export const locales = {
           {
             title: 'Services & data',
             items: [
-              'Java Spring API consumption under ${API_BASE}/api with JWT auth plus CV, AI and subscription endpoints.',
+              'Java Spring API integration for CV, AI and subscription services with JWT authentication.',
               'Dedicated hooks to normalise payloads, validate credits and orchestrate premium flows before reaching the backend.',
               'Professional PDF generation plus Google reCAPTCHA v3 to secure recovery and registration forms.',
             ],
