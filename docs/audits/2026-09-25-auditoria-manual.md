@@ -2,7 +2,7 @@
 
 **Fecha:** 2026-09-25<br>
 **URL local:** `http://127.0.0.1:5173/portfolio/`<br>
-**Alcance:** auditoria visual/funcional y correcciones locales del plan; sin publicacion ni cambios de contenido sujetos a confirmacion.
+**Alcance:** auditoria visual/funcional, correcciones locales y publicacion en GitHub Pages; sin cambios de contenido sujetos a confirmacion.
 
 ## Recorrido realizado
 
@@ -151,7 +151,7 @@ Archivos de referencia: `index.html`, `public/manifest.json`, `vite.config.js` y
 - V-05, V-06, C-01 y A-01: reemplace el carrusel externo por una galeria accesible, traducida, operable con teclado y tacto, con miniaturas desplazables y solo medios existentes. CVGenio queda con 1 captura real y sin marcadores vacios.
 - C-02 y C-05: quite `${API_BASE}` de las descripciones y hago que la ficha se resuelva con el idioma activo, incluso en una URL con slug heredado en espanol.
 - T-02 y T-03: actualice la base de datos Browserslist; el manifiesto usa rutas relativas para sus iconos y `index.html` construye las rutas bajo `/portfolio/`.
-- T-01: agregue la copia `dist/404.html` para el fallback de SPA de GitHub Pages. El hosting publicado aun requiere comprobacion directa.
+- T-01: agregue la copia `dist/404.html` para el fallback de SPA de GitHub Pages. La comprobacion directa posterior a la publicacion se registra al final de este informe.
 - La app respeta la preferencia de movimiento reducido del sistema.
 
 ### Verificacion posterior a los cambios
@@ -169,4 +169,11 @@ Archivos de referencia: `index.html`, `public/manifest.json`, `vite.config.js` y
 - C-04: confirmar si GitHub, LinkedIn y WhatsApp bastan o si se agregara correo/formulario.
 - C-06: confirmar si la tarjeta interna «lea» de AlfaTeam es contenido legitimo antes de modificar o sustituir esa captura.
 - Revisar con el propietario la metrica «7+ proyectos en produccion» frente a las seis fichas visibles; no altere ese dato.
-- T-01/T-03 quedan pendientes de una publicacion: probar recarga/acceso directo de cada slug en GitHub Pages y verificar alli los PDFs, iconos y manifest.
+- T-01/T-03: verificacion remota completada para la portada, el detalle CVGenio, la ruta inexistente, manifest, PDF ES e iconos; quedan cubiertos los casos principales de hosting.
+
+### Publicacion y comprobacion remota - 2026-09-25
+
+- `master` contiene el commit de codigo `7197480`; `gh-pages` publico `dist` en `8a2171a` mediante `npm run deploy`.
+- `https://alfarofernando.github.io/portfolio/`, `manifest.json`, PDF ES y los seis recursos de iconos (ICO, PNG, Apple y Android) respondieron HTTP 200.
+- La navegacion directa publicada a `/portfolio/Projects/cvgenio` cargo la ficha y su galeria. La ruta directa a `/portfolio/Projects/not-a-project` mostro `Proyecto no encontrado`, confirmando el fallback de SPA.
+- Consola del navegador en ambos detalles: sin errores ni avisos.
