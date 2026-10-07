@@ -1,0 +1,20 @@
+[
+  {
+    "id": "professional",
+    "experience": "professional",
+    "technologies": ["Java", "Spring Boot", "Angular", "TypeScript", "JavaScript", "SQL", "MySQL", "MariaDB", "REST", "SOAP/XML/WSDL", "Git", "Linux", "CI/CD", "JWT", "Nginx", "Swagger/OpenAPI"],
+    "copy": { "es": { "label": "Experiencia profesional" }, "en": { "label": "Professional experience" } }
+  },
+  {
+    "id": "applied",
+    "experience": "limited",
+    "technologies": ["React", "React Native", "Node.js/TypeScript", "Docker", "Firebase", "Jest", "JUnit/Mockito", "WebSocket", "SSE", "Systemd", "VPS"],
+    "copy": { "es": { "label": "Experiencia puntual" }, "en": { "label": "Applied experience" } }
+  },
+  {
+    "id": "complementary",
+    "experience": "complementary",
+    "technologies": ["Python", "FastAPI", "Django", "PHP", "Laravel", "PostgreSQL", "MongoDB", "AWS", "Kubernetes"],
+    "copy": { "es": { "label": "Formación y conocimientos complementarios" }, "en": { "label": "Training and complementary knowledge" } }
+  }
+]

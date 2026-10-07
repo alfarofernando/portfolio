@@ -1,0 +1,54 @@
+{
+  "name": "Fernando Agustín Alfaro",
+  "email": "alfarofernando@live.com",
+  "phone": "+54 9 11 5260-6455",
+  "links": {
+    "github": "https://github.com/alfarofernando",
+    "linkedin": "https://www.linkedin.com/in/fernando-alfaro-132973246/",
+    "whatsapp": "https://wa.me/5491152606455"
+  },
+  "copy": {
+    "es": {
+      "role": "Desarrollador Full Stack Junior",
+      "summary": "Técnico Universitario en Programación con experiencia profesional en Java y Spring, Angular y TypeScript, SQL e integración de sistemas. Trabajé en productos financieros, ERP, logística, mensajería y plataformas internas, incluyendo soporte de producción, optimización y CI/CD.",
+      "independentSummary": "Construyo y mantengo software web, APIs e integraciones, desde la comprensión de sistemas existentes hasta la entrega y el diagnóstico operativo. Mi experiencia más sólida está en Java/Spring Boot, Angular/TypeScript, SQL, REST/SOAP, Git, Linux y CI/CD.",
+      "employment": {
+        "company": "NetOne / BarloventoTech",
+        "role": "Desarrollador de software (Becario Tier 1 → Tier 2)",
+        "period": "Diciembre de 2025 – 25 de septiembre de 2026",
+        "responsibilities": [
+          "Implementé y mantuve funcionalidades full stack en productos empresariales y servicios Java.",
+          "Trabajé con Angular/TypeScript, SQL, APIs REST/SOAP e integraciones externas.",
+          "Resolví incidencias funcionales y de producción, revisé consultas y optimicé flujos.",
+          "Participé en pruebas, revisiones de código, documentación, CI/CD y operación Linux."
+        ]
+      },
+      "education": [
+        { "institution": "UTN Facultad Regional Avellaneda", "qualification": "Técnico Universitario en Programación", "period": "2023–2025" },
+        { "institution": "UTN Facultad Regional Villa María", "qualification": "Full Stack MERN", "period": "2024" }
+      ],
+      "english": "B1 / Intermediate: lectura de documentación técnica y comunicación escrita; conversación con preparación."
+    },
+    "en": {
+      "role": "Junior Full Stack Developer",
+      "summary": "University Technician in Programming with professional experience in Java and Spring, Angular and TypeScript, SQL, and system integrations. Worked across financial, ERP, logistics, messaging, and internal platforms, including production support, performance work, and CI/CD.",
+      "independentSummary": "I build and maintain web software, APIs, and integrations, from understanding existing systems to delivery and operational troubleshooting. My strongest experience is in Java/Spring Boot, Angular/TypeScript, SQL, REST/SOAP, Git, Linux, and CI/CD.",
+      "employment": {
+        "company": "NetOne / BarloventoTech",
+        "role": "Software Developer (Tier 1 → Tier 2 Trainee)",
+        "period": "December 2025 – September 25, 2026",
+        "responsibilities": [
+          "Implemented and maintained full-stack features across business products and Java services.",
+          "Worked with Angular/TypeScript, SQL, REST/SOAP APIs, and external integrations.",
+          "Resolved functional and production issues, reviewed queries, and improved workflows.",
+          "Contributed to testing, code reviews, documentation, CI/CD, and Linux operations."
+        ]
+      },
+      "education": [
+        { "institution": "National Technological University, Avellaneda Regional Faculty", "qualification": "University Technician in Programming", "period": "2023–2025" },
+        { "institution": "National Technological University, Villa María Regional Faculty", "qualification": "Full Stack MERN Program", "period": "2024" }
+      ],
+      "english": "B1 / Intermediate: technical documentation reading and written communication; prepared spoken communication."
+    }
+  }
+}

@@ -1,0 +1,1081 @@
+[
+  {
+    "id": "wise-capital",
+    "slug": "wise-capital",
+    "aliases": [
+      "wise-capital-gfondos"
+    ],
+    "category": "professional",
+    "evidence": "audited-git",
+    "featured": true,
+    "cvInclude": true,
+    "technologies": [
+      "Java",
+      "Angular 18",
+      "TypeScript",
+      "SQL",
+      "Firebase",
+      "REST",
+      "WebSocket"
+    ],
+    "links": [
+      {
+        "type": "official",
+        "url": "https://fondoswise.ar/wise-1/"
+      }
+    ],
+    "mediaIds": [
+      "wise-logo"
+    ],
+    "copy": {
+      "es": {
+        "title": "Wise Capital / gFondos",
+        "summary": "Contribuciones full stack a un ecosistema financiero de inversiones, cuentas y gestión de carteras.",
+        "context": "Producto financiero desarrollado dentro del contexto profesional de NetOne / BarloventoTech.",
+        "role": "Desarrollo backend y frontend sobre funcionalidades trazables en seis repositorios relacionados, presentados aquí como un solo caso.",
+        "contributions": [
+          "Implementé y mantuve flujos de operatoria, cuentas, movimientos y validaciones financieras.",
+          "Trabajé en precios, portfolios, eCheq y funciones relacionadas con riesgo y compliance.",
+          "Resolví incidencias de autenticación, estado de interfaz y comunicación en tiempo real."
+        ],
+        "outcomes": [
+          "Evolución de flujos financieros y corrección de incidencias funcionales en web, app y servicios.",
+          "Experiencia aplicada con Java, Angular, SQL, Firebase y WebSocket."
+        ]
+      },
+      "en": {
+        "title": "Wise Capital / gFondos",
+        "summary": "Full-stack contributions to a financial ecosystem for investments, accounts, and portfolio management.",
+        "context": "Financial product developed within the professional NetOne / BarloventoTech context.",
+        "role": "Backend and frontend development across features traced in six related repositories, presented here as one case.",
+        "contributions": [
+          "Implemented and maintained trading, account, transaction, and financial validation flows.",
+          "Worked on pricing, portfolios, eCheq, and risk and compliance-related features.",
+          "Resolved authentication, UI state, and real-time communication issues."
+        ],
+        "outcomes": [
+          "Improved financial workflows and resolved functional issues across web, app, and services.",
+          "Applied Java, Angular, SQL, Firebase, and WebSocket experience."
+        ]
+      }
+    }
+  },
+  {
+    "id": "netegia-n4",
+    "slug": "netegia-n4",
+    "aliases": [
+      "netegia"
+    ],
+    "category": "professional",
+    "evidence": "audited-git",
+    "featured": true,
+    "cvInclude": true,
+    "technologies": [
+      "Java",
+      "Angular",
+      "TypeScript",
+      "SQL",
+      "JPA/Hibernate",
+      "REST",
+      "Firebase",
+      "SSE"
+    ],
+    "links": [
+      {
+        "type": "official",
+        "url": "https://www.netegia.com/"
+      }
+    ],
+    "mediaIds": [
+      "netegia-logo"
+    ],
+    "copy": {
+      "es": {
+        "title": "Netegia N4",
+        "summary": "Evolución de una plataforma de gestión con migración de APIs, órdenes de trabajo, onboarding e integraciones.",
+        "context": "Plataforma empresarial de gestión atendida en NetOne / BarloventoTech.",
+        "role": "Desarrollo full stack y mantenimiento sobre servicios Java y una aplicación Angular.",
+        "contributions": [
+          "Participé en la migración de APIs públicas de N3 a N4 y en flujos de órdenes de trabajo.",
+          "Implementé cambios en onboarding, CRM/WhatsApp y alertas.",
+          "Investigué problemas de rendimiento, N+1, conteos y paginación, además de reportes y exportaciones."
+        ],
+        "outcomes": [
+          "Mejoras funcionales en operaciones y soporte a la transición entre versiones de API.",
+          "Optimizaciones y diagnósticos aplicados a consultas y recorridos de uso frecuentes."
+        ]
+      },
+      "en": {
+        "title": "Netegia N4",
+        "summary": "Evolution of a business management platform covering API migration, work orders, onboarding, and integrations.",
+        "context": "Business management platform maintained at NetOne / BarloventoTech.",
+        "role": "Full-stack development and maintenance across Java services and an Angular application.",
+        "contributions": [
+          "Contributed to the migration of public APIs from N3 to N4 and work order workflows.",
+          "Implemented changes to onboarding, CRM/WhatsApp, and alerts.",
+          "Investigated performance, N+1, count-query, and pagination issues, as well as reports and exports."
+        ],
+        "outcomes": [
+          "Functional improvements to operations and support for the API version transition.",
+          "Applied optimizations and diagnostics to queries and frequently used workflows."
+        ]
+      }
+    }
+  },
+  {
+    "id": "barlogow-wareg",
+    "slug": "barlogow-wareg",
+    "aliases": [
+      "barlogow",
+      "wareg"
+    ],
+    "category": "professional",
+    "evidence": "audited-git",
+    "featured": true,
+    "cvInclude": true,
+    "technologies": [
+      "Java",
+      "Angular 19",
+      "TypeScript",
+      "Evolution API",
+      "ARCA/AFIP",
+      "OCR",
+      "GitHub Actions"
+    ],
+    "links": [],
+    "mediaIds": [
+      "barlovento-logo"
+    ],
+    "copy": {
+      "es": {
+        "title": "BarloGOW / Wareg",
+        "summary": "Funciones de cobranzas, campañas y mensajería con integración de WhatsApp, OCR e interfaces de operación.",
+        "context": "Producto de negocio del entorno BarloventoTech, con backend Java y frontend Angular.",
+        "role": "Desarrollo de funcionalidades y correcciones dentro del alcance documentado.",
+        "contributions": [
+          "Trabajé en vinculación con WhatsApp, estados de entrega y el motor de interacciones mediante Evolution API.",
+          "Contribuí a flujos de autenticación, catálogos, campañas y procesamiento de facturas con OCR.",
+          "Atendí saneamiento de datos, tareas en segundo plano e integración de CI/CD."
+        ],
+        "outcomes": [
+          "Mejor trazabilidad y diagnóstico de envíos y procesos conectados a mensajería.",
+          "Experiencia con sistemas de cobranzas e integraciones fiscales y de comunicación."
+        ]
+      },
+      "en": {
+        "title": "BarloGOW / Wareg",
+        "summary": "Collections, campaign, and messaging features integrating WhatsApp, OCR, and operational interfaces.",
+        "context": "Business product in the BarloventoTech environment, with a Java backend and Angular frontend.",
+        "role": "Feature development and fixes within the documented scope.",
+        "contributions": [
+          "Worked on WhatsApp linking, delivery states, and the Evolution API interaction engine.",
+          "Contributed to authentication, catalog, campaign, and OCR invoice-processing workflows.",
+          "Handled data cleanup, background tasks, and CI/CD integration."
+        ],
+        "outcomes": [
+          "Improved traceability and diagnosis for messaging and connected processes.",
+          "Applied experience with collections systems and tax and communications integrations."
+        ]
+      }
+    }
+  },
+  {
+    "id": "ms-gbp",
+    "slug": "ms-gbp",
+    "aliases": [
+      "gbp"
+    ],
+    "category": "professional",
+    "evidence": "audited-git",
+    "featured": true,
+    "cvInclude": true,
+    "technologies": [
+      "Java 25",
+      "Spring Boot 3",
+      "SOAP",
+      "XML/WSDL",
+      "REST",
+      "MariaDB",
+      "JPA",
+      "JWT",
+      "OpenAPI"
+    ],
+    "links": [],
+    "mediaIds": [
+      "barlovento-logo"
+    ],
+    "copy": {
+      "es": {
+        "title": "MS GBP · Middleware ERP",
+        "summary": "Microservicio Java para conectar aplicaciones con operaciones de ERP mediante APIs REST y servicios SOAP.",
+        "context": "Middleware de integración para funciones empresariales de ERP y Global Blue Point.",
+        "role": "Desarrollo de endpoints y adaptadores de integración documentados en el historial del proyecto.",
+        "contributions": [
+          "Integré operaciones de consulta, autenticación, productos, precios y órdenes de venta con servicios SOAP/WSDL.",
+          "Trabajé en contratos REST, persistencia SQL y autenticación JWT con separación por tenant.",
+          "Documenté y validé interfaces con Swagger/OpenAPI y tooling de build/deploy."
+        ],
+        "outcomes": [
+          "Contratos de integración más explícitos entre consumidores REST y servicios ERP SOAP.",
+          "Práctica aplicada con manejo de errores, seguridad y persistencia en un microservicio reciente."
+        ]
+      },
+      "en": {
+        "title": "MS GBP · ERP Middleware",
+        "summary": "Java microservice connecting applications to ERP operations through REST APIs and SOAP services.",
+        "context": "Integration middleware for ERP and Global Blue Point business functions.",
+        "role": "Developed endpoints and integration adapters documented in the project history.",
+        "contributions": [
+          "Integrated query, authentication, product, pricing, and sales-order operations with SOAP/WSDL services.",
+          "Worked on REST contracts, SQL persistence, and tenant-scoped JWT authentication.",
+          "Documented and validated interfaces with Swagger/OpenAPI and build/deployment tooling."
+        ],
+        "outcomes": [
+          "Clearer integration contracts between REST consumers and ERP SOAP services.",
+          "Applied error handling, security, and persistence in a recent microservice."
+        ]
+      }
+    }
+  },
+  {
+    "id": "ms-logistics",
+    "slug": "ms-logistics",
+    "aliases": [
+      "logistics-zuiden"
+    ],
+    "category": "professional",
+    "evidence": "audited-git",
+    "featured": false,
+    "cvInclude": true,
+    "technologies": [
+      "Java 25",
+      "Spring Boot",
+      "REST",
+      "SQL/JPA",
+      "JWT",
+      "Multi-tenant",
+      "Idempotency"
+    ],
+    "links": [],
+    "mediaIds": [
+      "barlovento-logo"
+    ],
+    "copy": {
+      "es": {
+        "title": "MS Logistics · Zuiden",
+        "summary": "Integración logística para catálogo, consultas de órdenes y estados de envío mediante servicios REST.",
+        "context": "Microservicio backend que conecta el dominio de órdenes con el proveedor logístico Zuiden.",
+        "role": "Implementación de funcionalidades de integración y robustez documentadas en el caso.",
+        "contributions": [
+          "Trabajé en endpoints para productos, disponibilidad, órdenes, envíos y configuración de tenants.",
+          "Contribuí a idempotencia de órdenes y a la resolución del proveedor mediante gateways.",
+          "Incorporé trazabilidad de intercambios y correlación para facilitar diagnóstico."
+        ],
+        "outcomes": [
+          "Flujos de integración con estado persistido y controles ante reintentos.",
+          "Experiencia con diseño REST, multi-tenancy, observabilidad y estados de error externos."
+        ]
+      },
+      "en": {
+        "title": "MS Logistics · Zuiden",
+        "summary": "Logistics integration for catalog, order lookups, and shipping status through REST services.",
+        "context": "Backend microservice connecting the order domain to logistics provider Zuiden.",
+        "role": "Implemented documented integration and resilience features.",
+        "contributions": [
+          "Worked on endpoints for products, availability, orders, shipments, and tenant configuration.",
+          "Contributed to order idempotency and provider resolution through gateways.",
+          "Added exchange traceability and correlation to support troubleshooting."
+        ],
+        "outcomes": [
+          "Integration workflows with persisted state and retry safeguards.",
+          "Applied REST, multi-tenancy, observability, and external error-state handling."
+        ]
+      }
+    }
+  },
+  {
+    "id": "ms-notificaciones",
+    "slug": "ms-notificaciones",
+    "aliases": [
+      "notificaciones-push"
+    ],
+    "category": "professional",
+    "evidence": "audited-git",
+    "featured": false,
+    "cvInclude": true,
+    "technologies": [
+      "Node.js",
+      "TypeScript",
+      "Firebase",
+      "Docker",
+      "Jest",
+      "GitLab CI",
+      "Swagger"
+    ],
+    "links": [],
+    "mediaIds": [
+      "barlovento-logo"
+    ],
+    "copy": {
+      "es": {
+        "title": "MS Notificaciones",
+        "summary": "Servicio de mensajes y notificaciones push con Firebase y trazabilidad enfocada en fallos de envío.",
+        "context": "Microservicio de notificaciones desarrollado con Node.js y TypeScript.",
+        "role": "Aporte acotado a cambios de trazabilidad de envíos push.",
+        "contributions": [
+          "Agregué trazabilidad para los envíos push y la limité a los casos de falla relevantes.",
+          "Ajusté el alcance para que la auditoría quedara centrada en el flujo de push.",
+          "Trabajé en un servicio con Docker, Jest, GitLab CI y documentación Swagger."
+        ],
+        "outcomes": [
+          "Mejor capacidad para diagnosticar fallos de entrega push sin extender el logging a flujos ajenos.",
+          "Experiencia profesional puntual con Node.js/TypeScript y Firebase."
+        ]
+      },
+      "en": {
+        "title": "Notifications Microservice",
+        "summary": "Messaging and push notification service using Firebase, with failure-focused delivery traceability.",
+        "context": "Node.js and TypeScript notification microservice.",
+        "role": "Scoped contribution to push-delivery traceability changes.",
+        "contributions": [
+          "Added traceability for push deliveries and limited it to relevant failure cases.",
+          "Kept audit coverage focused on the push workflow.",
+          "Worked in a service using Docker, Jest, GitLab CI, and Swagger documentation."
+        ],
+        "outcomes": [
+          "Improved diagnosis of push delivery failures without extending logs to unrelated flows.",
+          "Professional, focused experience with Node.js/TypeScript and Firebase."
+        ]
+      }
+    }
+  },
+  {
+    "id": "afipms",
+    "slug": "afipms",
+    "aliases": [
+      "afip-ms"
+    ],
+    "category": "professional",
+    "evidence": "audited-git",
+    "featured": false,
+    "cvInclude": true,
+    "technologies": [
+      "Java",
+      "Maven",
+      "SOAP",
+      "SQL",
+      "AFIP/ARCA",
+      "XML"
+    ],
+    "links": [],
+    "mediaIds": [
+      "barlovento-logo"
+    ],
+    "copy": {
+      "es": {
+        "title": "AFIPMS · Servicios fiscales",
+        "summary": "Mantenimiento de servicios Java integrados con APIs fiscales SOAP de AFIP.",
+        "context": "Servicio empresarial con clientes SOAP para factura electrónica y padrones.",
+        "role": "Cambios acotados a consultas y respuestas fiscales dentro del repositorio auditado.",
+        "contributions": [
+          "Trabajé en consulta de estado de AFIP y persistencia de información de tributos.",
+          "Ajusté restricciones de consulta de CUIT conforme a las necesidades del servicio.",
+          "Mantuve compatibilidad con clientes SOAP/XML del ecosistema fiscal."
+        ],
+        "outcomes": [
+          "Mejoras puntuales en el manejo del estado y los datos devueltos por servicios fiscales.",
+          "Experiencia con integraciones SOAP y comportamiento de servicios externos."
+        ]
+      },
+      "en": {
+        "title": "AFIPMS · Tax Services",
+        "summary": "Maintenance of Java services integrated with AFIP SOAP tax APIs.",
+        "context": "Business service with SOAP clients for electronic invoicing and tax registries.",
+        "role": "Scoped changes to tax queries and responses within the audited repository.",
+        "contributions": [
+          "Worked on AFIP status queries and tax information persistence.",
+          "Adjusted taxpayer ID query restrictions to meet service requirements.",
+          "Maintained compatibility with SOAP/XML clients in the tax ecosystem."
+        ],
+        "outcomes": [
+          "Targeted improvements to tax service status and returned data handling.",
+          "Applied experience with SOAP integrations and external service behavior."
+        ]
+      }
+    }
+  },
+  {
+    "id": "rendicion",
+    "slug": "rendicion",
+    "aliases": [
+      "rendición"
+    ],
+    "category": "professional",
+    "evidence": "audited-git",
+    "featured": false,
+    "cvInclude": true,
+    "technologies": [
+      "Java",
+      "Maven",
+      "WAR",
+      "SQL",
+      "XML",
+      "PowerShell",
+      "Windows scripts"
+    ],
+    "links": [],
+    "mediaIds": [
+      "barlovento-logo"
+    ],
+    "copy": {
+      "es": {
+        "title": "Rendición · Aplicación legacy",
+        "summary": "Tareas de mantenimiento operativo para una aplicación Java WAR, cuidando su comportamiento existente.",
+        "context": "Aplicación web legacy con Maven y recursos de despliegue manual.",
+        "role": "Actualización de documentación y scripts de despliegue dentro del alcance auditado.",
+        "contributions": [
+          "Preparé guía y scripts para build y operación.",
+          "Trabajé con perfiles Maven y regeneración de web.xml.",
+          "Ajusté configuración XML preservando filtros y mappings requeridos por el sistema legacy."
+        ],
+        "outcomes": [
+          "Documentación operativa más clara y cambios de despliegue controlados.",
+          "Experiencia práctica manteniendo aplicaciones Java WAR y configuración heredada."
+        ]
+      },
+      "en": {
+        "title": "Rendición · Legacy Application",
+        "summary": "Operational maintenance tasks for a Java WAR application while preserving existing behavior.",
+        "context": "Legacy web application using Maven and manual deployment resources.",
+        "role": "Updated deployment documentation and scripts within the audited scope.",
+        "contributions": [
+          "Prepared build and operational guidance and scripts.",
+          "Worked with Maven profiles and web.xml regeneration.",
+          "Adjusted XML configuration while preserving mappings required by the legacy system."
+        ],
+        "outcomes": [
+          "Clearer operational documentation and controlled deployment changes.",
+          "Hands-on maintenance of Java WAR applications and inherited configuration."
+        ]
+      }
+    }
+  },
+  {
+    "id": "componentes",
+    "slug": "componentes",
+    "aliases": [
+      "shared-components"
+    ],
+    "category": "professional",
+    "evidence": "audited-git",
+    "featured": false,
+    "cvInclude": true,
+    "technologies": [
+      "Java",
+      "Maven",
+      "SQL",
+      "UTF-8",
+      "Shared libraries"
+    ],
+    "links": [],
+    "mediaIds": [
+      "barlovento-logo"
+    ],
+    "copy": {
+      "es": {
+        "title": "Componentes compartidos",
+        "summary": "Mantenimiento de una librería Java/Maven reutilizada por aplicaciones empresariales.",
+        "context": "Artefacto compartido del ecosistema interno.",
+        "role": "Ajustes puntuales y cierre de una migración de codificación documentada.",
+        "contributions": [
+          "Corregí un combo de estados para conservar el estilo legacy esperado.",
+          "Ajusté scripts SQL con una reversión acotada.",
+          "Cerré tareas de migración a UTF-8 en componentes compartidos."
+        ],
+        "outcomes": [
+          "Componentes y recursos de datos alineados con el comportamiento existente.",
+          "Experiencia con compatibilidad entre aplicaciones y dependencias compartidas."
+        ]
+      },
+      "en": {
+        "title": "Shared Components",
+        "summary": "Maintenance of a Java/Maven library shared by business applications.",
+        "context": "Shared artifact in an internal application ecosystem.",
+        "role": "Targeted fixes and completion of a documented encoding migration.",
+        "contributions": [
+          "Adjusted a status selector to preserve the expected legacy styling.",
+          "Applied a scoped rollback to SQL scripts.",
+          "Closed UTF-8 migration tasks in shared components."
+        ],
+        "outcomes": [
+          "Components and data resources aligned with existing behavior.",
+          "Applied experience with cross-application compatibility and shared dependencies."
+        ]
+      }
+    }
+  },
+  {
+    "id": "intranet",
+    "slug": "intranet",
+    "aliases": [],
+    "category": "professional",
+    "evidence": "audited-git",
+    "featured": false,
+    "cvInclude": true,
+    "technologies": [
+      "Java",
+      "Maven",
+      "JSP",
+      "JavaScript",
+      "SQL",
+      "HTML/CSS"
+    ],
+    "links": [],
+    "mediaIds": [
+      "barlovento-logo"
+    ],
+    "copy": {
+      "es": {
+        "title": "Intranet · Trabajo puntual",
+        "summary": "Exposición acotada a una aplicación web interna Java/JSP y sus recursos legacy.",
+        "context": "Aplicación empresarial con JSP, JavaScript, SQL y scripts operativos.",
+        "role": "La evidencia directa auditada corresponde al inicio/configuración del proyecto.",
+        "contributions": [
+          "Participé en tareas iniciales de configuración.",
+          "Revisé el contexto técnico de componentes JSP, editores y manejo de imágenes.",
+          "Mantuve el alcance público limitado a la evidencia disponible."
+        ],
+        "outcomes": [
+          "Contexto práctico de aplicaciones web internas y tecnologías legacy.",
+          "La ficha no atribuye el desarrollo completo del producto."
+        ]
+      },
+      "en": {
+        "title": "Intranet · Scoped Work",
+        "summary": "Limited exposure to an internal Java/JSP web application and its legacy resources.",
+        "context": "Business application using JSP, JavaScript, SQL, and operational scripts.",
+        "role": "The audited direct evidence covers project setup and initial configuration.",
+        "contributions": [
+          "Participated in initial configuration tasks.",
+          "Reviewed technical context around JSP components, editors, and image handling.",
+          "Kept the public scope limited to the available evidence."
+        ],
+        "outcomes": [
+          "Practical exposure to internal web applications and legacy technologies.",
+          "This page does not claim ownership of the full product."
+        ]
+      }
+    }
+  },
+  {
+    "id": "adroguebus-fonobus",
+    "slug": "adroguebus-fonobus",
+    "aliases": [
+      "adroguebus",
+      "fonobus"
+    ],
+    "category": "operations",
+    "evidence": "known-not-git-audited",
+    "featured": false,
+    "cvInclude": true,
+    "technologies": [
+      "React Native",
+      "Java",
+      "MySQL",
+      "Power BI exports",
+      "Performance analysis"
+    ],
+    "links": [
+      {
+        "type": "official",
+        "url": "https://www.fonobussrl.com.ar/"
+      }
+    ],
+    "mediaIds": [
+      "fonobus-marketing"
+    ],
+    "copy": {
+      "es": {
+        "title": "AdrogueBus / Fonobus",
+        "summary": "Soporte y mejoras funcionales para una aplicación de transporte y sus herramientas de gestión.",
+        "context": "Experiencia técnica conocida en una aplicación React Native y backoffice Java con MySQL; sin historial Git local utilizable.",
+        "role": "Soporte, análisis y cambios funcionales dentro de los tickets conocidos.",
+        "contributions": [
+          "Trabajé en estados, filtros y exportaciones para reporting y Power BI.",
+          "Analicé flujos con problemas de complejidad O(n²), N+1 y notificaciones síncronas.",
+          "Revisé una incidencia de exportación de rendiciones a Excel."
+        ],
+        "outcomes": [
+          "Diagnóstico de cuellos de botella y oportunidades de optimización a escala.",
+          "El inventario identifica esta experiencia como conocida, no auditada por Git."
+        ]
+      },
+      "en": {
+        "title": "AdrogueBus / Fonobus",
+        "summary": "Support and functional improvements for a transit application and its management tools.",
+        "context": "Known technical work on a React Native app and Java/MySQL back office; no usable local Git history was available.",
+        "role": "Support, analysis, and feature changes within known tickets.",
+        "contributions": [
+          "Worked on statuses, filters, and exports for reporting and Power BI.",
+          "Analyzed workflows with O(n²), N+1, and synchronous notification issues.",
+          "Reviewed an Excel export issue in driver settlement reports."
+        ],
+        "outcomes": [
+          "Diagnosed bottlenecks and opportunities for performance improvements at scale.",
+          "The source inventory classifies this experience as known, not Git-audited."
+        ]
+      }
+    }
+  },
+  {
+    "id": "evolution-infra",
+    "slug": "evolution-infra",
+    "aliases": [
+      "evolution-api",
+      "whatsapp-infra"
+    ],
+    "category": "operations",
+    "evidence": "operational-context",
+    "featured": false,
+    "cvInclude": true,
+    "technologies": [
+      "Evolution API",
+      "Node.js",
+      "Linux",
+      "TLS",
+      "VPS",
+      "WhatsApp"
+    ],
+    "links": [],
+    "mediaIds": [
+      "barlovento-logo"
+    ],
+    "copy": {
+      "es": {
+        "title": "Evolution API · Operación WhatsApp",
+        "summary": "Diagnóstico operativo de instancias, certificados y estados de entrega en integraciones de WhatsApp.",
+        "context": "Área transversal de operación conocida en entornos de test y producción.",
+        "role": "Soporte técnico y diagnóstico; no se atribuye un empleador o producto independiente.",
+        "contributions": [
+          "Analicé conexión, vinculación por QR/código y estado de entrega real.",
+          "Revisé diferencias entre ambientes y certificados TLS/fullchain.",
+          "Trabajé con reintentos, calentamiento de líneas, trazabilidad y operación de instancias."
+        ],
+        "outcomes": [
+          "Mejor diagnóstico de fallas entre aceptación de middleware y entrega en WhatsApp.",
+          "Experiencia operativa con Evolution API, Node.js y servicios Linux."
+        ]
+      },
+      "en": {
+        "title": "Evolution API · WhatsApp Operations",
+        "summary": "Operational troubleshooting of instances, certificates, and delivery states in WhatsApp integrations.",
+        "context": "Cross-cutting operational work known across test and production environments.",
+        "role": "Technical support and diagnosis; no separate employer or product is claimed.",
+        "contributions": [
+          "Investigated connectivity, QR/code linking, and actual delivery status.",
+          "Reviewed environment differences and TLS/fullchain certificates.",
+          "Worked with retries, line warm-up, traceability, and instance operations."
+        ],
+        "outcomes": [
+          "Improved diagnosis of gaps between middleware acceptance and WhatsApp delivery.",
+          "Operational experience with Evolution API, Node.js, and Linux services."
+        ]
+      }
+    }
+  },
+  {
+    "id": "cvgenio",
+    "slug": "cvgenio",
+    "aliases": [],
+    "category": "own",
+    "evidence": "own-product",
+    "featured": true,
+    "cvInclude": true,
+    "technologies": [
+      "React 19",
+      "TypeScript",
+      "Vite",
+      "AI APIs",
+      "VPS",
+      "Product design"
+    ],
+    "links": [],
+    "mediaIds": [
+      "cvgenio-cover"
+    ],
+    "copy": {
+      "es": {
+        "title": "CVGenio",
+        "summary": "Producto propio para crear y analizar currículums con flujos asistidos por inteligencia artificial.",
+        "context": "Producto digital B2C/B2B trabajado principalmente entre abril y junio de 2026, con evolución posterior.",
+        "role": "Desarrollo de producto, frontend e integración de IA junto con tareas de despliegue y experiencia de usuario.",
+        "contributions": [
+          "Construí flujos de carga y procesamiento de CVs y descripciones de puestos.",
+          "Integré modelos de IA con límites, tokens y orquestación por etapas.",
+          "Trabajé en UX, rendimiento, despliegue en VPS y experimentación del producto."
+        ],
+        "outcomes": [
+          "Producto propio de punta a punta con componentes B2C y B2B.",
+          "Experiencia práctica en costos de IA, prompts, procesamiento documental y operación de un VPS pequeño."
+        ]
+      },
+      "en": {
+        "title": "CVGenio",
+        "summary": "Personal product for creating and analyzing résumés with AI-assisted workflows.",
+        "context": "B2C/B2B digital product developed mainly from April to June 2026, with later iterations.",
+        "role": "Product development, frontend, AI integration, deployment, and user experience work.",
+        "contributions": [
+          "Built workflows for uploading and processing résumés and job descriptions.",
+          "Integrated AI models with usage limits, token handling, and staged orchestration.",
+          "Worked on UX, performance, VPS deployment, and product experimentation."
+        ],
+        "outcomes": [
+          "End-to-end personal product with B2C and B2B flows.",
+          "Practical experience with AI costs, prompting, document processing, and operating a small VPS."
+        ]
+      }
+    }
+  },
+  {
+    "id": "portal-sgu",
+    "slug": "portal-sgu",
+    "aliases": [
+      "portal-sgu-guardia-urbana"
+    ],
+    "category": "own",
+    "evidence": "own-project",
+    "featured": true,
+    "cvInclude": true,
+    "technologies": [
+      "Java 21",
+      "Angular 17",
+      "MySQL 8",
+      "Ubuntu",
+      "Nginx",
+      "JWT",
+      "Audit"
+    ],
+    "links": [],
+    "mediaIds": [
+      "guardia-urbana-photo",
+      "sgu-screenshots"
+    ],
+    "copy": {
+      "es": {
+        "title": "Portal SGU · Guardia Urbana",
+        "summary": "Sistema web para gestionar recursos, presentismo, planillas y estadísticas operativas.",
+        "context": "Proyecto propio para gestión de Guardia Urbana con infraestructura Linux y base de datos relacional.",
+        "role": "Desarrollo backend y frontend, datos, autenticación y configuración del entorno.",
+        "contributions": [
+          "Implementé módulos para usuarios, roles, móviles, efectivos, períodos y presentismo.",
+          "Trabajé en planillas, auditoría y estadísticas con Java, Angular y MySQL.",
+          "Configuré y diagnostiqué servicios en Ubuntu con Nginx."
+        ],
+        "outcomes": [
+          "Flujos de gestión operativa con control de acceso y trazabilidad.",
+          "La ficha y el stack describen el proyecto según el inventario, no según tecnologías de otros prototipos."
+        ]
+      },
+      "en": {
+        "title": "Portal SGU · Urban Guard",
+        "summary": "Web system for managing personnel, attendance, shift sheets, and operational statistics.",
+        "context": "Personal project for Urban Guard operations using Linux infrastructure and a relational database.",
+        "role": "Backend and frontend development, data, authentication, and environment configuration.",
+        "contributions": [
+          "Implemented modules for users, roles, vehicles, personnel, periods, and attendance.",
+          "Worked on shift sheets, auditing, and statistics with Java, Angular, and MySQL.",
+          "Configured and troubleshot services on Ubuntu with Nginx."
+        ],
+        "outcomes": [
+          "Operational management workflows with access control and traceability.",
+          "The page describes the project from the source inventory, not technologies from unrelated prototypes."
+        ]
+      }
+    }
+  },
+  {
+    "id": "alfa-dev",
+    "slug": "alfa-dev",
+    "aliases": [
+      "alfadev"
+    ],
+    "category": "own",
+    "evidence": "independent-initiative",
+    "featured": false,
+    "cvInclude": true,
+    "technologies": [
+      "Software development",
+      "Product exploration",
+      "Freelance"
+    ],
+    "links": [],
+    "mediaIds": [],
+    "copy": {
+      "es": {
+        "title": "Alfa:dev",
+        "summary": "Iniciativa independiente que reúne proyectos propios, desarrollo freelance y exploración de productos.",
+        "context": "Actividad independiente reportada con aproximadamente dos años de existencia.",
+        "role": "Iniciativa paraguas para productos y trabajo de software; sin atribución de clientes o contratos no documentados.",
+        "contributions": [
+          "Impulsé y mantuve productos propios en distintas etapas.",
+          "Exploré necesidades, alcance y viabilidad de soluciones de software.",
+          "Apliqué experiencia full stack y prácticas de entrega a iniciativas independientes."
+        ],
+        "outcomes": [
+          "Consolidación de aprendizaje práctico en desarrollo y producto.",
+          "La ficha no atribuye clientes, contratos ni un stack exclusivo."
+        ]
+      },
+      "en": {
+        "title": "Alfa:dev",
+        "summary": "Independent initiative bringing together personal projects, freelance software development, and product exploration.",
+        "context": "Independent activity reported to have existed for approximately two years.",
+        "role": "Umbrella initiative for software products and work; no undocumented clients or contracts are claimed.",
+        "contributions": [
+          "Built and maintained personal products at different stages.",
+          "Explored needs, scope, and feasibility for software solutions.",
+          "Applied full-stack development and delivery practices to independent initiatives."
+        ],
+        "outcomes": [
+          "Consolidated practical learning in software development and product work.",
+          "No clients, contracts, or exclusive stack are claimed on this page."
+        ]
+      }
+    }
+  },
+  {
+    "id": "portfolio-v1",
+    "slug": "portfolio-v1",
+    "aliases": [
+      "portafolio-v1"
+    ],
+    "category": "complementary",
+    "evidence": "existing-project-assets",
+    "featured": false,
+    "cvInclude": false,
+    "technologies": [
+      "HTML",
+      "CSS",
+      "Bootstrap",
+      "JavaScript"
+    ],
+    "links": [
+      {
+        "type": "repository",
+        "url": "https://github.com/alfarofernando/portfolio-v.1"
+      }
+    ],
+    "mediaIds": [
+      "portfolio-v1-screen"
+    ],
+    "copy": {
+      "es": {
+        "title": "Portafolio V1",
+        "summary": "Versión anterior de mi sitio personal desarrollada con tecnologías web fundamentales.",
+        "context": "Proyecto complementario conservado desde el portafolio previo.",
+        "role": "Desarrollo personal; los medios propios muestran el resultado visual disponible.",
+        "contributions": [
+          "Construí una web personal con HTML, CSS, Bootstrap y JavaScript.",
+          "Organicé contenido de presentación y proyectos en una interfaz web.",
+          "Conservé la versión como antecedente de evolución del portafolio."
+        ],
+        "outcomes": [
+          "Base práctica en maquetación y desarrollo web.",
+          "La ficha no agrega afirmaciones sobre despliegue o resultados no verificados."
+        ]
+      },
+      "en": {
+        "title": "Portfolio V1",
+        "summary": "An earlier version of my personal website built with core web technologies.",
+        "context": "Complementary project retained from the previous portfolio.",
+        "role": "Personal development; available project media shows the visual result.",
+        "contributions": [
+          "Built a personal website using HTML, CSS, Bootstrap, and JavaScript.",
+          "Organized profile and project content in a web interface.",
+          "Kept the version as an example of portfolio evolution."
+        ],
+        "outcomes": [
+          "Practical foundation in layout and web development.",
+          "This page does not add unverified deployment or outcome claims."
+        ]
+      }
+    }
+  },
+  {
+    "id": "alfateam",
+    "slug": "alfateam",
+    "aliases": [],
+    "category": "complementary",
+    "evidence": "existing-project-assets",
+    "featured": false,
+    "cvInclude": false,
+    "technologies": [
+      "React",
+      "React Router",
+      "Tailwind CSS",
+      "Vite",
+      "PHP"
+    ],
+    "links": [
+      {
+        "type": "repository",
+        "url": "https://github.com/alfarofernando/Alfa_Team_Frontend"
+      }
+    ],
+    "mediaIds": [
+      "alfateam-logo",
+      "alfateam-gallery"
+    ],
+    "copy": {
+      "es": {
+        "title": "AlfaTeam",
+        "summary": "Interfaz para una plataforma de cursos asincrónicos, presentada como proyecto complementario.",
+        "context": "Proyecto con capturas y repositorio frontend disponibles.",
+        "role": "Trabajo de desarrollo web visible en los recursos propios del proyecto.",
+        "contributions": [
+          "Desarrollé una interfaz React con navegación y componentes de formulario.",
+          "Trabajé con Tailwind CSS, Vite y librerías de interfaz registradas en el proyecto.",
+          "Conservé capturas que muestran pantallas y flujos disponibles."
+        ],
+        "outcomes": [
+          "Demuestra práctica con interfaces React y composición de componentes.",
+          "No se atribuyen seguridad, backend o flujos de compra que no estén verificados."
+        ]
+      },
+      "en": {
+        "title": "AlfaTeam",
+        "summary": "Interface for an asynchronous learning platform, presented as a complementary project.",
+        "context": "Project with available screenshots and frontend repository.",
+        "role": "Web development work shown in the project's own assets.",
+        "contributions": [
+          "Developed a React interface with navigation and form components.",
+          "Worked with Tailwind CSS, Vite, and UI libraries listed in the project.",
+          "Retained screenshots showing available screens and workflows."
+        ],
+        "outcomes": [
+          "Demonstrates practice with React interfaces and component composition.",
+          "Security, backend, or purchase-flow claims are omitted unless verified."
+        ]
+      }
+    }
+  },
+  {
+    "id": "storepc",
+    "slug": "storepc",
+    "aliases": [],
+    "category": "complementary",
+    "evidence": "existing-project-assets",
+    "featured": false,
+    "cvInclude": false,
+    "technologies": [
+      "React",
+      "Vite",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "JWT"
+    ],
+    "links": [
+      {
+        "type": "repository",
+        "url": "https://github.com/zfranco21/storepc-frontend"
+      }
+    ],
+    "mediaIds": [
+      "storepc-logo",
+      "storepc-gallery"
+    ],
+    "copy": {
+      "es": {
+        "title": "StorePC",
+        "summary": "Proyecto complementario de comercio electrónico con una interfaz React y servicios MERN asociados.",
+        "context": "Proyecto con capturas y repositorio frontend enlazado.",
+        "role": "Práctica de desarrollo full stack en contexto de proyecto, sin atribuir liderazgo individual.",
+        "contributions": [
+          "Trabajé con una aplicación React/Vite y consumo de APIs.",
+          "El proyecto se asocia a servicios Node.js/Express y persistencia MongoDB.",
+          "Conservé la galería existente como evidencia visual del producto."
+        ],
+        "outcomes": [
+          "Práctica con flujos de catálogo y una arquitectura web cliente-servidor.",
+          "No se afirma autoría exclusiva del repositorio o de todas sus partes."
+        ]
+      },
+      "en": {
+        "title": "StorePC",
+        "summary": "Complementary e-commerce project with a React interface and related MERN services.",
+        "context": "Project with screenshots and a linked frontend repository.",
+        "role": "Full-stack development practice in a project context, without individual leadership claims.",
+        "contributions": [
+          "Worked with a React/Vite application and API consumption.",
+          "The project is associated with Node.js/Express services and MongoDB persistence.",
+          "Retained the existing gallery as visual evidence of the product."
+        ],
+        "outcomes": [
+          "Practice with catalog workflows and a client-server web architecture.",
+          "No exclusive authorship of the repository or all its parts is claimed."
+        ]
+      }
+    }
+  },
+  {
+    "id": "noteit",
+    "slug": "noteit",
+    "aliases": [],
+    "category": "complementary",
+    "evidence": "existing-project-assets",
+    "featured": false,
+    "cvInclude": false,
+    "technologies": [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Redux Toolkit",
+      "Express",
+      "Prisma",
+      "MySQL"
+    ],
+    "links": [
+      {
+        "type": "repository",
+        "url": "https://github.com/alfarofernando/NoteIt/"
+      }
+    ],
+    "mediaIds": [
+      "noteit-logo",
+      "noteit-gallery"
+    ],
+    "copy": {
+      "es": {
+        "title": "NoteIt",
+        "summary": "Aplicación web de notas con una interfaz React y un backend TypeScript/Express.",
+        "context": "Proyecto complementario de aplicación full stack con capturas y repositorio disponibles.",
+        "role": "Desarrollo de funcionalidades web y práctica de integración entre cliente y API.",
+        "contributions": [
+          "Trabajé con React, TypeScript, Tailwind CSS y Redux Toolkit.",
+          "Integré una API Express con Prisma y MySQL.",
+          "Conservé la galería para mostrar pantallas propias del proyecto."
+        ],
+        "outcomes": [
+          "Práctica de integración frontend/backend y persistencia relacional.",
+          "No se afirma despliegue productivo sin evidencia adicional."
+        ]
+      },
+      "en": {
+        "title": "NoteIt",
+        "summary": "Notes web application with a React interface and a TypeScript/Express backend.",
+        "context": "Complementary full-stack application with available screenshots and repository.",
+        "role": "Web feature development and practice integrating a client with an API.",
+        "contributions": [
+          "Worked with React, TypeScript, Tailwind CSS, and Redux Toolkit.",
+          "Integrated an Express API with Prisma and MySQL.",
+          "Retained the gallery to show project-owned screens."
+        ],
+        "outcomes": [
+          "Practice in frontend/backend integration and relational persistence.",
+          "Production deployment is not claimed without further evidence."
+        ]
+      }
+    }
+  }
+]
