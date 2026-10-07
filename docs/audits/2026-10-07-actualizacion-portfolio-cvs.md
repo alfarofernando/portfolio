@@ -35,4 +35,4 @@ Los datos comerciales, métricas internas, contacto de terceros, credenciales, I
 
 ### Publicación
 
-El remoto contiene `master` y `gh-pages`; el proyecto ya define `npm run deploy` para publicar `dist/` en `gh-pages`. Completar aquí los SHA de código y de publicación, y la verificación pública de las rutas y PDF después del push.
+El código se empujó a `master` en `77b6c016edd7634f43f366e259350467cbfe04ac`. `npm run deploy` publicó `dist/` en `gh-pages`, commit `e918d8d8498e07582a662f583a11c5197e35a135`. La URL principal entrega el HTML actualizado; Experiencia y el catálogo se abrieron directamente en el navegador y mostraron sus páginas. En GitHub Pages esas rutas profundas devuelven estado HTTP 404, pero `404.html` carga la aplicación y React resuelve la ruta. Los dos PDF públicos responden `200` y coinciden con el tamaño de los archivos generados localmente.
