@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import Welcome from './Welcome';
 import Projects from '../Projects/Projects';
 import AboutMe from '../AboutMe/AboutMe';
+import ExperiencePreview from '../Experience/components/ExperiencePreview.jsx';
 
 const SECTION_SCROLL_OFFSET = 120;
 
@@ -65,6 +66,8 @@ const PortfolioLanding = () => {
       <div id="projects" className="scroll-mt-32">
         <Projects />
       </div>
+
+      <ExperiencePreview />
 
       <div
         aria-hidden="true"

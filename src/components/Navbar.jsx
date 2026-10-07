@@ -15,6 +15,7 @@ const NavBar = ({ darkMode, onToggleTheme }) => {
     () => [
       { label: nav.home, sectionId: 'home' },
       { label: nav.projects, sectionId: 'projects' },
+      { label: nav.experience, path: '/portfolio/Experience' },
       { label: nav.aboutMe, sectionId: 'about' },
     ],
     [nav]
@@ -33,13 +34,17 @@ const NavBar = ({ darkMode, onToggleTheme }) => {
     return true;
   };
 
-  const handleNavigate = (sectionId) => {
+  const handleNavigate = (item) => {
     setIsMenuOpen(false);
+    if (item.path) {
+      navigate(item.path);
+      return;
+    }
 
     const isProjectDetailPage = location.pathname.startsWith('/portfolio/Projects/');
-    if (!isProjectDetailPage && scrollToSection(sectionId)) return;
+    if (!isProjectDetailPage && scrollToSection(item.sectionId)) return;
 
-    navigate(`/portfolio/#${sectionId}`);
+    navigate(`/portfolio/#${item.sectionId}`);
   };
 
   const toggleLanguage = () => {
@@ -61,7 +66,7 @@ const NavBar = ({ darkMode, onToggleTheme }) => {
           <nav className="relative flex items-center justify-between gap-4 rounded-3xl border border-white/50 bg-white/80 px-5 py-3 shadow-brand backdrop-blur-md dark:border-white/10 dark:bg-slate-900/80">
             <button
               type="button"
-              onClick={() => handleNavigate('home')}
+              onClick={() => handleNavigate({ sectionId: 'home' })}
               className="flex items-center gap-2 text-left"
             >
               <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-brand-600 text-lg font-semibold text-white shadow-brand">
@@ -78,9 +83,9 @@ const NavBar = ({ darkMode, onToggleTheme }) => {
             <div className="hidden items-center gap-1 rounded-full bg-white/60 p-1 dark:bg-slate-800/80 md:flex">
               {navigation.map((item) => (
                 <button
-                  key={item.sectionId}
+                  key={item.path ?? item.sectionId}
                   type="button"
-                  onClick={() => handleNavigate(item.sectionId)}
+                  onClick={() => handleNavigate(item)}
                   className="group relative inline-flex items-center rounded-full px-4 py-2 text-sm font-medium text-neutral-600 transition hover:text-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-200 dark:text-neutral-200"
                 >
                   <span className="absolute inset-0 rounded-full bg-brand-50 opacity-0 transition-opacity group-hover:opacity-100 dark:bg-brand-500/20" />
@@ -138,9 +143,9 @@ const NavBar = ({ darkMode, onToggleTheme }) => {
               <div className="flex flex-col gap-2">
                 {navigation.map((item) => (
                   <button
-                    key={item.sectionId}
+                    key={item.path ?? item.sectionId}
                     type="button"
-                    onClick={() => handleNavigate(item.sectionId)}
+                    onClick={() => handleNavigate(item)}
                     className="rounded-2xl px-4 py-3 text-left text-sm font-semibold text-neutral-700 transition hover:bg-brand-50 hover:text-brand-700 dark:text-neutral-200 dark:hover:bg-brand-500/20"
                   >
                     {item.label}

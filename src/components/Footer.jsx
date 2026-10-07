@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
+import profile from '../../content/profile.json';
 
 const Footer = () => {
   const { language, locales } = useLanguage();
@@ -10,6 +11,7 @@ const Footer = () => {
 
   const contactLinks = [
     { label: footerCopy.links.cv, href: documents.cv },
+    { label: 'Email', href: `mailto:${profile.email}` },
     { label: footerCopy.links.github, href: links.github },
     { label: footerCopy.links.linkedin, href: links.linkedin },
     { label: footerCopy.links.whatsapp, href: links.whatsapp },

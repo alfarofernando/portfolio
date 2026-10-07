@@ -1,5 +1,9 @@
-export const locales = {
+const legacyLocales = {
   es: {
+    seo: {
+      title: 'Fernando Alfaro · Desarrollador Full Stack Junior',
+      description: 'Experiencia en Java, Spring Boot, Angular, TypeScript, SQL, REST/SOAP e integraciones; proyectos propios y profesionales.',
+    },
     nav: {
       home: 'Inicio',
       projects: 'Proyectos',
@@ -8,8 +12,8 @@ export const locales = {
     brand: {
       initials: 'F',
       name: 'Fernando Alfaro',
-      role: 'Desarrollador Full Stack',
-      profileSubtitle: 'Ingeniero Full Stack · Buenos Aires',
+      role: 'Desarrollador Full Stack Junior',
+      profileSubtitle: 'Técnico Univ. en Programación · UTN FRA',
     },
     theme: {
       dark: 'Oscuro',
@@ -25,31 +29,31 @@ export const locales = {
       closeLabel: 'Cerrar menú',
     },
     hero: {
-      badge: 'Producto digital end-to-end',
+      badge: 'Software e integraciones',
       heading: 'Hola, soy Fernando Alfaro',
-      subheading: 'Desarrollador full stack orientado a producto',
+      subheading: 'Desarrollador Full Stack Junior · UTN FRA',
       description:
-        'Impulso productos digitales centrados en negocio, accesibilidad y rendimiento. Disfruto liderar iteraciones breves, validar con usuarios reales y convertir ideas en experiencias listas para producción.',
+        'Desarrollo y mantengo sistemas web, APIs e integraciones, con experiencia profesional en Java/Spring, Angular/TypeScript, SQL, REST/SOAP y soporte de producción.',
       highlights: [
-        'Experiencia full stack de punta a punta',
-        'Mentoría y liderazgo técnico',
-        'Iteraciones ágiles guiadas por datos',
+        'Java · Spring Boot',
+        'Angular · TypeScript',
+        'SQL · REST · SOAP',
       ],
       stats: [
         {
-          value: '7+',
-          label: 'Proyectos en producción',
-          detail: 'React, Next.js, Node y Prisma',
+          value: 'Backend',
+          label: 'Servicios e integraciones',
+          detail: 'Java, Spring, REST y SOAP',
         },
         {
-          value: '3',
-          label: 'Equipos liderados',
-          detail: 'Coordinación técnica y mentoring',
+          value: 'Frontend',
+          label: 'Aplicaciones web',
+          detail: 'Angular, TypeScript y UX',
         },
         {
-          value: '100%',
-          label: 'Foco UX',
-          detail: 'Investigación, prototipos y validación',
+          value: 'Entrega',
+          label: 'Calidad y producción',
+          detail: 'SQL, debugging, Linux y CI/CD',
         },
       ],
       actions: {
@@ -74,7 +78,7 @@ export const locales = {
       badge: 'Portafolio',
       title: 'Proyectos destacados',
       description:
-        'Selección de soluciones que construí para empresas y proyectos personales, priorizando métricas claras, escalabilidad y experiencias memorables.',
+        'Selección de sistemas financieros, ERP, mensajería, integraciones y productos propios, con el alcance de cada contribución descrito con precisión.',
       previewLabel: 'Detalle',
       viewDetails: 'Ver detalles',
       repositoryLink: 'Repositorio',
@@ -97,57 +101,25 @@ export const locales = {
     },
     about: {
       description:
-        'Una línea de tiempo que combina formación, liderazgo técnico y productos entregados con foco en negocio y personas.',
+        'Técnico Universitario en Programación con experiencia en productos financieros, ERP, logística, mensajería y productos propios.',
       badge: 'Experiencia',
     },
-    timeline: [
-      {
-        date: '2019 - 2021 · UTN',
-        title: 'Formación técnica en programación',
-        description:
-          'Me gradué como Técnico Universitario en Programación, consolidando bases sólidas en algoritmos, estructuras de datos y diseño de sistemas.',
-      },
-      {
-        date: '2021 - 2022',
-        title: 'Primeros productos digitales',
-        description:
-          'Construí mi primer portafolio y proyectos freelance aplicando HTML, CSS, JavaScript y Bootstrap con foco en accesibilidad y responsive design.',
-      },
-      {
-        date: '2022 - 2023',
-        title: 'Especialización full stack MERN',
-        description:
-          'Desarrollé soluciones completas con React, Node y MongoDB, integrando autenticación, dashboards y despliegues continuos.',
-      },
-      {
-        date: '2023 - 2024',
-        title: 'Liderazgo técnico y mentoría',
-        description:
-          'Coordiné equipos multidisciplinarios, definí arquitecturas escalables y acompañé a otros devs en buenas prácticas y revisiones de código.',
-      },
-      {
-        date: '2024 - Actualidad',
-        title: 'Entrega de plataformas escalables',
-        description:
-          'Diseñé y lancé aplicaciones con stack moderno (React 19, Next.js 15, Prisma, Drizzle y MySQL) asegurando seguridad, observabilidad y pruebas automatizadas.',
-      },
-    ],
     cta: {
-      badge: 'Colaboración guiada por datos',
-      title: '¿Planificamos tu próximo proyecto?',
+      badge: 'Full Stack · Integraciones',
+      title: '¿Hablamos de tu próximo proyecto?',
       description:
-        'Trabajo cada iteración con foco en UX, performance y resultados medibles. Revisá mis proyectos o escribime para llevar tu idea a producción.',
-      primary: 'Ver proyectos',
+        'Estoy disponible para oportunidades de desarrollo de software. Revisá mi experiencia o contactame.',
+      primary: 'Ver experiencia',
       secondary: 'Contactar ahora',
     },
     footer: {
-      availability: 'Disponible para proyectos',
+      availability: 'Abierto a oportunidades laborales',
       summary:
-        'Hola, soy Fernando. Creo experiencias full stack con foco en métricas de negocio y personas usuarias.',
+        'Desarrollador Full Stack Junior con foco en Java/Spring, Angular/TypeScript, SQL y sistemas integrados.',
       highlights: [
-        'React · Next.js · TypeScript',
-        'Back-end con Node.js y Prisma',
-        'Investigación y métricas UX',
+        'Java · Spring Boot · REST/SOAP',
+        'Angular · TypeScript · SQL',
+        'Linux · Git · CI/CD',
       ],
       contactTitle: 'Contacto directo',
       links: {
@@ -157,7 +129,7 @@ export const locales = {
         whatsapp: 'WhatsApp',
       },
       legal: 'Copyright (c) {year} Fernando Alfaro. Todos los derechos reservados.',
-      tagline: 'Creado con pasión y obsesión por los detalles.',
+      tagline: 'Desarrollo de software y aprendizaje continuo.',
     },
     common: {
       loading: 'Cargando…',
@@ -178,75 +150,12 @@ export const locales = {
       github: 'GitHub',
       vite: 'Vite',
     },
-    projectsData: {
-      cvgenio: {
-        title: 'CVGenio',
-        description:
-          'SPA en React 19 + TypeScript para crear, optimizar y administrar CVs con experiencias asistidas, sincronización multicanal y generación PDF profesional.',
-        heroImageAlt: 'Ilustración del laboratorio CVGenio con foco en currículums asistidos por IA',
-        details: [
-          {
-            title: 'Arquitectura frontend',
-            items: [
-              'Aplicación de una sola página montada con Vite y React Router 7, cargando módulos perezosos para wizard, dashboards y análisis.',
-              'Árbol de providers que inicializa autenticación JWT, asistentes del wizard, toasts y control de suscripción desde el arranque.',
-              'Shell persistente con Navbar, SubNavbar y Footer que asegura navegación consistente y accesible.',
-            ],
-          },
-          {
-            title: 'Experiencia del usuario',
-            items: [
-              'Interfaz responsiva construida con Tailwind, styled-components y framer-motion para animaciones suaves.',
-              'Wizard modular con vistas de edición, previsualización PDF y sugerencias IA en paralelo.',
-              'Persistencia local de borradores con sincronización debounced para evitar pérdida de datos entre pestañas.',
-            ],
-          },
-          {
-            title: 'Servicios y datos',
-            items: [
-              'Consumo de API Java Spring para gestionar CV, IA y suscripciones con autenticación JWT.',
-              'Hooks dedicados para normalizar payloads, validar créditos y orquestar flujos premium antes de llamar al backend.',
-              'Generación de documentos PDF con plantillas profesionales y compatibilidad con Google reCAPTCHA v3.',
-            ],
-          },
-          {
-            title: 'Calidad y despliegue',
-            items: [
-              'Suite de pruebas con Jest 30 y Testing Library para lógica crítica y componentes.',
-              'Cypress listo para flujos end-to-end y ESLint con TypeScript ESLint para asegurar estándares.',
-              'Builds específicas por entorno (dev/test/prod) mediante scripts de Vite y despliegue estático en CDN.',
-            ],
-          },
-        ],
-      },
-      portfolioV1: {
-        title: 'Portafolio V1',
-        description:
-          'Mi primer portafolio personal construido con HTML, CSS, Bootstrap y JavaScript, optimizado para dispositivos móviles y con componentes reutilizables.',
-      },
-      alfateam: {
-        title: 'AlfaTeam',
-        description:
-          'Plataforma full stack para gestionar cursos asincrónicos. Implementé React, PHP y MySQL para orquestar flujos de compra y autenticación segura.',
-      },
-      storepc: {
-        title: 'StorePC',
-        description:
-          'E-commerce desarrollado con el stack MERN. Lideré la arquitectura, construí el backend completo y la lógica avanzada de consumo de APIs.',
-      },
-      noteit: {
-        title: 'NoteIt',
-        description:
-          'Aplicación de notas full stack con React, Tailwind, Redux Toolkit y un backend en Node, TypeScript y Express desplegado en producción.',
-      },
-      portalSgu: {
-        title: 'Portal SGU',
-        description:
-          'Plataforma para monitoreo en tiempo real de la Guardia Urbana de La Matanza. Utiliza React 19, Next.js 15 y Prisma con control de accesos y observabilidad.',
-      },
-    },
   },
   en: {
+    seo: {
+      title: 'Fernando Alfaro · Junior Full Stack Developer',
+      description: 'Professional experience in Java, Spring Boot, Angular, TypeScript, SQL, REST/SOAP integrations, and personal software products.',
+    },
     nav: {
       home: 'Home',
       projects: 'Projects',
@@ -255,8 +164,8 @@ export const locales = {
     brand: {
       initials: 'F',
       name: 'Fernando Alfaro',
-      role: 'Full-stack Developer',
-      profileSubtitle: 'Full-stack Engineer · Buenos Aires',
+      role: 'Junior Full Stack Developer',
+      profileSubtitle: 'University Technician in Programming · UTN FRA',
     },
     theme: {
       dark: 'Dark',
@@ -272,31 +181,31 @@ export const locales = {
       closeLabel: 'Close menu',
     },
     hero: {
-      badge: 'End-to-end digital products',
+      badge: 'Software and integrations',
       heading: "Hey, I'm Fernando Alfaro",
-      subheading: 'Product-oriented full-stack developer',
+      subheading: 'Junior Full Stack Developer · UTN FRA',
       description:
-        'I build digital products with a business, accessibility, and performance mindset. I love leading tight iterations, validating with real users, and shipping production-ready experiences.',
+        'I build and maintain web systems, APIs, and integrations, with professional experience in Java/Spring, Angular/TypeScript, SQL, REST/SOAP, and production support.',
       highlights: [
-        'End-to-end full-stack delivery',
-        'Technical mentorship & leadership',
-        'Data-informed agile iterations',
+        'Java · Spring Boot',
+        'Angular · TypeScript',
+        'SQL · REST · SOAP',
       ],
       stats: [
         {
-          value: '7+',
-          label: 'Launched projects',
-          detail: 'React, Next.js, Node & Prisma',
+          value: 'Backend',
+          label: 'Services and integrations',
+          detail: 'Java, Spring, REST, and SOAP',
         },
         {
-          value: '3',
-          label: 'Teams led',
-          detail: 'Technical coaching & mentoring',
+          value: 'Frontend',
+          label: 'Web applications',
+          detail: 'Angular, TypeScript, and UX',
         },
         {
-          value: '100%',
-          label: 'UX focus',
-          detail: 'Research, prototypes & validation',
+          value: 'Delivery',
+          label: 'Quality and production',
+          detail: 'SQL, debugging, Linux, and CI/CD',
         },
       ],
       actions: {
@@ -321,7 +230,7 @@ export const locales = {
       badge: 'Portfolio',
       title: 'Featured projects',
       description:
-        'A selection of products delivered for companies and personal initiatives, always optimising for measurable outcomes, scalability, and polished user experiences.',
+        'Selected work across financial systems, ERP, messaging, integrations, and personal products, with the scope of each contribution stated clearly.',
       previewLabel: 'Details',
       viewDetails: 'Project info',
       repositoryLink: 'Repository',
@@ -344,57 +253,25 @@ export const locales = {
     },
     about: {
       description:
-        'A timeline that blends education, technical leadership, and shipped products with a consistent focus on business outcomes and people.',
+        'University Technician in Programming with experience across financial products, ERP, logistics, messaging, and personal products.',
       badge: 'Experience',
     },
-    timeline: [
-      {
-        date: '2019 - 2021 · UTN',
-        title: 'Technical foundations in programming',
-        description:
-          'Graduated as a University Technician in Programming, building strong fundamentals in algorithms, data structures, and systems design.',
-      },
-      {
-        date: '2021 - 2022',
-        title: 'First digital products',
-        description:
-          'Crafted my first portfolio and freelance projects using HTML, CSS, JavaScript, and Bootstrap with an emphasis on accessibility and responsive design.',
-      },
-      {
-        date: '2022 - 2023',
-        title: 'Full-stack MERN specialisation',
-        description:
-          'Built end-to-end solutions with React, Node, and MongoDB, integrating authentication, dashboards, and continuous deployments.',
-      },
-      {
-        date: '2023 - 2024',
-        title: 'Technical leadership & mentoring',
-        description:
-          'Led cross-functional teams, defined scalable architectures, and coached developers on best practices and code reviews.',
-      },
-      {
-        date: '2024 - Present',
-        title: 'Shipping scalable platforms',
-        description:
-          'Designed and launched applications with a modern stack (React 19, Next.js 15, Prisma, Drizzle, MySQL) ensuring security, observability, and automated testing.',
-      },
-    ],
     cta: {
-      badge: 'Data-informed collaboration',
-      title: 'Ready to launch your next project?',
+      badge: 'Full Stack · Integrations',
+      title: "Let's discuss your next project",
       description:
-        'Every iteration is crafted with UX, performance, and measurable outcomes in mind. Explore my work or reach out and let’s build together.',
-      primary: 'See projects',
+        'Open to software development opportunities. Explore my experience or get in touch.',
+      primary: 'View experience',
       secondary: 'Get in touch',
     },
     footer: {
-      availability: 'Open to new opportunities',
+      availability: 'Open to software development opportunities',
       summary:
-        "Hi, I'm Fernando. I build full-stack experiences with a people-first and metrics-driven mindset.",
+        'Junior Full Stack Developer focused on Java/Spring, Angular/TypeScript, SQL, and integrated systems.',
       highlights: [
-        'React · Next.js · TypeScript',
-        'Back-end with Node.js & Prisma',
-        'UX research & product metrics',
+        'Java · Spring Boot · REST/SOAP',
+        'Angular · TypeScript · SQL',
+        'Linux · Git · CI/CD',
       ],
       contactTitle: 'Direct contact',
       links: {
@@ -404,7 +281,7 @@ export const locales = {
         whatsapp: 'WhatsApp',
       },
       legal: 'Copyright (c) {year} Fernando Alfaro. All rights reserved.',
-      tagline: 'Crafted with care and attention to detail.',
+      tagline: 'Software development and continuous learning.',
     },
     common: {
       loading: 'Loading…',
@@ -425,72 +302,166 @@ export const locales = {
       github: 'GitHub',
       vite: 'Vite',
     },
-    projectsData: {
-      cvgenio: {
-        title: 'CVGenio',
-        description:
-          'React 19 + TypeScript SPA that guides users through CV creation, optimisation and management with assisted flows, multi-tab sync and polished PDF exports.',
-        heroImageAlt: 'CVGenio lab illustration focused on AI-assisted résumé workflows',
-        details: [
-          {
-            title: 'Frontend architecture',
-            items: [
-              'Single-page application bootstrapped with Vite and React Router 7, lazy-loading wizard, dashboards and analytics modules.',
-              'Provider tree initialises JWT authentication, wizard assistants, toasts and subscription guards from the very first render.',
-              'Persistent application shell with Navbar, SubNavbar and Footer to ensure consistent and accessible navigation.',
-            ],
-          },
-          {
-            title: 'User experience',
-            items: [
-              'Responsive interface powered by Tailwind, styled-components and framer-motion for refined animations.',
-              'Modular wizard that combines editing panels, PDF previews and AI suggestions side-by-side.',
-              'Local draft persistence with debounced sync to protect user data across tabs and devices.',
-            ],
-          },
-          {
-            title: 'Services & data',
-            items: [
-              'Java Spring API integration for CV, AI and subscription services with JWT authentication.',
-              'Dedicated hooks to normalise payloads, validate credits and orchestrate premium flows before reaching the backend.',
-              'Professional PDF generation plus Google reCAPTCHA v3 to secure recovery and registration forms.',
-            ],
-          },
-          {
-            title: 'Quality & delivery',
-            items: [
-              'Jest 30 + Testing Library suites covering critical logic and UI components.',
-              'Cypress ready for end-to-end coverage and ESLint with TypeScript ESLint enforcing code standards.',
-              'Environment-specific Vite builds (dev/test/prod) prepared for CDN-ready static deployments.',
-            ],
-          },
-        ],
-      },
-      portfolioV1: {
-        title: 'Portfolio V1',
-        description:
-          'My first personal portfolio built with HTML, CSS, Bootstrap, and JavaScript. Designed for mobile-first experiences with reusable components.',
-      },
-      alfateam: {
-        title: 'AlfaTeam',
-        description:
-          'Full-stack platform for asynchronous course management. Implemented React, PHP, and MySQL to orchestrate purchase flows and secure authentication.',
-      },
-      storepc: {
-        title: 'StorePC',
-        description:
-          'E-commerce built with the MERN stack. I led the architecture, delivered the complete backend, and implemented advanced API consumption on the frontend.',
-      },
-      noteit: {
-        title: 'NoteIt',
-        description:
-          'Full-stack notes application using React, Tailwind, Redux Toolkit, and a Node, TypeScript & Express backend deployed to production.',
-      },
-      portalSgu: {
-        title: 'Portal SGU',
-        description:
-          'Real-time monitoring platform for Guardia Urbana in La Matanza. Built with React 19, Next.js 15, and Prisma with secure access control and observability.',
-      },
+  },
+};
+
+const withoutLegacyProjectCopy = (locale) => Object.fromEntries(
+  Object.entries(locale).filter(([key]) => !['projectsData', 'timeline'].includes(key)),
+);
+
+export const locales = {
+  es: {
+    ...withoutLegacyProjectCopy(legacyLocales.es),
+    nav: { ...legacyLocales.es.nav, experience: 'Experiencia' },
+    brand: {
+      ...legacyLocales.es.brand,
+      role: 'Desarrollador Full Stack Junior',
+      profileSubtitle: 'Técnico Univ. en Programación · UTN FRA',
+    },
+    hero: {
+      ...legacyLocales.es.hero,
+      badge: 'Software e integraciones',
+      heading: 'Hola, soy Fernando Alfaro',
+      subheading: 'Desarrollador Full Stack Junior · UTN FRA',
+      description: 'Desarrollo y mantengo sistemas web, APIs e integraciones. Mi experiencia profesional se concentra en Java/Spring, Angular/TypeScript, SQL, REST/SOAP y soporte de sistemas productivos.',
+      highlights: ['Java · Spring Boot', 'Angular · TypeScript', 'SQL · REST · SOAP'],
+      stats: [
+        { value: 'Backend', label: 'Servicios e integraciones', detail: 'Java, Spring, REST y SOAP' },
+        { value: 'Frontend', label: 'Aplicaciones web', detail: 'Angular, TypeScript y UX' },
+        { value: 'Entrega', label: 'Calidad y producción', detail: 'SQL, debugging, Linux y CI/CD' },
+      ],
+    },
+    projectsSection: {
+      badge: 'Casos de trabajo',
+      title: 'Experiencia en proyectos',
+      description: 'Una selección de sistemas financieros, ERP, mensajería, integraciones y productos propios. Cada ficha distingue el trabajo realizado de las imágenes institucionales.',
+      previewLabel: 'Caso',
+      viewDetails: 'Ver caso',
+      repositoryLink: 'Repositorio',
+      catalogLink: 'Ver catálogo completo',
+    },
+    projectPage: {
+      ...legacyLocales.es.projectPage,
+      repositoryDescription: 'Los enlaces disponibles se muestran según el caso; algunos proyectos profesionales no tienen un repositorio público.',
+      officialLink: 'Sitio oficial',
+      demoLink: 'Ver demo',
+      roleLabel: 'Participación',
+      contextLabel: 'Contexto',
+      contributionsLabel: 'Contribuciones',
+      outcomesLabel: 'Resultados y alcance',
+      technologyLabel: 'Tecnologías',
+      catalogLabel: 'Catálogo completo',
+    },
+    about: {
+      description: 'Técnico Universitario en Programación con experiencia profesional en productos financieros, ERP, logística y mensajería, además de productos propios.',
+      badge: 'Perfil',
+    },
+    cta: {
+      badge: 'Full Stack · Integraciones',
+      title: '¿Hablamos de tu próximo proyecto?',
+      description: 'Estoy disponible para oportunidades de desarrollo de software. Revisá mi experiencia o contactame.',
+      primary: 'Ver experiencia',
+      secondary: 'Contactar',
+    },
+    footer: {
+      ...legacyLocales.es.footer,
+      availability: 'Abierto a oportunidades laborales',
+      summary: 'Desarrollador Full Stack Junior con foco en Java/Spring, Angular/TypeScript, SQL y sistemas integrados.',
+      highlights: ['Java · Spring Boot · REST/SOAP', 'Angular · TypeScript · SQL', 'Linux · Git · CI/CD'],
+      tagline: 'Desarrollo de software y aprendizaje continuo.',
+    },
+    projectCatalog: {
+      kicker: 'Portafolio',
+      title: 'Catálogo de proyectos',
+      description: 'Casos profesionales, iniciativas propias, operación e interfaces complementarias. Filtrá por contexto para recorrerlos.',
+      all: 'Todos', professional: 'Experiencia profesional', own: 'Proyectos propios', operations: 'Operación e integraciones', complementary: 'Complementarios',
+      view: 'Ver ficha', repositoryLink: 'Repositorio', empty: 'No hay proyectos en esta categoría.', featured: 'Destacado', technologies: 'Tecnologías',
+    },
+    experiencePage: {
+      title: 'Experiencia profesional',
+      description: 'Desarrollo full stack en una software factory, con foco en funcionalidades, integraciones, debugging y mantenimiento de sistemas reales.',
+      responsibilities: 'Responsabilidades y trabajo',
+      cases: 'Casos relacionados',
+      education: 'Formación',
+      english: 'Inglés',
+      viewCase: 'Ver caso',
+    },
+  },
+  en: {
+    ...withoutLegacyProjectCopy(legacyLocales.en),
+    nav: { ...legacyLocales.en.nav, experience: 'Experience' },
+    brand: {
+      ...legacyLocales.en.brand,
+      role: 'Junior Full Stack Developer',
+      profileSubtitle: 'University Technician in Programming · UTN FRA',
+    },
+    hero: {
+      ...legacyLocales.en.hero,
+      badge: 'Software and integrations',
+      heading: "Hi, I'm Fernando Alfaro",
+      subheading: 'Junior Full Stack Developer · UTN FRA',
+      description: 'I build and maintain web systems, APIs, and integrations. My professional experience focuses on Java/Spring, Angular/TypeScript, SQL, REST/SOAP, and production support.',
+      highlights: ['Java · Spring Boot', 'Angular · TypeScript', 'SQL · REST · SOAP'],
+      stats: [
+        { value: 'Backend', label: 'Services and integrations', detail: 'Java, Spring, REST, and SOAP' },
+        { value: 'Frontend', label: 'Web applications', detail: 'Angular, TypeScript, and UX' },
+        { value: 'Delivery', label: 'Quality and production', detail: 'SQL, debugging, Linux, and CI/CD' },
+      ],
+    },
+    projectsSection: {
+      badge: 'Selected work',
+      title: 'Project experience',
+      description: 'A selection of financial, ERP, messaging, integration, and personal product work. Each page distinguishes implementation work from institutional imagery.',
+      previewLabel: 'Case',
+      viewDetails: 'View case',
+      repositoryLink: 'Repository',
+      catalogLink: 'Browse full catalog',
+    },
+    projectPage: {
+      ...legacyLocales.en.projectPage,
+      repositoryDescription: 'Links are shown when available; some professional projects do not have a public repository.',
+      officialLink: 'Official website',
+      demoLink: 'Open demo',
+      roleLabel: 'Contribution',
+      contextLabel: 'Context',
+      contributionsLabel: 'Contributions',
+      outcomesLabel: 'Outcomes and scope',
+      technologyLabel: 'Technologies',
+      catalogLabel: 'Full catalog',
+    },
+    about: {
+      description: 'University Technician in Programming with professional experience across financial products, ERP, logistics, and messaging, as well as personal products.',
+      badge: 'Profile',
+    },
+    cta: {
+      badge: 'Full Stack · Integrations',
+      title: "Let's discuss your next project",
+      description: 'Open to software development opportunities. Explore my experience or get in touch.',
+      primary: 'View experience',
+      secondary: 'Contact me',
+    },
+    footer: {
+      ...legacyLocales.en.footer,
+      availability: 'Open to software development opportunities',
+      summary: 'Junior Full Stack Developer focused on Java/Spring, Angular/TypeScript, SQL, and integrated systems.',
+      highlights: ['Java · Spring Boot · REST/SOAP', 'Angular · TypeScript · SQL', 'Linux · Git · CI/CD'],
+      tagline: 'Software development and continuous learning.',
+    },
+    projectCatalog: {
+      kicker: 'Portfolio',
+      title: 'Project catalog',
+      description: 'Professional cases, personal products, operations, and complementary interfaces. Filter by context to explore them.',
+      all: 'All', professional: 'Professional experience', own: 'Personal projects', operations: 'Operations and integrations', complementary: 'Complementary',
+      view: 'View case', repositoryLink: 'Repository', empty: 'There are no projects in this category.', featured: 'Featured', technologies: 'Technologies',
+    },
+    experiencePage: {
+      title: 'Professional experience',
+      description: 'Full-stack development in a software factory, focused on features, integrations, debugging, and maintenance of real systems.',
+      responsibilities: 'Responsibilities and work',
+      cases: 'Related cases',
+      education: 'Education',
+      english: 'English',
+      viewCase: 'View case',
     },
   },
 };

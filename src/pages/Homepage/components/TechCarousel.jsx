@@ -1,67 +1,21 @@
-import { useMemo } from 'react';
-import { motion } from 'framer-motion';
 import { useLanguage } from '../../../context/LanguageContext.jsx';
-
-import HtmlIcon from '../../../assets/icons/html-5.svg';
-import CssIcon from '../../../assets/icons/css.svg';
-import BootstrapIcon from '../../../assets/icons/bootstrap.svg';
-import JsIcon from '../../../assets/icons/javascript.svg';
-import ReactIcon from '../../../assets/icons/react.svg';
-import TailwindIcon from '../../../assets/icons/tailwind.svg';
-import PhpIcon from '../../../assets/icons/php.svg';
-import NodeIcon from '../../../assets/icons/node.svg';
-import ExpressIcon from '../../../assets/icons/express.svg';
-import MongoIcon from '../../../assets/icons/mongo.svg';
-import MySqlIcon from '../../../assets/icons/mysql.svg';
-import GitIcon from '../../../assets/icons/git.svg';
-import GithubIcon from '../../../assets/icons/github.svg';
-import ViteIcon from '../../../assets/icons/vite.svg';
-
-const stackConfig = [
-  { key: 'html', icon: HtmlIcon },
-  { key: 'css', icon: CssIcon },
-  { key: 'bootstrap', icon: BootstrapIcon },
-  { key: 'javascript', icon: JsIcon },
-  { key: 'react', icon: ReactIcon },
-  { key: 'tailwind', icon: TailwindIcon },
-  { key: 'php', icon: PhpIcon },
-  { key: 'node', icon: NodeIcon },
-  { key: 'express', icon: ExpressIcon },
-  { key: 'mongodb', icon: MongoIcon },
-  { key: 'mysql', icon: MySqlIcon },
-  { key: 'git', icon: GitIcon },
-  { key: 'github', icon: GithubIcon },
-  { key: 'vite', icon: ViteIcon },
-];
+import skills from '../../../../content/skills.json';
 
 const TechCarousel = () => {
-  const { language, locales } = useLanguage();
-  const labels = locales[language].techStack;
-
-  const items = useMemo(
-    () => stackConfig.map((item) => ({ ...item, name: labels[item.key] })),
-    [labels]
-  );
-
-  const duplicatedItems = useMemo(() => [...items, ...items], [items]);
+  const { language } = useLanguage();
 
   return (
-    <div className="overflow-hidden">
-      <motion.div
-        className="flex min-w-max gap-4"
-        animate={{ x: ['0%', '-50%'] }}
-        transition={{ repeat: Infinity, repeatType: 'loop', duration: 18, ease: 'linear' }}
-      >
-        {duplicatedItems.map(({ name, icon }, index) => (
-          <div
-            key={`${name}-${index}`}
-            className="flex min-w-[120px] flex-col items-center gap-2 rounded-3xl border border-brand-100 bg-white/80 px-4 py-3 text-center shadow-sm transition hover:-translate-y-1 hover:border-brand-200 hover:shadow-md dark:border-brand-500/20 dark:bg-slate-900/60"
-          >
-            <img src={icon} alt={name} className="h-10 w-10" />
-            <span className="text-xs font-semibold text-neutral-600 dark:text-neutral-200">{name}</span>
-          </div>
-        ))}
-      </motion.div>
+    <div className="space-y-4">
+      {skills.map((group) => (
+        <section key={group.id} aria-label={group.copy[language].label}>
+          <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">{group.copy[language].label}</h3>
+          <ul className="flex flex-wrap gap-2">
+            {group.technologies.map((technology) => (
+              <li key={technology} className={`rounded-full border px-3 py-1.5 text-xs font-semibold ${group.experience === 'professional' ? 'border-brand-200 bg-brand-50 text-brand-700 dark:border-brand-500/30 dark:bg-brand-500/10 dark:text-brand-200' : 'border-neutral-200 bg-white/75 text-neutral-600 dark:border-slate-700 dark:bg-slate-800/70 dark:text-neutral-200'}`}>{technology}</li>
+            ))}
+          </ul>
+        </section>
+      ))}
     </div>
   );
 };

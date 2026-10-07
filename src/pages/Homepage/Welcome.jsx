@@ -3,10 +3,12 @@ import { useLanguage } from '../../context/LanguageContext.jsx';
 import profileImage from '../../assets/profile.webp';
 import AnimatedContent from './components/AnimatedContent.jsx';
 import TechCarousel from './components/TechCarousel.jsx';
+import profile from '../../../content/profile.json';
 
 const Welcome = () => {
   const { language, locales } = useLanguage();
   const { hero, documents, links, brand } = locales[language];
+  const profileCopy = profile.copy[language];
 
   return (
     <section className="relative isolate px-4 pb-20 pt-10 sm:px-6 sm:pt-14 md:pb-24 lg:px-12">
@@ -41,7 +43,7 @@ const Welcome = () => {
                 </p>
 
                 <p className="text-base leading-relaxed text-neutral-600 dark:text-neutral-300 sm:text-lg">
-                  {hero.description}
+                  {profileCopy.summary}
                 </p>
               </div>
             </AnimatedContent>

@@ -39,6 +39,18 @@ const App = () => {
   }, [darkMode]);
 
   useEffect(() => {
+    if (typeof document === 'undefined') return;
+    const seo = locales[language].seo;
+    document.title = seo.title;
+    const description = document.querySelector('meta[name="description"]');
+    const openGraphTitle = document.querySelector('meta[property="og:title"]');
+    const openGraphDescription = document.querySelector('meta[property="og:description"]');
+    if (description) description.setAttribute('content', seo.description);
+    if (openGraphTitle) openGraphTitle.setAttribute('content', seo.title);
+    if (openGraphDescription) openGraphDescription.setAttribute('content', seo.description);
+  }, [language, locales]);
+
+  useEffect(() => {
     if (typeof window === 'undefined') return undefined;
 
     let cancelled = false;

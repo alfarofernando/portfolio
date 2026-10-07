@@ -1,9 +1,8 @@
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 
 const SubFooter = () => {
-  const navigate = useNavigate();
   const { language, locales } = useLanguage();
   const ctaCopy = locales[language].cta;
   const whatsappLink = locales[language].links.whatsapp;
@@ -31,13 +30,12 @@ const SubFooter = () => {
           </div>
 
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-            <button
-              type="button"
-              onClick={() => navigate('/portfolio/#projects')}
+            <Link
+              to="/portfolio/Experience"
               className="inline-flex items-center justify-center rounded-2xl bg-white px-6 py-3 text-sm font-semibold text-brand-700 transition hover:-translate-y-0.5 hover:bg-brand-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
             >
               {ctaCopy.primary}
-            </button>
+            </Link>
             <a
               href={whatsappLink}
               target="_blank"
