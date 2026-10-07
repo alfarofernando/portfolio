@@ -67,7 +67,7 @@ const legacyLocales = {
     },
     links: {
       github: 'https://github.com/alfarofernando',
-      linkedin: 'https://www.linkedin.com/in/fernando-alfaro-132973246/',
+      linkedin: 'https://ar.linkedin.com/in/alfarofernando',
       whatsapp: 'https://wa.me/5491152606455?text=Hola%21%20Quisiera%20conectar.',
     },
     sections: {
@@ -219,7 +219,7 @@ const legacyLocales = {
     },
     links: {
       github: 'https://github.com/alfarofernando',
-      linkedin: 'https://www.linkedin.com/in/fernando-alfaro-132973246/',
+      linkedin: 'https://ar.linkedin.com/in/alfarofernando',
       whatsapp: 'https://wa.me/5491152606455?text=Hi%21%20I%E2%80%99d%20love%20to%20connect.',
     },
     sections: {
