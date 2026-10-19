@@ -1,0 +1,82 @@
+[
+  {
+    "id": "websites",
+    "evidenceProjectIds": ["portfolio-v1", "alfateam"],
+    "copy": {
+      "es": {
+        "title": "Sitios web y landing pages",
+        "description": "Diseño y desarrollo páginas rápidas, responsive y claras para presentar un negocio, servicio o producto.",
+        "benefit": "Una presencia digital ordenada, preparada para explicar la propuesta y facilitar el contacto."
+      },
+      "en": {
+        "title": "Websites and landing pages",
+        "description": "I design and build fast, responsive pages to present a business, service, or product clearly.",
+        "benefit": "A polished digital presence that explains the offer and makes it easy to get in touch."
+      }
+    }
+  },
+  {
+    "id": "custom-systems",
+    "evidenceProjectIds": ["wise-capital", "netegia-n4", "portal-sgu"],
+    "copy": {
+      "es": {
+        "title": "Sistemas a medida",
+        "description": "Construyo y evoluciono aplicaciones de gestión ajustadas a procesos, roles y necesidades concretas.",
+        "benefit": "Herramientas que se integran al trabajo diario y dan más visibilidad sobre la operación."
+      },
+      "en": {
+        "title": "Custom business systems",
+        "description": "I build and improve management software around specific workflows, roles, and business needs.",
+        "benefit": "Tools that fit day-to-day work and give teams a clearer view of their operations."
+      }
+    }
+  },
+  {
+    "id": "apis-integrations",
+    "evidenceProjectIds": ["ms-gbp", "afipms", "evolution-infra"],
+    "copy": {
+      "es": {
+        "title": "APIs e integraciones",
+        "description": "Conecto servicios, sistemas y fuentes de datos mediante APIs REST, SOAP y herramientas existentes.",
+        "benefit": "Menos tareas repetidas entre sistemas y flujos de información más consistentes."
+      },
+      "en": {
+        "title": "APIs and integrations",
+        "description": "I connect services, systems, and data sources through REST APIs, SOAP, and existing tools.",
+        "benefit": "Fewer repetitive handoffs between systems and more consistent information flows."
+      }
+    }
+  },
+  {
+    "id": "process-automation",
+    "evidenceProjectIds": ["barlogow-wareg", "ms-notificaciones", "adroguebus-fonobus"],
+    "copy": {
+      "es": {
+        "title": "Automatización de procesos",
+        "description": "Identifico tareas manuales que pueden simplificarse y desarrollo flujos de trabajo y notificaciones para resolverlas.",
+        "benefit": "Menos pasos operativos innecesarios y más claridad sobre cada etapa del proceso."
+      },
+      "en": {
+        "title": "Process automation",
+        "description": "I identify repetitive manual work and build workflow or notification tools to simplify it.",
+        "benefit": "Fewer unnecessary operational steps and clearer visibility into each stage."
+      }
+    }
+  },
+  {
+    "id": "maintenance-improvements",
+    "evidenceProjectIds": ["ms-logistics", "componentes", "intranet"],
+    "copy": {
+      "es": {
+        "title": "Mantenimiento y mejoras",
+        "description": "Reviso sistemas existentes, diagnostico problemas y hago mejoras incrementales con foco en estabilidad y uso real.",
+        "benefit": "Una base más confiable para corregir, adaptar y seguir construyendo sobre el software actual."
+      },
+      "en": {
+        "title": "Maintenance and improvements",
+        "description": "I review existing systems, diagnose issues, and deliver incremental improvements for real-world use.",
+        "benefit": "A more reliable foundation for fixing, adapting, and building on your current software."
+      }
+    }
+  }
+]

@@ -1,17 +1,24 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { motionTokens } from '../../../components/motion/motionTokens.js';
 
-const AnimatedContent = ({ children, keyProp }) => (
-  <AnimatePresence mode="wait">
-    <motion.div
-      key={keyProp}
-      initial={{ opacity: 0, x: -20 }}
-      animate={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0, x: 20 }}
-      transition={{ duration: 0.35, ease: 'easeOut' }}
-    >
-      {children}
-    </motion.div>
-  </AnimatePresence>
-);
+/* eslint-disable react/prop-types -- Used for localized inline content with a stable key. */
+const AnimatedContent = ({ children, keyProp }) => {
+  const prefersReducedMotion = useReducedMotion();
+  if (prefersReducedMotion) return children;
+
+  return (
+    <AnimatePresence mode="wait" initial={false}>
+      <motion.div
+        key={keyProp}
+        initial={{ opacity: 0, x: -8 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: 8 }}
+        transition={{ duration: motionTokens.enterDuration, ease: motionTokens.ease }}
+      >
+        {children}
+      </motion.div>
+    </AnimatePresence>
+  );
+};
 
 export default AnimatedContent;

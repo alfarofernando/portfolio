@@ -1,18 +1,27 @@
 const legacyLocales = {
   es: {
     seo: {
-      title: 'Fernando Alfaro · Desarrollador Full Stack Junior',
+      title: 'Fernando Alfaro · Software Engineer',
       description: 'Experiencia en Java, Spring Boot, Angular, TypeScript, SQL, REST/SOAP e integraciones; proyectos propios y profesionales.',
+      pages: {
+        home: { title: 'Inicio', description: 'Experiencia profesional en Java, Spring Boot, Angular, TypeScript, SQL e integraciones de sistemas.' },
+        solutions: { title: 'Soluciones tecnológicas', description: 'Desarrollo sitios web, sistemas a medida, APIs, automatizaciones y mejoras para negocios.' },
+        experience: { title: 'Experiencia profesional', description: 'Responsabilidades, tecnologías y proyectos de Fernando Alfaro como Software Engineer.' },
+        catalog: { title: 'Catálogo de proyectos', description: 'Casos profesionales y proyectos propios de desarrollo de software, integraciones y operación.' },
+        project: { title: 'Caso de proyecto', description: 'Contexto, contribuciones y tecnologías de este proyecto de software.' },
+        notFound: { title: 'Página no encontrada', description: 'La página solicitada no existe. Volvé al portfolio de Fernando Alfaro.' },
+      },
     },
     nav: {
       home: 'Inicio',
       projects: 'Proyectos',
+      solutions: 'Soluciones',
       aboutMe: 'Sobre mí',
     },
     brand: {
       initials: 'F',
       name: 'Fernando Alfaro',
-      role: 'Desarrollador Full Stack Junior',
+      role: 'Software Engineer',
       profileSubtitle: 'Técnico Univ. en Programación · UTN FRA',
     },
     theme: {
@@ -31,7 +40,7 @@ const legacyLocales = {
     hero: {
       badge: 'Software e integraciones',
       heading: 'Hola, soy Fernando Alfaro',
-      subheading: 'Desarrollador Full Stack Junior · UTN FRA',
+      subheading: 'Software Engineer · UTN FRA',
       description:
         'Desarrollo y mantengo sistemas web, APIs e integraciones, con experiencia profesional en Java/Spring, Angular/TypeScript, SQL, REST/SOAP y soporte de producción.',
       highlights: [
@@ -68,7 +77,6 @@ const legacyLocales = {
     links: {
       github: 'https://github.com/alfarofernando',
       linkedin: 'https://ar.linkedin.com/in/alfarofernando',
-      whatsapp: 'https://wa.me/5491152606455?text=Hola%21%20Quisiera%20conectar.',
     },
     sections: {
       projectsTitle: 'Mis proyectos',
@@ -115,7 +123,7 @@ const legacyLocales = {
     footer: {
       availability: 'Abierto a oportunidades laborales',
       summary:
-        'Desarrollador Full Stack Junior con foco en Java/Spring, Angular/TypeScript, SQL y sistemas integrados.',
+        'Software Engineer con foco en Java/Spring, Angular/TypeScript, SQL y sistemas integrados.',
       highlights: [
         'Java · Spring Boot · REST/SOAP',
         'Angular · TypeScript · SQL',
@@ -153,18 +161,27 @@ const legacyLocales = {
   },
   en: {
     seo: {
-      title: 'Fernando Alfaro · Junior Full Stack Developer',
+      title: 'Fernando Alfaro · Software Engineer',
       description: 'Professional experience in Java, Spring Boot, Angular, TypeScript, SQL, REST/SOAP integrations, and personal software products.',
+      pages: {
+        home: { title: 'Home', description: 'Professional experience in Java, Spring Boot, Angular, TypeScript, SQL, and system integrations.' },
+        solutions: { title: 'Technology solutions', description: 'Websites, custom systems, APIs, workflow automation, and improvements for businesses.' },
+        experience: { title: 'Professional experience', description: 'Fernando Alfaro’s responsibilities, technologies, and Software Engineer project experience.' },
+        catalog: { title: 'Project catalog', description: 'Professional software cases, personal projects, integrations, and operations.' },
+        project: { title: 'Project case', description: 'Context, contributions, and technologies for this software project.' },
+        notFound: { title: 'Page not found', description: 'The requested page does not exist. Return to Fernando Alfaro’s portfolio.' },
+      },
     },
     nav: {
       home: 'Home',
       projects: 'Projects',
+      solutions: 'Solutions',
       aboutMe: 'About me',
     },
     brand: {
       initials: 'F',
       name: 'Fernando Alfaro',
-      role: 'Junior Full Stack Developer',
+      role: 'Software Engineer',
       profileSubtitle: 'University Technician in Programming · UTN FRA',
     },
     theme: {
@@ -183,7 +200,7 @@ const legacyLocales = {
     hero: {
       badge: 'Software and integrations',
       heading: "Hey, I'm Fernando Alfaro",
-      subheading: 'Junior Full Stack Developer · UTN FRA',
+      subheading: 'Software Engineer · UTN FRA',
       description:
         'I build and maintain web systems, APIs, and integrations, with professional experience in Java/Spring, Angular/TypeScript, SQL, REST/SOAP, and production support.',
       highlights: [
@@ -220,7 +237,6 @@ const legacyLocales = {
     links: {
       github: 'https://github.com/alfarofernando',
       linkedin: 'https://ar.linkedin.com/in/alfarofernando',
-      whatsapp: 'https://wa.me/5491152606455?text=Hi%21%20I%E2%80%99d%20love%20to%20connect.',
     },
     sections: {
       projectsTitle: 'My projects',
@@ -267,7 +283,7 @@ const legacyLocales = {
     footer: {
       availability: 'Open to software development opportunities',
       summary:
-        'Junior Full Stack Developer focused on Java/Spring, Angular/TypeScript, SQL, and integrated systems.',
+        'Software Engineer focused on Java/Spring, Angular/TypeScript, SQL, and integrated systems.',
       highlights: [
         'Java · Spring Boot · REST/SOAP',
         'Angular · TypeScript · SQL',
@@ -315,14 +331,14 @@ export const locales = {
     nav: { ...legacyLocales.es.nav, experience: 'Experiencia' },
     brand: {
       ...legacyLocales.es.brand,
-      role: 'Desarrollador Full Stack Junior',
+      role: 'Software Engineer',
       profileSubtitle: 'Técnico Univ. en Programación · UTN FRA',
     },
     hero: {
       ...legacyLocales.es.hero,
       badge: 'Software e integraciones',
       heading: 'Hola, soy Fernando Alfaro',
-      subheading: 'Desarrollador Full Stack Junior · UTN FRA',
+      subheading: 'Software Engineer · UTN FRA',
       description: 'Desarrollo y mantengo sistemas web, APIs e integraciones. Mi experiencia profesional se concentra en Java/Spring, Angular/TypeScript, SQL, REST/SOAP y soporte de sistemas productivos.',
       highlights: ['Java · Spring Boot', 'Angular · TypeScript', 'SQL · REST · SOAP'],
       stats: [
@@ -356,17 +372,38 @@ export const locales = {
       description: 'Técnico Universitario en Programación con experiencia profesional en productos financieros, ERP, logística y mensajería, además de productos propios.',
       badge: 'Perfil',
     },
+    solutionsPage: {
+      kicker: 'Software Engineer · Soluciones tecnológicas',
+      title: 'Software que simplifica el trabajo y acompaña tu crecimiento.',
+      description: 'Desarrollo sitios web, sistemas e integraciones para resolver necesidades concretas de cada negocio, con comunicación clara y entregas graduales.',
+      primaryAction: 'Conversar por WhatsApp',
+      secondaryAction: 'Ver proyectos',
+      servicesTitle: 'Soluciones para cada etapa',
+      servicesDescription: 'Desde una primera presencia digital hasta la evolución de herramientas que ya forman parte de la operación.',
+      evidenceLabel: 'Proyectos relacionados',
+      processTitle: 'Un proceso claro, de principio a entrega',
+      process: [
+        { title: 'Entender', description: 'Relevamos el objetivo, el flujo actual y las restricciones antes de definir el alcance.' },
+        { title: 'Construir', description: 'Avanzamos por entregas pequeñas para validar decisiones y mantener visibilidad.' },
+        { title: 'Acompañar', description: 'Documentamos el resultado y acordamos los próximos pasos de acuerdo con la necesidad.' },
+      ],
+      closingTitle: '¿Qué parte de tu operación te gustaría mejorar?',
+      closingDescription: 'Contame el desafío y vemos juntos qué solución tiene sentido para tu contexto.',
+      closingAction: 'Explorar proyectos',
+      artworkAlt: 'Ilustración de un sistema web conectado a integraciones y herramientas de negocio',
+    },
     cta: {
-      badge: 'Full Stack · Integraciones',
-      title: '¿Hablamos de tu próximo proyecto?',
-      description: 'Estoy disponible para oportunidades de desarrollo de software. Revisá mi experiencia o contactame.',
-      primary: 'Ver experiencia',
-      secondary: 'Contactar',
+      badge: 'Software Engineer · Soluciones tecnológicas',
+      title: '¿Hay un proceso que tu negocio podría resolver mejor?',
+      description: 'Conversemos sobre sitios web, sistemas, integraciones o mejoras para tu operación.',
+      primary: 'Ver soluciones',
+      secondary: 'Hablar por WhatsApp',
+      whatsappLabel: 'Abrir conversación por WhatsApp con Fernando Alfaro',
     },
     footer: {
       ...legacyLocales.es.footer,
       availability: 'Abierto a oportunidades laborales',
-      summary: 'Desarrollador Full Stack Junior con foco en Java/Spring, Angular/TypeScript, SQL y sistemas integrados.',
+      summary: 'Software Engineer con foco en Java/Spring, Angular/TypeScript, SQL y sistemas integrados.',
       highlights: ['Java · Spring Boot · REST/SOAP', 'Angular · TypeScript · SQL', 'Linux · Git · CI/CD'],
       tagline: 'Desarrollo de software y aprendizaje continuo.',
     },
@@ -392,14 +429,14 @@ export const locales = {
     nav: { ...legacyLocales.en.nav, experience: 'Experience' },
     brand: {
       ...legacyLocales.en.brand,
-      role: 'Junior Full Stack Developer',
+      role: 'Software Engineer',
       profileSubtitle: 'University Technician in Programming · UTN FRA',
     },
     hero: {
       ...legacyLocales.en.hero,
       badge: 'Software and integrations',
       heading: "Hi, I'm Fernando Alfaro",
-      subheading: 'Junior Full Stack Developer · UTN FRA',
+      subheading: 'Software Engineer · UTN FRA',
       description: 'I build and maintain web systems, APIs, and integrations. My professional experience focuses on Java/Spring, Angular/TypeScript, SQL, REST/SOAP, and production support.',
       highlights: ['Java · Spring Boot', 'Angular · TypeScript', 'SQL · REST · SOAP'],
       stats: [
@@ -433,17 +470,38 @@ export const locales = {
       description: 'University Technician in Programming with professional experience across financial products, ERP, logistics, and messaging, as well as personal products.',
       badge: 'Profile',
     },
+    solutionsPage: {
+      kicker: 'Software Engineer · Technology solutions',
+      title: 'Software that simplifies work and supports your growth.',
+      description: 'I build websites, systems, and integrations to solve practical business needs, with clear communication and incremental delivery.',
+      primaryAction: 'Chat on WhatsApp',
+      secondaryAction: 'View projects',
+      servicesTitle: 'Solutions for every stage',
+      servicesDescription: 'From a first digital presence to improving tools that are already part of daily operations.',
+      evidenceLabel: 'Related projects',
+      processTitle: 'A clear process from discovery to delivery',
+      process: [
+        { title: 'Understand', description: 'We review the goal, current workflow, and constraints before defining the scope.' },
+        { title: 'Build', description: 'We work in small increments to validate decisions and keep progress visible.' },
+        { title: 'Support', description: 'We document the outcome and agree on next steps based on the need.' },
+      ],
+      closingTitle: 'What part of your operation would you like to improve?',
+      closingDescription: 'Tell me about the challenge and we can explore what fits your context.',
+      closingAction: 'Explore projects',
+      artworkAlt: 'Illustration of a web system connected to business integrations and tools',
+    },
     cta: {
-      badge: 'Full Stack · Integrations',
-      title: "Let's discuss your next project",
-      description: 'Open to software development opportunities. Explore my experience or get in touch.',
-      primary: 'View experience',
-      secondary: 'Contact me',
+      badge: 'Software Engineer · Technology solutions',
+      title: 'Could a process in your business work better?',
+      description: 'Let’s talk about websites, systems, integrations, or improvements to your operations.',
+      primary: 'Explore solutions',
+      secondary: 'Chat on WhatsApp',
+      whatsappLabel: 'Open a WhatsApp conversation with Fernando Alfaro',
     },
     footer: {
       ...legacyLocales.en.footer,
       availability: 'Open to software development opportunities',
-      summary: 'Junior Full Stack Developer focused on Java/Spring, Angular/TypeScript, SQL, and integrated systems.',
+      summary: 'Software Engineer focused on Java/Spring, Angular/TypeScript, SQL, and integrated systems.',
       highlights: ['Java · Spring Boot · REST/SOAP', 'Angular · TypeScript · SQL', 'Linux · Git · CI/CD'],
       tagline: 'Software development and continuous learning.',
     },
