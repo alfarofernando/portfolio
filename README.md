@@ -9,7 +9,9 @@ npm ci
 npm run dev -- --host 127.0.0.1
 ```
 
-La compilación de producción es `npm run build`. La publicación configurada para GitHub Pages usa `npm run deploy` y genera `dist/404.html` para las rutas SPA.
+La compilación de producción es `npm run build` y genera `dist/404.html` para las rutas SPA. Cada push a `master` compila el sitio en GitHub Actions y publica `dist/` en la rama `gh-pages`, que alimenta GitHub Pages. También se puede ejecutar el workflow manualmente desde GitHub Actions, seleccionando `master`.
+
+`gh-pages` contiene la salida generada; los cambios de código se integran en `master`. `npm run deploy` se conserva como publicación manual desde una máquina local.
 
 ## Contenido
 
