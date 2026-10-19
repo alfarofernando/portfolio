@@ -16,7 +16,8 @@
       "SQL",
       "Firebase",
       "REST",
-      "WebSocket"
+      "WebSocket",
+      "Ionic"
     ],
     "links": [
       {
@@ -32,30 +33,32 @@
         "title": "Wise Capital / gFondos",
         "summary": "Contribuciones full stack a un ecosistema financiero de inversiones, cuentas y gestión de carteras.",
         "context": "Producto financiero desarrollado dentro del contexto profesional de NetOne / BarloventoTech.",
-        "role": "Desarrollo backend y frontend sobre funcionalidades trazables en seis repositorios relacionados, presentados aquí como un solo caso.",
+        "role": "Desarrollo backend y frontend, con Ionic/Angular en la experiencia para web, Android e iOS, a través de seis repositorios relacionados presentados como un solo caso.",
         "contributions": [
           "Implementé y mantuve flujos de operatoria, cuentas, movimientos y validaciones financieras.",
           "Trabajé en precios, portfolios, eCheq y funciones relacionadas con riesgo y compliance.",
-          "Resolví incidencias de autenticación, estado de interfaz y comunicación en tiempo real."
+          "Resolví incidencias de autenticación, estado de interfaz y comunicación en tiempo real.",
+          "Contribuí a flujos de la aplicación Ionic/Angular para sus versiones web, Android e iOS."
         ],
         "outcomes": [
           "Evolución de flujos financieros y corrección de incidencias funcionales en web, app y servicios.",
-          "Experiencia aplicada con Java, Angular, SQL, Firebase y WebSocket."
+          "Experiencia aplicada con Java, Angular, Ionic, SQL, Firebase y WebSocket en un producto financiero multiplataforma."
         ]
       },
       "en": {
         "title": "Wise Capital / gFondos",
         "summary": "Full-stack contributions to a financial ecosystem for investments, accounts, and portfolio management.",
         "context": "Financial product developed within the professional NetOne / BarloventoTech context.",
-        "role": "Backend and frontend development across features traced in six related repositories, presented here as one case.",
+        "role": "Backend and frontend development, including Ionic/Angular experiences for web, Android, and iOS across six related repositories presented as one case.",
         "contributions": [
           "Implemented and maintained trading, account, transaction, and financial validation flows.",
           "Worked on pricing, portfolios, eCheq, and risk and compliance-related features.",
-          "Resolved authentication, UI state, and real-time communication issues."
+          "Resolved authentication, UI state, and real-time communication issues.",
+          "Contributed to Ionic/Angular application workflows across its web, Android, and iOS versions."
         ],
         "outcomes": [
           "Improved financial workflows and resolved functional issues across web, app, and services.",
-          "Applied Java, Angular, SQL, Firebase, and WebSocket experience."
+          "Applied Java, Angular, Ionic, SQL, Firebase, and WebSocket experience in a cross-platform financial product."
         ]
       }
     }
@@ -151,7 +154,7 @@
         "title": "BarloGOW / Wareg",
         "summary": "Funciones de cobranzas, campañas y mensajería con integración de WhatsApp, OCR e interfaces de operación.",
         "context": "Producto de negocio del entorno BarloventoTech, con backend Java y frontend Angular.",
-        "role": "Desarrollo de funcionalidades y correcciones dentro del alcance documentado.",
+        "role": "Desarrollo full stack y liderazgo técnico acotado del proyecto, con acompañamiento a un desarrollador becario.",
         "contributions": [
           "Trabajé en vinculación con WhatsApp, estados de entrega y el motor de interacciones mediante Evolution API.",
           "Contribuí a flujos de autenticación, catálogos, campañas y procesamiento de facturas con OCR.",
@@ -159,14 +162,15 @@
         ],
         "outcomes": [
           "Mejor trazabilidad y diagnóstico de envíos y procesos conectados a mensajería.",
-          "Experiencia con sistemas de cobranzas e integraciones fiscales y de comunicación."
+          "Experiencia con sistemas de cobranzas e integraciones fiscales y de comunicación.",
+          "Liderazgo técnico de alcance acotado, combinado con implementación directa; no corresponde a dirección de toda la software factory."
         ]
       },
       "en": {
         "title": "BarloGOW / Wareg",
         "summary": "Collections, campaign, and messaging features integrating WhatsApp, OCR, and operational interfaces.",
         "context": "Business product in the BarloventoTech environment, with a Java backend and Angular frontend.",
-        "role": "Feature development and fixes within the documented scope.",
+        "role": "Full-stack development and project-scoped technical leadership, supporting one intern developer.",
         "contributions": [
           "Worked on WhatsApp linking, delivery states, and the Evolution API interaction engine.",
           "Contributed to authentication, catalog, campaign, and OCR invoice-processing workflows.",
@@ -174,7 +178,8 @@
         ],
         "outcomes": [
           "Improved traceability and diagnosis for messaging and connected processes.",
-          "Applied experience with collections systems and tax and communications integrations."
+          "Applied experience with collections systems and tax and communications integrations.",
+          "Project-scoped technical leadership combined with hands-on implementation, not software-factory-wide management."
         ]
       }
     }
@@ -186,7 +191,7 @@
       "gbp"
     ],
     "category": "professional",
-    "evidence": "audited-git",
+    "evidence": "audited-git-and-direct-statement",
     "featured": true,
     "cvInclude": true,
     "technologies": [
@@ -209,7 +214,7 @@
         "title": "MS GBP · Middleware ERP",
         "summary": "Microservicio Java para conectar aplicaciones con operaciones de ERP mediante APIs REST y servicios SOAP.",
         "context": "Middleware de integración para funciones empresariales de ERP y Global Blue Point.",
-        "role": "Desarrollo de endpoints y adaptadores de integración documentados en el historial del proyecto.",
+        "role": "Construcción del microservicio desde cero, desarrollo de integraciones y despliegue/configuración de sus entornos.",
         "contributions": [
           "Integré operaciones de consulta, autenticación, productos, precios y órdenes de venta con servicios SOAP/WSDL.",
           "Trabajé en contratos REST, persistencia SQL y autenticación JWT con separación por tenant.",
@@ -217,14 +222,15 @@
         ],
         "outcomes": [
           "Contratos de integración más explícitos entre consumidores REST y servicios ERP SOAP.",
-          "Práctica aplicada con manejo de errores, seguridad y persistencia en un microservicio reciente."
+          "Práctica aplicada con manejo de errores, seguridad y persistencia en un microservicio reciente.",
+          "Responsabilidad de construcción y despliegue end-to-end declarada por el desarrollador; la validación integral de proveedores externos no se presume."
         ]
       },
       "en": {
         "title": "MS GBP · ERP Middleware",
         "summary": "Java microservice connecting applications to ERP operations through REST APIs and SOAP services.",
         "context": "Integration middleware for ERP and Global Blue Point business functions.",
-        "role": "Developed endpoints and integration adapters documented in the project history.",
+        "role": "Built the microservice from scratch, developed its integrations, and handled deployment and environment configuration.",
         "contributions": [
           "Integrated query, authentication, product, pricing, and sales-order operations with SOAP/WSDL services.",
           "Worked on REST contracts, SQL persistence, and tenant-scoped JWT authentication.",
@@ -232,7 +238,8 @@
         ],
         "outcomes": [
           "Clearer integration contracts between REST consumers and ERP SOAP services.",
-          "Applied error handling, security, and persistence in a recent microservice."
+          "Applied error handling, security, and persistence in a recent microservice.",
+          "End-to-end build and deployment responsibility was stated by the developer; full external-provider validation is not assumed."
         ]
       }
     }
@@ -244,7 +251,7 @@
       "logistics-zuiden"
     ],
     "category": "professional",
-    "evidence": "audited-git",
+    "evidence": "audited-git-and-direct-statement",
     "featured": false,
     "cvInclude": true,
     "technologies": [
@@ -265,7 +272,7 @@
         "title": "MS Logistics · Zuiden",
         "summary": "Integración logística para catálogo, consultas de órdenes y estados de envío mediante servicios REST.",
         "context": "Microservicio backend que conecta el dominio de órdenes con el proveedor logístico Zuiden.",
-        "role": "Implementación de funcionalidades de integración y robustez documentadas en el caso.",
+        "role": "Construcción del microservicio desde cero, desarrollo de integraciones y despliegue/configuración de sus entornos.",
         "contributions": [
           "Trabajé en endpoints para productos, disponibilidad, órdenes, envíos y configuración de tenants.",
           "Contribuí a idempotencia de órdenes y a la resolución del proveedor mediante gateways.",
@@ -273,14 +280,15 @@
         ],
         "outcomes": [
           "Flujos de integración con estado persistido y controles ante reintentos.",
-          "Experiencia con diseño REST, multi-tenancy, observabilidad y estados de error externos."
+          "Experiencia con diseño REST, multi-tenancy, observabilidad y estados de error externos.",
+          "Responsabilidad de construcción y despliegue end-to-end declarada por el desarrollador; la validación integral de proveedores externos no se presume."
         ]
       },
       "en": {
         "title": "MS Logistics · Zuiden",
         "summary": "Logistics integration for catalog, order lookups, and shipping status through REST services.",
         "context": "Backend microservice connecting the order domain to logistics provider Zuiden.",
-        "role": "Implemented documented integration and resilience features.",
+        "role": "Built the microservice from scratch, developed its integrations, and handled deployment and environment configuration.",
         "contributions": [
           "Worked on endpoints for products, availability, orders, shipments, and tenant configuration.",
           "Contributed to order idempotency and provider resolution through gateways.",
@@ -288,7 +296,8 @@
         ],
         "outcomes": [
           "Integration workflows with persisted state and retry safeguards.",
-          "Applied REST, multi-tenancy, observability, and external error-state handling."
+          "Applied REST, multi-tenancy, observability, and external error-state handling.",
+          "End-to-end build and deployment responsibility was stated by the developer; full external-provider validation is not assumed."
         ]
       }
     }
@@ -707,7 +716,7 @@
       "es": {
         "title": "CVGenio",
         "summary": "Producto propio para crear y analizar currículums con flujos asistidos por inteligencia artificial.",
-        "context": "Producto digital B2C/B2B trabajado principalmente entre abril y junio de 2026, con evolución posterior.",
+        "context": "Producto digital propio B2C/B2B desarrollado entre 2024 y junio de 2026; proyecto finalizado en junio de 2026.",
         "role": "Desarrollo de producto, frontend e integración de IA junto con tareas de despliegue y experiencia de usuario.",
         "contributions": [
           "Construí flujos de carga y procesamiento de CVs y descripciones de puestos.",
@@ -715,14 +724,14 @@
           "Trabajé en UX, rendimiento, despliegue en VPS y experimentación del producto."
         ],
         "outcomes": [
-          "Producto propio de punta a punta con componentes B2C y B2B.",
+          "Producto propio con flujos B2C y B2B, finalizado en 2026.",
           "Experiencia práctica en costos de IA, prompts, procesamiento documental y operación de un VPS pequeño."
         ]
       },
       "en": {
         "title": "CVGenio",
         "summary": "Personal product for creating and analyzing résumés with AI-assisted workflows.",
-        "context": "B2C/B2B digital product developed mainly from April to June 2026, with later iterations.",
+        "context": "Personal B2C/B2B digital product developed from 2024 through June 2026; the project ended in June 2026.",
         "role": "Product development, frontend, AI integration, deployment, and user experience work.",
         "contributions": [
           "Built workflows for uploading and processing résumés and job descriptions.",
@@ -730,7 +739,7 @@
           "Worked on UX, performance, VPS deployment, and product experimentation."
         ],
         "outcomes": [
-          "End-to-end personal product with B2C and B2B flows.",
+          "Personal product with B2C and B2B workflows, completed in 2026.",
           "Practical experience with AI costs, prompting, document processing, and operating a small VPS."
         ]
       }
@@ -747,8 +756,10 @@
     "featured": true,
     "cvInclude": true,
     "technologies": [
+      "Next.js (MVP)",
+      "Angular 21.2",
       "Java 21",
-      "Angular 17",
+      "Spring Boot 3.5",
       "MySQL 8",
       "Ubuntu",
       "Nginx",
@@ -763,32 +774,32 @@
     "copy": {
       "es": {
         "title": "Portal SGU · Guardia Urbana",
-        "summary": "Sistema web para gestionar recursos, presentismo, planillas y estadísticas operativas.",
-        "context": "Proyecto propio para gestión de Guardia Urbana con infraestructura Linux y base de datos relacional.",
-        "role": "Desarrollo backend y frontend, datos, autenticación y configuración del entorno.",
+        "summary": "Producto web independiente para gestión operativa, evolucionado desde un MVP en Next.js a una aplicación Angular y Java/Spring Boot con MySQL.",
+        "context": "MVP propio en Next.js, utilizado inicialmente por el director de la Guardia Urbana de La Matanza; luego migrado a Angular y Java/Spring Boot con MySQL y desplegado en una VPS.",
+        "role": "Desarrollo full stack del MVP y su evolución; el repositorio actual usa Angular 21.2, sin tomar esa versión como verificación independiente de la versión desplegada.",
         "contributions": [
-          "Implementé módulos para usuarios, roles, móviles, efectivos, períodos y presentismo.",
-          "Trabajé en planillas, auditoría y estadísticas con Java, Angular y MySQL.",
-          "Configuré y diagnostiqué servicios en Ubuntu con Nginx."
+          "Desarrollé el MVP inicial con Next.js y evolucioné el producto cuando comenzó a utilizarlo el director de la Guardia Urbana de La Matanza.",
+          "Implementé módulos de usuarios, roles, móviles, efectivos, períodos, presentismo, planillas y auditoría con Java/Spring Boot, Angular y MySQL.",
+          "Configuré y diagnostiqué la aplicación en Ubuntu/Nginx y una VPS; el vínculo se presenta como proyecto independiente, no empleo municipal."
         ],
         "outcomes": [
-          "Flujos de gestión operativa con control de acceso y trazabilidad.",
-          "La ficha y el stack describen el proyecto según el inventario, no según tecnologías de otros prototipos."
+          "Adopción operativa inicial por el director del área y evolución posterior a una aplicación full stack desplegada en VPS.",
+          "El repositorio local actual registra Angular 21.2; la versión exacta de producción no está verificada."
         ]
       },
       "en": {
         "title": "Portal SGU · Urban Guard",
-        "summary": "Web system for managing personnel, attendance, shift sheets, and operational statistics.",
-        "context": "Personal project for Urban Guard operations using Linux infrastructure and a relational database.",
-        "role": "Backend and frontend development, data, authentication, and environment configuration.",
+        "summary": "Independent operational management product evolved from a Next.js MVP into an Angular and Java/Spring Boot application backed by MySQL.",
+        "context": "Personal Next.js MVP initially used by the director of the Urban Guard in La Matanza; later migrated to Angular and Java/Spring Boot with MySQL and deployed to a VPS.",
+        "role": "Full-stack development of the MVP and its evolution; the current repository uses Angular 21.2, which is not independent verification of the deployed version.",
         "contributions": [
-          "Implemented modules for users, roles, vehicles, personnel, periods, and attendance.",
-          "Worked on shift sheets, auditing, and statistics with Java, Angular, and MySQL.",
-          "Configured and troubleshot services on Ubuntu with Nginx."
+          "Built the initial Next.js MVP and evolved the product when the Urban Guard director began using it.",
+          "Implemented users, roles, vehicles, personnel, periods, attendance, shift sheets, and auditing with Java/Spring Boot, Angular, and MySQL.",
+          "Configured and troubleshot the Ubuntu/Nginx application on a VPS; this is presented as an independent project, not municipal employment."
         ],
         "outcomes": [
-          "Operational management workflows with access control and traceability.",
-          "The page describes the project from the source inventory, not technologies from unrelated prototypes."
+          "Initial operational adoption by the area director followed by evolution into a full-stack application deployed on a VPS.",
+          "The current local repository records Angular 21.2; the exact production version has not been verified."
         ]
       }
     }
@@ -973,7 +984,8 @@
       "Node.js",
       "Express",
       "MongoDB",
-      "JWT"
+      "JWT",
+      "Mongoose"
     ],
     "links": [
       {
@@ -989,30 +1001,30 @@
       "es": {
         "title": "StorePC",
         "summary": "Proyecto complementario de comercio electrónico con una interfaz React y servicios MERN asociados.",
-        "context": "Proyecto con capturas y repositorio frontend enlazado.",
-        "role": "Práctica de desarrollo full stack en contexto de proyecto, sin atribuir liderazgo individual.",
+        "context": "E-commerce independiente desarrollado en 2024 como proyecto de equipo de tres desarrolladores.",
+        "role": "Desarrollo full stack y coordinación de un equipo de tres desarrolladores durante el proyecto.",
         "contributions": [
-          "Trabajé con una aplicación React/Vite y consumo de APIs.",
-          "El proyecto se asocia a servicios Node.js/Express y persistencia MongoDB.",
-          "Conservé la galería existente como evidencia visual del producto."
+          "Construí servicios/API y lógica de negocio de e-commerce con Node.js/Express y MongoDB/Mongoose.",
+          "Desarrollé la interfaz React/Vite con navegación, filtros y flujos de catálogo.",
+          "Coordiné el trabajo de tres desarrolladores en el proyecto e integré componentes frontend con las APIs."
         ],
         "outcomes": [
-          "Práctica con flujos de catálogo y una arquitectura web cliente-servidor.",
+          "Experiencia propia en desarrollo de producto, coordinación de equipo pequeño e integración full stack con persistencia NoSQL.",
           "No se afirma autoría exclusiva del repositorio o de todas sus partes."
         ]
       },
       "en": {
         "title": "StorePC",
         "summary": "Complementary e-commerce project with a React interface and related MERN services.",
-        "context": "Project with screenshots and a linked frontend repository.",
-        "role": "Full-stack development practice in a project context, without individual leadership claims.",
+        "context": "Independent e-commerce project developed in 2024 by a three-developer team.",
+        "role": "Full-stack development and coordination of a three-developer team during the project.",
         "contributions": [
-          "Worked with a React/Vite application and API consumption.",
-          "The project is associated with Node.js/Express services and MongoDB persistence.",
-          "Retained the existing gallery as visual evidence of the product."
+          "Built e-commerce services/APIs and business logic with Node.js/Express and MongoDB/Mongoose.",
+          "Developed the React/Vite interface with navigation, filters, and catalog workflows.",
+          "Coordinated work across three developers and integrated frontend components with the APIs."
         ],
         "outcomes": [
-          "Practice with catalog workflows and a client-server web architecture.",
+          "Personal product experience with hands-on development, small-team coordination, and full-stack integration over NoSQL persistence.",
           "No exclusive authorship of the repository or all its parts is claimed."
         ]
       }
@@ -1033,7 +1045,9 @@
       "Redux Toolkit",
       "Express",
       "Prisma",
-      "MySQL"
+      "MySQL",
+      "Node.js",
+      "JWT"
     ],
     "links": [
       {
@@ -1049,31 +1063,188 @@
       "es": {
         "title": "NoteIt",
         "summary": "Aplicación web de notas con una interfaz React y un backend TypeScript/Express.",
-        "context": "Proyecto complementario de aplicación full stack con capturas y repositorio disponibles.",
-        "role": "Desarrollo de funcionalidades web y práctica de integración entre cliente y API.",
+        "context": "Proyecto personal full stack desarrollado entre 2024 y 2025, con backend Express construido desde cero.",
+        "role": "Desarrollo de la API REST de notas, autenticación JWT, persistencia MySQL/Prisma e integración con el frontend React.",
         "contributions": [
-          "Trabajé con React, TypeScript, Tailwind CSS y Redux Toolkit.",
-          "Integré una API Express con Prisma y MySQL.",
-          "Conservé la galería para mostrar pantallas propias del proyecto."
+          "Construí desde cero el backend Node.js/Express y una API REST para operaciones de notas.",
+          "Implementé autenticación JWT, hashing de contraseñas y persistencia con Prisma/MySQL.",
+          "Integré los flujos de notas con la interfaz React/TypeScript y estado de UI con Redux Toolkit."
         ],
         "outcomes": [
-          "Práctica de integración frontend/backend y persistencia relacional.",
+          "Experiencia práctica de desarrollo backend Node.js desde cero y flujo full stack con persistencia relacional.",
           "No se afirma despliegue productivo sin evidencia adicional."
         ]
       },
       "en": {
         "title": "NoteIt",
         "summary": "Notes web application with a React interface and a TypeScript/Express backend.",
-        "context": "Complementary full-stack application with available screenshots and repository.",
-        "role": "Web feature development and practice integrating a client with an API.",
+        "context": "Personal full-stack project developed from 2024 to 2025, with an Express backend built from scratch.",
+        "role": "Developed the notes REST API, JWT authentication, MySQL/Prisma persistence, and integration with the React frontend.",
         "contributions": [
-          "Worked with React, TypeScript, Tailwind CSS, and Redux Toolkit.",
-          "Integrated an Express API with Prisma and MySQL.",
-          "Retained the gallery to show project-owned screens."
+          "Built the Node.js/Express backend and a REST API for notes from scratch.",
+          "Implemented JWT authentication, password hashing, and Prisma/MySQL persistence.",
+          "Integrated notes workflows with the React/TypeScript interface and Redux Toolkit UI state."
         ],
         "outcomes": [
-          "Practice in frontend/backend integration and relational persistence.",
+          "Hands-on Node.js backend development from scratch and a full-stack workflow with relational persistence.",
           "Production deployment is not claimed without further evidence."
+        ]
+      }
+    }
+  },
+  {
+    "id": "eimo",
+    "slug": "eimo",
+    "aliases": [],
+    "category": "professional",
+    "evidence": "freelance-in-progress",
+    "featured": true,
+    "cvInclude": true,
+    "technologies": [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Node.js",
+      "Strapi",
+      "PostgreSQL",
+      "REST"
+    ],
+    "links": [],
+    "mediaIds": [],
+    "copy": {
+      "es": {
+        "title": "EIMO",
+        "summary": "Migración freelance en curso de un portal educativo desde WordPress hacia React, Node.js, Strapi y PostgreSQL.",
+        "context": "Modernización freelance en curso de un portal de educación privada; la migración no está presentada como terminada ni como un despliegue productivo verificado.",
+        "role": "Desarrollo de frontend y API en ramas de trabajo para la evolución del portal y sus flujos de webinars.",
+        "contributions": [
+          "Trabajé en el frontend React/Vite y su integración con la API basada en Strapi.",
+          "Contribuí a flujos de webinars y a contratos/validaciones entre el panel web y los servicios API.",
+          "Participé en la transición tecnológica desde WordPress hacia React, Node.js/Strapi y PostgreSQL."
+        ],
+        "outcomes": [
+          "La migración continúa en curso; no se afirma que el portal de pruebas sea producción ni que la solución esté finalizada.",
+          "En las ramas revisadas, pruebas y compilaciones locales se reportaron aprobadas; revisión manual y publicación permanecían pendientes al corte de octubre de 2026."
+        ]
+      },
+      "en": {
+        "title": "EIMO",
+        "summary": "Ongoing freelance migration of an education portal from WordPress to React, Node.js, Strapi, and PostgreSQL.",
+        "context": "Ongoing freelance modernization of a private education portal; the migration is not presented as complete or as a verified production deployment.",
+        "role": "Frontend and API development on working branches for the portal evolution and webinar workflows.",
+        "contributions": [
+          "Worked on the React/Vite frontend and its integration with the Strapi-based API.",
+          "Contributed to webinar workflows and contracts/validation between the web admin and API services.",
+          "Participated in the transition from WordPress to React, Node.js/Strapi, and PostgreSQL."
+        ],
+        "outcomes": [
+          "The migration remains in progress; the test portal is not presented as production or as a completed solution.",
+          "For the reviewed branches, local tests and builds were reported passing; manual review and publication remained pending as of October 2026."
+        ]
+      }
+    }
+  },
+  {
+    "id": "chusmeando",
+    "slug": "chusmeando",
+    "aliases": [],
+    "category": "own",
+    "evidence": "own-product",
+    "featured": true,
+    "cvInclude": true,
+    "technologies": [
+      "Angular 22",
+      "Ionic 9",
+      "Capacitor 8",
+      "TypeScript",
+      "Java 25",
+      "Spring Boot 4",
+      "MySQL 8.4",
+      "JPA/Hibernate",
+      "Playwright",
+      "OpenAPI"
+    ],
+    "links": [],
+    "mediaIds": [],
+    "copy": {
+      "es": {
+        "title": "Chusmeando",
+        "summary": "Marketplace local Android en desarrollo, con aplicación Ionic/Angular, backend Java/Spring Boot y catálogo geográfico.",
+        "context": "Producto propio con implementación local avanzada y puertas de release abiertas al 10/10/2026; no desplegado para usuarios reales.",
+        "role": "Diseño de producto y desarrollo full stack de un MVP para descubrimiento local, publicaciones y contacto por WhatsApp.",
+        "contributions": [
+          "Desarrollé la aplicación móvil Android con Angular, Ionic y Capacitor, con recorridos para compradores, vendedores y administración.",
+          "Implementé APIs REST y reglas de negocio en Java/Spring Boot para perfiles, comercios, publicaciones, ubicación y moderación.",
+          "Trabajé en contratos OpenAPI/TypeScript, optimización de imágenes WebP, reglas de seguridad y suites automatizadas."
+        ],
+        "outcomes": [
+          "El MVP permanece en desarrollo y no se presenta como desplegado ni publicado en Play Store; quedan pendientes validación física Android y gates de staging/release.",
+          "En el informe local del 10/10 se registraron 208 pruebas backend, 169 pruebas Angular en 54 archivos, utilidades CI 20/20 y Playwright smoke 1/1 más antirregresión 18/18."
+        ]
+      },
+      "en": {
+        "title": "Chusmeando",
+        "summary": "In-development local Android marketplace with an Ionic/Angular app, Java/Spring Boot backend, and location-aware catalog.",
+        "context": "Personal product with an advanced local implementation and release gates still open as of October 10, 2026; not deployed for real users.",
+        "role": "Product design and full-stack development of an MVP for local discovery, listings, and WhatsApp contact.",
+        "contributions": [
+          "Developed the Android app with Angular, Ionic, and Capacitor, covering buyer, seller, and admin workflows.",
+          "Implemented REST APIs and business rules in Java/Spring Boot for profiles, stores, listings, location, and moderation.",
+          "Worked on OpenAPI/TypeScript contracts, WebP image optimization, security rules, and automated suites."
+        ],
+        "outcomes": [
+          "The MVP remains in development and is not presented as deployed or published on Play Store; physical Android validation and staging/release gates remain open.",
+          "The October 10 local report recorded 208 backend tests, 169 Angular tests across 54 files, CI utilities 20/20, and Playwright smoke 1/1 plus regression 18/18."
+        ]
+      }
+    }
+  },
+  {
+    "id": "ateneos",
+    "slug": "ateneos",
+    "aliases": [],
+    "category": "complementary",
+    "evidence": "authored-git-branch",
+    "featured": false,
+    "cvInclude": true,
+    "technologies": [
+      "Strapi",
+      "Node.js",
+      "React",
+      "TypeScript",
+      "REST APIs"
+    ],
+    "links": [],
+    "mediaIds": [],
+    "copy": {
+      "es": {
+        "title": "Ateneos - refactor API/Web",
+        "summary": "Refactor de un módulo educativo en ramas API y Web, con foco en contratos, validación y seguridad.",
+        "context": "Contribuciones en ramas dedicadas de API y Web; la autoría de commits está verificada. La relación con cliente/empleador y su integración en main no están confirmadas.",
+        "role": "Refactorización backend y web dentro del alcance del módulo Ateneos; sin atribución de contrato ni de despliegue.",
+        "contributions": [
+          "Reorganicé validaciones de API y el flujo controller-service-repository para preservar semántica de campos obligatorios, ausentes y null.",
+          "Trabajé con DTOs de allowlist y controles de permisos para reducir exposición de entidades y proteger acceso a grabaciones.",
+          "Ajusté el panel web a los contratos API, mensajes y estados de validación del módulo."
+        ],
+        "outcomes": [
+          "Los commits de las ramas API/Web están atribuidos a Fernando; el merge a main y el despliegue no están verificados.",
+          "El alcance se describe como refactor de módulo, sin adjudicarlo a EIMO u otro cliente/empleador."
+        ]
+      },
+      "en": {
+        "title": "Ateneos - API/Web refactor",
+        "summary": "Refactoring of an education module across API and web branches, focused on contracts, validation, and security.",
+        "context": "Contributions on dedicated API and web branches with commit authorship verified. Client/employer relationship and integration into main are unconfirmed.",
+        "role": "Backend and web refactoring within the Ateneos module scope, without a client-contract or deployment claim.",
+        "contributions": [
+          "Reworked API validation and controller-service-repository flows to preserve required, absent, and null field semantics.",
+          "Worked with allowlisted DTOs and permission checks to limit entity exposure and protect recording access.",
+          "Aligned the web admin with the module API contracts, messages, and validation states."
+        ],
+        "outcomes": [
+          "Commits on the API/web branches are attributed to Fernando; merge to main and deployment are not verified.",
+          "The scope is described as a module refactor without assigning it to EIMO or another client/employer."
         ]
       }
     }

@@ -16,11 +16,11 @@ Coverage is checked against extracted text in both Markdown sources and both PDF
 
 | Project ID | Category | Contributions | Outcomes | ES Markdown/PDF | EN Markdown/PDF |
 |---|---|---:|---:|---|---|
-| `wise-capital` · Wise Capital / gFondos | professional | 3 | 2 | ✓ / ✓ | ✓ / ✓ |
+| `wise-capital` · Wise Capital / gFondos | professional | 4 | 2 | ✓ / ✓ | ✓ / ✓ |
 | `netegia-n4` · Netegia N4 | professional | 3 | 2 | ✓ / ✓ | ✓ / ✓ |
-| `barlogow-wareg` · BarloGOW / Wareg | professional | 3 | 2 | ✓ / ✓ | ✓ / ✓ |
-| `ms-gbp` · MS GBP · Middleware ERP | professional | 3 | 2 | ✓ / ✓ | ✓ / ✓ |
-| `ms-logistics` · MS Logistics · Zuiden | professional | 3 | 2 | ✓ / ✓ | ✓ / ✓ |
+| `barlogow-wareg` · BarloGOW / Wareg | professional | 3 | 3 | ✓ / ✓ | ✓ / ✓ |
+| `ms-gbp` · MS GBP · Middleware ERP | professional | 3 | 3 | ✓ / ✓ | ✓ / ✓ |
+| `ms-logistics` · MS Logistics · Zuiden | professional | 3 | 3 | ✓ / ✓ | ✓ / ✓ |
 | `ms-notificaciones` · MS Notificaciones | professional | 3 | 2 | ✓ / ✓ | ✓ / ✓ |
 | `afipms` · AFIPMS · Servicios fiscales | professional | 3 | 2 | ✓ / ✓ | ✓ / ✓ |
 | `rendicion` · Rendición · Aplicación legacy | professional | 3 | 2 | ✓ / ✓ | ✓ / ✓ |
@@ -35,14 +35,17 @@ Coverage is checked against extracted text in both Markdown sources and both PDF
 | `alfateam` · AlfaTeam | complementary | 3 | 2 | ✓ / ✓ | ✓ / ✓ |
 | `storepc` · StorePC | complementary | 3 | 2 | ✓ / ✓ | ✓ / ✓ |
 | `noteit` · NoteIt | complementary | 3 | 2 | ✓ / ✓ | ✓ / ✓ |
+| `eimo` · EIMO | professional | 3 | 2 | ✓ / ✓ | ✓ / ✓ |
+| `chusmeando` · Chusmeando | own | 3 | 2 | ✓ / ✓ | ✓ / ✓ |
+| `ateneos` · Ateneos - refactor API/Web | complementary | 3 | 2 | ✓ / ✓ | ✓ / ✓ |
 
 ## Source records
 
 | Source file | Purpose | Reviewed | SHA-256 |
 |---|---|---|---|
-| `content/profile.json` | Identity, career summary, employment, education, and language level. | 2026-10-19 | `dfcfc575045dca5cdfc74fa205ed55bd4fdf00a64767062cf0df0fb34e81b189` |
-| `content/skills.json` | Technical groups and experience distinctions. | 2026-10-19 | `d595d9f832224ca25b88db2ea004f0d64e2afa93e320b7af4c29c91c3710cf92` |
-| `content/projects.json` | All 19 portfolio, professional, operations, and independent project records. | 2026-10-19 | `f457b07816cb96d63cb861f209df2f760143589ff8317f98dd5cb5354e2e3597` |
-| `C:\Users\Ferny\Downloads\Fernando_Alfaro_Experiencia_Tecnica_Completa.md` | Canonical technical inventory, reviewed for claim scope and positioning. | 2026-10-19 | `901ace4505e9a84d621d91291710cc26cce71b843d6643b789dfaa23903abd94` |
+| `content/profile.json` | Identity, career summary, employment, education, and language level. | 2026-10-19 | `8609f28f2766858d6f0a560dfe9718ac08ad69002d4bd5715c6590142cbc806e` |
+| `content/skills.json` | Technical groups and experience distinctions. | 2026-10-19 | `16e6e424b87983a7cbedb647f8daea2c89559151476c81ba3d7bdbd5fcfb8c61` |
+| `content/projects.json` | All 22 portfolio, professional, operations, and independent project records. | 2026-10-19 | `ade8d301962fb359e9eaf7d0056ec1545883ff69a78fb3310ed84a95480bda2e` |
+| `Fernando_Alfaro_Experiencia_Tecnica_Completa_Actualizado_2026-10-19.md` | Canonical technical inventory, reviewed for claim scope and positioning. | 2026-10-19 | `e009030af9cd5251082b0ea581ad4d37519682bb85e04f4496dedb3b8e13a848` |
 
-Projects covered: 19. Each output is validated against all source facts before replacement.
+Projects covered: 22. Each output is validated against all source facts before replacement.

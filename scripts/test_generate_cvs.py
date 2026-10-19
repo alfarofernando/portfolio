@@ -31,6 +31,7 @@ class MasterCVTests(unittest.TestCase):
             self.assertIn(digest, matrix)
         for project in projects:
             self.assertIn(f"`{project['id']}`", matrix)
+        self.assertIn(f"All {len(projects)} portfolio, professional, operations, and independent project records.", matrix)
 
     def test_sources_include_all_catalog_projects_and_all_contributions(self) -> None:
         for language in ("es", "en"):
@@ -55,6 +56,10 @@ class MasterCVTests(unittest.TestCase):
                     reader = PdfReader(stream)
                     text = "\n".join(page.extract_text() or "" for page in reader.pages)
                     assert_output_coverage(language, text)
+                    for non_ascii_dash in ("\u2010", "\u2011", "\u2012", "\u2013", "\u2014", "\u2212"):
+                        self.assertNotIn(non_ascii_dash, text, "PDF text must use ASCII hyphens")
+                    final_page_text = reader.pages[-1].extract_text() or ""
+                    self.assertGreater(len(final_page_text.strip()), 250, "final page should not contain only a stranded closing section")
                     annotations = [
                         annotation.get_object()
                         for page in reader.pages
@@ -82,6 +87,68 @@ class MasterCVTests(unittest.TestCase):
         del broken_projects[0]["copy"]["en"]["contributions"]
         with self.assertRaisesRegex(ValueError, "wise-capital.*en"):
             validate_source_data(profile, None, broken_projects)
+
+    def test_2026_projects_are_in_both_master_cvs_with_conservative_status(self) -> None:
+        by_id = {project["id"]: project for project in projects}
+        expected = {"eimo", "chusmeando", "ateneos"}
+        self.assertTrue(expected.issubset(by_id), f"missing projects: {sorted(expected - by_id.keys())}")
+
+        eimo = by_id["eimo"]
+        chusmeando = by_id["chusmeando"]
+        ateneos = by_id["ateneos"]
+        self.assertEqual(eimo["links"], [])
+        self.assertEqual(chusmeando["links"], [])
+        self.assertEqual(ateneos["links"], [])
+
+        for language in ("es", "en"):
+            rendered = markdown(language)
+            for project in (eimo, chusmeando, ateneos):
+                localized = project["copy"][language]
+                self.assertIn(localized["title"], rendered)
+                self.assertIn(localized["summary"], rendered)
+                for fact in [*localized["contributions"], *localized["outcomes"]]:
+                    self.assertIn(fact, rendered)
+
+        self.assertIn("en curso", eimo["copy"]["es"]["context"].lower())
+        self.assertIn("ongoing", eimo["copy"]["en"]["context"].lower())
+        self.assertIn("no se presenta como desplegado", chusmeando["copy"]["es"]["outcomes"][0].lower())
+        self.assertIn("not presented as deployed", chusmeando["copy"]["en"]["outcomes"][0].lower())
+        self.assertIn("merge", ateneos["copy"]["es"]["outcomes"][0].lower())
+        self.assertIn("merge", ateneos["copy"]["en"]["outcomes"][0].lower())
+
+    def test_catalog_captures_verified_expansions_without_stale_dates_or_stack(self) -> None:
+        by_id = {project["id"]: project for project in projects}
+        self.assertIn("Ionic", by_id["wise-capital"]["technologies"])
+        self.assertIn("Android e iOS", by_id["wise-capital"]["copy"]["es"]["role"])
+        self.assertIn("Android", by_id["wise-capital"]["copy"]["en"]["role"])
+        self.assertIn("iOS", by_id["wise-capital"]["copy"]["en"]["role"])
+        self.assertIn("becario", by_id["barlogow-wareg"]["copy"]["es"]["role"].lower())
+        self.assertIn("intern", by_id["barlogow-wareg"]["copy"]["en"]["role"].lower())
+        for project_id in ("ms-gbp", "ms-logistics"):
+            self.assertIn("desde cero", by_id[project_id]["copy"]["es"]["role"].lower())
+            self.assertIn("from scratch", by_id[project_id]["copy"]["en"]["role"].lower())
+            self.assertIn("desplieg", by_id[project_id]["copy"]["es"]["role"].lower())
+            self.assertIn("deploy", by_id[project_id]["copy"]["en"]["role"].lower())
+        cvgenio = by_id["cvgenio"]["copy"]
+        self.assertIn("2024", cvgenio["es"]["context"])
+        self.assertIn("junio de 2026", cvgenio["es"]["context"])
+        self.assertIn("finalizado", cvgenio["es"]["context"].lower())
+        self.assertIn("ended", cvgenio["en"]["context"].lower())
+        self.assertTrue(any("Angular 21" in value for value in by_id["portal-sgu"]["technologies"]))
+        self.assertTrue(any("Next.js" in value for value in by_id["portal-sgu"]["technologies"]))
+        self.assertTrue(any("becarios" in item.lower() or "desarrolladores" in item.lower() for item in by_id["storepc"]["copy"]["es"]["contributions"]))
+
+    def test_master_cv_summary_leads_with_software_engineering_and_the_full_stack(self) -> None:
+        spanish = profile["copy"]["es"]["summary"]
+        english = profile["copy"]["en"]["summary"]
+        self.assertIn("Software Engineer Full Stack", spanish)
+        self.assertIn("Java/Spring Boot", spanish)
+        self.assertIn("React", spanish)
+        self.assertIn("Node.js", spanish)
+        self.assertIn("Full-stack Software Engineer", english)
+        self.assertIn("Java/Spring Boot", english)
+        self.assertIn("React", english)
+        self.assertIn("Node.js", english)
 
     def test_second_pdf_failure_preserves_all_four_previous_outputs(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:

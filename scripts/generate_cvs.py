@@ -21,7 +21,7 @@ from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import mm
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
-from reportlab.platypus import KeepTogether, Paragraph, SimpleDocTemplate, Spacer
+from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -98,6 +98,12 @@ SPANISH_TECHNOLOGY_LABELS = {
     "Power BI exports": "Exportaciones Power BI",
     "Shared libraries": "Librerías compartidas",
 }
+
+PDF_DASH_TRANSLATION = str.maketrans({character: "-" for character in "\u2010\u2011\u2012\u2013\u2014\u2015\u2212\ufe58\ufe63\uff0d"})
+
+
+def _pdf_escape(value: str, *, quote: bool = False) -> str:
+    return escape(value.translate(PDF_DASH_TRANSLATION), quote=quote)
 
 
 def display_technologies(values: list[str], language: str) -> str:
@@ -197,7 +203,8 @@ def _required_facts(
 
 
 def _normalize_text(value: str) -> str:
-    return " ".join(unicodedata.normalize("NFKC", value).split())
+    normalized = unicodedata.normalize("NFKC", value).translate(PDF_DASH_TRANSLATION)
+    return " ".join(normalized.split())
 
 
 def assert_output_coverage(
@@ -312,12 +319,12 @@ def _paragraph_styles() -> tuple[Any, dict[str, ParagraphStyle]]:
     styles.add(ParagraphStyle(name="CVName", fontName=bold, fontSize=23, leading=27, textColor=ink, spaceAfter=2))
     styles.add(ParagraphStyle(name="CVRole", fontName=bold, fontSize=10.5, leading=14, textColor=accent, spaceAfter=4))
     styles.add(ParagraphStyle(name="CVContact", fontName=regular, fontSize=8.5, leading=11, textColor=muted, spaceAfter=8))
-    styles.add(ParagraphStyle(name="CVSection", fontName=bold, fontSize=12.5, leading=15, textColor=accent, spaceBefore=6, spaceAfter=3))
+    styles.add(ParagraphStyle(name="CVSection", fontName=bold, fontSize=12.5, leading=15, textColor=accent, spaceBefore=6, spaceAfter=3, keepWithNext=True))
     styles.add(ParagraphStyle(name="CVCategory", fontName=bold, fontSize=10.5, leading=13, textColor=muted, spaceBefore=5, spaceAfter=2, keepWithNext=True))
     styles.add(ParagraphStyle(name="CVBody", fontName=regular, fontSize=9.5, leading=11.6, textColor=ink, spaceAfter=2, alignment=TA_LEFT))
     styles.add(ParagraphStyle(name="CVBullet", parent=styles["CVBody"], leftIndent=11, firstLineIndent=-8, bulletIndent=0, spaceAfter=1.2))
-    styles.add(ParagraphStyle(name="CVMeta", fontName=regular, fontSize=8.5, leading=10, textColor=muted, spaceAfter=2))
-    styles.add(ParagraphStyle(name="CVCaseTitle", fontName=bold, fontSize=10.2, leading=12, textColor=ink, spaceBefore=4, spaceAfter=1))
+    styles.add(ParagraphStyle(name="CVMeta", fontName=regular, fontSize=8.5, leading=10, textColor=muted, spaceAfter=2, keepWithNext=True))
+    styles.add(ParagraphStyle(name="CVCaseTitle", fontName=bold, fontSize=10.2, leading=12, textColor=ink, spaceBefore=4, spaceAfter=1, keepWithNext=True))
     return (regular, bold), styles
 
 
@@ -329,32 +336,32 @@ def build_pdf(language: str, path: Path) -> None:
     localized = profile["copy"][language]
     labels = COPY[language]
     employment = localized["employment"]
-    link = lambda url, label: f'<link href="{escape(url, quote=True)}" color="#2447A8">{escape(label)}</link>'
+    link = lambda url, label: f'<link href="{escape(url, quote=True)}" color="#2447A8">{_pdf_escape(label)}</link>'
     contact = (
-        f"{escape(profile['email'])} &nbsp;·&nbsp; {escape(profile['phone'])} &nbsp;·&nbsp; "
+        f"{_pdf_escape(profile['email'])} &nbsp;·&nbsp; {_pdf_escape(profile['phone'])} &nbsp;·&nbsp; "
         f"{link(profile['links']['github'], 'GitHub')} &nbsp;·&nbsp; "
         f"{link(profile['links']['linkedin'], 'LinkedIn')} &nbsp;·&nbsp; "
         f"{link(profile['links']['whatsapp'], labels['whatsapp'])}"
     )
     story: list[Any] = [
-        Paragraph(escape(profile["name"]), styles["CVName"]),
-        Paragraph(escape(localized["role"]), styles["CVRole"]),
+        Paragraph(_pdf_escape(profile["name"]), styles["CVName"]),
+        Paragraph(_pdf_escape(localized["role"]), styles["CVRole"]),
         Paragraph(contact, styles["CVContact"]),
         Paragraph(labels["profile"].upper(), styles["CVSection"]),
-        Paragraph(escape(localized["summary"]), styles["CVBody"]),
+        Paragraph(_pdf_escape(localized["summary"]), styles["CVBody"]),
         Paragraph(labels["skills"].upper(), styles["CVSection"]),
     ]
     for group in skills:
         label = group["copy"][language]["label"]
-        technology_list = escape(display_technologies(group["technologies"], language))
-        story.append(Paragraph(f"<b>{escape(label)}:</b> {technology_list}", styles["CVBody"]))
+        technology_list = _pdf_escape(display_technologies(group["technologies"], language))
+        story.append(Paragraph(f"<b>{_pdf_escape(label)}:</b> {technology_list}", styles["CVBody"]))
 
     story.extend([
         Paragraph(labels["experience"].upper(), styles["CVSection"]),
-        Paragraph(f"<b>{escape(employment['company'])}</b> &nbsp;·&nbsp; {escape(employment['role'])}", styles["CVBody"]),
-        Paragraph(escape(employment["period"]), styles["CVMeta"]),
+        Paragraph(f"<b>{_pdf_escape(employment['company'])}</b> &nbsp;·&nbsp; {_pdf_escape(employment['role'])}", styles["CVBody"]),
+        Paragraph(_pdf_escape(employment["period"]), styles["CVMeta"]),
     ])
-    story.extend(Paragraph(f"• {escape(item)}", styles["CVBullet"]) for item in employment["responsibilities"])
+    story.extend(Paragraph(f"• {_pdf_escape(item)}", styles["CVBullet"]) for item in employment["responsibilities"])
 
     story.append(Paragraph(labels["projects"].upper(), styles["CVSection"]))
     for category in ("professional", "operations", "own", "complementary"):
@@ -363,33 +370,33 @@ def build_pdf(language: str, path: Path) -> None:
             continue
         for project_index, project in enumerate(category_projects):
             copy = project["copy"][language]
-            tech = escape(display_technologies(project["technologies"], language))
+            tech = _pdf_escape(display_technologies(project["technologies"], language))
             details: list[Any] = [
-                Paragraph(escape(copy["title"]), styles["CVCaseTitle"]),
+                Paragraph(_pdf_escape(copy["title"]), styles["CVCaseTitle"]),
                 Paragraph(f"<font color=\"#576579\">{tech}</font>", styles["CVMeta"]),
-                Paragraph(f"<b>{labels['context']}:</b> {escape(copy['context'])}", styles["CVBody"]),
-                Paragraph(f"<b>{labels['role']}:</b> {escape(copy['role'])}", styles["CVBody"]),
-                Paragraph(escape(copy["summary"]), styles["CVBody"]),
-                Paragraph(f"<b>{labels['contributions']}:</b>", styles["CVBody"]),
-                *[Paragraph(f"• {escape(item)}", styles["CVBullet"]) for item in copy["contributions"]],
-                Paragraph(f"<b>{labels['outcomes']}:</b>", styles["CVBody"]),
-                *[Paragraph(f"• {escape(item)}", styles["CVBullet"]) for item in copy["outcomes"]],
+                Paragraph(f"<b>{_pdf_escape(labels['context'])}:</b> {_pdf_escape(copy['context'])}", styles["CVBody"]),
+                Paragraph(f"<b>{_pdf_escape(labels['role'])}:</b> {_pdf_escape(copy['role'])}", styles["CVBody"]),
+                Paragraph(_pdf_escape(copy["summary"]), styles["CVBody"]),
+                Paragraph(f"<b>{_pdf_escape(labels['contributions'])}:</b>", styles["CVBody"]),
+                *[Paragraph(f"• {_pdf_escape(item)}", styles["CVBullet"]) for item in copy["contributions"]],
+                Paragraph(f"<b>{_pdf_escape(labels['outcomes'])}:</b>", styles["CVBody"]),
+                *[Paragraph(f"• {_pdf_escape(item)}", styles["CVBullet"]) for item in copy["outcomes"]],
             ]
             if project_index == 0:
                 details.insert(0, Paragraph(labels[category].upper(), styles["CVCategory"]))
-            story.append(KeepTogether(details))
+            story.extend(details)
 
     story.append(Paragraph(labels["practice"].upper(), styles["CVSection"]))
-    story.extend(Paragraph(f"• {escape(item)}", styles["CVBullet"]) for item in labels["engineering"])
+    story.extend(Paragraph(f"• {_pdf_escape(item)}", styles["CVBullet"]) for item in labels["engineering"])
     story.append(Paragraph(labels["education"].upper(), styles["CVSection"]))
     for education in localized["education"]:
         story.append(Paragraph(
-            f"<b>{escape(education['qualification'])}</b> — {escape(education['institution'])} · {escape(education['period'])}",
+            f"<b>{_pdf_escape(education['qualification'])}</b> - {_pdf_escape(education['institution'])} · {_pdf_escape(education['period'])}",
             styles["CVBody"],
         ))
     story.extend([
         Paragraph(labels["languages"].upper(), styles["CVSection"]),
-        Paragraph(escape(localized["english"]), styles["CVBody"]),
+        Paragraph(_pdf_escape(localized["english"]), styles["CVBody"]),
     ])
 
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -461,14 +468,22 @@ def coverage_markdown() -> str:
             f"| `{project['id']}` · {copy_es['title']} | {category} | "
             f"{len(copy_es['contributions'])} | {len(copy_es['outcomes'])} | ✓ / ✓ | ✓ / ✓ |"
         )
-    source_records = [
-        ("content/profile.json", "Identity, career summary, employment, education, and language level."),
-        ("content/skills.json", "Technical groups and experience distinctions."),
-        ("content/projects.json", "All 19 portfolio, professional, operations, and independent project records."),
+    source_records: list[tuple[str, str, Path | None]] = [
+        ("content/profile.json", "Identity, career summary, employment, education, and language level.", None),
+        ("content/skills.json", "Technical groups and experience distinctions.", None),
+        (
+            "content/projects.json",
+            f"All {len(projects)} portfolio, professional, operations, and independent project records.",
+            None,
+        ),
     ]
-    canonical_source = Path("C:/Users/Ferny/Downloads/Fernando_Alfaro_Experiencia_Tecnica_Completa.md")
-    if canonical_source.is_file():
-        source_records.append((str(canonical_source), "Canonical technical inventory, reviewed for claim scope and positioning."))
+    canonical_candidates = [
+        Path.home() / "Downloads/Fernando_Alfaro_Experiencia_Tecnica_Completa_Actualizado_2026-10-19.md",
+        Path.home() / "Downloads/Fernando_Alfaro_Experiencia_Tecnica_Completa.md",
+    ]
+    canonical_source = next((candidate for candidate in canonical_candidates if candidate.is_file()), None)
+    if canonical_source:
+        source_records.append((canonical_source.name, "Canonical technical inventory, reviewed for claim scope and positioning.", canonical_source))
 
     lines.extend([
         "",
@@ -477,10 +492,8 @@ def coverage_markdown() -> str:
         "| Source file | Purpose | Reviewed | SHA-256 |",
         "|---|---|---|---|",
     ])
-    for file_name, purpose in source_records:
-        path = Path(file_name)
-        if not path.is_absolute():
-            path = ROOT / path
+    for file_name, purpose, source_path in source_records:
+        path = source_path or ROOT / file_name
         digest = hashlib.sha256(path.read_bytes()).hexdigest() if path.is_file() else "Not available on this host"
         lines.append(f"| `{file_name}` | {purpose} | {REVIEWED_AT} | `{digest}` |")
     lines.extend([

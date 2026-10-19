@@ -3,12 +3,12 @@
 alfarofernando@live.com · +54 9 11 5260-6455 · [GitHub](https://github.com/alfarofernando) · [LinkedIn](https://ar.linkedin.com/in/alfarofernando) · [WhatsApp](https://wa.me/5491152606455)
 
 ## Professional profile
-University Technician in Programming with professional experience in Java and Spring, Angular and TypeScript, SQL, and system integrations. Worked across financial, ERP, logistics, messaging, and internal platforms, including production support, performance work, and CI/CD.
+Full-stack Software Engineer with professional experience in Java/Spring Boot, Angular/TypeScript, SQL, and system integrations. I complement that background with React and Node.js in personal and freelance projects. Worked across finance, ERP, logistics, messaging, and internal platforms, including production support, performance work, and CI/CD.
 
 ## Technical skills
-**Professional experience:** Java, Spring Boot, Angular, TypeScript, JavaScript, SQL, MySQL, MariaDB, REST, SOAP/XML/WSDL, Git, Linux, CI/CD, JWT, Nginx, Swagger/OpenAPI
+**Professional experience:** Java, Spring Boot, Angular, TypeScript, JavaScript, SQL, MySQL, MariaDB, REST, SOAP/XML/WSDL, Git, Linux, CI/CD, JWT, Nginx, Swagger/OpenAPI, Ionic, Node.js/TypeScript
 
-**Applied experience:** React, React Native, Node.js/TypeScript, Docker, Firebase, Jest, JUnit/Mockito, WebSocket, SSE, Systemd, VPS
+**Applied experience:** React, React Native, Docker, Firebase, Jest, JUnit/Mockito, WebSocket, SSE, Systemd, VPS
 
 **Training and complementary knowledge:** Python, FastAPI, Django, PHP, Laravel, PostgreSQL, MongoDB, AWS, Kubernetes
 
@@ -19,21 +19,23 @@ December 2025 – September 25, 2026
 - Worked with Angular/TypeScript, SQL, REST/SOAP APIs, and external integrations.
 - Resolved functional and production issues, reviewed queries, and improved workflows.
 - Contributed to testing, code reviews, documentation, CI/CD, and Linux operations.
+- Contributed push-notification traceability to an existing Node.js/TypeScript service; I do not present it as an original build.
 
 ## Project experience
 ### Professional projects
 
-#### Wise Capital / gFondos · Java, Angular 18, TypeScript, SQL, Firebase, REST, WebSocket
+#### Wise Capital / gFondos · Java, Angular 18, TypeScript, SQL, Firebase, REST, WebSocket, Ionic
 **Context:** Financial product developed within the professional NetOne / BarloventoTech context.
-**Contribution scope:** Backend and frontend development across features traced in six related repositories, presented here as one case.
+**Contribution scope:** Backend and frontend development, including Ionic/Angular experiences for web, Android, and iOS across six related repositories presented as one case.
 Full-stack contributions to a financial ecosystem for investments, accounts, and portfolio management.
 **Contributions:**
 - Implemented and maintained trading, account, transaction, and financial validation flows.
 - Worked on pricing, portfolios, eCheq, and risk and compliance-related features.
 - Resolved authentication, UI state, and real-time communication issues.
+- Contributed to Ionic/Angular application workflows across its web, Android, and iOS versions.
 **Outcomes and scope:**
 - Improved financial workflows and resolved functional issues across web, app, and services.
-- Applied Java, Angular, SQL, Firebase, and WebSocket experience.
+- Applied Java, Angular, Ionic, SQL, Firebase, and WebSocket experience in a cross-platform financial product.
 
 #### Netegia N4 · Java, Angular, TypeScript, SQL, JPA/Hibernate, REST, Firebase, SSE
 **Context:** Business management platform maintained at NetOne / BarloventoTech.
@@ -49,7 +51,7 @@ Evolution of a business management platform covering API migration, work orders,
 
 #### BarloGOW / Wareg · Java, Angular 19, TypeScript, Evolution API, ARCA/AFIP, OCR, GitHub Actions
 **Context:** Business product in the BarloventoTech environment, with a Java backend and Angular frontend.
-**Contribution scope:** Feature development and fixes within the documented scope.
+**Contribution scope:** Full-stack development and project-scoped technical leadership, supporting one intern developer.
 Collections, campaign, and messaging features integrating WhatsApp, OCR, and operational interfaces.
 **Contributions:**
 - Worked on WhatsApp linking, delivery states, and the Evolution API interaction engine.
@@ -58,10 +60,11 @@ Collections, campaign, and messaging features integrating WhatsApp, OCR, and ope
 **Outcomes and scope:**
 - Improved traceability and diagnosis for messaging and connected processes.
 - Applied experience with collections systems and tax and communications integrations.
+- Project-scoped technical leadership combined with hands-on implementation, not software-factory-wide management.
 
 #### MS GBP · ERP Middleware · Java 25, Spring Boot 3, SOAP, XML/WSDL, REST, MariaDB, JPA, JWT, OpenAPI
 **Context:** Integration middleware for ERP and Global Blue Point business functions.
-**Contribution scope:** Developed endpoints and integration adapters documented in the project history.
+**Contribution scope:** Built the microservice from scratch, developed its integrations, and handled deployment and environment configuration.
 Java microservice connecting applications to ERP operations through REST APIs and SOAP services.
 **Contributions:**
 - Integrated query, authentication, product, pricing, and sales-order operations with SOAP/WSDL services.
@@ -70,10 +73,11 @@ Java microservice connecting applications to ERP operations through REST APIs an
 **Outcomes and scope:**
 - Clearer integration contracts between REST consumers and ERP SOAP services.
 - Applied error handling, security, and persistence in a recent microservice.
+- End-to-end build and deployment responsibility was stated by the developer; full external-provider validation is not assumed.
 
 #### MS Logistics · Zuiden · Java 25, Spring Boot, REST, SQL/JPA, JWT, Multi-tenant, Idempotency
 **Context:** Backend microservice connecting the order domain to logistics provider Zuiden.
-**Contribution scope:** Implemented documented integration and resilience features.
+**Contribution scope:** Built the microservice from scratch, developed its integrations, and handled deployment and environment configuration.
 Logistics integration for catalog, order lookups, and shipping status through REST services.
 **Contributions:**
 - Worked on endpoints for products, availability, orders, shipments, and tenant configuration.
@@ -82,6 +86,7 @@ Logistics integration for catalog, order lookups, and shipping status through RE
 **Outcomes and scope:**
 - Integration workflows with persisted state and retry safeguards.
 - Applied REST, multi-tenancy, observability, and external error-state handling.
+- End-to-end build and deployment responsibility was stated by the developer; full external-provider validation is not assumed.
 
 #### Notifications Microservice · Node.js, TypeScript, Firebase, Docker, Jest, GitLab CI, Swagger
 **Context:** Node.js and TypeScript notification microservice.
@@ -143,6 +148,18 @@ Limited exposure to an internal Java/JSP web application and its legacy resource
 - Practical exposure to internal web applications and legacy technologies.
 - This page does not claim ownership of the full product.
 
+#### EIMO · React, TypeScript, Vite, Node.js, Strapi, PostgreSQL, REST
+**Context:** Ongoing freelance modernization of a private education portal; the migration is not presented as complete or as a verified production deployment.
+**Contribution scope:** Frontend and API development on working branches for the portal evolution and webinar workflows.
+Ongoing freelance migration of an education portal from WordPress to React, Node.js, Strapi, and PostgreSQL.
+**Contributions:**
+- Worked on the React/Vite frontend and its integration with the Strapi-based API.
+- Contributed to webinar workflows and contracts/validation between the web admin and API services.
+- Participated in the transition from WordPress to React, Node.js/Strapi, and PostgreSQL.
+**Outcomes and scope:**
+- The migration remains in progress; the test portal is not presented as production or as a completed solution.
+- For the reviewed branches, local tests and builds were reported passing; manual review and publication remained pending as of October 2026.
+
 ### Operations and integrations
 
 #### AdrogueBus / Fonobus · React Native, Java, MySQL, Power BI exports, Performance analysis
@@ -172,7 +189,7 @@ Operational troubleshooting of instances, certificates, and delivery states in W
 ### Independent products
 
 #### CVGenio · React 19, TypeScript, Vite, AI APIs, VPS, Product design
-**Context:** B2C/B2B digital product developed mainly from April to June 2026, with later iterations.
+**Context:** Personal B2C/B2B digital product developed from 2024 through June 2026; the project ended in June 2026.
 **Contribution scope:** Product development, frontend, AI integration, deployment, and user experience work.
 Personal product for creating and analyzing résumés with AI-assisted workflows.
 **Contributions:**
@@ -180,20 +197,20 @@ Personal product for creating and analyzing résumés with AI-assisted workflows
 - Integrated AI models with usage limits, token handling, and staged orchestration.
 - Worked on UX, performance, VPS deployment, and product experimentation.
 **Outcomes and scope:**
-- End-to-end personal product with B2C and B2B flows.
+- Personal product with B2C and B2B workflows, completed in 2026.
 - Practical experience with AI costs, prompting, document processing, and operating a small VPS.
 
-#### Portal SGU · Urban Guard · Java 21, Angular 17, MySQL 8, Ubuntu, Nginx, JWT, Audit
-**Context:** Personal project for Urban Guard operations using Linux infrastructure and a relational database.
-**Contribution scope:** Backend and frontend development, data, authentication, and environment configuration.
-Web system for managing personnel, attendance, shift sheets, and operational statistics.
+#### Portal SGU · Urban Guard · Next.js (MVP), Angular 21.2, Java 21, Spring Boot 3.5, MySQL 8, Ubuntu, Nginx, JWT, Audit
+**Context:** Personal Next.js MVP initially used by the director of the Urban Guard in La Matanza; later migrated to Angular and Java/Spring Boot with MySQL and deployed to a VPS.
+**Contribution scope:** Full-stack development of the MVP and its evolution; the current repository uses Angular 21.2, which is not independent verification of the deployed version.
+Independent operational management product evolved from a Next.js MVP into an Angular and Java/Spring Boot application backed by MySQL.
 **Contributions:**
-- Implemented modules for users, roles, vehicles, personnel, periods, and attendance.
-- Worked on shift sheets, auditing, and statistics with Java, Angular, and MySQL.
-- Configured and troubleshot services on Ubuntu with Nginx.
+- Built the initial Next.js MVP and evolved the product when the Urban Guard director began using it.
+- Implemented users, roles, vehicles, personnel, periods, attendance, shift sheets, and auditing with Java/Spring Boot, Angular, and MySQL.
+- Configured and troubleshot the Ubuntu/Nginx application on a VPS; this is presented as an independent project, not municipal employment.
 **Outcomes and scope:**
-- Operational management workflows with access control and traceability.
-- The page describes the project from the source inventory, not technologies from unrelated prototypes.
+- Initial operational adoption by the area director followed by evolution into a full-stack application deployed on a VPS.
+- The current local repository records Angular 21.2; the exact production version has not been verified.
 
 #### Alfa:dev · Software development, Product exploration, Freelance
 **Context:** Independent activity reported to have existed for approximately two years.
@@ -206,6 +223,18 @@ Independent initiative bringing together personal projects, freelance software d
 **Outcomes and scope:**
 - Consolidated practical learning in software development and product work.
 - No clients, contracts, or exclusive stack are claimed on this page.
+
+#### Chusmeando · Angular 22, Ionic 9, Capacitor 8, TypeScript, Java 25, Spring Boot 4, MySQL 8.4, JPA/Hibernate, Playwright, OpenAPI
+**Context:** Personal product with an advanced local implementation and release gates still open as of October 10, 2026; not deployed for real users.
+**Contribution scope:** Product design and full-stack development of an MVP for local discovery, listings, and WhatsApp contact.
+In-development local Android marketplace with an Ionic/Angular app, Java/Spring Boot backend, and location-aware catalog.
+**Contributions:**
+- Developed the Android app with Angular, Ionic, and Capacitor, covering buyer, seller, and admin workflows.
+- Implemented REST APIs and business rules in Java/Spring Boot for profiles, stores, listings, location, and moderation.
+- Worked on OpenAPI/TypeScript contracts, WebP image optimization, security rules, and automated suites.
+**Outcomes and scope:**
+- The MVP remains in development and is not presented as deployed or published on Play Store; physical Android validation and staging/release gates remain open.
+- The October 10 local report recorded 208 backend tests, 169 Angular tests across 54 files, CI utilities 20/20, and Playwright smoke 1/1 plus regression 18/18.
 
 ### Complementary projects
 
@@ -233,29 +262,41 @@ Interface for an asynchronous learning platform, presented as a complementary pr
 - Demonstrates practice with React interfaces and component composition.
 - Security, backend, or purchase-flow claims are omitted unless verified.
 
-#### StorePC · React, Vite, Node.js, Express, MongoDB, JWT
-**Context:** Project with screenshots and a linked frontend repository.
-**Contribution scope:** Full-stack development practice in a project context, without individual leadership claims.
+#### StorePC · React, Vite, Node.js, Express, MongoDB, JWT, Mongoose
+**Context:** Independent e-commerce project developed in 2024 by a three-developer team.
+**Contribution scope:** Full-stack development and coordination of a three-developer team during the project.
 Complementary e-commerce project with a React interface and related MERN services.
 **Contributions:**
-- Worked with a React/Vite application and API consumption.
-- The project is associated with Node.js/Express services and MongoDB persistence.
-- Retained the existing gallery as visual evidence of the product.
+- Built e-commerce services/APIs and business logic with Node.js/Express and MongoDB/Mongoose.
+- Developed the React/Vite interface with navigation, filters, and catalog workflows.
+- Coordinated work across three developers and integrated frontend components with the APIs.
 **Outcomes and scope:**
-- Practice with catalog workflows and a client-server web architecture.
+- Personal product experience with hands-on development, small-team coordination, and full-stack integration over NoSQL persistence.
 - No exclusive authorship of the repository or all its parts is claimed.
 
-#### NoteIt · React, TypeScript, Tailwind CSS, Redux Toolkit, Express, Prisma, MySQL
-**Context:** Complementary full-stack application with available screenshots and repository.
-**Contribution scope:** Web feature development and practice integrating a client with an API.
+#### NoteIt · React, TypeScript, Tailwind CSS, Redux Toolkit, Express, Prisma, MySQL, Node.js, JWT
+**Context:** Personal full-stack project developed from 2024 to 2025, with an Express backend built from scratch.
+**Contribution scope:** Developed the notes REST API, JWT authentication, MySQL/Prisma persistence, and integration with the React frontend.
 Notes web application with a React interface and a TypeScript/Express backend.
 **Contributions:**
-- Worked with React, TypeScript, Tailwind CSS, and Redux Toolkit.
-- Integrated an Express API with Prisma and MySQL.
-- Retained the gallery to show project-owned screens.
+- Built the Node.js/Express backend and a REST API for notes from scratch.
+- Implemented JWT authentication, password hashing, and Prisma/MySQL persistence.
+- Integrated notes workflows with the React/TypeScript interface and Redux Toolkit UI state.
 **Outcomes and scope:**
-- Practice in frontend/backend integration and relational persistence.
+- Hands-on Node.js backend development from scratch and a full-stack workflow with relational persistence.
 - Production deployment is not claimed without further evidence.
+
+#### Ateneos - API/Web refactor · Strapi, Node.js, React, TypeScript, REST APIs
+**Context:** Contributions on dedicated API and web branches with commit authorship verified. Client/employer relationship and integration into main are unconfirmed.
+**Contribution scope:** Backend and web refactoring within the Ateneos module scope, without a client-contract or deployment claim.
+Refactoring of an education module across API and web branches, focused on contracts, validation, and security.
+**Contributions:**
+- Reworked API validation and controller-service-repository flows to preserve required, absent, and null field semantics.
+- Worked with allowlisted DTOs and permission checks to limit entity exposure and protect recording access.
+- Aligned the web admin with the module API contracts, messages, and validation states.
+**Outcomes and scope:**
+- Commits on the API/web branches are attributed to Fernando; merge to main and deployment are not verified.
+- The scope is described as a module refactor without assigning it to EIMO or another client/employer.
 
 ## Engineering practice
 - REST and SOAP/XML integrations across financial and ERP systems, AFIP/ARCA, logistics, Firebase, and WhatsApp messaging.
