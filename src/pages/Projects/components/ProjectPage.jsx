@@ -4,6 +4,7 @@ import { getProjects, resolveProjectKey } from './Data.jsx';
 import { projectCatalog } from '../../../data/projectModel.js';
 import ProjectMedia from '../../../components/ProjectMedia.jsx';
 import ProjectGallery from './ProjectGallery.jsx';
+import Reveal from '../../../components/motion/Reveal.jsx';
 
 const ProjectPage = () => {
   const { language, locales } = useLanguage();
@@ -29,7 +30,7 @@ const ProjectPage = () => {
   return (
     <section className="px-4 pb-24 pt-8 sm:px-6 lg:px-12">
       <div className="mx-auto max-w-5xl space-y-7">
-        <article className="rounded-3xl border border-brand-100/70 bg-white/95 p-6 shadow-xl dark:border-brand-500/20 dark:bg-slate-900/85 sm:p-9">
+        <Reveal as="article" className="rounded-3xl border border-brand-100/70 bg-white/95 p-6 shadow-xl dark:border-brand-500/20 dark:bg-slate-900/85 sm:p-9">
           <Link to="/portfolio/Projects/all" className="inline-flex items-center gap-2 rounded-full border border-neutral-200 px-3 py-2 text-xs font-semibold text-neutral-600 hover:border-brand-300 dark:border-slate-700 dark:text-neutral-200">← {copy.catalogLabel}</Link>
           <div className="mt-7 grid gap-7 md:grid-cols-[minmax(0,0.85fr),minmax(0,1.15fr)] md:items-center">
             <ProjectMedia media={project.heroMedia} title={project.title} language={language} eager />
@@ -64,18 +65,18 @@ const ProjectPage = () => {
               <ul className="mt-4 space-y-3">{project.outcomes.map((item) => <li key={item} className="flex gap-3 text-sm leading-relaxed text-neutral-700 dark:text-neutral-200"><span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-accent-500" />{item}</li>)}</ul>
             </section>
           </div>
-        </article>
+        </Reveal>
 
         {project.screenshots.length > 0 && (
-          <div className="rounded-3xl border border-neutral-200/80 bg-white/90 p-4 shadow-lg dark:border-slate-700 dark:bg-slate-900/80 sm:p-6">
+          <Reveal delay={0.06} className="rounded-3xl border border-neutral-200/80 bg-white/90 p-4 shadow-lg dark:border-slate-700 dark:bg-slate-900/80 sm:p-6">
             <ProjectGallery items={project.screenshots} projectTitle={project.title} copy={copy} />
-          </div>
+          </Reveal>
         )}
 
         {externalLinks.length > 0 && (
-          <nav aria-label={project.title} className="flex flex-wrap gap-3 rounded-3xl border border-brand-100/70 bg-white/90 p-5 shadow-md dark:border-brand-500/20 dark:bg-slate-900/80">
+          <Reveal as="nav" delay={0.09} aria-label={project.title} className="flex flex-wrap gap-3 rounded-3xl border border-brand-100/70 bg-white/90 p-5 shadow-md dark:border-brand-500/20 dark:bg-slate-900/80">
             {externalLinks.map((item) => <a key={`${item.type}-${item.url}`} href={item.url} target="_blank" rel="noreferrer" className="rounded-xl border border-brand-200 px-4 py-2.5 text-sm font-semibold text-brand-700 hover:bg-brand-50 dark:border-brand-500/30 dark:text-brand-200 dark:hover:bg-brand-500/10">{linkLabels[item.type]} ↗</a>)}
-          </nav>
+          </Reveal>
         )}
       </div>
     </section>

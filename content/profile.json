@@ -9,7 +9,7 @@
   },
   "copy": {
     "es": {
-      "role": "Desarrollador Full Stack Junior",
+      "role": "Software Engineer",
       "summary": "Técnico Universitario en Programación con experiencia profesional en Java y Spring, Angular y TypeScript, SQL e integración de sistemas. Trabajé en productos financieros, ERP, logística, mensajería y plataformas internas, incluyendo soporte de producción, optimización y CI/CD.",
       "independentSummary": "Construyo y mantengo software web, APIs e integraciones, desde la comprensión de sistemas existentes hasta la entrega y el diagnóstico operativo. Mi experiencia más sólida está en Java/Spring Boot, Angular/TypeScript, SQL, REST/SOAP, Git, Linux y CI/CD.",
       "employment": {
@@ -30,7 +30,7 @@
       "english": "B1 / Intermediate: lectura de documentación técnica y comunicación escrita; conversación con preparación."
     },
     "en": {
-      "role": "Junior Full Stack Developer",
+      "role": "Software Engineer",
       "summary": "University Technician in Programming with professional experience in Java and Spring, Angular and TypeScript, SQL, and system integrations. Worked across financial, ERP, logistics, messaging, and internal platforms, including production support, performance work, and CI/CD.",
       "independentSummary": "I build and maintain web software, APIs, and integrations, from understanding existing systems to delivery and operational troubleshooting. My strongest experience is in Java/Spring Boot, Angular/TypeScript, SQL, REST/SOAP, Git, Linux, and CI/CD.",
       "employment": {

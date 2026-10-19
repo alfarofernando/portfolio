@@ -852,7 +852,7 @@
     "category": "complementary",
     "evidence": "existing-project-assets",
     "featured": false,
-    "cvInclude": false,
+    "cvInclude": true,
     "technologies": [
       "HTML",
       "CSS",
@@ -908,7 +908,7 @@
     "category": "complementary",
     "evidence": "existing-project-assets",
     "featured": false,
-    "cvInclude": false,
+    "cvInclude": true,
     "technologies": [
       "React",
       "React Router",
@@ -966,7 +966,7 @@
     "category": "complementary",
     "evidence": "existing-project-assets",
     "featured": false,
-    "cvInclude": false,
+    "cvInclude": true,
     "technologies": [
       "React",
       "Vite",
@@ -1025,7 +1025,7 @@
     "category": "complementary",
     "evidence": "existing-project-assets",
     "featured": false,
-    "cvInclude": false,
+    "cvInclude": true,
     "technologies": [
       "React",
       "TypeScript",

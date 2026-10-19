@@ -1,20 +1,20 @@
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
+import profile from '../../content/profile.json';
+import { getWhatsAppUrl } from '../utils/contact.js';
+import { normalizePathname } from '../utils/routeNavigation.js';
+import Reveal from './motion/Reveal.jsx';
 
 const SubFooter = () => {
+  const location = useLocation();
   const { language, locales } = useLanguage();
   const ctaCopy = locales[language].cta;
-  const whatsappLink = locales[language].links.whatsapp;
+  const whatsappLink = getWhatsAppUrl(profile.links.whatsapp, language);
+  const isSolutionsPage = normalizePathname(location.pathname) === '/portfolio/solutions';
 
   return (
     <section id="global-cta" className="px-4 sm:px-6 lg:px-12">
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
-        data-parallax-media="0.22"
+      <Reveal
         className="relative mx-auto mt-20 w-full max-w-6xl overflow-hidden rounded-4xl bg-gradient-to-r from-brand-600 via-brand-600 to-brand-700 text-white shadow-brand"
       >
         <div className="pointer-events-none absolute -right-24 bottom-0 h-64 w-64 rounded-full bg-accent-400/50 blur-3xl" />
@@ -31,10 +31,10 @@ const SubFooter = () => {
 
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
             <Link
-              to="/portfolio/Experience"
+              to={isSolutionsPage ? '/portfolio/Projects/all' : '/portfolio/Solutions'}
               className="inline-flex items-center justify-center rounded-2xl bg-white px-6 py-3 text-sm font-semibold text-brand-700 transition hover:-translate-y-0.5 hover:bg-brand-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
             >
-              {ctaCopy.primary}
+              {isSolutionsPage ? locales[language].projectsSection.catalogLink : ctaCopy.primary}
             </Link>
             <a
               href={whatsappLink}
@@ -46,7 +46,7 @@ const SubFooter = () => {
             </a>
           </div>
         </div>
-      </motion.div>
+      </Reveal>
     </section>
   );
 };

@@ -1,34 +1,60 @@
-import { motion } from 'framer-motion';
 import { useLanguage } from '../../context/LanguageContext.jsx';
 import profileImage from '../../assets/profile.webp';
-import AnimatedContent from './components/AnimatedContent.jsx';
 import TechCarousel from './components/TechCarousel.jsx';
 import profile from '../../../content/profile.json';
+import { getWhatsAppUrl } from '../../utils/contact.js';
+import ParallaxScene from '../../components/motion/ParallaxScene.jsx';
+import Reveal from '../../components/motion/Reveal.jsx';
+
+const heroLayers = [
+  {
+    id: 'hero-grid',
+    distance: 8,
+    mobileDistance: 0,
+    content: (
+      <div
+        className="absolute inset-0 opacity-35"
+        style={{
+          backgroundImage: 'radial-gradient(rgba(129, 140, 248, .58) .8px, transparent .8px)',
+          backgroundSize: '34px 34px',
+          maskImage: 'linear-gradient(to bottom, black, transparent 82%)',
+        }}
+      />
+    ),
+  },
+  {
+    id: 'hero-orbit',
+    distance: 16,
+    mobileDistance: 4,
+    content: (
+      <div className="absolute -left-24 top-4 h-64 w-64 rounded-full border border-brand-400/20 bg-brand-400/10 blur-[90px] sm:left-8 sm:top-16 sm:h-80 sm:w-80" />
+    ),
+  },
+  {
+    id: 'hero-glow',
+    distance: 28,
+    mobileDistance: 8,
+    content: (
+      <div className="absolute -right-24 top-28 h-64 w-64 rounded-full border border-cyan-300/20 bg-cyan-300/10 blur-[100px] sm:right-12 sm:top-20 sm:h-96 sm:w-96" />
+    ),
+  },
+];
 
 const Welcome = () => {
   const { language, locales } = useLanguage();
-  const { hero, documents, links, brand } = locales[language];
+  const { hero, documents, brand } = locales[language];
   const profileCopy = profile.copy[language];
 
   return (
     <section className="relative isolate px-4 pb-20 pt-10 sm:px-6 sm:pt-14 md:pb-24 lg:px-12">
-        {/* Fondos decorativos */}
-        <div className="pointer-events-none absolute inset-0 -z-10">
-          <div className="absolute left-1/4 top-0 h-48 w-48 rounded-full bg-brand-400/20 blur-[100px] sm:h-64 sm:w-64 lg:blur-[150px]" />
-          <div className="absolute right-0 top-1/3 h-56 w-56 rounded-full bg-accent-300/20 blur-[120px] sm:h-80 sm:w-80 lg:blur-[170px]" />
-          <div className="absolute bottom-0 left-1/4 h-52 w-52 rounded-full bg-brand-700/10 blur-[100px] sm:h-72 sm:w-72 lg:blur-[160px]" />
-        </div>
+        <ParallaxScene layers={heroLayers} className="pointer-events-none absolute inset-0 -z-10 overflow-hidden" />
 
         {/* Contenedor principal responsive */}
-        <div data-parallax-media="0.12" className="mx-auto flex w-full max-w-6xl flex-col items-center gap-12 lg:grid lg:grid-cols-[minmax(0,1.1fr),minmax(0,0.9fr)] xl:max-w-7xl">
+        <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-12 lg:grid lg:grid-cols-[minmax(0,1.1fr),minmax(0,0.9fr)] xl:max-w-7xl">
           {/* --- COLUMNA TEXTO --- */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
+          <Reveal
             className="w-full space-y-7 text-center lg:text-left"
           >
-            <AnimatedContent keyProp={`hero-${language}`}>
               <div className="space-y-4">
                 <span className="inline-flex items-center gap-2 rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand-700 dark:bg-brand-500/10 dark:text-brand-200">
                   {hero.badge}
@@ -46,7 +72,6 @@ const Welcome = () => {
                   {profileCopy.summary}
                 </p>
               </div>
-            </AnimatedContent>
 
             {/* Highlights */}
             <div className="flex flex-wrap justify-center gap-2 lg:justify-start">
@@ -71,7 +96,7 @@ const Welcome = () => {
                 {hero.actions.primary}
               </a>
               <a
-                href={links.whatsapp}
+                href={getWhatsAppUrl(profile.links.whatsapp, language)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center rounded-2xl border border-brand-200 px-6 py-3 text-sm font-semibold text-brand-700 transition hover:-translate-y-0.5 hover:bg-brand-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-200 dark:border-brand-400/30 dark:text-brand-200"
@@ -79,22 +104,20 @@ const Welcome = () => {
                 {hero.actions.secondary}
               </a>
             </div>
-          </motion.div>
+          </Reveal>
 
           {/* --- COLUMNA PERFIL + TECNOLOGIAS --- */}
-          <motion.div
-            initial={{ opacity: 0, y: 32 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}
+          <Reveal
+            delay={0.08}
             className="relative w-full flex flex-col gap-6"
           >
             {/* Perfil */}
-            <div data-parallax-media="0.22" className="relative overflow-hidden rounded-3xl bg-white/80 p-6 shadow-2xl backdrop-blur dark:bg-slate-900/70">
+            <div className="relative overflow-hidden rounded-3xl bg-white/80 p-6 shadow-2xl backdrop-blur dark:bg-slate-900/70">
               <div className="absolute -left-10 top-10 h-32 w-32 rounded-full bg-brand-400/20 blur-3xl" />
               <div className="absolute -right-6 bottom-10 h-28 w-28 rounded-full bg-accent-300/20 blur-3xl" />
 
               <div className="relative flex flex-col items-center gap-4 sm:flex-col md:flex-row lg:flex-col">
-                <div data-parallax-media="0.85">
+                <div>
                   <img
                     src={profileImage}
                     alt={hero.profileAlt}
@@ -124,10 +147,10 @@ const Welcome = () => {
             </div>
 
             {/* Carrusel de tecnologias */}
-            <div data-parallax-media="0.16" className="rounded-3xl border border-brand-100/60 bg-white/85 p-4 shadow-lg backdrop-blur dark:border-brand-500/20 dark:bg-slate-900/70">
+            <div className="rounded-3xl border border-brand-100/60 bg-white/85 p-4 shadow-lg backdrop-blur dark:border-brand-500/20 dark:bg-slate-900/70">
               <TechCarousel />
             </div>
-          </motion.div>
+          </Reveal>
         </div>
     </section>
   );

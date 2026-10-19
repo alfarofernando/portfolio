@@ -4,10 +4,19 @@
 
 :root {
   color-scheme: dark;
+  --route-header-offset: 8rem;
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
+}
+
+[id] {
+  scroll-margin-top: var(--route-header-offset);
+}
+
+.route-focus-target:focus {
+  outline: none;
 }
 
 a {
@@ -161,6 +170,15 @@ video {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
   html {
     scroll-behavior: auto;
   }
