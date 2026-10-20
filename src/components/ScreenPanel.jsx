@@ -2,7 +2,7 @@ import { useLanguage } from '../context/LanguageContext.jsx';
 import { useScreenScroll } from '../context/ScreenScrollContext.jsx';
 
 /* eslint-disable react/prop-types -- Panel content is defined by local route components. */
-const ScreenPanel = ({ id, titleId, children, className = '', first = false }) => {
+const ScreenPanel = ({ id, titleId, children, className = '', first = false, aliases = [] }) => {
   const { language, locales } = useLanguage();
   const { movePanel, activePanelId, panelIds } = useScreenScroll();
   const copy = locales[language].screenNavigation;
@@ -13,6 +13,7 @@ const ScreenPanel = ({ id, titleId, children, className = '', first = false }) =
     <section
       id={id}
       data-screen-panel
+      data-screen-aliases={aliases.join(' ') || undefined}
       aria-labelledby={titleId}
       className={`screen-panel ${first ? 'screen-panel--first' : ''} ${className}`}
     >

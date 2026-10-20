@@ -11,6 +11,27 @@ const GESTURE_IDLE_MS = 180;
 const TRANSITION_LOCK_MS = 620;
 
 const getPanels = () => Array.from(document.querySelectorAll('[data-screen-panel]'));
+const resolveHashPanel = (panels, hashId) => {
+  const direct = panels.find((panel) => panel.id === hashId
+    || panel.dataset.screenAliases?.split(/\s+/).includes(hashId));
+  if (direct) return direct;
+
+  const match = hashId.match(/^(.*-)(\d+)$/);
+  if (!match) return null;
+
+  const prefix = match[1];
+  const numberedPanels = panels
+    .map((panel) => {
+      if (!panel.id.startsWith(prefix)) return null;
+      const suffix = panel.id.slice(prefix.length);
+      if (!/^\d+$/.test(suffix)) return null;
+      return { panel, number: Number(suffix) };
+    })
+    .filter(Boolean)
+    .sort((left, right) => left.number - right.number);
+
+  return numberedPanels[numberedPanels.length - 1]?.panel ?? null;
+};
 const replacePanelHash = (id) => {
   const nextUrl = `${window.location.pathname}${window.location.search}#${id}`;
   window.history.replaceState(window.history.state, '', nextUrl);
@@ -106,7 +127,7 @@ export const ScreenScrollProvider = ({ children }) => {
 
     const panels = refreshPanels();
     const hashId = decodeURIComponent(hash.slice(1));
-    const hashPanel = panels.find((item) => item.id === hashId);
+    const hashPanel = resolveHashPanel(panels, hashId);
     const destination = navigationType === 'POP'
       ? panels.find((panel) => panel.id === savedPanels.get(locationKey))
       : null;
