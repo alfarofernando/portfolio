@@ -14,8 +14,8 @@ const Experience = () => {
   const copy = locales[language].experiencePage;
   const profileCopy = profile.copy[language];
   const projects = getProjects(locales, language).filter((project) => project.category === 'professional' && project.featured);
-  const responsibilities = chunk(profileCopy.employment.responsibilities, 4);
-  const cases = chunk(projects, 2);
+  const responsibilities = profileCopy.employment.responsibilities;
+  const cases = chunk(projects, 3);
 
   return (
     <>
@@ -31,18 +31,16 @@ const Experience = () => {
         </section>
       </ScreenPanel>
 
-      {responsibilities.map((items, index) => (
-        <ScreenPanel key={`responsibilities-${index}`} id={`experience-responsibilities-${index + 1}`} titleId={`responsibilities-title-${index + 1}`}>
-          <section className="px-4 py-5 sm:px-6 lg:px-12 lg:py-2">
-            <Reveal as="section" className="mx-auto max-w-5xl rounded-3xl border border-neutral-200 bg-white/90 p-6 shadow-md dark:border-slate-700 dark:bg-slate-900/75 sm:p-8">
-              <h2 id={`responsibilities-title-${index + 1}`} className="text-xl font-semibold text-neutral-900 dark:text-white">{copy.responsibilities}{responsibilities.length > 1 ? ` · ${index + 1}/${responsibilities.length}` : ''}</h2>
-              <ul className="mt-5 space-y-3">
-                {items.map((item) => <li key={item} className="flex gap-3 text-sm leading-relaxed text-neutral-700 dark:text-neutral-200"><span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-brand-500" />{item}</li>)}
-              </ul>
-            </Reveal>
-          </section>
-        </ScreenPanel>
-      ))}
+      <ScreenPanel id="experience-responsibilities-1" titleId="responsibilities-title-1">
+        <section className="px-4 py-4 sm:px-6 lg:px-12 lg:py-2">
+          <Reveal as="section" className="mx-auto max-w-5xl rounded-3xl border border-neutral-200 bg-white/90 p-4 shadow-md dark:border-slate-700 dark:bg-slate-900/75 sm:p-5">
+            <h2 id="responsibilities-title-1" className="text-xl font-semibold text-neutral-900 dark:text-white">{copy.responsibilities}</h2>
+            <ul className="mt-4 space-y-2">
+              {responsibilities.map((item) => <li key={item} className="flex gap-3 text-sm leading-relaxed text-neutral-700 dark:text-neutral-200"><span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-brand-500" />{item}</li>)}
+            </ul>
+          </Reveal>
+        </section>
+      </ScreenPanel>
 
       {cases.map((items, index) => (
         <ScreenPanel key={`experience-cases-${index}`} id={`experience-cases-${index + 1}`} titleId={`experience-cases-title-${index + 1}`}>
@@ -52,10 +50,10 @@ const Experience = () => {
                 <h2 id={`experience-cases-title-${index + 1}`} className="text-xl font-semibold text-neutral-900 dark:text-white">{copy.cases}</h2>
                 <Link to="/portfolio/Projects/all" className="text-sm font-semibold text-brand-700 hover:underline dark:text-brand-200">{locales[language].projectsSection.catalogLink} →</Link>
               </Reveal>
-              <div className="mt-5 grid gap-4 sm:grid-cols-2">
+              <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {items.map((project, cardIndex) => (
                   <Reveal key={project.id} delay={cardIndex * 0.09}>
-                    <Link to={`/portfolio/Projects/${project.slug}`} className="block h-full rounded-2xl border border-neutral-200 bg-white/90 p-5 transition duration-200 hover:-translate-y-0.5 hover:border-brand-300 dark:border-slate-700 dark:bg-slate-900/75">
+                    <Link to={`/portfolio/Projects/${project.slug}`} className="block h-full rounded-2xl border border-neutral-200 bg-white/90 p-4 transition duration-200 hover:-translate-y-0.5 hover:border-brand-300 dark:border-slate-700 dark:bg-slate-900/75">
                       <h3 className="font-semibold text-neutral-900 dark:text-white">{project.title}</h3>
                       <p className="mt-2 text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">{project.description}</p>
                       <span className="mt-4 inline-block text-sm font-semibold text-brand-700 dark:text-brand-200">{copy.viewCase} →</span>

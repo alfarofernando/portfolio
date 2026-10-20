@@ -1,4 +1,3 @@
-import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../../context/LanguageContext.jsx';
 import ScreenPanel from '../../components/ScreenPanel.jsx';
@@ -32,23 +31,11 @@ const closingLayers = [
   { id: 'closing-orbit', distance: 18, mobileDistance: 5, content: <div className="absolute -bottom-28 left-[12%] h-52 w-52 rounded-full border border-brand-300/20 bg-brand-500/10 blur-3xl" /> },
 ];
 
-const chunk = (items, size) => Array.from({ length: Math.ceil(items.length / size) }, (_, index) => items.slice(index * size, (index + 1) * size));
-const getGroupSize = () => window.innerWidth >= 1280 ? 3 : 2;
-
 const Solutions = () => {
   const { language, locales } = useLanguage();
   const copy = locales[language].solutionsPage;
   const projectById = new Map(projectCatalog.map((project) => [project.id, project]));
   const whatsappLink = getWhatsAppUrl(profile.links.whatsapp, language);
-  const [groupSize, setGroupSize] = useState(() => typeof window === 'undefined' ? 3 : getGroupSize());
-  const servicePages = useMemo(() => chunk(services, groupSize), [groupSize]);
-
-  useEffect(() => {
-    const handleResize = () => setGroupSize(getGroupSize());
-    window.addEventListener('resize', handleResize, { passive: true });
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
   return (
     <>
       <ScreenPanel id="solutions-overview" titleId="solutions-title" first>
@@ -71,67 +58,62 @@ const Solutions = () => {
         </section>
       </ScreenPanel>
 
-      {servicePages.map((page, pageIndex) => (
-        <ScreenPanel key={`solutions-services-${pageIndex + 1}`} id={`solutions-services-${pageIndex + 1}`} titleId={`solutions-services-title-${pageIndex + 1}`}>
-          <section className="px-4 py-4 sm:px-6 lg:px-12 lg:py-1" aria-labelledby={`solutions-services-title-${pageIndex + 1}`}>
-            <div className="mx-auto max-w-7xl">
-              <Reveal className="mx-auto max-w-3xl text-center">
-                <p className="text-xs font-semibold uppercase tracking-[.18em] text-brand-600 dark:text-brand-200">{copy.kicker}</p>
-                <h2 id={`solutions-services-title-${pageIndex + 1}`} className="mt-2 text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl">{copy.servicesTitle}{servicePages.length > 1 ? ` · ${pageIndex + 1}/${servicePages.length}` : ''}</h2>
-                <p className="mt-2 text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">{copy.servicesDescription}</p>
-              </Reveal>
-              <div className="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-                {page.map((service, index) => {
-                  const serviceCopy = service.copy[language] ?? service.copy.es;
-                  const relatedProjects = service.evidenceProjectIds.map((id) => projectById.get(id)).filter(Boolean);
-                  return (
-                    <Reveal key={service.id} delay={index * 0.09} className="group flex h-full flex-col rounded-3xl border border-neutral-200/80 bg-white/85 p-4 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-brand-200 hover:shadow-brand dark:border-slate-700/80 dark:bg-slate-900/75 dark:hover:border-brand-400/40 sm:p-5">
-                      <img src={serviceArtwork[service.id]} alt="" className="h-12 w-12 transition duration-300 group-hover:scale-105" loading="lazy" />
-                      <h3 className="mt-3 text-lg font-semibold text-neutral-900 dark:text-white">{serviceCopy.title}</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">{serviceCopy.description}</p>
-                      <p className="mt-3 border-l-2 border-brand-400 pl-3 text-sm font-medium leading-relaxed text-neutral-700 dark:text-neutral-200">{serviceCopy.benefit}</p>
-                      <div className="mt-auto pt-4">
-                        <p className="text-[11px] font-semibold uppercase tracking-[.13em] text-neutral-500 dark:text-neutral-400">{copy.evidenceLabel}</p>
-                        <div className="mt-2 flex flex-wrap gap-2">
-                          {relatedProjects.map((project) => {
-                            const title = project.copy[language]?.title ?? project.copy.es.title;
-                            return <Link key={project.id} to={`/portfolio/Projects/${project.slug}`} className="rounded-full border border-neutral-200 bg-white/80 px-3 py-1.5 text-xs font-semibold text-brand-700 transition hover:border-brand-300 hover:bg-brand-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 dark:border-slate-700 dark:bg-slate-800/70 dark:text-brand-200">{title}</Link>;
-                          })}
-                        </div>
+      <ScreenPanel id="solutions-services-1" titleId="solutions-services-title-1">
+        <section className="px-4 py-3 sm:px-6 lg:px-12 lg:py-1" aria-labelledby="solutions-services-title-1">
+          <div className="mx-auto max-w-7xl">
+            <Reveal className="mx-auto max-w-3xl text-center">
+              <p className="text-xs font-semibold uppercase tracking-[.18em] text-brand-600 dark:text-brand-200">{copy.kicker}</p>
+              <h2 id="solutions-services-title-1" className="mt-2 text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl">{copy.servicesTitle}</h2>
+              <p className="mt-2 text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">{copy.servicesDescription}</p>
+            </Reveal>
+            <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {services.map((service, index) => {
+                const serviceCopy = service.copy[language] ?? service.copy.es;
+                const relatedProjects = service.evidenceProjectIds.map((id) => projectById.get(id)).filter(Boolean);
+                return (
+                  <Reveal key={service.id} delay={index * 0.09} className="group flex h-full flex-col rounded-3xl border border-neutral-200/80 bg-white/85 p-3 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-brand-200 hover:shadow-brand dark:border-slate-700/80 dark:bg-slate-900/75 dark:hover:border-brand-400/40 sm:p-4">
+                    <img src={serviceArtwork[service.id]} alt="" className="h-10 w-10 transition duration-300 group-hover:scale-105" loading="lazy" />
+                    <h3 className="mt-2 text-lg font-semibold text-neutral-900 dark:text-white">{serviceCopy.title}</h3>
+                    <p className="mt-1 text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">{serviceCopy.description}</p>
+                    <p className="mt-2 border-l-2 border-brand-400 pl-3 text-sm font-medium leading-relaxed text-neutral-700 dark:text-neutral-200">{serviceCopy.benefit}</p>
+                    <div className="mt-auto pt-3">
+                      <p className="text-[11px] font-semibold uppercase tracking-[.13em] text-neutral-500 dark:text-neutral-400">{copy.evidenceLabel}</p>
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        {relatedProjects.map((project) => {
+                          const title = project.copy[language]?.title ?? project.copy.es.title;
+                          return <Link key={project.id} to={`/portfolio/Projects/${project.slug}`} className="rounded-full border border-neutral-200 bg-white/80 px-3 py-1.5 text-xs font-semibold text-brand-700 transition hover:border-brand-300 hover:bg-brand-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 dark:border-slate-700 dark:bg-slate-800/70 dark:text-brand-200">{title}</Link>;
+                        })}
                       </div>
-                    </Reveal>
-                  );
-                })}
-              </div>
+                    </div>
+                  </Reveal>
+                );
+              })}
             </div>
-          </section>
-        </ScreenPanel>
-      ))}
+          </div>
+        </section>
+      </ScreenPanel>
 
-      <ScreenPanel id="solutions-process" titleId="solutions-process-title">
-        <section className="px-4 py-5 sm:px-6 lg:px-12 lg:py-1">
-          <ParallaxScene layers={closingLayers} className="mx-auto w-full max-w-7xl overflow-hidden rounded-[2rem] border border-brand-200/40 bg-gradient-to-br from-brand-50/90 via-white/90 to-cyan-50/80 px-5 py-7 dark:border-brand-400/15 dark:from-slate-900/90 dark:via-slate-900/80 dark:to-indigo-950/70 sm:px-8">
+      <ScreenPanel id="solutions-process" titleId="solutions-process-title" aliases={['solutions-closing']}>
+        <section className="px-4 py-3 sm:px-6 lg:px-12 lg:py-1">
+          <ParallaxScene layers={closingLayers} className="mx-auto w-full max-w-7xl overflow-hidden rounded-[2rem] border border-brand-200/40 bg-gradient-to-br from-brand-50/90 via-white/90 to-cyan-50/80 px-5 py-4 dark:border-brand-400/15 dark:from-slate-900/90 dark:via-slate-900/80 dark:to-indigo-950/70 sm:px-8">
             <Reveal>
               <div className="max-w-3xl">
                 <p className="text-xs font-semibold uppercase tracking-[.18em] text-brand-600 dark:text-brand-200">{copy.kicker}</p>
                 <h2 id="solutions-process-title" className="mt-2 text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl">{copy.processTitle}</h2>
               </div>
             </Reveal>
-            <div className="mt-5 grid gap-4 md:grid-cols-3">
+            <div className="mt-4 grid gap-3 md:grid-cols-3">
               {copy.process.map((step, index) => (
-                <Reveal key={step.title} delay={index * 0.09} className="rounded-2xl border border-white/80 bg-white/75 p-4 backdrop-blur dark:border-slate-700/70 dark:bg-slate-950/45">
-                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-brand-600 text-sm font-semibold text-white">0{index + 1}</span>
-                  <h3 className="mt-3 text-lg font-semibold text-neutral-900 dark:text-white">{step.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">{step.description}</p>
+                <Reveal key={step.title} delay={index * 0.09} className="rounded-2xl border border-white/80 bg-white/75 p-3 backdrop-blur dark:border-slate-700/70 dark:bg-slate-950/45 sm:p-4">
+                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-brand-600 text-sm font-semibold text-white">0{index + 1}</span>
+                  <h3 className="mt-2 text-lg font-semibold text-neutral-900 dark:text-white">{step.title}</h3>
+                  <p className="mt-1 text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">{step.description}</p>
                 </Reveal>
               ))}
             </div>
           </ParallaxScene>
         </section>
-      </ScreenPanel>
-
-      <ScreenPanel id="solutions-closing" titleId="solutions-closing-title">
-        <Reveal className="mx-auto flex w-full max-w-7xl flex-col gap-5 px-4 py-8 sm:px-6 sm:flex-row sm:items-center sm:justify-between lg:px-12">
+        <Reveal className="mx-auto mt-3 flex w-full max-w-7xl flex-col gap-3 px-4 py-3 sm:px-6 sm:flex-row sm:items-center sm:justify-between lg:px-12">
           <div className="max-w-2xl">
             <h2 id="solutions-closing-title" className="text-2xl font-semibold text-neutral-900 dark:text-white">{copy.closingTitle}</h2>
             <p className="mt-2 text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">{copy.closingDescription}</p>
