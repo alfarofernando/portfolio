@@ -54,4 +54,4 @@ Reducir el número de pantallas de desplazamiento en las rutas existentes median
 
 ## Estado
 
-Implementación y validación visual completas. El ajuste responsive de Soluciones usa cinco columnas entre 1024–1279 px y tres desde 1280 px; el espacio vertical de la fila compacta cabe en 1024×700 sin desbordar. La reserva de altura del navbar y el margen cero de los paneles mantienen alineados los hashes directos. Revisión de código y publicación en master pendientes.
+Implementación, validación visual, revisión de código y publicación completas. El cambio quedó en `master` en el commit `3b2dcdd`. El ajuste responsive de Soluciones usa cinco columnas entre 1024–1279 px y tres desde 1280 px; el espacio vertical de la fila compacta cabe en 1024×700 sin desbordar. La reserva de altura del navbar y el margen cero de los paneles mantienen alineados los hashes directos.

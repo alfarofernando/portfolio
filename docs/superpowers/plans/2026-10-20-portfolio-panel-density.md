@@ -260,7 +260,7 @@ Ejecutar `npm run dev -- --host 127.0.0.1` y revisar Inicio, Catálogo, Experien
 
 Revisar 1024×700, 1279×720, 1280×720, 768×1024 y 390×844. Confirmar scroll natural bajo el breakpoint, todas las tarjetas y CTAs disponibles, una ficha con galería y otra sin galería, filtros al cambiar desde un panel posterior, temas claro/oscuro, español/inglés y contenido visible con movimiento reducido. Abrir hashes `#solutions-closing`, `#project-links`, `#projects-page-99`, `#experience-responsibilities-2` y `#experience-cases-99`; confirmar destino/foco y atrás/adelante.
 
-- [ ] **Step 4: Confirmar estado limpio y que master no avanzó por separado**
+- [x] **Step 4: Confirmar estado limpio y que master no avanzó por separado**
 
 Run: `git status --short`
 Expected: salida vacía.
@@ -269,7 +269,7 @@ Run: `git fetch origin master`
 Run: `git merge-base --is-ancestor origin/master HEAD`
 Expected: código de salida `0`. Si la comprobación falla, ejecutar `git rebase origin/master`, resolver cualquier conflicto conservando los cambios aprobados y repetir build, ESLint y recorrido visual antes del push.
 
-- [ ] **Step 5: Publicar el resultado autorizado**
+- [x] **Step 5: Publicar el resultado autorizado**
 
 Run: `git push origin HEAD:master`
 Expected: actualización fast-forward de `master` al commit revisado.
