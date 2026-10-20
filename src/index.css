@@ -24,6 +24,19 @@ html {
 
 .screen-panel {
   box-sizing: border-box;
+  display: flex;
+  min-height: 100vh;
+  min-height: 100svh;
+  align-items: center;
+}
+
+.screen-panel--first {
+  min-height: calc(100vh - var(--site-header-height));
+  min-height: calc(100svh - var(--site-header-height));
+}
+
+.screen-panel__content {
+  width: 100%;
 }
 
 /* Ritmo de espacio uniforme para grupos de contenido en todas las rutas. */
