@@ -6,7 +6,7 @@ const TechnologyCards = () => {
   const { language } = useLanguage();
 
   return (
-    <div className="grid gap-3 md:grid-cols-3">
+    <div className="grid gap-4 md:grid-cols-3">
       {skills.map((group, index) => {
         const isProfessional = group.experience === 'professional';
 
@@ -16,14 +16,14 @@ const TechnologyCards = () => {
             as="section"
             delay={index * 0.09}
             aria-label={group.copy[language].label}
-            className={`rounded-2xl border p-3.5 shadow-sm sm:p-4 ${isProfessional
+            className={`rounded-2xl border p-4 shadow-sm sm:p-5 ${isProfessional
               ? 'border-brand-200/80 bg-brand-50/70 dark:border-brand-500/25 dark:bg-brand-500/[0.06]'
               : 'border-neutral-200 bg-white/70 dark:border-slate-700 dark:bg-slate-800/50'}`}
           >
             <h3 className="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400 sm:text-sm">
               {group.copy[language].label}
             </h3>
-            <ul className="mt-3 grid grid-cols-2 gap-1.5">
+            <ul className="mt-4 grid grid-cols-2 gap-2">
               {group.technologies.map((technology) => (
                 <li
                   key={technology}

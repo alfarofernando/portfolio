@@ -7,9 +7,9 @@ const ProjectCard = ({ project, language, copy, index = 0 }) => {
   const category = copy[project.category] ?? copy.complementary;
 
   return (
-    <Reveal as="article" delay={Math.min(index * 0.09, 0.27)} className="group flex h-full flex-col overflow-hidden rounded-2xl border border-brand-100/70 bg-white/90 p-2.5 shadow-md backdrop-blur transition duration-200 hover:-translate-y-0.5 hover:shadow-brand dark:border-brand-500/20 dark:bg-slate-900/80 sm:p-3">
+    <Reveal as="article" delay={Math.min(index * 0.09, 0.27)} className="group flex h-full flex-col overflow-hidden rounded-2xl border border-brand-100/70 bg-white/90 p-3 shadow-md backdrop-blur transition duration-200 hover:-translate-y-0.5 hover:shadow-brand dark:border-brand-500/20 dark:bg-slate-900/80 sm:p-4">
       <ProjectMedia media={project.heroMedia} title={project.title} language={language} compact />
-      <div className="mt-2 flex flex-1 flex-col gap-2">
+      <div className="mt-3 flex flex-1 flex-col gap-3">
         <div className="flex items-start justify-between gap-3">
           <div>
             <h3 className="text-base font-semibold text-neutral-900 dark:text-white">{project.title}</h3>

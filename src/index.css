@@ -26,6 +26,23 @@ html {
   box-sizing: border-box;
 }
 
+/* Deja un poco más de aire entre grupos de tarjetas en todas las rutas. */
+.screen-panel :is(.grid, .flex)[class~="gap-2"] {
+  gap: 0.75rem;
+}
+
+.screen-panel :is(.grid, .flex)[class~="gap-3"] {
+  gap: 1rem;
+}
+
+.screen-panel :is(.grid, .flex)[class~="gap-4"] {
+  gap: 1.25rem;
+}
+
+.screen-panel :is(.grid, .flex)[class~="gap-5"] {
+  gap: 1.5rem;
+}
+
 @media (min-width: 1024px) and (min-height: 700px) {
   .screen-panel--contact > .screen-panel__content > #global-cta {
     padding-inline: 0;

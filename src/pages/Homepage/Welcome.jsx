@@ -45,16 +45,16 @@ const Welcome = () => {
   const profileCopy = profile.copy[language];
 
   return (
-    <section className="relative isolate px-4 py-8 sm:px-6 sm:py-10 lg:px-12 lg:py-2">
+    <section className="relative isolate px-4 py-8 sm:px-6 sm:py-10 lg:px-12 lg:py-5">
         <ParallaxScene layers={heroLayers} className="pointer-events-none absolute inset-0 -z-10 overflow-hidden" />
 
         {/* Contenedor principal responsive */}
-        <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-8 lg:grid lg:grid-cols-[minmax(0,1.1fr),minmax(0,0.9fr)] lg:gap-6 xl:max-w-7xl">
+        <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-10 lg:grid lg:grid-cols-[minmax(0,1.1fr),minmax(0,0.9fr)] lg:gap-8 xl:max-w-7xl">
           {/* --- COLUMNA TEXTO --- */}
           <Reveal
-            className="w-full space-y-5 text-center lg:space-y-4 lg:text-left"
+            className="w-full space-y-6 text-center lg:space-y-5 lg:text-left"
           >
-              <div className="space-y-3 lg:space-y-2">
+              <div className="space-y-4 lg:space-y-3">
                 <span className="inline-flex items-center gap-2 rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand-700 dark:bg-brand-500/10 dark:text-brand-200">
                   {hero.badge}
                 </span>
@@ -73,7 +73,7 @@ const Welcome = () => {
               </div>
 
             {/* Botones */}
-            <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start">
+            <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center lg:justify-start">
               <a
                 href={documents.cv}
                 target="_blank"
@@ -93,42 +93,46 @@ const Welcome = () => {
             </div>
           </Reveal>
 
-          {/* --- COLUMNA DE PERFIL --- */}
+          {/* --- PERFIL CON CONTEXTO TÉCNICO --- */}
           <Reveal
             delay={0.08}
-            className="relative flex w-full flex-col gap-4 lg:gap-3"
+            className="relative w-full"
           >
-            {/* Perfil */}
-            <div className="relative overflow-hidden rounded-3xl bg-white/80 p-4 shadow-2xl backdrop-blur dark:bg-slate-900/70 sm:p-6 lg:p-4">
+            <div className="relative overflow-hidden rounded-3xl border border-brand-100/70 bg-white/80 p-5 shadow-2xl backdrop-blur dark:border-brand-500/20 dark:bg-slate-900/70 sm:p-6">
               <div className="absolute -left-10 top-10 h-32 w-32 rounded-full bg-brand-400/20 blur-3xl" />
               <div className="absolute -right-6 bottom-10 h-28 w-28 rounded-full bg-accent-300/20 blur-3xl" />
 
-              <div className="relative flex flex-col items-center gap-4 sm:flex-col md:flex-row lg:flex-col">
-                <div>
-                  <img
-                    src={profileImage}
-                    alt={hero.profileAlt}
-                    className="h-28 w-28 rounded-3xl border border-white/80 object-cover shadow-lg sm:h-32 sm:w-32 md:h-36 md:w-36"
-                  />
+              <div className="relative grid items-center gap-6 sm:grid-cols-[minmax(8rem,.72fr),minmax(0,1.28fr)]">
+                <div className="flex flex-col items-center gap-4 text-center">
+                  <div className="rounded-[1.7rem] border border-brand-200/70 bg-gradient-to-br from-brand-500/20 via-white/70 to-cyan-400/15 p-1.5 shadow-lg dark:border-brand-400/25 dark:from-brand-500/20 dark:via-slate-900/70 dark:to-cyan-400/10">
+                    <img
+                      src={profileImage}
+                      alt={hero.profileAlt}
+                      className="h-32 w-32 rounded-[1.35rem] border border-white/80 object-cover shadow-md sm:h-36 sm:w-36 md:h-40 md:w-40"
+                    />
+                  </div>
+
+                  <div className="space-y-1">
+                    <p className="text-base font-semibold text-neutral-900 dark:text-white">{brand.name}</p>
+                    <p className="text-sm font-medium text-brand-700 dark:text-brand-200">{brand.role}</p>
+                  </div>
                 </div>
 
-                <div className="text-center sm:text-center md:text-left lg:text-center">
-                  <p className="text-sm font-semibold text-neutral-900 dark:text-white">{brand.name}</p>
+                <div className="min-w-0">
+                  <h2 className="text-xs font-semibold uppercase tracking-[0.16em] text-neutral-500 dark:text-neutral-400">{hero.profileFocusTitle}</h2>
+                  <ul aria-label={hero.profileFocusTitle} className="mt-3 grid gap-3">
+                    {hero.highlights.map((technology, index) => (
+                      <li key={technology} className="flex items-center gap-3 rounded-2xl border border-brand-100/80 bg-white/70 p-3 text-left shadow-sm dark:border-brand-400/20 dark:bg-slate-950/40">
+                        <span aria-hidden="true" className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-100/80 text-xs font-bold text-brand-700 dark:bg-brand-500/15 dark:text-brand-200">0{index + 1}</span>
+                        <span className="min-w-0">
+                          <span className="block text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">{hero.profileFocusLabels[index]}</span>
+                          <span className="mt-1 block text-sm font-semibold text-neutral-900 dark:text-white">{technology}</span>
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
-              <ul
-                aria-label={language === 'es' ? 'Tecnologías principales' : 'Core technologies'}
-                className="relative mt-4 grid gap-2 border-t border-neutral-200/70 pt-4 dark:border-slate-700 sm:grid-cols-3"
-              >
-                {hero.highlights.map((item) => (
-                  <li
-                    key={item}
-                    className="rounded-xl border border-brand-100/70 bg-white/65 px-3 py-2 text-center text-xs font-semibold text-brand-700 dark:border-brand-400/20 dark:bg-slate-950/35 dark:text-brand-200"
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
             </div>
 
           </Reveal>

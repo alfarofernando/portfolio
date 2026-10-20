@@ -51,6 +51,8 @@ const legacyLocales = {
         'Angular · TypeScript',
         'SQL · REST · SOAP',
       ],
+      profileFocusTitle: 'Tecnologías principales',
+      profileFocusLabels: ['Backend', 'Frontend', 'Integraciones'],
       stats: [
         {
           value: 'Backend',
@@ -208,6 +210,8 @@ const legacyLocales = {
         'Angular · TypeScript',
         'SQL · REST · SOAP',
       ],
+      profileFocusTitle: 'Core technologies',
+      profileFocusLabels: ['Backend', 'Frontend', 'Integrations'],
       stats: [
         {
           value: 'Backend',
