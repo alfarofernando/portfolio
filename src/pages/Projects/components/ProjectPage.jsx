@@ -55,17 +55,26 @@ const ProjectPage = () => {
         </section>
       </ScreenPanel>
 
-      <ScreenPanel id="project-context" titleId="project-context-title">
+      <ScreenPanel id="project-context" titleId="project-context-title" aliases={['project-links']}>
         <section className="px-4 py-5 sm:px-6 lg:px-12 lg:py-1">
-          <div className="mx-auto grid max-w-5xl gap-4 md:grid-cols-2">
-            <Reveal className="rounded-2xl border border-neutral-200 bg-white/75 p-5 dark:border-slate-700 dark:bg-slate-950/40">
-              <h2 id="project-context-title" className="text-xs font-semibold uppercase tracking-wide text-brand-600 dark:text-brand-200">{copy.contextLabel}</h2>
-              <p className="mt-2 text-sm leading-relaxed text-neutral-700 dark:text-neutral-200">{project.context}</p>
-            </Reveal>
-            <Reveal delay={0.09} className="rounded-2xl border border-neutral-200 bg-white/75 p-5 dark:border-slate-700 dark:bg-slate-950/40">
-              <h2 className="text-xs font-semibold uppercase tracking-wide text-brand-600 dark:text-brand-200">{copy.roleLabel}</h2>
-              <p className="mt-2 text-sm leading-relaxed text-neutral-700 dark:text-neutral-200">{project.role}</p>
-            </Reveal>
+          <div className="mx-auto max-w-5xl space-y-3">
+            <div className="grid gap-3 md:grid-cols-2">
+              <Reveal className="rounded-2xl border border-neutral-200 bg-white/75 p-4 dark:border-slate-700 dark:bg-slate-950/40">
+                <h2 id="project-context-title" className="text-xs font-semibold uppercase tracking-wide text-brand-600 dark:text-brand-200">{copy.contextLabel}</h2>
+                <p className="mt-2 text-sm leading-relaxed text-neutral-700 dark:text-neutral-200">{project.context}</p>
+              </Reveal>
+              <Reveal delay={0.09} className="rounded-2xl border border-neutral-200 bg-white/75 p-4 dark:border-slate-700 dark:bg-slate-950/40">
+                <h2 className="text-xs font-semibold uppercase tracking-wide text-brand-600 dark:text-brand-200">{copy.roleLabel}</h2>
+                <p className="mt-2 text-sm leading-relaxed text-neutral-700 dark:text-neutral-200">{project.role}</p>
+              </Reveal>
+            </div>
+            <div className="rounded-2xl border border-brand-100/70 bg-white/90 p-4 shadow-md dark:border-brand-500/20 dark:bg-slate-900/80">
+              <h2 id="project-links-title" className="text-lg font-semibold text-neutral-900 dark:text-white">{copy.catalogLabel}</h2>
+              <nav aria-label={project.title} className="mt-3 flex flex-wrap gap-2">
+                <Link to="/portfolio/Projects/all" className="rounded-xl bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-brand-700">← {copy.catalogLabel}</Link>
+                {externalLinks.map((item) => <a key={`${item.type}-${item.url}`} href={item.url} target="_blank" rel="noreferrer" className="rounded-xl border border-brand-200 px-4 py-2.5 text-sm font-semibold text-brand-700 hover:bg-brand-50 dark:border-brand-500/30 dark:text-brand-200 dark:hover:bg-brand-500/10">{linkLabels[item.type]} ↗</a>)}
+              </nav>
+            </div>
           </div>
         </section>
       </ScreenPanel>
@@ -103,17 +112,6 @@ const ProjectPage = () => {
         </ScreenPanel>
       )}
 
-      <ScreenPanel id="project-links" titleId="project-links-title">
-        <section className="px-4 py-5 sm:px-6 lg:px-12 lg:py-1">
-          <div className="mx-auto max-w-5xl rounded-3xl border border-brand-100/70 bg-white/90 p-6 shadow-md dark:border-brand-500/20 dark:bg-slate-900/80">
-            <h2 id="project-links-title" className="text-xl font-semibold text-neutral-900 dark:text-white">{copy.catalogLabel}</h2>
-            <nav aria-label={project.title} className="mt-5 flex flex-wrap gap-3">
-              <Link to="/portfolio/Projects/all" className="rounded-xl bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-brand-700">← {copy.catalogLabel}</Link>
-              {externalLinks.map((item) => <a key={`${item.type}-${item.url}`} href={item.url} target="_blank" rel="noreferrer" className="rounded-xl border border-brand-200 px-4 py-2.5 text-sm font-semibold text-brand-700 hover:bg-brand-50 dark:border-brand-500/30 dark:text-brand-200 dark:hover:bg-brand-500/10">{linkLabels[item.type]} ↗</a>)}
-            </nav>
-          </div>
-        </section>
-      </ScreenPanel>
     </>
   );
 };
