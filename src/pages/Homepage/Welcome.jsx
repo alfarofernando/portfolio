@@ -126,22 +126,7 @@ const Welcome = () => {
 
                 <div className="text-center sm:text-center md:text-left lg:text-center">
                   <p className="text-sm font-semibold text-neutral-900 dark:text-white">{brand.name}</p>
-                  <p className="text-xs text-neutral-500 dark:text-neutral-400">{brand.profileSubtitle}</p>
                 </div>
-              </div>
-
-              {/* Stats */}
-              <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3">
-                {hero.stats.map((item) => (
-                  <div
-                    key={item.label}
-                    className="rounded-2xl border border-neutral-200 bg-white/70 px-3 py-2 text-center text-sm text-neutral-600 shadow-sm dark:border-slate-700 dark:bg-slate-800/70 dark:text-neutral-200"
-                  >
-                    <p className="text-lg font-semibold text-brand-700 dark:text-brand-200">{item.value}</p>
-                    <p className="text-xs font-medium">{item.label}</p>
-                    <p className="mt-1 text-[11px] text-neutral-500 dark:text-neutral-400">{item.detail}</p>
-                  </div>
-                ))}
               </div>
             </div>
 

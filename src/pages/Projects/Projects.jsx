@@ -6,10 +6,21 @@ import ProjectCard from './components/ProjectCard.jsx';
 import ScreenPanel from '../../components/ScreenPanel.jsx';
 
 const getFeaturedGroupSize = () => window.innerWidth >= 1280 ? 3 : 2;
+const HOME_FEATURED_PROJECT_IDS = [
+  'wise-capital',
+  'netegia-n4',
+  'barlogow-wareg',
+  'ms-gbp',
+  'cvgenio',
+  'portal-sgu',
+];
 
 const Projects = () => {
   const { language, locales } = useLanguage();
-  const projects = getProjects(locales, language).filter((project) => project.featured);
+  const allProjects = getProjects(locales, language);
+  const projects = HOME_FEATURED_PROJECT_IDS
+    .map((id) => allProjects.find((project) => project.id === id && project.featured))
+    .filter(Boolean);
   const copy = locales[language].projectsSection;
 
   const [groupSize, setGroupSize] = useState(() => typeof window === 'undefined' ? 3 : getFeaturedGroupSize());
