@@ -1,18 +1,6 @@
-import { useEffect, useLayoutEffect, useRef } from 'react';
-import { useLocation, useNavigationType } from 'react-router-dom';
+import { useLayoutEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext.jsx';
-import { resolveNavigationTarget } from '../utils/routeNavigation.js';
-
-const savedScrollPositions = new Map();
-const MAX_SAVED_POSITIONS = 50;
-
-const saveScrollPosition = (key, top) => {
-  if (!key || !Number.isFinite(top)) return;
-  savedScrollPositions.set(key, top);
-  if (savedScrollPositions.size > MAX_SAVED_POSITIONS) {
-    savedScrollPositions.delete(savedScrollPositions.keys().next().value);
-  }
-};
 
 const focusWithoutScrolling = (target) => {
   if (!target) return;
@@ -21,65 +9,18 @@ const focusWithoutScrolling = (target) => {
   target.focus({ preventScroll: true });
 };
 
-const focusMainHeading = () => {
-  const main = document.getElementById('main-content');
-  focusWithoutScrolling(main?.querySelector('h1') ?? main);
-};
-
 const RouteEffects = () => {
   const location = useLocation();
-  const navigationType = useNavigationType();
-  const previousLocation = useRef(null);
+  const previousKey = useRef(null);
   const { language, locales } = useLanguage();
 
   useLayoutEffect(() => {
-    const previousRestoration = window.history.scrollRestoration;
-    window.history.scrollRestoration = 'manual';
-    return () => {
-      window.history.scrollRestoration = previousRestoration;
-    };
-  }, []);
-
-  useEffect(() => {
-    const saveBeforeLeavingPage = () => {
-      const active = previousLocation.current;
-      if (active) saveScrollPosition(active.key, window.scrollY);
-    };
-
-    window.addEventListener('pagehide', saveBeforeLeavingPage);
-    return () => window.removeEventListener('pagehide', saveBeforeLeavingPage);
-  }, []);
-
-  useLayoutEffect(() => {
-    if (previousLocation.current?.key !== location.key) {
-      saveScrollPosition(previousLocation.current?.key, window.scrollY);
+    if (previousKey.current !== location.key) {
+      previousKey.current = location.key;
+      const main = document.getElementById('main-content');
+      focusWithoutScrolling(main?.querySelector('h1') ?? main);
     }
-    previousLocation.current = location;
-
-    const target = resolveNavigationTarget({
-      navigationType,
-      pathname: location.pathname,
-      hash: location.hash,
-      savedPosition: savedScrollPositions.get(location.key),
-    });
-
-    if (target.kind === 'restore') {
-      window.scrollTo({ top: target.top, behavior: 'auto' });
-      return;
-    }
-
-    if (target.kind === 'hash' || target.kind === 'section') {
-      const section = document.getElementById(target.sectionId);
-      if (section) {
-        section.scrollIntoView({ block: 'start', behavior: 'auto' });
-        focusWithoutScrolling(section.querySelector('h1, h2, h3') ?? section);
-        return;
-      }
-    }
-
-    window.scrollTo({ top: 0, behavior: 'auto' });
-    focusMainHeading();
-  }, [location, navigationType]);
+  }, [location.key]);
 
   useLayoutEffect(() => {
     const { seo, brand } = locales[language];

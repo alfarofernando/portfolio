@@ -1,6 +1,6 @@
 export const motionTokens = {
-  enterDuration: 0.38,
-  enterDistance: 12,
+  enterDuration: 0.5,
+  enterDistance: 16,
   microDuration: 0.18,
   ease: 'easeOut',
 };

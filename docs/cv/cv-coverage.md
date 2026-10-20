@@ -43,9 +43,9 @@ Coverage is checked against extracted text in both Markdown sources and both PDF
 
 | Source file | Purpose | Reviewed | SHA-256 |
 |---|---|---|---|
-| `content/profile.json` | Identity, career summary, employment, education, and language level. | 2026-10-19 | `8609f28f2766858d6f0a560dfe9718ac08ad69002d4bd5715c6590142cbc806e` |
-| `content/skills.json` | Technical groups and experience distinctions. | 2026-10-19 | `16e6e424b87983a7cbedb647f8daea2c89559151476c81ba3d7bdbd5fcfb8c61` |
-| `content/projects.json` | All 22 portfolio, professional, operations, and independent project records. | 2026-10-19 | `ade8d301962fb359e9eaf7d0056ec1545883ff69a78fb3310ed84a95480bda2e` |
-| `Fernando_Alfaro_Experiencia_Tecnica_Completa_Actualizado_2026-10-19.md` | Canonical technical inventory, reviewed for claim scope and positioning. | 2026-10-19 | `e009030af9cd5251082b0ea581ad4d37519682bb85e04f4496dedb3b8e13a848` |
+| `content/profile.json` | Identity, career summary, employment, education, and language level. | 2026-10-20 | `908ec21e18b073b93e4d66a3a39176e1d3776ce62ab34a1c78ce7f2f5991c927` |
+| `content/skills.json` | Technical groups and experience distinctions. | 2026-10-20 | `16e6e424b87983a7cbedb647f8daea2c89559151476c81ba3d7bdbd5fcfb8c61` |
+| `content/projects.json` | All 22 portfolio, professional, operations, and independent project records. | 2026-10-20 | `861528ed4eb14faa94837817f5402d21d4f85d6d01dc76abe4f5da02a5faa71a` |
+| `Fernando_Alfaro_Experiencia_Tecnica_Completa_Actualizado_2026-10-19.md` | Canonical technical inventory, reviewed for claim scope and positioning. | 2026-10-20 | `e009030af9cd5251082b0ea581ad4d37519682bb85e04f4496dedb3b8e13a848` |
 
 Projects covered: 22. Each output is validated against all source facts before replacement.

@@ -16,7 +16,17 @@ const legacyLocales = {
       home: 'Inicio',
       projects: 'Proyectos',
       solutions: 'Soluciones',
-      aboutMe: 'Sobre mí',
+    },
+    screenNavigation: {
+      panelControls: 'Navegación entre secciones',
+      previousPanel: 'Anterior',
+      nextPanel: 'Siguiente',
+      currentPanel: 'Sección actual',
+      position: '{current} de {total}',
+    },
+    technologyPanel: {
+      title: 'Tecnologías y herramientas',
+      description: 'Experiencia profesional y conocimientos complementarios, organizados por contexto.',
     },
     brand: {
       initials: 'F',
@@ -80,7 +90,6 @@ const legacyLocales = {
     },
     sections: {
       projectsTitle: 'Mis proyectos',
-      aboutMeTitle: 'Sobre mí',
     },
     projectsSection: {
       badge: 'Portafolio',
@@ -106,11 +115,6 @@ const legacyLocales = {
       galleryThumbnailNavigation: 'Navegación de diapositivas',
       galleryGoToSlide: 'Ir a la diapositiva {current} de {total}',
       gallerySlideAnnouncement: 'Diapositiva {current} de {total}',
-    },
-    about: {
-      description:
-        'Técnico Universitario en Programación con experiencia en productos financieros, ERP, logística, mensajería y productos propios.',
-      badge: 'Experiencia',
     },
     cta: {
       badge: 'Full Stack · Integraciones',
@@ -176,7 +180,17 @@ const legacyLocales = {
       home: 'Home',
       projects: 'Projects',
       solutions: 'Solutions',
-      aboutMe: 'About me',
+    },
+    screenNavigation: {
+      panelControls: 'Section navigation',
+      previousPanel: 'Previous',
+      nextPanel: 'Next',
+      currentPanel: 'Current section',
+      position: '{current} of {total}',
+    },
+    technologyPanel: {
+      title: 'Technologies and tools',
+      description: 'Professional experience and complementary knowledge, grouped by context.',
     },
     brand: {
       initials: 'F',
@@ -240,7 +254,6 @@ const legacyLocales = {
     },
     sections: {
       projectsTitle: 'My projects',
-      aboutMeTitle: 'About me',
     },
     projectsSection: {
       badge: 'Portfolio',
@@ -266,11 +279,6 @@ const legacyLocales = {
       galleryThumbnailNavigation: 'Slide navigation',
       galleryGoToSlide: 'Go to slide {current} of {total}',
       gallerySlideAnnouncement: 'Slide {current} of {total}',
-    },
-    about: {
-      description:
-        'University Technician in Programming with experience across financial products, ERP, logistics, messaging, and personal products.',
-      badge: 'Experience',
     },
     cta: {
       badge: 'Full Stack · Integrations',
@@ -368,10 +376,6 @@ export const locales = {
       technologyLabel: 'Tecnologías',
       catalogLabel: 'Catálogo completo',
     },
-    about: {
-      description: 'Técnico Universitario en Programación con experiencia profesional en productos financieros, ERP, logística y mensajería, además de productos propios.',
-      badge: 'Perfil',
-    },
     solutionsPage: {
       kicker: 'Software Engineer · Soluciones tecnológicas',
       title: 'Software que simplifica el trabajo y acompaña tu crecimiento.',
@@ -465,10 +469,6 @@ export const locales = {
       outcomesLabel: 'Outcomes and scope',
       technologyLabel: 'Technologies',
       catalogLabel: 'Full catalog',
-    },
-    about: {
-      description: 'University Technician in Programming with professional experience across financial products, ERP, logistics, and messaging, as well as personal products.',
-      badge: 'Profile',
     },
     solutionsPage: {
       kicker: 'Software Engineer · Technology solutions',

@@ -15,7 +15,7 @@ const SubFooter = () => {
   return (
     <section id="global-cta" className="px-4 sm:px-6 lg:px-12">
       <Reveal
-        className="relative mx-auto mt-20 w-full max-w-6xl overflow-hidden rounded-4xl bg-gradient-to-r from-brand-600 via-brand-600 to-brand-700 text-white shadow-brand"
+        className="relative mx-auto mt-6 w-full max-w-6xl overflow-hidden rounded-4xl bg-gradient-to-r from-brand-600 via-brand-600 to-brand-700 text-white shadow-brand lg:mt-0"
       >
         <div className="pointer-events-none absolute -right-24 bottom-0 h-64 w-64 rounded-full bg-accent-400/50 blur-3xl" />
         <div className="pointer-events-none absolute -left-24 top-0 h-80 w-80 rounded-full bg-white/20 blur-3xl" />
@@ -25,7 +25,7 @@ const SubFooter = () => {
             <p className="inline-flex items-center rounded-full bg-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white/80">
               {ctaCopy.badge}
             </p>
-            <h2 className="text-3xl font-semibold md:text-4xl">{ctaCopy.title}</h2>
+            <h2 id="contact-heading" className="text-3xl font-semibold md:text-4xl">{ctaCopy.title}</h2>
             <p className="text-sm text-white/80 md:text-base">{ctaCopy.description}</p>
           </div>
 

@@ -154,7 +154,7 @@
         "title": "BarloGOW / Wareg",
         "summary": "Funciones de cobranzas, campañas y mensajería con integración de WhatsApp, OCR e interfaces de operación.",
         "context": "Producto de negocio del entorno BarloventoTech, con backend Java y frontend Angular.",
-        "role": "Desarrollo full stack y liderazgo técnico acotado del proyecto, con acompañamiento a un desarrollador becario.",
+        "role": "Desarrollo full stack y liderazgo técnico acotado del proyecto, con acompañamiento a otro desarrollador.",
         "contributions": [
           "Trabajé en vinculación con WhatsApp, estados de entrega y el motor de interacciones mediante Evolution API.",
           "Contribuí a flujos de autenticación, catálogos, campañas y procesamiento de facturas con OCR.",
@@ -170,7 +170,7 @@
         "title": "BarloGOW / Wareg",
         "summary": "Collections, campaign, and messaging features integrating WhatsApp, OCR, and operational interfaces.",
         "context": "Business product in the BarloventoTech environment, with a Java backend and Angular frontend.",
-        "role": "Full-stack development and project-scoped technical leadership, supporting one intern developer.",
+        "role": "Full-stack development and project-scoped technical leadership, supporting another developer.",
         "contributions": [
           "Worked on WhatsApp linking, delivery states, and the Evolution API interaction engine.",
           "Contributed to authentication, catalog, campaign, and OCR invoice-processing workflows.",

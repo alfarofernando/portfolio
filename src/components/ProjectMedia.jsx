@@ -1,14 +1,17 @@
 import { useEffect, useState } from 'react';
 
 /* eslint-disable react/prop-types -- Media values come from the checked-in local asset manifest. */
-const ProjectMedia = ({ media, title, language, eager = false, compact = false }) => {
+const ProjectMedia = ({ media, title, language, eager = false, compact = false, detail = false, fit }) => {
   const [failed, setFailed] = useState(false);
 
   useEffect(() => setFailed(false), [media?.src]);
 
   const frameClass = compact
     ? 'relative flex h-44 items-center justify-center overflow-hidden rounded-2xl'
-    : 'relative flex aspect-video items-center justify-center overflow-hidden rounded-3xl';
+    : detail
+      ? 'relative flex aspect-video max-h-[42svh] min-h-[12rem] items-center justify-center overflow-hidden rounded-3xl'
+      : 'relative flex aspect-video items-center justify-center overflow-hidden rounded-3xl';
+  const imageFit = fit ?? (media?.fit === 'contain' || media?.kind === 'logo' ? 'contain' : 'cover');
 
   if (!media?.src || failed) {
     return (
@@ -27,7 +30,7 @@ const ProjectMedia = ({ media, title, language, eager = false, compact = false }
           loading={eager ? 'eager' : 'lazy'}
           decoding="async"
           onError={() => setFailed(true)}
-          className={`h-full w-full ${media.fit === 'contain' || media.kind === 'logo' ? 'object-contain' : 'object-cover'}`}
+          className={`h-full w-full ${imageFit === 'contain' ? 'object-contain' : 'object-cover'}`}
         />
       </div>
       {!compact && media.caption?.[language] ? (

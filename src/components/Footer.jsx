@@ -21,7 +21,7 @@ const Footer = () => {
   const legalCopy = footerCopy.legal.replace('{year}', year);
 
   return (
-    <footer id="site-footer" className="relative mt-10 border-t border-brand-100/60 bg-white/90 text-neutral-600 shadow-lg backdrop-blur dark:border-slate-700 dark:bg-slate-900/90 dark:text-neutral-300">
+    <footer id="site-footer" className="relative mt-6 border-t border-brand-100/60 bg-white/90 text-neutral-600 shadow-lg backdrop-blur dark:border-slate-700 dark:bg-slate-900/90 dark:text-neutral-300 lg:mt-0">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-300/60 to-transparent" />
 
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 py-12 md:flex-row md:justify-between">

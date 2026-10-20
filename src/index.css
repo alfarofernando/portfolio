@@ -4,7 +4,8 @@
 
 :root {
   color-scheme: dark;
-  --route-header-offset: 8rem;
+  --site-header-height: 4.5rem;
+  --route-header-offset: 1rem;
 }
 
 html {
@@ -14,6 +15,86 @@ html {
 [id] {
   scroll-margin-top: var(--route-header-offset);
 }
+
+.screen-panel {
+  box-sizing: border-box;
+}
+
+.screen-panel__controls {
+  display: none;
+}
+
+@media (min-width: 1024px) and (min-height: 700px) {
+  .screen-panel {
+    display: flex;
+    height: 100svh;
+    min-height: 0;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.25rem clamp(1.5rem, 4vw, 4rem) 0.6rem;
+  }
+
+  .screen-panel--first {
+    height: calc(100svh - var(--site-header-height));
+  }
+
+  .screen-panel__content {
+    display: flex;
+    min-height: 0;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .screen-panel__controls {
+    display: flex;
+    min-height: 2rem;
+    flex: 0 0 2rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    color: rgb(71 85 105);
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  .screen-panel__controls button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    border-radius: 9999px;
+    padding: 0.2rem 0.55rem;
+  }
+
+  .screen-panel__controls button:hover:not(:disabled) {
+    color: rgb(79 70 229);
+  }
+
+  .screen-panel__controls button:disabled {
+    cursor: default;
+    opacity: 0.35;
+  }
+
+  .screen-panel__controls button:focus-visible {
+    outline: 2px solid #818cf8;
+    outline-offset: 2px;
+  }
+
+  .screen-panel__position {
+    min-width: 3.25rem;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .screen-panel--contact .screen-panel__content {
+    justify-content: space-evenly;
+  }
+}
+
+.dark .screen-panel__controls {
+  color: rgb(203 213 225);
+}
+
 
 .route-focus-target:focus {
   outline: none;
@@ -69,6 +150,13 @@ video {
   width: 100%;
   max-height: 68vh;
   object-fit: contain;
+}
+
+@media (min-width: 1024px) and (min-height: 700px) {
+  .project-gallery__frame,
+  .project-gallery__image {
+    max-height: 44svh;
+  }
 }
 
 .project-gallery__nav {
@@ -166,6 +254,33 @@ video {
   .project-gallery__thumbnail {
     flex-basis: 6.25rem;
     height: 4.75rem;
+  }
+}
+
+@media (min-width: 1024px) and (min-height: 700px) {
+  .screen-panel--contact > .screen-panel__content > #global-cta {
+    padding-inline: 0;
+  }
+
+  .screen-panel--contact #global-cta > div {
+    margin-top: 0;
+  }
+
+  .screen-panel--contact #global-cta > div > div:last-child {
+    padding-block: 1.5rem;
+  }
+
+  .screen-panel--contact #site-footer {
+    margin-top: 0;
+  }
+
+  .screen-panel--contact #site-footer > div.mx-auto {
+    gap: 2rem;
+    padding-block: 1.5rem;
+  }
+
+  .screen-panel--contact #site-footer ul {
+    margin-top: 0.75rem;
   }
 }
 

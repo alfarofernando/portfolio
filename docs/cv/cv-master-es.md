@@ -13,7 +13,7 @@ Software Engineer Full Stack con experiencia profesional en Java/Spring Boot, An
 **Formación y conocimientos complementarios:** Python, FastAPI, Django, PHP, Laravel, PostgreSQL, MongoDB, AWS, Kubernetes
 
 ## Experiencia profesional
-### NetOne / BarloventoTech — Desarrollador de software (Becario Tier 1 → Tier 2)
+### NetOne / BarloventoTech — Software Engineer · Tier 1 → Tier 2
 Diciembre de 2025 – 25 de septiembre de 2026
 - Implementé y mantuve funcionalidades full stack en productos empresariales y servicios Java.
 - Trabajé con Angular/TypeScript, SQL, APIs REST/SOAP e integraciones externas.
@@ -51,7 +51,7 @@ Evolución de una plataforma de gestión con migración de APIs, órdenes de tra
 
 #### BarloGOW / Wareg · Java, Angular 19, TypeScript, Evolution API, ARCA/AFIP, OCR, GitHub Actions
 **Contexto:** Producto de negocio del entorno BarloventoTech, con backend Java y frontend Angular.
-**Participación:** Desarrollo full stack y liderazgo técnico acotado del proyecto, con acompañamiento a un desarrollador becario.
+**Participación:** Desarrollo full stack y liderazgo técnico acotado del proyecto, con acompañamiento a otro desarrollador.
 Funciones de cobranzas, campañas y mensajería con integración de WhatsApp, OCR e interfaces de operación.
 **Contribuciones:**
 - Trabajé en vinculación con WhatsApp, estados de entrega y el motor de interacciones mediante Evolution API.

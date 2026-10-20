@@ -1,6 +1,5 @@
 import { useLanguage } from '../../context/LanguageContext.jsx';
 import profileImage from '../../assets/profile.webp';
-import TechCarousel from './components/TechCarousel.jsx';
 import profile from '../../../content/profile.json';
 import { getWhatsAppUrl } from '../../utils/contact.js';
 import ParallaxScene from '../../components/motion/ParallaxScene.jsx';
@@ -46,21 +45,21 @@ const Welcome = () => {
   const profileCopy = profile.copy[language];
 
   return (
-    <section className="relative isolate px-4 pb-20 pt-10 sm:px-6 sm:pt-14 md:pb-24 lg:px-12">
+    <section className="relative isolate px-4 py-8 sm:px-6 sm:py-10 lg:px-12 lg:py-2">
         <ParallaxScene layers={heroLayers} className="pointer-events-none absolute inset-0 -z-10 overflow-hidden" />
 
         {/* Contenedor principal responsive */}
-        <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-12 lg:grid lg:grid-cols-[minmax(0,1.1fr),minmax(0,0.9fr)] xl:max-w-7xl">
+        <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-8 lg:grid lg:grid-cols-[minmax(0,1.1fr),minmax(0,0.9fr)] lg:gap-6 xl:max-w-7xl">
           {/* --- COLUMNA TEXTO --- */}
           <Reveal
-            className="w-full space-y-7 text-center lg:text-left"
+            className="w-full space-y-5 text-center lg:space-y-4 lg:text-left"
           >
-              <div className="space-y-4">
+              <div className="space-y-3 lg:space-y-2">
                 <span className="inline-flex items-center gap-2 rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand-700 dark:bg-brand-500/10 dark:text-brand-200">
                   {hero.badge}
                 </span>
 
-                <h1 className="text-3xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-4xl md:text-5xl">
+                <h1 id="home-title" className="text-3xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-4xl md:text-5xl">
                   {hero.heading}
                 </h1>
 
@@ -106,13 +105,13 @@ const Welcome = () => {
             </div>
           </Reveal>
 
-          {/* --- COLUMNA PERFIL + TECNOLOGIAS --- */}
+          {/* --- COLUMNA DE PERFIL --- */}
           <Reveal
             delay={0.08}
-            className="relative w-full flex flex-col gap-6"
+            className="relative flex w-full flex-col gap-4 lg:gap-3"
           >
             {/* Perfil */}
-            <div className="relative overflow-hidden rounded-3xl bg-white/80 p-6 shadow-2xl backdrop-blur dark:bg-slate-900/70">
+            <div className="relative overflow-hidden rounded-3xl bg-white/80 p-4 shadow-2xl backdrop-blur dark:bg-slate-900/70 sm:p-6 lg:p-4">
               <div className="absolute -left-10 top-10 h-32 w-32 rounded-full bg-brand-400/20 blur-3xl" />
               <div className="absolute -right-6 bottom-10 h-28 w-28 rounded-full bg-accent-300/20 blur-3xl" />
 
@@ -132,11 +131,11 @@ const Welcome = () => {
               </div>
 
               {/* Stats */}
-              <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
+              <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3">
                 {hero.stats.map((item) => (
                   <div
                     key={item.label}
-                    className="rounded-2xl border border-neutral-200 bg-white/70 px-3 py-3 text-center text-sm text-neutral-600 shadow-sm dark:border-slate-700 dark:bg-slate-800/70 dark:text-neutral-200"
+                    className="rounded-2xl border border-neutral-200 bg-white/70 px-3 py-2 text-center text-sm text-neutral-600 shadow-sm dark:border-slate-700 dark:bg-slate-800/70 dark:text-neutral-200"
                   >
                     <p className="text-lg font-semibold text-brand-700 dark:text-brand-200">{item.value}</p>
                     <p className="text-xs font-medium">{item.label}</p>
@@ -146,10 +145,6 @@ const Welcome = () => {
               </div>
             </div>
 
-            {/* Carrusel de tecnologias */}
-            <div className="rounded-3xl border border-brand-100/60 bg-white/85 p-4 shadow-lg backdrop-blur dark:border-brand-500/20 dark:bg-slate-900/70">
-              <TechCarousel />
-            </div>
           </Reveal>
         </div>
     </section>

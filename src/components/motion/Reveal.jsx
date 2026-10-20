@@ -18,7 +18,7 @@ const Reveal = ({ children, className = '', delay = 0, as = 'div', ...props }) =
       viewport={{ once: true, amount: 0.18 }}
       transition={{
         duration: prefersReducedMotion ? 0 : motionTokens.enterDuration,
-        delay: prefersReducedMotion ? 0 : delay,
+        delay: prefersReducedMotion ? 0 : Math.min(delay, 0.27),
         ease: motionTokens.ease,
       }}
       className={className}

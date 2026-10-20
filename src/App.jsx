@@ -3,6 +3,8 @@ import Router from './router/Router.jsx';
 import SubFooter from './components/SubFooter.jsx';
 import ParallaxBackground from './components/ParallaxBackground/ParallaxBackground';
 import WhatsAppButton from './components/WhatsAppButton.jsx';
+import ScreenPanel from './components/ScreenPanel.jsx';
+import { ScreenScrollProvider } from './context/ScreenScrollContext.jsx';
 
 const NavBar = lazy(() => import('./components/Navbar'));
 const Footer = lazy(() => import('./components/Footer'));
@@ -29,24 +31,27 @@ const App = () => {
   }, [darkMode]);
 
   return (
-    <div className={`${darkMode ? 'dark bg-neutral-950' : 'bg-transparent'} text-neutral-900 dark:text-neutral-100`}>
-      <ParallaxBackground className="relative flex min-h-screen flex-col">
-        <Suspense fallback={null}>
-          <NavBar darkMode={darkMode} onToggleTheme={() => setDarkMode((previous) => !previous)} />
-        </Suspense>
+    <ScreenScrollProvider>
+      <div className={`${darkMode ? 'dark bg-neutral-950' : 'bg-transparent'} text-neutral-900 dark:text-neutral-100`}>
+        <ParallaxBackground className="relative flex min-h-screen flex-col">
+          <Suspense fallback={null}>
+            <NavBar darkMode={darkMode} onToggleTheme={() => setDarkMode((previous) => !previous)} />
+          </Suspense>
 
-        <main id="main-content" tabIndex={-1} className="w-full flex-1 pt-28 md:pt-32">
-          <Router />
-        </main>
+          <main id="main-content" tabIndex={-1} className="w-full flex-1">
+            <Router />
+          </main>
 
-        <SubFooter />
-
-        <Suspense fallback={null}>
-          <Footer />
-        </Suspense>
-      </ParallaxBackground>
-      <WhatsAppButton />
-    </div>
+          <ScreenPanel id="contact" titleId="contact-heading" className="screen-panel--contact">
+            <SubFooter />
+            <Suspense fallback={null}>
+              <Footer />
+            </Suspense>
+          </ScreenPanel>
+        </ParallaxBackground>
+        <WhatsAppButton />
+      </div>
+    </ScreenScrollProvider>
   );
 };
 

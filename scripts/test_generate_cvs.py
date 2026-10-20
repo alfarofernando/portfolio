@@ -122,8 +122,8 @@ class MasterCVTests(unittest.TestCase):
         self.assertIn("Android e iOS", by_id["wise-capital"]["copy"]["es"]["role"])
         self.assertIn("Android", by_id["wise-capital"]["copy"]["en"]["role"])
         self.assertIn("iOS", by_id["wise-capital"]["copy"]["en"]["role"])
-        self.assertIn("becario", by_id["barlogow-wareg"]["copy"]["es"]["role"].lower())
-        self.assertIn("intern", by_id["barlogow-wareg"]["copy"]["en"]["role"].lower())
+        self.assertIn("otro desarrollador", by_id["barlogow-wareg"]["copy"]["es"]["role"].lower())
+        self.assertIn("another developer", by_id["barlogow-wareg"]["copy"]["en"]["role"].lower())
         for project_id in ("ms-gbp", "ms-logistics"):
             self.assertIn("desde cero", by_id[project_id]["copy"]["es"]["role"].lower())
             self.assertIn("from scratch", by_id[project_id]["copy"]["en"]["role"].lower())
@@ -136,7 +136,7 @@ class MasterCVTests(unittest.TestCase):
         self.assertIn("ended", cvgenio["en"]["context"].lower())
         self.assertTrue(any("Angular 21" in value for value in by_id["portal-sgu"]["technologies"]))
         self.assertTrue(any("Next.js" in value for value in by_id["portal-sgu"]["technologies"]))
-        self.assertTrue(any("becarios" in item.lower() or "desarrolladores" in item.lower() for item in by_id["storepc"]["copy"]["es"]["contributions"]))
+        self.assertTrue(any("desarrolladores" in item.lower() for item in by_id["storepc"]["copy"]["es"]["contributions"]))
 
     def test_master_cv_summary_leads_with_software_engineering_and_the_full_stack(self) -> None:
         spanish = profile["copy"]["es"]["summary"]
