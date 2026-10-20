@@ -106,15 +106,16 @@ export const ScreenScrollProvider = ({ children }) => {
 
     const panels = refreshPanels();
     const hashId = decodeURIComponent(hash.slice(1));
+    const hashPanel = panels.find((item) => item.id === hashId);
     const destination = navigationType === 'POP'
       ? panels.find((panel) => panel.id === savedPanels.get(locationKey))
       : null;
-    const panel = destination ?? panels.find((item) => item.id === hashId) ?? panels[0];
+    const panel = hashPanel ?? destination ?? panels[0];
     if (panel) {
       setActive(panel.id);
+      const focusPanel = Boolean(hashPanel || destination);
       window.requestAnimationFrame(() => {
-        if (panel === panels[0]) window.scrollTo({ top: 0, behavior: 'auto' });
-        else scrollToPanel(panel, { behavior: 'auto' });
+        scrollToPanel(panel, { behavior: 'auto', focus: focusPanel });
       });
     }
   }, [hash, locationKey, navigationType, pathname, refreshPanels, scrollToPanel, setActive]);
