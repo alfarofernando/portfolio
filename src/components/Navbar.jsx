@@ -52,7 +52,7 @@ const NavBar = ({ darkMode, onToggleTheme }) => {
     setIsMenuOpen(false);
     if (!item.sectionId || !panelIds.includes(item.sectionId)) return;
     event.preventDefault();
-    goToPanel(item.sectionId);
+    goToPanel(item.sectionId, { focus: true });
   };
 
   return (

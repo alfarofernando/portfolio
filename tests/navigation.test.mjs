@@ -38,7 +38,7 @@ test('las rutas alias de portada resuelven su sección sin hash', () => {
   );
   assert.deepEqual(
     resolveNavigationTarget({ pathname: '/portfolio/AboutMe', hash: '' }),
-    { kind: 'section', sectionId: 'about' },
+    { kind: 'section', sectionId: 'home' },
   );
 });
 

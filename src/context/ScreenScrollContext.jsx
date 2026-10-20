@@ -59,7 +59,9 @@ export const ScreenScrollProvider = ({ children }) => {
   const scrollToPanel = useCallback((panel, { focus = false, behavior } = {}) => {
     if (!panel) return false;
     const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
-    const top = window.scrollY + panel.getBoundingClientRect().top;
+    const top = panel.classList.contains('screen-panel--first')
+      ? 0
+      : window.scrollY + panel.getBoundingClientRect().top;
     window.scrollTo({ top, behavior: behavior ?? (reduced ? 'auto' : 'smooth') });
     setActive(panel.id);
     if (focus) {
@@ -157,7 +159,7 @@ export const ScreenScrollProvider = ({ children }) => {
 
     const handleWheel = (event) => {
       if (!isDesktop() || event.ctrlKey || Math.abs(event.deltaX) > Math.abs(event.deltaY)) return;
-      if (event.target instanceof Element && event.target.closest('input, textarea, select, button, [contenteditable="true"], [data-native-wheel]')) return;
+      if (event.target instanceof Element && event.target.closest('input, textarea, select, [contenteditable="true"], [data-native-wheel]')) return;
 
       const panels = panelsRef.current;
       const currentIndex = panels.findIndex((panel) => panel.id === activePanelRef.current);

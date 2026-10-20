@@ -6,7 +6,7 @@ export const normalizePathname = (pathname) => {
 const resolveLandingAlias = (pathname) => {
   const normalizedPath = normalizePathname(pathname);
   if (normalizedPath.endsWith('/portfolio/projects')) return 'projects';
-  if (normalizedPath.endsWith('/portfolio/aboutme')) return 'about';
+  if (normalizedPath.endsWith('/portfolio/aboutme')) return 'home';
   return null;
 };
 
