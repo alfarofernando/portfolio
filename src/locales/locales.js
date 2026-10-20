@@ -51,7 +51,9 @@ const legacyLocales = {
       heading: 'Hola, soy Fernando Alfaro',
       subheading: 'Software Engineer · UTN FRA',
       description:
-        'Construyo productos digitales y conecto sistemas, combinando desarrollo, integración y operación para llevar ideas a soluciones útiles.',
+        'Construyo software para resolver necesidades concretas: desde interfaces web y servicios backend hasta integraciones entre plataformas.',
+      supportingText:
+        'Acompaño cada solución desde la comprensión del problema hasta su puesta en producción, con foco en que sea clara de usar, confiable y útil para el trabajo diario.',
       profileFocusTitle: 'Áreas de habilidad',
       skillSets: [
         { label: 'Frontend', description: 'Interfaces web' },
@@ -199,7 +201,9 @@ const legacyLocales = {
       heading: "Hey, I'm Fernando Alfaro",
       subheading: 'Software Engineer · UTN FRA',
       description:
-        'I build digital products and connect systems, combining software development, integration, and operations to turn ideas into useful solutions.',
+        'I build software for practical needs, from web interfaces and backend services to integrations between platforms.',
+      supportingText:
+        'I carry each solution from understanding the problem through production, focusing on clear, reliable tools that support everyday work.',
       profileFocusTitle: 'Skill sets',
       skillSets: [
         { label: 'Frontend', description: 'Web interfaces' },
@@ -315,7 +319,7 @@ export const locales = {
       badge: 'Software e integraciones',
       heading: 'Hola, soy Fernando Alfaro',
       subheading: 'Software Engineer · UTN FRA',
-      description: 'Construyo productos digitales y conecto sistemas, combinando desarrollo, integración y operación para llevar ideas a soluciones útiles.',
+      description: legacyLocales.es.hero.description,
     },
     projectsSection: {
       badge: 'Casos de trabajo',
@@ -361,7 +365,7 @@ export const locales = {
     cta: {
       badge: 'Software Engineer · Soluciones tecnológicas',
       title: '¿Hay un proceso que tu negocio podría resolver mejor?',
-      description: 'Conversemos sobre sitios web, sistemas, integraciones o mejoras para tu operación.',
+      description: 'Conversemos sobre sitios web, sistemas, integraciones o mejoras para tu operación. Si hay una tarea repetitiva, una herramienta que quedó corta o sistemas que no se comunican, contame el contexto y vemos un próximo paso concreto.',
       primary: 'Ver soluciones',
       secondary: 'Hablar por WhatsApp',
       whatsappLabel: 'Abrir conversación por WhatsApp con Fernando Alfaro',
@@ -403,7 +407,7 @@ export const locales = {
       badge: 'Software and integrations',
       heading: "Hi, I'm Fernando Alfaro",
       subheading: 'Software Engineer · UTN FRA',
-      description: 'I build digital products and connect systems, combining software development, integration, and operations to turn ideas into useful solutions.',
+      description: legacyLocales.en.hero.description,
     },
     projectsSection: {
       badge: 'Selected work',
@@ -449,7 +453,7 @@ export const locales = {
     cta: {
       badge: 'Software Engineer · Technology solutions',
       title: 'Could a process in your business work better?',
-      description: 'Let’s talk about websites, systems, integrations, or improvements to your operations.',
+      description: 'Let’s talk about websites, systems, integrations, or improvements to daily operations. If a repetitive task, an outdated tool, or disconnected systems are slowing things down, share the context and we can identify a practical next step.',
       primary: 'Explore solutions',
       secondary: 'Chat on WhatsApp',
       whatsappLabel: 'Open a WhatsApp conversation with Fernando Alfaro',

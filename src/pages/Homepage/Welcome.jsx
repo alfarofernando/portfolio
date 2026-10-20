@@ -48,12 +48,12 @@ const Welcome = () => {
         <ParallaxScene layers={heroLayers} className="pointer-events-none absolute inset-0 -z-10 overflow-hidden" />
 
         {/* Contenedor principal responsive */}
-        <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-10 lg:grid lg:grid-cols-[minmax(0,1.1fr),minmax(0,0.9fr)] lg:gap-8 xl:max-w-7xl">
+        <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-10 lg:grid lg:grid-cols-[minmax(0,1.1fr),minmax(0,0.9fr)] lg:gap-12 xl:gap-16 xl:max-w-7xl">
           {/* --- COLUMNA TEXTO --- */}
           <Reveal
-            className="w-full space-y-6 text-center lg:space-y-5 lg:text-left"
+            className="w-full space-y-8 text-center lg:space-y-8 lg:text-left"
           >
-              <div className="space-y-4 lg:space-y-3">
+              <div className="space-y-5 lg:space-y-6">
                 <span className="inline-flex items-center gap-2 rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand-700 dark:bg-brand-500/10 dark:text-brand-200">
                   {hero.badge}
                 </span>
@@ -68,6 +68,10 @@ const Welcome = () => {
 
                 <p className="text-base leading-relaxed text-neutral-600 dark:text-neutral-300 sm:text-lg">
                   {hero.description}
+                </p>
+
+                <p className="max-w-2xl text-sm leading-relaxed text-neutral-600 dark:text-neutral-300 sm:text-base">
+                  {hero.supportingText}
                 </p>
               </div>
 
