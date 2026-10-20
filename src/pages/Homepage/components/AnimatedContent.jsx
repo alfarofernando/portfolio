@@ -10,9 +10,9 @@ const AnimatedContent = ({ children, keyProp }) => {
     <AnimatePresence mode="wait" initial={false}>
       <motion.div
         key={keyProp}
-        initial={{ opacity: 0, x: -8 }}
+        initial={{ opacity: 0, x: -4 }}
         animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 0, x: 8 }}
+        exit={{ opacity: 0, x: 4 }}
         transition={{ duration: motionTokens.enterDuration, ease: motionTokens.ease }}
       >
         {children}

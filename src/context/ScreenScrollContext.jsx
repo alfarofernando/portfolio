@@ -1,14 +1,9 @@
 import { createContext, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { useLocation, useNavigationType } from 'react-router-dom';
+import { resolveNavigationTarget } from '../utils/routeNavigation.js';
 
 /* eslint-disable react/prop-types -- Provider children come from React composition. */
 const ScreenScrollContext = createContext(null);
-const savedPanels = new Map();
-const MIN_DESKTOP_WIDTH = 1024;
-const MIN_DESKTOP_HEIGHT = 700;
-const WHEEL_THRESHOLD = 48;
-const GESTURE_IDLE_MS = 180;
-const TRANSITION_LOCK_MS = 620;
 
 const getPanels = () => Array.from(document.querySelectorAll('[data-screen-panel]'));
 const resolveHashPanel = (panels, hashId) => {
@@ -55,16 +50,10 @@ export const ScreenScrollProvider = ({ children }) => {
   const [panelIds, setPanelIds] = useState([]);
   const [activePanelId, setActivePanelId] = useState(null);
   const panelsRef = useRef([]);
-  const activePanelRef = useRef(null);
   const previousLocationRef = useRef(null);
-  const wheelTotalRef = useRef(0);
-  const wheelDirectionRef = useRef(0);
-  const lastWheelAtRef = useRef(0);
-  const lockedUntilRef = useRef(0);
-  const idleTimerRef = useRef(0);
+  const scrollPositionsRef = useRef(new Map());
 
   const setActive = useCallback((id) => {
-    activePanelRef.current = id;
     setActivePanelId(id);
   }, []);
 
@@ -103,15 +92,6 @@ export const ScreenScrollProvider = ({ children }) => {
     return moved;
   }, [refreshPanels, scrollToPanel]);
 
-  const movePanel = useCallback((direction, options = {}) => {
-    const panels = refreshPanels();
-    const currentIndex = Math.max(0, panels.findIndex((panel) => panel.id === activePanelRef.current));
-    const target = panels[currentIndex + Math.sign(direction)];
-    const moved = scrollToPanel(target, options);
-    if (moved) replacePanelHash(target.id);
-    return moved;
-  }, [refreshPanels, scrollToPanel]);
-
   useLayoutEffect(() => {
     const previousRestoration = window.history.scrollRestoration;
     window.history.scrollRestoration = 'manual';
@@ -121,23 +101,31 @@ export const ScreenScrollProvider = ({ children }) => {
   }, []);
 
   useLayoutEffect(() => {
-    const previous = previousLocationRef.current;
-    if (previous?.key && activePanelRef.current) savedPanels.set(previous.key, activePanelRef.current);
+    const previousLocation = previousLocationRef.current;
+    if (previousLocation?.key && previousLocation.key !== locationKey) {
+      scrollPositionsRef.current.set(previousLocation.key, window.scrollY);
+    }
     previousLocationRef.current = { key: locationKey };
 
     const panels = refreshPanels();
-    const hashId = decodeURIComponent(hash.slice(1));
-    const hashPanel = resolveHashPanel(panels, hashId);
-    const destination = navigationType === 'POP'
-      ? panels.find((panel) => panel.id === savedPanels.get(locationKey))
-      : null;
-    const panel = hashPanel ?? destination ?? panels[0];
-    if (panel) {
+    const target = resolveNavigationTarget({
+      navigationType,
+      pathname,
+      hash,
+      savedPosition: scrollPositionsRef.current.get(locationKey),
+    });
+
+    if (target.kind === 'restore') {
+      window.requestAnimationFrame(() => window.scrollTo({ top: target.top, behavior: 'auto' }));
+    } else if (target.kind === 'hash' || target.kind === 'section') {
+      const targetId = target.kind === 'hash' ? decodeURIComponent(target.sectionId) : target.sectionId;
+      const panel = resolveHashPanel(panels, targetId);
+      if (!panel) return;
       setActive(panel.id);
-      const focusPanel = Boolean(hashPanel || destination);
-      window.requestAnimationFrame(() => {
-        scrollToPanel(panel, { behavior: 'auto', focus: focusPanel });
-      });
+      window.requestAnimationFrame(() => scrollToPanel(panel, { behavior: 'auto', focus: true }));
+    } else {
+      setActive(panels[0]?.id ?? null);
+      window.requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: 'auto' }));
     }
   }, [hash, locationKey, navigationType, pathname, refreshPanels, scrollToPanel, setActive]);
 
@@ -171,61 +159,7 @@ export const ScreenScrollProvider = ({ children }) => {
     };
   }, [setActive]);
 
-  useEffect(() => {
-    const isDesktop = () => window.innerWidth >= MIN_DESKTOP_WIDTH && window.innerHeight >= MIN_DESKTOP_HEIGHT;
-    const clearGesture = () => {
-      window.clearTimeout(idleTimerRef.current);
-      wheelTotalRef.current = 0;
-      wheelDirectionRef.current = 0;
-    };
-
-    const handleWheel = (event) => {
-      if (!isDesktop() || event.ctrlKey || Math.abs(event.deltaX) > Math.abs(event.deltaY)) return;
-      if (event.target instanceof Element && event.target.closest('input, textarea, select, [contenteditable="true"], [data-native-wheel]')) return;
-
-      const panels = panelsRef.current;
-      const currentIndex = panels.findIndex((panel) => panel.id === activePanelRef.current);
-      if (currentIndex < 0) return;
-      const unit = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? window.innerHeight : 1;
-      const delta = event.deltaY * unit;
-      const next = panels[currentIndex + Math.sign(delta)];
-      if (!next) return;
-
-      event.preventDefault();
-      const now = performance.now();
-      if (now < lockedUntilRef.current) {
-        lastWheelAtRef.current = now;
-        lockedUntilRef.current = Math.max(lockedUntilRef.current, now + GESTURE_IDLE_MS);
-        return;
-      }
-      if (now - lastWheelAtRef.current > GESTURE_IDLE_MS || wheelDirectionRef.current !== Math.sign(delta)) {
-        wheelTotalRef.current = 0;
-      }
-      wheelDirectionRef.current = Math.sign(delta);
-      wheelTotalRef.current += delta;
-      lastWheelAtRef.current = now;
-      window.clearTimeout(idleTimerRef.current);
-      idleTimerRef.current = window.setTimeout(clearGesture, GESTURE_IDLE_MS);
-
-      if (Math.abs(wheelTotalRef.current) < WHEEL_THRESHOLD) return;
-      const direction = Math.sign(wheelTotalRef.current);
-      if (!panels[currentIndex + direction]) {
-        clearGesture();
-        return;
-      }
-      wheelTotalRef.current = 0;
-      lockedUntilRef.current = now + TRANSITION_LOCK_MS;
-      movePanel(direction);
-    };
-
-    window.addEventListener('wheel', handleWheel, { passive: false });
-    return () => {
-      window.removeEventListener('wheel', handleWheel);
-      window.clearTimeout(idleTimerRef.current);
-    };
-  }, [movePanel]);
-
-  const value = useMemo(() => ({ goToPanel, movePanel, activePanelId, panelIds }), [goToPanel, movePanel, activePanelId, panelIds]);
+  const value = useMemo(() => ({ goToPanel, activePanelId, panelIds }), [goToPanel, activePanelId, panelIds]);
   return <ScreenScrollContext.Provider value={value}>{children}</ScreenScrollContext.Provider>;
 };
 

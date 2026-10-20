@@ -17,13 +17,6 @@ const legacyLocales = {
       projects: 'Proyectos',
       solutions: 'Soluciones',
     },
-    screenNavigation: {
-      panelControls: 'Navegación entre secciones',
-      previousPanel: 'Anterior',
-      nextPanel: 'Siguiente',
-      currentPanel: 'Sección actual',
-      position: '{current} de {total}',
-    },
     technologyPanel: {
       title: 'Tecnologías y herramientas',
       description: 'Experiencia profesional y conocimientos complementarios, organizados por contexto.',
@@ -180,13 +173,6 @@ const legacyLocales = {
       home: 'Home',
       projects: 'Projects',
       solutions: 'Solutions',
-    },
-    screenNavigation: {
-      panelControls: 'Section navigation',
-      previousPanel: 'Previous',
-      nextPanel: 'Next',
-      currentPanel: 'Current section',
-      position: '{current} of {total}',
     },
     technologyPanel: {
       title: 'Technologies and tools',

@@ -1,8 +1,9 @@
 export const motionTokens = {
-  enterDuration: 0.5,
-  enterDistance: 16,
-  microDuration: 0.18,
-  ease: 'easeOut',
+  enterDuration: 0.62,
+  enterDistance: 8,
+  microDuration: 0.22,
+  ease: [0.22, 1, 0.36, 1],
+  parallaxSpring: { stiffness: 70, damping: 24, mass: 0.5 },
 };
 
 export const getParallaxOffset = (progress, distance) => {

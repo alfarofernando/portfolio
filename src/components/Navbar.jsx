@@ -57,7 +57,7 @@ const NavBar = ({ darkMode, onToggleTheme }) => {
 
   return (
     <motion.header
-      initial={prefersReducedMotion ? false : { opacity: 0, y: -12 }}
+      initial={prefersReducedMotion ? false : { opacity: 0, y: -6 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: prefersReducedMotion ? 0 : motionTokens.enterDuration, ease: motionTokens.ease }}
       className="relative z-40 flex justify-center px-3 py-2 sm:px-4"

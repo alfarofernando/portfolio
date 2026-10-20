@@ -72,18 +72,6 @@ const Welcome = () => {
                 </p>
               </div>
 
-            {/* Highlights */}
-            <div className="flex flex-wrap justify-center gap-2 lg:justify-start">
-              {hero.highlights.map((item) => (
-                <span
-                  key={item}
-                  className="rounded-full border border-brand-100/70 bg-white/80 px-3 py-1 text-xs font-semibold text-brand-700 shadow-sm dark:border-brand-400/20 dark:bg-slate-900/60 dark:text-brand-200"
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
-
             {/* Botones */}
             <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start">
               <a
@@ -128,6 +116,19 @@ const Welcome = () => {
                   <p className="text-sm font-semibold text-neutral-900 dark:text-white">{brand.name}</p>
                 </div>
               </div>
+              <ul
+                aria-label={language === 'es' ? 'Tecnologías principales' : 'Core technologies'}
+                className="relative mt-4 grid gap-2 border-t border-neutral-200/70 pt-4 dark:border-slate-700 sm:grid-cols-3"
+              >
+                {hero.highlights.map((item) => (
+                  <li
+                    key={item}
+                    className="rounded-xl border border-brand-100/70 bg-white/65 px-3 py-2 text-center text-xs font-semibold text-brand-700 dark:border-brand-400/20 dark:bg-slate-950/35 dark:text-brand-200"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
 
           </Reveal>

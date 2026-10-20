@@ -6,8 +6,6 @@ import profile from '../../../content/profile.json';
 import { getProjects } from '../Projects/components/Data.jsx';
 import Reveal from '../../components/motion/Reveal.jsx';
 
-const chunk = (items, size) => Array.from({ length: Math.ceil(items.length / size) }, (_, index) => items.slice(index * size, index * size + size));
-
 const Experience = () => {
   const { language, locales } = useLanguage();
   const { goToPanel } = useScreenScroll();
@@ -15,7 +13,6 @@ const Experience = () => {
   const profileCopy = profile.copy[language];
   const projects = getProjects(locales, language).filter((project) => project.category === 'professional' && project.featured);
   const responsibilities = profileCopy.employment.responsibilities;
-  const cases = chunk(projects, 3);
 
   return (
     <>
@@ -42,16 +39,15 @@ const Experience = () => {
         </section>
       </ScreenPanel>
 
-      {cases.map((items, index) => (
-        <ScreenPanel key={`experience-cases-${index}`} id={`experience-cases-${index + 1}`} titleId={`experience-cases-title-${index + 1}`}>
+      <ScreenPanel id="experience-cases" titleId="experience-cases-title" aliases={['experience-cases-1', 'experience-cases-2']}>
           <section className="px-4 py-5 sm:px-6 lg:px-12 lg:py-2">
             <div className="mx-auto max-w-6xl">
               <Reveal as="header" className="flex items-end justify-between gap-4">
-                <h2 id={`experience-cases-title-${index + 1}`} className="text-xl font-semibold text-neutral-900 dark:text-white">{copy.cases}</h2>
+                <h2 id="experience-cases-title" className="text-xl font-semibold text-neutral-900 dark:text-white">{copy.cases}</h2>
                 <Link to="/portfolio/Projects/all" className="text-sm font-semibold text-brand-700 hover:underline dark:text-brand-200">{locales[language].projectsSection.catalogLink} →</Link>
               </Reveal>
               <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                {items.map((project, cardIndex) => (
+                {projects.map((project, cardIndex) => (
                   <Reveal key={project.id} delay={cardIndex * 0.09}>
                     <Link to={`/portfolio/Projects/${project.slug}`} className="block h-full rounded-2xl border border-neutral-200 bg-white/90 p-4 transition duration-200 hover:-translate-y-0.5 hover:border-brand-300 dark:border-slate-700 dark:bg-slate-900/75">
                       <h3 className="font-semibold text-neutral-900 dark:text-white">{project.title}</h3>
@@ -63,8 +59,7 @@ const Experience = () => {
               </div>
             </div>
           </section>
-        </ScreenPanel>
-      ))}
+      </ScreenPanel>
 
       <ScreenPanel id="experience-education" titleId="education-title">
         <section className="px-4 py-5 sm:px-6 lg:px-12 lg:py-2">

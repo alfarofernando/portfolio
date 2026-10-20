@@ -7,8 +7,6 @@ import ProjectGallery from './ProjectGallery.jsx';
 import Reveal from '../../../components/motion/Reveal.jsx';
 import ScreenPanel from '../../../components/ScreenPanel.jsx';
 
-const chunk = (items, size) => Array.from({ length: Math.ceil(items.length / size) }, (_, index) => items.slice(index * size, (index + 1) * size));
-
 const ProjectPage = () => {
   const { language, locales } = useLanguage();
   const { slug } = useParams();
@@ -31,8 +29,6 @@ const ProjectPage = () => {
 
   const externalLinks = project.links.filter((item) => ['official', 'demo', 'repository'].includes(item.type));
   const linkLabels = { official: copy.officialLink, demo: copy.demoLink, repository: copy.repositoryButton };
-  const contributionPages = chunk(project.contributions, 4);
-  const outcomePages = chunk(project.outcomes, 4);
 
   return (
     <>
@@ -55,9 +51,13 @@ const ProjectPage = () => {
         </section>
       </ScreenPanel>
 
-      <ScreenPanel id="project-context" titleId="project-context-title" aliases={['project-links']}>
+      <ScreenPanel
+        id="project-context"
+        titleId="project-context-title"
+        aliases={['project-links', 'project-contributions-1', 'project-contributions-2', 'project-outcomes-1', 'project-outcomes-2']}
+      >
         <section className="px-4 py-5 sm:px-6 lg:px-12 lg:py-1">
-          <div className="mx-auto max-w-5xl space-y-3">
+          <div className="mx-auto max-w-6xl space-y-3">
             <div className="grid gap-3 md:grid-cols-2">
               <Reveal className="rounded-2xl border border-neutral-200 bg-white/75 p-4 dark:border-slate-700 dark:bg-slate-950/40">
                 <h2 id="project-context-title" className="text-xs font-semibold uppercase tracking-wide text-brand-600 dark:text-brand-200">{copy.contextLabel}</h2>
@@ -69,37 +69,25 @@ const ProjectPage = () => {
               </Reveal>
             </div>
             <div className="rounded-2xl border border-brand-100/70 bg-white/90 p-4 shadow-md dark:border-brand-500/20 dark:bg-slate-900/80">
-              <h2 id="project-links-title" className="text-lg font-semibold text-neutral-900 dark:text-white">{copy.catalogLabel}</h2>
+              <h2 id="project-links-title" className="text-base font-semibold text-neutral-900 dark:text-white">{copy.catalogLabel}</h2>
               <nav aria-label={project.title} className="mt-3 flex flex-wrap gap-2">
                 <Link to="/portfolio/Projects/all" className="rounded-xl bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-brand-700">← {copy.catalogLabel}</Link>
                 {externalLinks.map((item) => <a key={`${item.type}-${item.url}`} href={item.url} target="_blank" rel="noreferrer" className="rounded-xl border border-brand-200 px-4 py-2.5 text-sm font-semibold text-brand-700 hover:bg-brand-50 dark:border-brand-500/30 dark:text-brand-200 dark:hover:bg-brand-500/10">{linkLabels[item.type]} ↗</a>)}
               </nav>
             </div>
+            <div className="grid items-start gap-3 md:grid-cols-2">
+              <Reveal as="section" className="rounded-2xl border border-neutral-200 bg-white/90 p-4 dark:border-slate-700 dark:bg-slate-900/75">
+                <h2 id="project-contributions-title" className="text-base font-semibold text-neutral-900 dark:text-white">{copy.contributionsLabel}</h2>
+                <ul className="mt-3 space-y-2">{project.contributions.map((item) => <li key={item} className="flex gap-3 text-sm leading-relaxed text-neutral-700 dark:text-neutral-200"><span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-brand-500" />{item}</li>)}</ul>
+              </Reveal>
+              <Reveal as="section" delay={0.09} className="rounded-2xl border border-neutral-200 bg-white/90 p-4 dark:border-slate-700 dark:bg-slate-900/75">
+                <h2 id="project-outcomes-title" className="text-base font-semibold text-neutral-900 dark:text-white">{copy.outcomesLabel}</h2>
+                <ul className="mt-3 space-y-2">{project.outcomes.map((item) => <li key={item} className="flex gap-3 text-sm leading-relaxed text-neutral-700 dark:text-neutral-200"><span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-accent-500" />{item}</li>)}</ul>
+              </Reveal>
+            </div>
           </div>
         </section>
       </ScreenPanel>
-
-      {contributionPages.map((items, index) => (
-        <ScreenPanel key={`project-contributions-${index}`} id={`project-contributions-${index + 1}`} titleId={`project-contributions-title-${index + 1}`}>
-          <section className="px-4 py-5 sm:px-6 lg:px-12 lg:py-1">
-            <Reveal as="section" className="mx-auto max-w-5xl rounded-3xl border border-neutral-200 bg-white/90 p-6 dark:border-slate-700 dark:bg-slate-900/75 sm:p-8">
-              <h2 id={`project-contributions-title-${index + 1}`} className="text-lg font-semibold text-neutral-900 dark:text-white">{copy.contributionsLabel}{contributionPages.length > 1 ? ` · ${index + 1}/${contributionPages.length}` : ''}</h2>
-              <ul className="mt-4 space-y-3">{items.map((item) => <li key={item} className="flex gap-3 text-sm leading-relaxed text-neutral-700 dark:text-neutral-200"><span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-brand-500" />{item}</li>)}</ul>
-            </Reveal>
-          </section>
-        </ScreenPanel>
-      ))}
-
-      {outcomePages.map((items, index) => (
-        <ScreenPanel key={`project-outcomes-${index}`} id={`project-outcomes-${index + 1}`} titleId={`project-outcomes-title-${index + 1}`}>
-          <section className="px-4 py-5 sm:px-6 lg:px-12 lg:py-1">
-            <Reveal as="section" className="mx-auto max-w-5xl rounded-3xl border border-neutral-200 bg-white/90 p-6 dark:border-slate-700 dark:bg-slate-900/75 sm:p-8">
-              <h2 id={`project-outcomes-title-${index + 1}`} className="text-lg font-semibold text-neutral-900 dark:text-white">{copy.outcomesLabel}{outcomePages.length > 1 ? ` · ${index + 1}/${outcomePages.length}` : ''}</h2>
-              <ul className="mt-4 space-y-3">{items.map((item) => <li key={item} className="flex gap-3 text-sm leading-relaxed text-neutral-700 dark:text-neutral-200"><span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-accent-500" />{item}</li>)}</ul>
-            </Reveal>
-          </section>
-        </ScreenPanel>
-      ))}
 
       {project.screenshots.length > 0 && (
         <ScreenPanel id="project-gallery" titleId="project-gallery-title">

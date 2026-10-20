@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
-import { getParallaxOffset } from './motionTokens.js';
+import { motion, useReducedMotion, useScroll, useSpring, useTransform } from 'framer-motion';
+import { getParallaxOffset, motionTokens } from './motionTokens.js';
 
 /* eslint-disable react/prop-types -- Scene layers are local configuration objects. */
 const ParallaxLayer = ({ layer, progress, isCompact, prefersReducedMotion }) => {
@@ -9,7 +9,8 @@ const ParallaxLayer = ({ layer, progress, isCompact, prefersReducedMotion }) => 
     ? layer.mobileDistance
     : desktopDistance * 0.32;
   const distance = isCompact ? mobileDistance : desktopDistance;
-  const y = useTransform(progress, (value) => getParallaxOffset(value, distance));
+  const targetY = useTransform(progress, (value) => getParallaxOffset(value, distance));
+  const y = useSpring(targetY, motionTokens.parallaxSpring);
 
   return (
     <motion.div
