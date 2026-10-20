@@ -7,7 +7,7 @@ const ProjectMedia = ({ media, title, language, eager = false, compact = false, 
   useEffect(() => setFailed(false), [media?.src]);
 
   const frameClass = compact
-    ? 'relative flex h-44 items-center justify-center overflow-hidden rounded-2xl'
+    ? 'relative flex h-32 items-center justify-center overflow-hidden rounded-2xl sm:h-36'
     : detail
       ? 'relative flex aspect-video max-h-[42svh] min-h-[12rem] items-center justify-center overflow-hidden rounded-3xl'
       : 'relative flex aspect-video items-center justify-center overflow-hidden rounded-3xl';
