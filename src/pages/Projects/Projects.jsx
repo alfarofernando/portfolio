@@ -1,15 +1,25 @@
+import { useEffect, useState } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import { getProjects } from './components/Data';
 import { Link } from 'react-router-dom';
 import ProjectCard from './components/ProjectCard.jsx';
 import ScreenPanel from '../../components/ScreenPanel.jsx';
 
+const getFeaturedGroupSize = () => window.innerWidth >= 1280 ? 3 : 2;
+
 const Projects = () => {
   const { language, locales } = useLanguage();
   const projects = getProjects(locales, language).filter((project) => project.featured);
   const copy = locales[language].projectsSection;
 
-  const groupSize = 2;
+  const [groupSize, setGroupSize] = useState(() => typeof window === 'undefined' ? 3 : getFeaturedGroupSize());
+
+  useEffect(() => {
+    const handleResize = () => setGroupSize(getFeaturedGroupSize());
+    window.addEventListener('resize', handleResize, { passive: true });
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const groups = Array.from({ length: Math.ceil(projects.length / groupSize) }, (_, index) =>
     projects.slice(index * groupSize, (index + 1) * groupSize),
   );

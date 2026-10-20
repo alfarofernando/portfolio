@@ -7,7 +7,7 @@ import ProjectCard from './components/ProjectCard.jsx';
 import Reveal from '../../components/motion/Reveal.jsx';
 
 const chunk = (items, size) => Array.from({ length: Math.ceil(items.length / size) }, (_, index) => items.slice(index * size, (index + 1) * size));
-const getGroupSize = () => window.innerWidth >= 1280 ? 3 : 2;
+const getGroupSize = () => window.innerWidth >= 1280 ? 4 : window.innerWidth >= 1024 ? 3 : 2;
 
 const ProjectCatalog = () => {
   const { language, locales } = useLanguage();
@@ -68,7 +68,7 @@ const ProjectCatalog = () => {
                 <h2 id={`catalog-page-title-${pageIndex + 1}`} className="text-lg font-semibold text-neutral-900 dark:text-white">{copy.title} · {pageIndex + 1}/{projectPages.length}</h2>
                 {renderFilters(`${copy.title} — ${pageIndex + 1}/${projectPages.length}`)}
               </div>
-              <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {group.map((project, index) => <ProjectCard key={project.id} project={project} language={language} copy={copy} index={index} />)}
               </div>
             </div>
