@@ -59,29 +59,33 @@ const Solutions = () => {
       </ScreenPanel>
 
       <ScreenPanel id="solutions-services-1" titleId="solutions-services-title-1">
-        <section className="px-4 py-3 sm:px-6 lg:px-12 lg:py-1" aria-labelledby="solutions-services-title-1">
+        <section className="px-4 py-2 sm:px-6 lg:px-12 lg:py-0" aria-labelledby="solutions-services-title-1">
           <div className="mx-auto max-w-7xl">
             <Reveal className="mx-auto max-w-3xl text-center">
               <p className="text-xs font-semibold uppercase tracking-[.18em] text-brand-600 dark:text-brand-200">{copy.kicker}</p>
               <h2 id="solutions-services-title-1" className="mt-2 text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white sm:text-3xl">{copy.servicesTitle}</h2>
               <p className="mt-2 text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">{copy.servicesDescription}</p>
             </Reveal>
-            <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-2 grid gap-2 sm:grid-cols-2 lg:grid-cols-5 xl:grid-cols-3">
               {services.map((service, index) => {
                 const serviceCopy = service.copy[language] ?? service.copy.es;
                 const relatedProjects = service.evidenceProjectIds.map((id) => projectById.get(id)).filter(Boolean);
                 return (
-                  <Reveal key={service.id} delay={index * 0.09} className="group flex h-full flex-col rounded-3xl border border-neutral-200/80 bg-white/85 p-3 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-brand-200 hover:shadow-brand dark:border-slate-700/80 dark:bg-slate-900/75 dark:hover:border-brand-400/40 sm:p-4">
-                    <img src={serviceArtwork[service.id]} alt="" className="h-10 w-10 transition duration-300 group-hover:scale-105" loading="lazy" />
-                    <h3 className="mt-2 text-lg font-semibold text-neutral-900 dark:text-white">{serviceCopy.title}</h3>
-                    <p className="mt-1 text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">{serviceCopy.description}</p>
-                    <p className="mt-2 border-l-2 border-brand-400 pl-3 text-sm font-medium leading-relaxed text-neutral-700 dark:text-neutral-200">{serviceCopy.benefit}</p>
-                    <div className="mt-auto pt-3">
+                  <Reveal key={service.id} delay={index * 0.09} className="group flex h-full flex-col rounded-3xl border border-neutral-200/80 bg-white/85 p-2.5 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-brand-200 hover:shadow-brand dark:border-slate-700/80 dark:bg-slate-900/75 dark:hover:border-brand-400/40 sm:p-2.5">
+                    <div className="flex items-center gap-2">
+                      <img src={serviceArtwork[service.id]} alt="" className="h-8 w-8 shrink-0 transition duration-300 group-hover:scale-105" loading="lazy" />
+                      <h3 className="text-base font-semibold leading-tight text-neutral-900 dark:text-white">{serviceCopy.title}</h3>
+                    </div>
+                    <div className="mt-1.5 grid gap-2 xl:grid-cols-2">
+                      <p className="text-sm leading-snug text-neutral-600 dark:text-neutral-300">{serviceCopy.description}</p>
+                      <p className="border-l-2 border-brand-400 pl-2 text-sm font-medium leading-snug text-neutral-700 dark:text-neutral-200">{serviceCopy.benefit}</p>
+                    </div>
+                    <div className="mt-auto pt-1.5">
                       <p className="text-[11px] font-semibold uppercase tracking-[.13em] text-neutral-500 dark:text-neutral-400">{copy.evidenceLabel}</p>
-                      <div className="mt-2 flex flex-wrap gap-2">
+                      <div className="mt-1 flex flex-wrap gap-1.5">
                         {relatedProjects.map((project) => {
                           const title = project.copy[language]?.title ?? project.copy.es.title;
-                          return <Link key={project.id} to={`/portfolio/Projects/${project.slug}`} className="rounded-full border border-neutral-200 bg-white/80 px-3 py-1.5 text-xs font-semibold text-brand-700 transition hover:border-brand-300 hover:bg-brand-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 dark:border-slate-700 dark:bg-slate-800/70 dark:text-brand-200">{title}</Link>;
+                          return <Link key={project.id} to={`/portfolio/Projects/${project.slug}`} className="rounded-full border border-neutral-200 bg-white/80 px-2 py-1 text-xs font-semibold text-brand-700 transition hover:border-brand-300 hover:bg-brand-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 dark:border-slate-700 dark:bg-slate-800/70 dark:text-brand-200">{title}</Link>;
                         })}
                       </div>
                     </div>

@@ -41,7 +41,7 @@ const Projects = () => {
           </div>}
           {groupIndex > 0 && <h2 id={`projects-title-${groupIndex + 1}`} className="mb-4 text-lg font-semibold text-neutral-900 dark:text-white">{copy.title} · {groupIndex + 1}/{groups.length}</h2>}
 
-          <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-2">
+          <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
             {group.map((project, index) => <ProjectCard key={project.id} project={project} language={language} copy={{ ...locales[language].projectCatalog, ...copy, view: copy.viewDetails }} index={index} />)}
           </div>
           {groupIndex === groups.length - 1 && <div className="mt-5 text-center">

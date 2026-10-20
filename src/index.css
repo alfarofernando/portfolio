@@ -4,8 +4,14 @@
 
 :root {
   color-scheme: dark;
-  --site-header-height: 4.5rem;
+  --site-header-height: 4.625rem;
   --route-header-offset: 1rem;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --site-header-height: 4.875rem;
+  }
 }
 
 html {
@@ -14,6 +20,10 @@ html {
 
 [id] {
   scroll-margin-top: var(--route-header-offset);
+}
+
+[data-screen-panel] {
+  scroll-margin-top: 0;
 }
 
 .screen-panel {
@@ -36,6 +46,7 @@ html {
 
   .screen-panel--first {
     height: calc(100svh - var(--site-header-height));
+    padding-top: 1rem;
   }
 
   .screen-panel__content {

@@ -13,10 +13,10 @@ Reducir el número de pantallas de desplazamiento en las rutas existentes median
 1. **Densidad compartida de tarjetas.** Reducir la altura de las imágenes de tarjetas de proyecto, padding y separación interior. Compactar de manera equivalente las tarjetas de servicios, casos de Experiencia y contexto/enlaces de fichas. Mantener el cuerpo de texto en un tamaño legible (mínimo 14 px); no truncar ni ocultar información.
 2. **Inicio y catálogo.** Agrupar tres destacados por panel en viewport de 1280 px o más y mantener dos por panel entre 1024–1279 px. En Catálogo, agrupar cuatro proyectos en desktop ancho y tres entre 1024–1279 px; las columnas corresponden a cuatro y tres tarjetas, respectivamente. Los filtros continúan disponibles en cada panel y al cambiar categoría se vuelve al primer resultado.
 3. **Experiencia.** Mostrar las cinco responsabilidades en un panel compacto y agrupar los cinco casos profesionales destacados en grupos de hasta tres tarjetas. Educación e idioma continúan juntos en su panel actual.
-4. **Soluciones.** Mostrar los cinco servicios en un solo panel desktop con una grilla compacta de tres columnas en dos filas. Unir proceso y CTA de cierre en un panel, sin quitar texto ni enlaces.
+4. **Soluciones.** Mostrar los cinco servicios en un solo panel desktop. Entre 1024–1279 px, usar una fila compacta de cinco tarjetas; desde 1280 px, usar tres columnas en dos filas y colocar descripción/beneficio en subcolumnas para que el panel quepa en 720 px. Mantener el cuerpo en 14 px o más. Unir proceso y CTA de cierre en un panel, sin quitar texto ni enlaces.
 5. **Fichas de proyectos.** Unir las tarjetas de contexto y rol con la navegación de enlaces externos/catálogo. La galería sigue separada para conservar su espacio e interacción horizontal. El resumen y los datos que ya estén presentes permanecen intactos.
 6. **Identificadores y hashes.** Los cambios de composición no deben dejar hashes directos de paneles fusionados sin destino. El panel unido acepta los ids anteriores como alias; hashes a grupos numerados que ya no existan resuelven a un panel equivalente del mismo grupo, limitado al último grupo disponible. Las rutas y slugs no cambian.
-7. **Responsive y movimiento.** Por debajo de los umbrales existentes para scroll por panel, el contenido sigue el flujo natural y usa columnas de lectura cómoda. Se conservan las galerías, el movimiento reducido y la animación progresiva actual.
+7. **Responsive y movimiento.** Por debajo de los umbrales existentes para scroll por panel, el contenido sigue el flujo natural y usa columnas de lectura cómoda. El fallback del navbar reserva su altura real mientras carga y los paneles eliminan el margen de ancla heredado del navbar fijo para mantener alineados los enlaces directos. Se conservan las galerías, el movimiento reducido y la animación progresiva actual.
 
 ## Límites
 
@@ -30,7 +30,7 @@ Reducir el número de pantallas de desplazamiento en las rutas existentes median
 1. A 1280×720 y 1366×768, Inicio, Catálogo, Experiencia y Soluciones muestran los grupos anteriores completos sin recorte ni scroll vertical interno; se reduce el número de paneles en cada una de esas rutas.
 2. El Catálogo muestra cuatro proyectos por grupo a partir de 1280 px y tres entre 1024–1279 px. Todos los proyectos y filtros siguen accesibles.
 3. Inicio muestra tres proyectos destacados por panel en desktop ancho; Experiencia reúne cinco responsabilidades en un panel y hasta tres casos destacados por grupo.
-4. Soluciones presenta los cinco servicios en un panel y mantiene los tres pasos, cierre y enlaces en el panel combinado.
+4. Soluciones presenta los cinco servicios en un panel sin overflow en 1024×700, 1280×720 y 1366×768; usa cinco columnas entre 1024–1279 px y tres desde 1280 px. Mantiene los tres pasos, cierre y enlaces en el panel combinado.
 5. Cada ficha combina contexto/rol y enlaces en un panel, mantiene resumen y galería, y no pierde datos específicos del proyecto.
 6. Los ids antiguos `solutions-closing` y `project-links` siguen resolviendo al panel combinado. Un hash numérico de grupo reducido llega a un grupo equivalente válido; atrás/adelante y foco siguen sincronizados.
 7. En 390×844 y 768×1024 el scroll es natural, las tarjetas mantienen lectura y controles, y las galerías conservan la navegación horizontal.
@@ -50,7 +50,8 @@ Reducir el número de pantallas de desplazamiento en las rutas existentes median
 - Agrupación de proyectos: `src/pages/Projects/Projects.jsx`, `src/pages/Projects/ProjectCatalog.jsx`.
 - Conteo y densidad de secciones: `src/pages/Experience/Experience.jsx`, `src/pages/Solutions/Solutions.jsx`, `src/pages/Projects/components/ProjectPage.jsx`.
 - Alias y restauración de paneles: `src/components/ScreenPanel.jsx`, `src/context/ScreenScrollContext.jsx`.
+- Altura estable del navbar al cargar y cálculo del primer panel: `src/App.jsx`, `src/index.css`.
 
 ## Estado
 
-El usuario aprobó en conversación reducir paneles en todo el sitio mediante esta composición. Este documento define el spec; el plan detallado y la implementación quedan pendientes de revisión y aprobación del usuario.
+Implementación y validación visual completas. El ajuste responsive de Soluciones usa cinco columnas entre 1024–1279 px y tres desde 1280 px; el espacio vertical de la fila compacta cabe en 1024×700 sin desbordar. La reserva de altura del navbar y el margen cero de los paneles mantienen alineados los hashes directos. Revisión de código y publicación en master pendientes.

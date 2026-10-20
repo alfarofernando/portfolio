@@ -34,7 +34,7 @@ const App = () => {
     <ScreenScrollProvider>
       <div className={`${darkMode ? 'dark bg-neutral-950' : 'bg-transparent'} text-neutral-900 dark:text-neutral-100`}>
         <ParallaxBackground className="relative flex min-h-screen flex-col">
-          <Suspense fallback={null}>
+          <Suspense fallback={<div aria-hidden="true" className="shrink-0" style={{ height: 'var(--site-header-height)' }} />}>
             <NavBar darkMode={darkMode} onToggleTheme={() => setDarkMode((previous) => !previous)} />
           </Suspense>
 
