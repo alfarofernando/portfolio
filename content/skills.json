@@ -1,81 +1,93 @@
 [
   {
-    "id": "professional",
-    "experience": "professional",
-    "technologies": [
-      "Java",
-      "Spring Boot",
-      "Angular",
-      "TypeScript",
-      "JavaScript",
-      "SQL",
-      "MySQL",
-      "MariaDB",
-      "REST",
-      "SOAP/XML/WSDL",
-      "Git",
-      "Linux",
-      "CI/CD",
-      "JWT",
-      "Nginx",
-      "Swagger/OpenAPI",
-      "Ionic",
-      "Node.js/TypeScript"
-    ],
+    "id": "backend",
     "copy": {
-      "es": {
-        "label": "Experiencia profesional"
-      },
-      "en": {
-        "label": "Professional experience"
-      }
-    }
+      "es": { "label": "Backend", "description": "Servicios, APIs y lógica de negocio" },
+      "en": { "label": "Backend", "description": "Services, APIs, and business logic" }
+    },
+    "technologies": [
+      { "name": "Java", "experience": "professional" },
+      { "name": "Spring Boot", "experience": "professional" },
+      { "name": "Node.js/TypeScript", "experience": "professional" },
+      { "name": "Python", "experience": "complementary" },
+      { "name": "FastAPI", "experience": "complementary" },
+      { "name": "Django", "experience": "complementary" },
+      { "name": "PHP", "experience": "complementary" },
+      { "name": "Laravel", "experience": "complementary" }
+    ]
   },
   {
-    "id": "applied",
-    "experience": "limited",
-    "technologies": [
-      "React",
-      "React Native",
-      "Docker",
-      "Firebase",
-      "Jest",
-      "JUnit/Mockito",
-      "WebSocket",
-      "SSE",
-      "Systemd",
-      "VPS"
-    ],
+    "id": "frontend",
     "copy": {
-      "es": {
-        "label": "Experiencia puntual"
-      },
-      "en": {
-        "label": "Applied experience"
-      }
-    }
+      "es": { "label": "Frontend y mobile", "description": "Interfaces web y aplicaciones" },
+      "en": { "label": "Frontend and mobile", "description": "Web interfaces and applications" }
+    },
+    "technologies": [
+      { "name": "Angular", "experience": "professional" },
+      { "name": "TypeScript", "experience": "professional" },
+      { "name": "JavaScript", "experience": "professional" },
+      { "name": "Ionic", "experience": "professional" },
+      { "name": "React", "experience": "applied" },
+      { "name": "React Native", "experience": "applied" }
+    ]
   },
   {
-    "id": "complementary",
-    "experience": "complementary",
-    "technologies": [
-      "Python",
-      "FastAPI",
-      "Django",
-      "PHP",
-      "Laravel",
-      "PostgreSQL",
-      "MongoDB",
-      "AWS",
-      "Kubernetes"
-    ],
+    "id": "integrations",
     "copy": {
-      "es": {
-        "label": "Formación y conocimientos complementarios"
-      },
-      "en": {
-        "label": "Training and complementary knowledge"
-      }
-    }
+      "es": { "label": "Integraciones y APIs", "description": "Comunicación entre sistemas y servicios" },
+      "en": { "label": "Integrations and APIs", "description": "Communication across systems and services" }
+    },
+    "technologies": [
+      { "name": "REST", "experience": "professional" },
+      { "name": "SOAP/XML/WSDL", "experience": "professional" },
+      { "name": "JWT", "experience": "professional" },
+      { "name": "Swagger/OpenAPI", "experience": "professional" },
+      { "name": "Firebase", "experience": "applied" },
+      { "name": "WebSocket", "experience": "applied" },
+      { "name": "SSE", "experience": "applied" }
+    ]
+  },
+  {
+    "id": "delivery",
+    "copy": {
+      "es": { "label": "CI/CD y operación", "description": "Entrega, despliegue y soporte de producción" },
+      "en": { "label": "CI/CD and operations", "description": "Delivery, deployment, and production support" }
+    },
+    "technologies": [
+      { "name": "Git", "experience": "professional" },
+      { "name": "Linux", "experience": "professional" },
+      { "name": "CI/CD", "experience": "professional" },
+      { "name": "Nginx", "experience": "professional" },
+      { "name": "Docker", "experience": "applied" },
+      { "name": "Systemd", "experience": "applied" },
+      { "name": "VPS", "experience": "applied" },
+      { "name": "AWS", "experience": "complementary" },
+      { "name": "Kubernetes", "experience": "complementary" }
+    ]
+  },
+  {
+    "id": "data",
+    "copy": {
+      "es": { "label": "Datos", "description": "Consultas, persistencia y bases de datos" },
+      "en": { "label": "Data", "description": "Queries, persistence, and databases" }
+    },
+    "technologies": [
+      { "name": "SQL", "experience": "professional" },
+      { "name": "MySQL", "experience": "professional" },
+      { "name": "MariaDB", "experience": "professional" },
+      { "name": "PostgreSQL", "experience": "complementary" },
+      { "name": "MongoDB", "experience": "complementary" }
+    ]
+  },
+  {
+    "id": "testing",
+    "copy": {
+      "es": { "label": "Testing", "description": "Pruebas automatizadas y calidad" },
+      "en": { "label": "Testing", "description": "Automated testing and quality" }
+    },
+    "technologies": [
+      { "name": "Jest", "experience": "applied" },
+      { "name": "JUnit/Mockito", "experience": "applied" }
+    ]
   }
 ]

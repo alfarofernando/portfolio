@@ -26,21 +26,57 @@ html {
   box-sizing: border-box;
 }
 
-/* Deja un poco más de aire entre grupos de tarjetas en todas las rutas. */
-.screen-panel :is(.grid, .flex)[class~="gap-2"] {
-  gap: 0.75rem;
+/* Ritmo de espacio uniforme para grupos de contenido en todas las rutas. */
+.screen-panel :is(.grid, .flex)[class~="gap-1"] {
+  gap: 0.5rem;
 }
 
-.screen-panel :is(.grid, .flex)[class~="gap-3"] {
+.screen-panel :is(.grid, .flex)[class~="gap-1.5"] {
+  gap: 0.625rem;
+}
+
+.screen-panel :is(.grid, .flex)[class~="gap-2"] {
   gap: 1rem;
 }
 
-.screen-panel :is(.grid, .flex)[class~="gap-4"] {
+.screen-panel :is(.grid, .flex)[class~="gap-3"] {
   gap: 1.25rem;
 }
 
-.screen-panel :is(.grid, .flex)[class~="gap-5"] {
+.screen-panel :is(.grid, .flex)[class~="gap-4"] {
   gap: 1.5rem;
+}
+
+.screen-panel :is(.grid, .flex)[class~="gap-5"] {
+  gap: 1.75rem;
+}
+
+.screen-panel :is(.grid, .flex)[class~="gap-6"] {
+  gap: 1.75rem;
+}
+
+.screen-panel [class~="space-y-1"] > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 0.375rem;
+}
+
+.screen-panel [class~="space-y-2"] > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 0.75rem;
+}
+
+.screen-panel [class~="space-y-3"] > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 1rem;
+}
+
+.screen-panel [class~="space-y-4"] > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 1.25rem;
+}
+
+.screen-panel [class~="space-y-5"] > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 1.5rem;
+}
+
+.screen-panel [class~="space-y-6"] > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 1.75rem;
 }
 
 @media (min-width: 1024px) and (min-height: 700px) {

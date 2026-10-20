@@ -42,7 +42,6 @@ const heroLayers = [
 const Welcome = () => {
   const { language, locales } = useLanguage();
   const { hero, documents, brand } = locales[language];
-  const profileCopy = profile.copy[language];
 
   return (
     <section className="relative isolate px-4 py-8 sm:px-6 sm:py-10 lg:px-12 lg:py-5">
@@ -68,7 +67,7 @@ const Welcome = () => {
                 </p>
 
                 <p className="text-base leading-relaxed text-neutral-600 dark:text-neutral-300 sm:text-lg">
-                  {profileCopy.summary}
+                  {hero.description}
                 </p>
               </div>
 
@@ -120,13 +119,13 @@ const Welcome = () => {
 
                 <div className="min-w-0">
                   <h2 className="text-xs font-semibold uppercase tracking-[0.16em] text-neutral-500 dark:text-neutral-400">{hero.profileFocusTitle}</h2>
-                  <ul aria-label={hero.profileFocusTitle} className="mt-3 grid gap-3">
-                    {hero.highlights.map((technology, index) => (
-                      <li key={technology} className="flex items-center gap-3 rounded-2xl border border-brand-100/80 bg-white/70 p-3 text-left shadow-sm dark:border-brand-400/20 dark:bg-slate-950/40">
-                        <span aria-hidden="true" className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-100/80 text-xs font-bold text-brand-700 dark:bg-brand-500/15 dark:text-brand-200">0{index + 1}</span>
+                  <ul aria-label={hero.profileFocusTitle} className="mt-3 grid gap-3 sm:grid-cols-2">
+                    {hero.skillSets.map((skillSet, index) => (
+                      <li key={skillSet.label} className="flex min-h-24 flex-col items-start gap-2 rounded-2xl border border-brand-100/80 bg-white/70 p-3 text-left shadow-sm dark:border-brand-400/20 dark:bg-slate-950/40">
+                        <span aria-hidden="true" className="flex h-7 w-7 items-center justify-center rounded-lg bg-brand-100/80 text-[10px] font-bold text-brand-700 dark:bg-brand-500/15 dark:text-brand-200">0{index + 1}</span>
                         <span className="min-w-0">
-                          <span className="block text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">{hero.profileFocusLabels[index]}</span>
-                          <span className="mt-1 block text-sm font-semibold text-neutral-900 dark:text-white">{technology}</span>
+                          <span className="block text-sm font-semibold text-neutral-900 dark:text-white">{skillSet.label}</span>
+                          <span className="mt-1 block text-xs leading-relaxed text-neutral-600 dark:text-neutral-300">{skillSet.description}</span>
                         </span>
                       </li>
                     ))}

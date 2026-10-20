@@ -19,7 +19,13 @@ const legacyLocales = {
     },
     technologyPanel: {
       title: 'Tecnologías y herramientas',
-      description: 'Experiencia profesional y conocimientos complementarios, organizados por contexto.',
+      description: 'Tecnologías agrupadas por área; el indicador muestra el contexto de experiencia.',
+      experienceLegend: 'Contexto de experiencia',
+      legend: {
+        professional: 'Experiencia profesional',
+        applied: 'Experiencia puntual',
+        complementary: 'Formación y conocimientos complementarios',
+      },
     },
     brand: {
       initials: 'F',
@@ -45,30 +51,13 @@ const legacyLocales = {
       heading: 'Hola, soy Fernando Alfaro',
       subheading: 'Software Engineer · UTN FRA',
       description:
-        'Desarrollo y mantengo sistemas web, APIs e integraciones, con experiencia profesional en Java/Spring, Angular/TypeScript, SQL, REST/SOAP y soporte de producción.',
-      highlights: [
-        'Java · Spring Boot',
-        'Angular · TypeScript',
-        'SQL · REST · SOAP',
-      ],
-      profileFocusTitle: 'Tecnologías principales',
-      profileFocusLabels: ['Backend', 'Frontend', 'Integraciones'],
-      stats: [
-        {
-          value: 'Backend',
-          label: 'Servicios e integraciones',
-          detail: 'Java, Spring, REST y SOAP',
-        },
-        {
-          value: 'Frontend',
-          label: 'Aplicaciones web',
-          detail: 'Angular, TypeScript y UX',
-        },
-        {
-          value: 'Entrega',
-          label: 'Calidad y producción',
-          detail: 'SQL, debugging, Linux y CI/CD',
-        },
+        'Construyo productos digitales y conecto sistemas, combinando desarrollo, integración y operación para llevar ideas a soluciones útiles.',
+      profileFocusTitle: 'Áreas de habilidad',
+      skillSets: [
+        { label: 'Frontend', description: 'Interfaces web' },
+        { label: 'Backend', description: 'Servicios y APIs' },
+        { label: 'Integraciones', description: 'Conexión entre sistemas' },
+        { label: 'CI/CD', description: 'Entrega continua' },
       ],
       actions: {
         primary: 'Ver currículum',
@@ -178,7 +167,13 @@ const legacyLocales = {
     },
     technologyPanel: {
       title: 'Technologies and tools',
-      description: 'Professional experience and complementary knowledge, grouped by context.',
+      description: 'Technologies grouped by area; the indicator shows the experience context.',
+      experienceLegend: 'Experience context',
+      legend: {
+        professional: 'Professional experience',
+        applied: 'Applied experience',
+        complementary: 'Training and complementary knowledge',
+      },
     },
     brand: {
       initials: 'F',
@@ -204,30 +199,13 @@ const legacyLocales = {
       heading: "Hey, I'm Fernando Alfaro",
       subheading: 'Software Engineer · UTN FRA',
       description:
-        'I build and maintain web systems, APIs, and integrations, with professional experience in Java/Spring, Angular/TypeScript, SQL, REST/SOAP, and production support.',
-      highlights: [
-        'Java · Spring Boot',
-        'Angular · TypeScript',
-        'SQL · REST · SOAP',
-      ],
-      profileFocusTitle: 'Core technologies',
-      profileFocusLabels: ['Backend', 'Frontend', 'Integrations'],
-      stats: [
-        {
-          value: 'Backend',
-          label: 'Services and integrations',
-          detail: 'Java, Spring, REST, and SOAP',
-        },
-        {
-          value: 'Frontend',
-          label: 'Web applications',
-          detail: 'Angular, TypeScript, and UX',
-        },
-        {
-          value: 'Delivery',
-          label: 'Quality and production',
-          detail: 'SQL, debugging, Linux, and CI/CD',
-        },
+        'I build digital products and connect systems, combining software development, integration, and operations to turn ideas into useful solutions.',
+      profileFocusTitle: 'Skill sets',
+      skillSets: [
+        { label: 'Frontend', description: 'Web interfaces' },
+        { label: 'Backend', description: 'Services and APIs' },
+        { label: 'Integrations', description: 'Connected systems' },
+        { label: 'CI/CD', description: 'Continuous delivery' },
       ],
       actions: {
         primary: 'View résumé',
@@ -337,13 +315,7 @@ export const locales = {
       badge: 'Software e integraciones',
       heading: 'Hola, soy Fernando Alfaro',
       subheading: 'Software Engineer · UTN FRA',
-      description: 'Desarrollo y mantengo sistemas web, APIs e integraciones. Mi experiencia profesional se concentra en Java/Spring, Angular/TypeScript, SQL, REST/SOAP y soporte de sistemas productivos.',
-      highlights: ['Java · Spring Boot', 'Angular · TypeScript', 'SQL · REST · SOAP'],
-      stats: [
-        { value: 'Backend', label: 'Servicios e integraciones', detail: 'Java, Spring, REST y SOAP' },
-        { value: 'Frontend', label: 'Aplicaciones web', detail: 'Angular, TypeScript y UX' },
-        { value: 'Entrega', label: 'Calidad y producción', detail: 'SQL, debugging, Linux y CI/CD' },
-      ],
+      description: 'Construyo productos digitales y conecto sistemas, combinando desarrollo, integración y operación para llevar ideas a soluciones útiles.',
     },
     projectsSection: {
       badge: 'Casos de trabajo',
@@ -431,13 +403,7 @@ export const locales = {
       badge: 'Software and integrations',
       heading: "Hi, I'm Fernando Alfaro",
       subheading: 'Software Engineer · UTN FRA',
-      description: 'I build and maintain web systems, APIs, and integrations. My professional experience focuses on Java/Spring, Angular/TypeScript, SQL, REST/SOAP, and production support.',
-      highlights: ['Java · Spring Boot', 'Angular · TypeScript', 'SQL · REST · SOAP'],
-      stats: [
-        { value: 'Backend', label: 'Services and integrations', detail: 'Java, Spring, REST, and SOAP' },
-        { value: 'Frontend', label: 'Web applications', detail: 'Angular, TypeScript, and UX' },
-        { value: 'Delivery', label: 'Quality and production', detail: 'SQL, debugging, Linux, and CI/CD' },
-      ],
+      description: 'I build digital products and connect systems, combining software development, integration, and operations to turn ideas into useful solutions.',
     },
     projectsSection: {
       badge: 'Selected work',
